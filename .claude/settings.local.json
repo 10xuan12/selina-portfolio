@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node about-check.js)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\('d:\\\\selina-portfolio\\\\image\\\\pu-graduation-preview.png'\\); \"$\\($img.Width\\) x $\\($img.Height\\)\")"
+    ]
+  }
+}

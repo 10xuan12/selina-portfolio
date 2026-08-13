@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selina AI Studio — Information Management × AI-Assisted Development</title>
+  <meta name="description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
+
+  <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="image/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="image/apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Selina Huang — Selina AI Studio" />
+  <meta property="og:description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
+  <meta property="og:image" content="image/selina-portrait.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Selina Huang — Selina AI Studio" />
+  <meta name="twitter:description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
+  <meta name="twitter:image" content="image/selina-portrait.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <span class="cursor-tip" id="cursor-tip" aria-hidden="true">click me</span>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo">Selina AI Studio</a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="primary-nav">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#case-study" class="nav-link">Case Study</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="nav-link nav-cta">Contact</a>
+        <a href="zh/index.html" class="lang-toggle" id="lang-toggle" hreflang="zh-Hant" aria-label="Switch to Chinese">
+          <span class="lang-toggle-option lang-toggle-option--en">EN</span>
+          <span class="lang-toggle-track" aria-hidden="true">
+            <span class="lang-toggle-thumb"></span>
+          </span>
+          <span class="lang-toggle-option lang-toggle-option--zh">中</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero -->
+    <section id="hero" class="section hero fade-section">
+      <div class="hero-doodles" aria-hidden="true">
+        <!-- Primary: core identity mark — code brackets, full opacity -->
+        <div class="hero-doodle hero-doodle--code">
+          <svg viewBox="0 0 90 50" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28 6 L6 25 L28 44" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M62 6 L84 25 L62 44" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <line x1="52" y1="2" x2="38" y2="48" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <!-- Secondary: mini before/after illustration, echoes the full Case
+             Study slider — auto-sweeps, draggable, pauses on interaction -->
+        <div class="hero-doodle hero-doodle--compare" id="hero-mini-compare">
+          <div class="hero-mini-panel hero-mini-before">
+            <span class="hero-mini-label">Before</span>
+            <svg class="hero-mini-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8 20 C8 12, 16 10, 20 14 C24 18, 14 18, 16 24 C18 30, 28 28, 26 20 C24 12, 32 14, 32 20 C32 26, 26 30, 20 28 C14 26, 10 28, 8 20 Z"
+                fill="none"
+                stroke="#0A0A0A"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="hero-mini-panel hero-mini-after" id="hero-mini-after">
+            <span class="hero-mini-label">After</span>
+            <svg class="hero-mini-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 21 L17 28 L30 12" fill="none" stroke="#6B1E23" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="hero-mini-handle" id="hero-mini-handle">
+            <span class="hero-mini-handle-dot"></span>
+          </div>
+        </div>
+
+        <!-- Secondary: browser window mockup -->
+        <div class="hero-doodle hero-doodle--browser">
+          <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="116" height="86" rx="6" fill="#FAFAFA" stroke="#0A0A0A" stroke-width="2" />
+            <line x1="2" y1="20" x2="118" y2="20" stroke="#0A0A0A" stroke-width="2" />
+            <circle cx="14" cy="11" r="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
+            <circle cx="24" cy="11" r="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
+            <circle cx="34" cy="11" r="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
+            <rect x="10" y="30" width="100" height="24" fill="#6B1E23" opacity="0.45" />
+            <line x1="10" y1="64" x2="80" y2="64" stroke="#8A8A8A" stroke-width="2" />
+            <line x1="10" y1="74" x2="60" y2="74" stroke="#8A8A8A" stroke-width="2" />
+          </svg>
+        </div>
+
+        <!-- Secondary: phone / app mockup -->
+        <div class="hero-doodle hero-doodle--phone">
+          <svg viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="2" width="52" height="96" rx="10" fill="#FAFAFA" stroke="#0A0A0A" stroke-width="2" />
+            <rect x="14" y="16" width="14" height="14" rx="3" fill="#6B1E23" opacity="0.45" />
+            <rect x="32" y="16" width="14" height="14" rx="3" fill="none" stroke="#8A8A8A" stroke-width="2" />
+            <rect x="14" y="34" width="14" height="14" rx="3" fill="none" stroke="#8A8A8A" stroke-width="2" />
+            <rect x="32" y="34" width="14" height="14" rx="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
+            <circle cx="30" cy="90" r="4" fill="none" stroke="#0A0A0A" stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Information Management × AI-Assisted Development</p>
+
+        <h1 class="hero-title">
+          Websites are
+          <span class="hero-highlight">
+            the easy part
+            <svg class="hero-underline" viewBox="0 0 220 20" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M2 14 Q 40 4, 80 12 T 160 10 T 218 14" fill="none" stroke="#6B1E23" stroke-width="4" stroke-linecap="butt" />
+            </svg>
+          </span>.
+        </h1>
+
+        <p class="hero-subtitle">Finding what's actually costing you customers — that's the work I do.</p>
+
+        <p class="hero-fine-print">For small businesses whose digital experience is quietly costing them customers.</p>
+
+        <div class="hero-rotator" id="hero-rotator" aria-live="polite">
+          <span class="hero-rotator-item is-active">Customers can't find you online.</span>
+          <span class="hero-rotator-item">Booking is stuck in manual messages.</span>
+          <span class="hero-rotator-item">International visitors can't understand your service.</span>
+        </div>
+
+        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" id="hero-cta" class="btn btn-primary hero-cta">
+          <span>Let's talk on WhatsApp</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Marquee divider -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span class="marquee-item">Problem</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">Insight</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">Strategy</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">Experience</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">System</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">Technology</span>
+          <span class="marquee-arrow">→</span>
+        </div>
+        <div class="marquee-group">
+          <span class="marquee-item">Problem</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">Insight</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">Strategy</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">Experience</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">System</span>
+          <span class="marquee-arrow">→</span>
+          <span class="marquee-item">Technology</span>
+          <span class="marquee-arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. About -->
+    <section id="about" class="section about fade-section">
+      <div class="container">
+
+        <!-- Sub-block 1: who I am -->
+        <div class="about-intro">
+          <div class="about-photo">
+            <span class="about-photo-frame" aria-hidden="true"></span>
+            <img
+              class="about-photo-img"
+              src="image/selina-portrait.jpg"
+              alt="Portrait of Selina"
+              width="600"
+              height="769"
+              loading="lazy"
+            />
+            <span class="about-photo-tag">that's me</span>
+          </div>
+
+          <div class="about-intro-text">
+            <span class="section-label">01 — About</span>
+            <h2 class="section-title">Hi, I'm Selina</h2>
+            <p class="section-text">
+              I studied Information Management, and I build things — frontend, backend, mobile,
+              and lately, AI-assisted workflows. I've worked across cultures and borders, and I
+              care about one question above all: what's actually stopping this business from
+              growing? That's the question I start every project with.
+            </p>
+          </div>
+        </div>
+
+        <hr class="about-divider" />
+
+        <!-- Sub-block 2: how I work -->
+        <div class="about-methodology">
+          <div class="about-methodology-heading">
+            <h3 class="about-methodology-title">How I Work</h3>
+            <p class="section-text">
+              Every project starts the same way: I don't ask 'what website do you need?' I ask
+              'what's actually costing you customers, time, or revenue?' That question shapes
+              everything that follows — right up until technology, which comes last, not first.
+            </p>
+          </div>
+
+          <div class="about-methodology-body">
+            <div class="methodology-ring-wrap" aria-hidden="true">
+              <svg viewBox="0 0 200 200" class="methodology-ring">
+                <g transform="rotate(-90 100 100)">
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
+                    stroke-dasharray="78 424.65" stroke-dashoffset="0" />
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
+                    stroke-dasharray="78 424.65" stroke-dashoffset="-83.78" />
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
+                    stroke-dasharray="78 424.65" stroke-dashoffset="-167.55" />
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
+                    stroke-dasharray="78 424.65" stroke-dashoffset="-251.33" />
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#6B1E23" stroke-width="24"
+                    stroke-dasharray="78 424.65" stroke-dashoffset="-335.10" />
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#8A8A8A" stroke-width="24"
+                    stroke-dasharray="78 424.65" stroke-dashoffset="-418.88" />
+                </g>
+                <!-- Center mark: a small hand-drawn "S", echoing the Hero's
+                     doodle language instead of leaving the ring empty. -->
+                <path
+                  class="methodology-ring-signature"
+                  d="M112.1 87.9 C108.8 82.4, 93.4 81.3, 90.1 89 C86.8 96.7, 97.8 97.8, 101.1 98.9
+                     C109.9 101.1, 116.5 105.5, 109.9 113.2 C103.3 120.9, 90.1 117.6, 86.8 112.1"
+                  fill="none"
+                  stroke="#6B1E23"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div class="methodology-ring-label methodology-ring-label--problem">Problem</div>
+              <div class="methodology-ring-label methodology-ring-label--insight">Insight</div>
+              <div class="methodology-ring-label methodology-ring-label--strategy">Strategy</div>
+              <div class="methodology-ring-label methodology-ring-label--experience">Experience</div>
+              <div class="methodology-ring-label methodology-ring-label--system">System</div>
+              <div class="methodology-ring-label methodology-ring-label--technology">Technology</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Case Study -->
+    <section id="case-study" class="section case-study fade-section">
+      <div class="container">
+        <span class="section-label">02 — Case Study</span>
+        <h2 class="section-title">One real project. Here's how it's going.</h2>
+      </div>
+
+      <div class="case-carousel">
+        <div class="case-track" id="case-track">
+          <article class="case-card">
+            <div class="case-card-media" aria-hidden="true"></div>
+            <div class="case-card-body">
+              <span class="case-tag">Booking Platform</span>
+              <h3 class="case-card-title">From Phone Calls to Online Bookings</h3>
+              <p class="case-card-text">
+                A private transportation company in Eswatini, run mostly by one owner for over a
+                decade. Customers — mainly tourists and business travelers — found the business
+                through word of mouth and had to contact the owner directly to book a ride. No
+                website, no way for new international visitors to discover or book without
+                already having his number. I'm building a lightweight booking site: a clear
+                introduction to the service, an inquiry form, and a WhatsApp connection travelers
+                can use without needing to already know how to reach him.
+              </p>
+              <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <span>Ask about this project</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-card-media case-card-media--browser">
+              <div class="case-browser-media">
+                <img
+                  class="case-browser-img"
+                  src="image/pu-graduation-preview.jpg"
+                  alt="Screenshot of the Providence University graduation portal homepage"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="case-card-body">
+              <span class="case-tag">University Website</span>
+              <h3 class="case-card-title">Providence University Graduation Portal</h3>
+              <p class="case-card-text">
+                A public university needed one place for graduating students, parents, and
+                faculty to find everything about commencement — ceremony schedules, gown rentals,
+                checkout procedures, honor rolls. I planned, built, and launched the entire site
+                solo, organizing content for three different audiences with different needs and
+                urgency, all in one clear structure.
+              </p>
+              <a href="https://sites.google.com/gm.pu.edu.tw/pugraduation" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <span>View live site</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="case-card case-card--placeholder">
+            <div class="case-card-media" aria-hidden="true"></div>
+            <div class="case-card-body">
+              <p class="case-card-placeholder-text">More case studies coming soon</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="container case-carousel-nav">
+        <button class="carousel-btn" id="case-prev" type="button" aria-label="Previous case study">
+          <span aria-hidden="true">&larr;</span>
+        </button>
+        <button class="carousel-btn" id="case-next" type="button" aria-label="Next case study">
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- 4. Services -->
+    <section id="services" class="section services fade-section">
+      <div class="container">
+        <span class="section-label">03 — Services</span>
+        <h2 class="section-title">Three ways to fix what's costing you customers.</h2>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <!-- Digital experience diagnosis: magnifying glass over a heartbeat/ECG line -->
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="12" fill="none" stroke="#0A0A0A" stroke-width="2" />
+                <line x1="29" y1="29" x2="42" y2="42" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
+                <polyline points="12,20 16,20 18,14 22,26 25,20 28,20" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <span class="service-number">01</span>
+            <h3 class="service-title">Digital Diagnostic</h3>
+            <p class="service-text">I look at your website, booking flow, and customer journey to find exactly where you're losing customers — and what to fix first.</p>
+          </article>
+
+          <article class="service-card">
+            <!-- Custom website/app development: browser window overlapped by a phone frame -->
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="6" width="30" height="22" rx="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
+                <line x1="2" y1="12" x2="32" y2="12" stroke="#0A0A0A" stroke-width="2" />
+                <rect x="24" y="18" width="16" height="26" rx="4" fill="#FAFAFA" stroke="#0A0A0A" stroke-width="2" />
+                <line x1="30" y1="40" x2="34" y2="40" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="service-number">02</span>
+            <h3 class="service-title">Custom Digital Systems</h3>
+            <p class="service-text">Websites, booking tools, or customer portals — whatever solves your specific problem, built to fit your business, not a template.</p>
+          </article>
+
+          <article class="service-card">
+            <!-- AI-assisted workflow: 3 nodes connected by one-directional arrows -->
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="svc-flow-arrow-en" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                    <path d="M0 0 L6 3 L0 6 Z" fill="#0A0A0A" />
+                  </marker>
+                </defs>
+                <line x1="11" y1="24" x2="19" y2="24" stroke="#0A0A0A" stroke-width="2" marker-end="url(#svc-flow-arrow-en)" />
+                <line x1="29" y1="24" x2="37" y2="24" stroke="#0A0A0A" stroke-width="2" marker-end="url(#svc-flow-arrow-en)" />
+                <circle cx="6" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
+                <circle cx="24" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
+                <circle cx="42" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
+              </svg>
+            </div>
+            <span class="service-number">03</span>
+            <h3 class="service-title">AI-Assisted Workflows</h3>
+            <p class="service-text">Automating the repetitive parts of running your business, like customer inquiries or booking confirmations, so you spend less time on manual back-and-forth.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Contact -->
+    <section id="contact" class="section contact fade-section">
+      <div class="contact-doodle" aria-hidden="true">
+        <svg viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 8 h78 a4 4 0 0 1 4 4 v34 a4 4 0 0 1 -4 4 h-50 l-16 16 v-16 h-12 a4 4 0 0 1 -4 -4 v-34 a4 4 0 0 1 4 -4 z" fill="none" stroke="#0A0A0A" stroke-width="2" />
+          <line x1="16" y1="22" x2="70" y2="22" stroke="#0A0A0A" stroke-width="2" opacity="0.6" />
+          <line x1="16" y1="32" x2="54" y2="32" stroke="#0A0A0A" stroke-width="2" opacity="0.6" />
+        </svg>
+      </div>
+
+      <div class="container">
+        <span class="section-label">04 — Contact</span>
+        <h2 class="section-title">Let's talk about what's costing you customers.</h2>
+        <p class="section-text">Whether it's a quick question or a full project — reach out however's easiest for you.</p>
+
+        <div class="contact-links">
+          <a href="mailto:selina101292@gmail.com" class="contact-link">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">selina101292@gmail.com</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">/in/玟瑄-黃</span>
+          </a>
+
+          <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="contact-link" id="whatsapp-link">
+            <span class="contact-link-label">WhatsApp</span>
+            <span class="contact-link-value">+886 965 418 312</span>
+          </a>
+        </div>
+
+        <div class="whatsapp-qr">
+          <img id="whatsapp-qr-img" alt="WhatsApp QR code" width="140" height="140" />
+          <span class="whatsapp-qr-caption">Scan to start a WhatsApp chat</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Selina Huang. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
