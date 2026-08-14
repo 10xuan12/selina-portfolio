@@ -75,14 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ------------------------------------------------------------------
-     Language toggle: reflect the current locale in the switch UI
+     Language switcher (fixed circular button, bottom-right)
      ------------------------------------------------------------------ */
   const langToggle = document.getElementById('lang-toggle');
 
   if (langToggle) {
-    const isZh = /\/zh(\/|$)/.test(window.location.pathname);
-    langToggle.classList.toggle('is-zh', isZh);
-
     // Cross-fade into the other language via the View Transitions API.
     // Browsers without support just follow the link normally — no error.
     langToggle.addEventListener('click', (event) => {
@@ -157,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       requestAnimationFrame(renderCursor);
 
-      document.querySelectorAll('.nav-link, .lang-toggle').forEach((el) => {
+      document.querySelectorAll('.nav-link, .lang-fab').forEach((el) => {
         el.addEventListener('mouseenter', () => cursorDot.classList.add('is-hover'));
         el.addEventListener('mouseleave', () => cursorDot.classList.remove('is-hover'));
       });

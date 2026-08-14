@@ -220,54 +220,35 @@ h3 {
   display: none;
 }
 
-.lang-toggle {
-  display: inline-flex;
+/* Fixed circular language switcher — always shows the language you'd
+   switch TO, not the one you're on. White border + shadow keep it
+   legible even over the wine-colored marquee band. */
+.lang-fab {
+  position: fixed;
+  inset-block-end: 20px;
+  inset-inline-end: 20px;
+  z-index: 400;
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-.lang-toggle-option {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--gray);
-  transition: color var(--transition-fast);
-}
-
-.lang-toggle-option--en {
-  color: var(--black);
-}
-
-.lang-toggle.is-zh .lang-toggle-option--en {
-  color: var(--gray);
-}
-
-.lang-toggle.is-zh .lang-toggle-option--zh {
-  color: var(--black);
-}
-
-.lang-toggle-track {
-  position: relative;
-  width: 40px;
-  height: 20px;
-  border-radius: 999px;
-  background-color: rgba(138, 138, 138, 0.35);
-}
-
-.lang-toggle-thumb {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: var(--wine);
-  transition: transform var(--transition-base);
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 2px solid var(--white);
+  box-shadow: 0 4px 14px rgba(10, 10, 10, 0.25);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.lang-toggle.is-zh .lang-toggle-thumb {
-  transform: translateX(20px);
+.lang-fab:hover,
+.lang-fab:focus-visible {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.32);
 }
 
 /* ==========================================================================
@@ -963,6 +944,186 @@ h3 {
   color: var(--gray);
 }
 
+/* Shared sub-block heading style — reuses the "How I Work" title treatment
+   for the Experience / Skills / Certifications sub-blocks below it. */
+.about-methodology-title,
+.about-block-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  font-weight: 600;
+  color: var(--black);
+}
+
+.about-block-title {
+  margin-bottom: 2rem;
+}
+
+/* Sub-block 3 — Experience timeline */
+.timeline {
+  list-style: none;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  position: relative;
+  flex: 0 0 auto;
+  width: 11px;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-marker::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  bottom: -2rem;
+  left: 50%;
+  width: 1px;
+  background-color: var(--black);
+  translate: -50% 0;
+}
+
+.timeline-item:last-child .timeline-marker::before {
+  display: none;
+}
+
+.timeline-dot {
+  width: 11px;
+  height: 11px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 2px solid var(--black);
+  box-sizing: border-box;
+}
+
+.timeline-item--current .timeline-dot {
+  background-color: var(--wine);
+  border-color: var(--wine);
+}
+
+.timeline-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.timeline-year {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 0.35rem;
+}
+
+.timeline-item--current .timeline-year {
+  color: var(--wine);
+}
+
+.timeline-text {
+  color: var(--gray);
+  font-size: 0.95rem;
+  max-width: 560px;
+}
+
+.timeline-text strong {
+  color: var(--black);
+  font-weight: 600;
+}
+
+/* Sub-block 4 — Skills */
+.skills-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.skills-group-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 1.25rem;
+}
+
+.skill-bar {
+  margin-bottom: 1.25rem;
+}
+
+.skill-bar:last-child {
+  margin-bottom: 0;
+}
+
+.skill-bar-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.skill-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--black);
+}
+
+.skill-percent {
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-variant-numeric: tabular-nums;
+}
+
+.skill-track {
+  width: 100%;
+  height: 6px;
+  background-color: color-mix(in srgb, var(--gray) 25%, var(--white));
+}
+
+.skill-fill {
+  height: 100%;
+  background-color: var(--wine);
+}
+
+/* Sub-block 5 — Certifications & Achievements */
+.certs-list {
+  list-style: none;
+}
+
+.certs-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 0.6rem;
+  border-bottom: 1px solid rgba(138, 138, 138, 0.2);
+}
+
+.certs-item:last-child {
+  border-bottom: none;
+}
+
+.certs-year {
+  flex: 0 0 auto;
+  min-width: 3rem;
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-variant-numeric: tabular-nums;
+}
+
+.certs-name {
+  color: var(--black);
+  font-size: 0.98rem;
+}
+
 /* ==========================================================================
    Case Study
    ========================================================================== */
@@ -1359,6 +1520,19 @@ h3 {
     flex: 1 1 auto;
   }
 
+  .skills-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .lang-fab {
+    inset-block-end: 28px;
+    inset-inline-end: 28px;
+    width: 60px;
+    height: 60px;
+    font-size: 1.05rem;
+  }
+
   .nav-toggle {
     display: none;
   }
@@ -1488,7 +1662,7 @@ h3 {
   }
 
   .nav-link,
-  .lang-toggle {
+  .lang-fab {
     cursor: none;
   }
 }
