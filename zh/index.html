@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selina AI Studio — 資訊管理 × AI 輔助開發</title>
+  <title>Selina Huang — 資訊管理 × AI 輔助開發</title>
   <meta name="description" content="Selina 打造能解決真實商業問題的數位系統——從診斷、設計到技術實現。" />
 
   <link rel="icon" href="../image/favicon.svg" type="image/svg+xml" />
@@ -12,11 +12,11 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://10xuan12.github.io/selina-portfolio/zh/index.html" />
-  <meta property="og:title" content="Selina Huang — Selina AI Studio" />
+  <meta property="og:title" content="Selina Huang — 資訊管理 × AI 輔助開發" />
   <meta property="og:description" content="Selina 打造能解決真實商業問題的數位系統——從診斷、設計到技術實現。" />
   <meta property="og:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Selina Huang — Selina AI Studio" />
+  <meta name="twitter:title" content="Selina Huang — 資訊管理 × AI 輔助開發" />
   <meta name="twitter:description" content="Selina 打造能解決真實商業問題的數位系統——從診斷、設計到技術實現。" />
   <meta name="twitter:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
 
@@ -35,7 +35,7 @@
 
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a href="#hero" class="logo">Selina AI Studio</a>
+      <a href="#hero" class="logo">Selina Huang</a>
 
       <button class="nav-toggle" id="nav-toggle" aria-label="開啟選單" aria-expanded="false" aria-controls="primary-nav">
         <span></span>
@@ -45,7 +45,7 @@
 
       <nav class="nav" id="primary-nav">
         <a href="#about" class="nav-link">關於</a>
-        <a href="#case-study" class="nav-link">案例</a>
+        <a href="#projects" class="nav-link">作品集</a>
         <a href="#services" class="nav-link">服務</a>
         <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="nav-link nav-cta">Contact</a>
       </nav>
@@ -319,7 +319,7 @@
                   <span class="skill-name">HTML/CSS</span>
                   <span class="skill-percent">90%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 90%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="90"></div></div>
               </div>
 
               <div class="skill-bar">
@@ -327,7 +327,7 @@
                   <span class="skill-name">JavaScript</span>
                   <span class="skill-percent">85%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 85%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
               </div>
 
               <div class="skill-bar">
@@ -335,7 +335,7 @@
                   <span class="skill-name">Vue.js / Nuxt</span>
                   <span class="skill-percent">80%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 80%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
               </div>
             </div>
 
@@ -347,7 +347,7 @@
                   <span class="skill-name">Java</span>
                   <span class="skill-percent">85%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 85%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
               </div>
 
               <div class="skill-bar">
@@ -355,7 +355,7 @@
                   <span class="skill-name">TypeScript</span>
                   <span class="skill-percent">75%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 75%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
               </div>
 
               <div class="skill-bar">
@@ -363,7 +363,7 @@
                   <span class="skill-name">MySQL</span>
                   <span class="skill-percent">80%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 80%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
               </div>
             </div>
           </div>
@@ -406,24 +406,40 @@
     </section>
 
     <!-- 3. Case Study -->
-    <section id="case-study" class="section case-study fade-section">
+    <section id="projects" class="section case-study fade-section">
       <div class="container">
-        <span class="section-label">02 — Case Study</span>
-        <h2 class="section-title">一個真實專案，進度到這裡。</h2>
+        <span class="section-label">02 — 作品集</span>
+        <h2 class="section-title">我做過的幾個東西。</h2>
       </div>
 
       <div class="case-carousel">
         <div class="case-track" id="case-track">
           <article class="case-card">
-            <div class="case-card-media" aria-hidden="true"></div>
+            <div class="case-card-media case-card-media--browser case-card-media--browser-frame">
+              <div class="case-browser-chrome" aria-hidden="true">
+                <span class="case-browser-dot"></span>
+                <span class="case-browser-dot"></span>
+                <span class="case-browser-dot"></span>
+              </div>
+              <div class="case-browser-media">
+                <img
+                  class="case-browser-img"
+                  src="../image/sompisi-preview.jpg"
+                  alt="Sompisi Transport 網站首頁截圖"
+                  loading="lazy"
+                  style="filter: grayscale(30%) sepia(10%) saturate(110%);"
+                />
+              </div>
+            </div>
             <div class="case-card-body">
-              <span class="case-tag">訂車平台</span>
-              <h3 class="case-card-title">從電話預約到線上訂車</h3>
+              <span class="case-tag">接送服務</span>
+              <h3 class="case-card-title">Sompisi Transport</h3>
               <p class="case-card-text">
-                Eswatini 的一家私人運輸公司，由老闆一人經營超過十年。客戶——主要是觀光客與商務出差旅客——多半透過口碑介紹，訂車必須直接聯繫老闆本人。沒有網站，新的國際旅客如果沒有他的聯絡方式，根本無從得知或預約這項服務。我正在打造一個輕量訂車網站：清楚的服務介紹、詢問表單，以及讓旅客不需要事先知道聯絡方式就能開啟 WhatsApp 對話的入口。
+                一間位於史瓦帝尼姆巴巴內的家族接送服務，賣點是叫車 App 給不了的東西——你永遠知道是誰在開車。我把整個網站圍繞這一點打造：用真實姓名取代車隊感，訂車流程完全跳過後端——填好行程資訊，直接開啟已經預填好內容的
+                WhatsApp 訊息，由老闆本人在一小時內親自確認。沒有伺服器、沒有資料庫、沒有金流——只是一個能更快促成真人對話的靜態網站。
               </p>
-              <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                <span>詢問這個專案</span>
+              <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <span>查看網站</span>
               </a>
             </div>
           </article>
@@ -451,10 +467,33 @@
             </div>
           </article>
 
-          <article class="case-card case-card--placeholder">
-            <div class="case-card-media" aria-hidden="true"></div>
+          <article class="case-card">
+            <div class="case-card-media case-card-media--browser case-card-media--browser-frame">
+              <div class="case-browser-chrome" aria-hidden="true">
+                <span class="case-browser-dot"></span>
+                <span class="case-browser-dot"></span>
+                <span class="case-browser-dot"></span>
+              </div>
+              <div class="case-browser-media">
+                <img
+                  class="case-browser-img"
+                  src="../image/triptally-preview.jpg"
+                  alt="TripTally 旅程花費明細畫面截圖"
+                  loading="lazy"
+                  style="filter: grayscale(35%) sepia(10%) saturate(110%);"
+                />
+              </div>
+            </div>
             <div class="case-card-body">
-              <p class="case-card-placeholder-text">更多案例進行中</p>
+              <span class="case-tag">旅遊記帳 App</span>
+              <h3 class="case-card-title">TripTally</h3>
+              <p class="case-card-text">
+                一個手機優先的 PWA，10 秒內完成一筆含匯率換算的記帳，離線也能使用。每筆支出的匯率在建立當下即被鎖定，確保歷史紀錄不受後續匯率變動影響。獨立使用
+                Nuxt 3、Vue 3、TypeScript 開發，完全運行於本機儲存，不需要後端或登入機制。目前正透過今年 10 月的泰國旅行進行實地測試。
+              </p>
+              <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <span>查看網站</span>
+              </a>
             </div>
           </article>
         </div>

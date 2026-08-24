@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selina AI Studio — Information Management × AI-Assisted Development</title>
+  <title>Selina Huang — Information Management × AI-Assisted Development</title>
   <meta name="description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
 
   <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
@@ -12,11 +12,11 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://10xuan12.github.io/selina-portfolio/" />
-  <meta property="og:title" content="Selina Huang — Selina AI Studio" />
+  <meta property="og:title" content="Selina Huang — Information Management × AI-Assisted Development" />
   <meta property="og:description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
   <meta property="og:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Selina Huang — Selina AI Studio" />
+  <meta name="twitter:title" content="Selina Huang — Information Management × AI-Assisted Development" />
   <meta name="twitter:description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
   <meta name="twitter:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
 
@@ -35,7 +35,7 @@
 
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a href="#hero" class="logo">Selina AI Studio</a>
+      <a href="#hero" class="logo">Selina Huang</a>
 
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
         <span></span>
@@ -45,7 +45,7 @@
 
       <nav class="nav" id="primary-nav">
         <a href="#about" class="nav-link">About</a>
-        <a href="#case-study" class="nav-link">Case Study</a>
+        <a href="#projects" class="nav-link">Projects</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="nav-link nav-cta">Contact</a>
       </nav>
@@ -327,7 +327,7 @@
                   <span class="skill-name">HTML/CSS</span>
                   <span class="skill-percent">90%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 90%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="90"></div></div>
               </div>
 
               <div class="skill-bar">
@@ -335,7 +335,7 @@
                   <span class="skill-name">JavaScript</span>
                   <span class="skill-percent">85%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 85%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
               </div>
 
               <div class="skill-bar">
@@ -343,7 +343,7 @@
                   <span class="skill-name">Vue.js / Nuxt</span>
                   <span class="skill-percent">80%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 80%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
               </div>
             </div>
 
@@ -355,7 +355,7 @@
                   <span class="skill-name">Java</span>
                   <span class="skill-percent">85%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 85%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
               </div>
 
               <div class="skill-bar">
@@ -363,7 +363,7 @@
                   <span class="skill-name">TypeScript</span>
                   <span class="skill-percent">75%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 75%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
               </div>
 
               <div class="skill-bar">
@@ -371,7 +371,7 @@
                   <span class="skill-name">MySQL</span>
                   <span class="skill-percent">80%</span>
                 </div>
-                <div class="skill-track"><div class="skill-fill" style="width: 80%;"></div></div>
+                <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
               </div>
             </div>
           </div>
@@ -414,30 +414,45 @@
     </section>
 
     <!-- 3. Case Study -->
-    <section id="case-study" class="section case-study fade-section">
+    <section id="projects" class="section case-study fade-section">
       <div class="container">
-        <span class="section-label">02 — Case Study</span>
-        <h2 class="section-title">One real project. Here's how it's going.</h2>
+        <span class="section-label">02 — Projects</span>
+        <h2 class="section-title">A few things I've built.</h2>
       </div>
 
       <div class="case-carousel">
         <div class="case-track" id="case-track">
           <article class="case-card">
-            <div class="case-card-media" aria-hidden="true"></div>
+            <div class="case-card-media case-card-media--browser case-card-media--browser-frame">
+              <div class="case-browser-chrome" aria-hidden="true">
+                <span class="case-browser-dot"></span>
+                <span class="case-browser-dot"></span>
+                <span class="case-browser-dot"></span>
+              </div>
+              <div class="case-browser-media">
+                <img
+                  class="case-browser-img"
+                  src="image/sompisi-preview.jpg"
+                  alt="Screenshot of the Sompisi Transport homepage"
+                  loading="lazy"
+                  style="filter: grayscale(30%) sepia(10%) saturate(110%);"
+                />
+              </div>
+            </div>
             <div class="case-card-body">
-              <span class="case-tag">Booking Platform</span>
-              <h3 class="case-card-title">From Phone Calls to Online Bookings</h3>
+              <span class="case-tag">Transportation Company</span>
+              <h3 class="case-card-title">Sompisi Transport</h3>
               <p class="case-card-text">
-                A private transportation company in Eswatini, run mostly by one owner for over a
-                decade. Customers — mainly tourists and business travelers — found the business
-                through word of mouth and had to contact the owner directly to book a ride. No
-                website, no way for new international visitors to discover or book without
-                already having his number. I'm building a lightweight booking site: a clear
-                introduction to the service, an inquiry form, and a WhatsApp connection travelers
-                can use without needing to already know how to reach him.
+                A family-run private driving service in Mbabane, Eswatini, competing on something
+                a ride-hailing app can't offer: you always know who's driving. I built the site
+                around that — real names instead of a fleet, and a booking flow that skips the
+                backend entirely. Fill in trip details, and it opens WhatsApp with the message
+                pre-written; the owner confirms personally within the hour. No server, no
+                database, no payment processing — just a static site that gets a real conversation
+                started faster.
               </p>
-              <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                <span>Ask about this project</span>
+              <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <span>View live site</span>
               </a>
             </div>
           </article>
@@ -469,10 +484,37 @@
             </div>
           </article>
 
-          <article class="case-card case-card--placeholder">
-            <div class="case-card-media" aria-hidden="true"></div>
+          <article class="case-card">
+            <div class="case-card-media case-card-media--browser case-card-media--browser-frame">
+              <div class="case-browser-chrome" aria-hidden="true">
+                <span class="case-browser-dot"></span>
+                <span class="case-browser-dot"></span>
+                <span class="case-browser-dot"></span>
+              </div>
+              <div class="case-browser-media">
+                <img
+                  class="case-browser-img"
+                  src="image/triptally-preview.jpg"
+                  alt="Screenshot of the TripTally trip expense breakdown screen"
+                  loading="lazy"
+                  style="filter: grayscale(35%) sepia(10%) saturate(110%);"
+                />
+              </div>
+            </div>
             <div class="case-card-body">
-              <p class="case-card-placeholder-text">More case studies coming soon</p>
+              <span class="case-tag">Travel Expense App</span>
+              <h3 class="case-card-title">TripTally</h3>
+              <p class="case-card-text">
+                A mobile-first PWA that logs a trip expense — currency conversion included — in
+                under 10 seconds, even offline. Every exchange rate is locked at the moment of
+                entry, so historical records stay accurate regardless of later rate changes. Built
+                solo with Nuxt 3, Vue 3, and TypeScript, running entirely on local storage — no
+                backend, no login. Currently being stress-tested on a real trip to Thailand this
+                October.
+              </p>
+              <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <span>View live site</span>
+              </a>
             </div>
           </article>
         </div>

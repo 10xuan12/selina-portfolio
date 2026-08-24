@@ -2,6 +2,29 @@
 // contact link href and the QR code image URL below.
 const WHATSAPP_NUMBER = '886965418312';
 
+// Counts a <span>'s text from 0% up to `target`%, in step with the skill
+// bar's own CSS width transition. `instant` (prefers-reduced-motion) skips
+// straight to the final value.
+function animateSkillCount(el, target, instant) {
+  if (instant) {
+    el.textContent = `${target}%`;
+    return;
+  }
+
+  const duration = 900;
+  const startTime = performance.now();
+
+  const step = (now) => {
+    const progress = Math.min((now - startTime) / duration, 1);
+    el.textContent = `${Math.round(progress * target)}%`;
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  };
+
+  requestAnimationFrame(step);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------
      Scroll fade-up: reveal each section once via IntersectionObserver
@@ -338,6 +361,122 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       true
     );
+  }
+
+  /* ------------------------------------------------------------------
+     Skills: bars fill from 0 to their target width (+ percentage count-up)
+     once the Skills sub-block scrolls into view. Fires once.
+     ------------------------------------------------------------------ */
+  const aboutSkills = document.querySelector('.about-skills');
+
+  if (aboutSkills) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const skillBars = Array.from(aboutSkills.querySelectorAll('.skill-bar'))
+      .map((bar) => {
+        const fill = bar.querySelector('.skill-fill');
+        const percentEl = bar.querySelector('.skill-percent');
+        if (!fill || !percentEl) return null;
+        const target = parseInt(fill.dataset.percent, 10) || 0;
+        if (!prefersReducedMotion) percentEl.textContent = '0%';
+        return { fill, percentEl, target };
+      })
+      .filter(Boolean);
+
+    const runSkillBars = () => {
+      skillBars.forEach(({ fill, percentEl, target }, index) => {
+        const start = () => {
+          fill.style.width = `${target}%`;
+          animateSkillCount(percentEl, target, prefersReducedMotion);
+        };
+        if (prefersReducedMotion) {
+          start();
+        } else {
+          setTimeout(start, index * 100);
+        }
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const skillsObserver = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              runSkillBars();
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      skillsObserver.observe(aboutSkills);
+    } else {
+      runSkillBars();
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Methodology ring: draw the 6 arc segments in sequence (stroke-
+     dasharray growing from its offset start point), then fade in the
+     center signature. Triggered once by IntersectionObserver.
+     ------------------------------------------------------------------ */
+  const aboutMethodology = document.querySelector('.about-methodology');
+  const methodologyRing = document.querySelector('.methodology-ring');
+
+  if (aboutMethodology && methodologyRing) {
+    if ('IntersectionObserver' in window) {
+      const ringObserver = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              methodologyRing.classList.add('is-drawn');
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.35 }
+      );
+      ringObserver.observe(aboutMethodology);
+    } else {
+      methodologyRing.classList.add('is-drawn');
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Project cards: subtle 3D tilt following the mouse, on the screenshot
+     preview only. Desktop pointers only — touch devices are untouched.
+     ------------------------------------------------------------------ */
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const MAX_TILT_DEG = 6;
+
+    document.querySelectorAll('.case-card-media--browser').forEach((media) => {
+      // Cache the untransformed rect once per hover session — reading
+      // getBoundingClientRect() fresh on every mousemove would pick up the
+      // element's own perspective-skewed box mid-tilt and feed back into
+      // itself, making the tilt drift instead of tracking the cursor.
+      let rect = null;
+
+      media.addEventListener('mouseenter', () => {
+        rect = media.getBoundingClientRect();
+      });
+
+      media.addEventListener('mousemove', (event) => {
+        if (!rect) rect = media.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - 0.5) * 2 * MAX_TILT_DEG;
+        const rotateX = (0.5 - y) * 2 * MAX_TILT_DEG;
+
+        media.style.transition = 'none';
+        media.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      media.addEventListener('mouseleave', () => {
+        rect = null;
+        media.style.transition = 'transform 0.4s ease';
+        media.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
   }
 
 });

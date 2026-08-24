@@ -356,6 +356,13 @@ h3 {
     transition: none;
   }
 
+  .skill-fill,
+  .methodology-ring g circle,
+  .methodology-ring-signature,
+  .case-card-media--browser {
+    transition: none;
+  }
+
   .hero-doodle {
     animation: none;
   }
@@ -903,6 +910,53 @@ h3 {
   height: auto;
 }
 
+/* Ring-draw animation: each segment starts as a zero-length dash at its
+   already-correct offset, then grows into the full 78/424.65 arc, which
+   reads as the stroke being drawn from its own start point. Triggered by
+   toggling .is-drawn via IntersectionObserver in script.js. */
+.methodology-ring g circle {
+  stroke-dasharray: 0 502.65;
+  transition: stroke-dasharray 0.7s ease;
+}
+
+.methodology-ring.is-drawn g circle {
+  stroke-dasharray: 78 424.65;
+}
+
+.methodology-ring.is-drawn g circle:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.methodology-ring.is-drawn g circle:nth-child(2) {
+  transition-delay: 0.18s;
+}
+
+.methodology-ring.is-drawn g circle:nth-child(3) {
+  transition-delay: 0.36s;
+}
+
+.methodology-ring.is-drawn g circle:nth-child(4) {
+  transition-delay: 0.54s;
+}
+
+.methodology-ring.is-drawn g circle:nth-child(5) {
+  transition-delay: 0.72s;
+}
+
+.methodology-ring.is-drawn g circle:nth-child(6) {
+  transition-delay: 0.9s;
+}
+
+.methodology-ring-signature {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.methodology-ring.is-drawn .methodology-ring-signature {
+  opacity: 1;
+  transition-delay: 1.7s;
+}
+
 .methodology-ring-label {
   position: absolute;
   translate: -50% -50%;
@@ -1091,7 +1145,9 @@ h3 {
 
 .skill-fill {
   height: 100%;
+  width: 0;
   background-color: var(--wine);
+  transition: width 1s ease;
 }
 
 /* Sub-block 5 — Certifications & Achievements */
@@ -1302,6 +1358,28 @@ h3 {
   text-align: center;
 }
 
+/* Wireframe browser-frame variant — thin black outline, transparent
+   background, a bare chrome bar of three dots above a real screenshot. */
+.case-card-media--browser-frame {
+  background: transparent;
+}
+
+.case-browser-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding-inline: 12px;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.7);
+}
+
+.case-browser-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(10, 10, 10, 0.7);
+}
+
 /* ==========================================================================
    Services
    ========================================================================== */
@@ -1320,7 +1398,7 @@ h3 {
   border: 1px solid rgba(138, 138, 138, 0.2);
   border-radius: 4px;
   opacity: 0;
-  translate: 0 24px;
+  translate: 0 20px;
   transition: opacity var(--transition-slow), translate var(--transition-base), border-color var(--transition-base),
     transform var(--transition-base);
 }
@@ -1336,15 +1414,15 @@ h3 {
 }
 
 .fade-section.is-visible .service-card:nth-child(1) {
-  transition-delay: 0.05s;
+  transition-delay: 0s;
 }
 
 .fade-section.is-visible .service-card:nth-child(2) {
-  transition-delay: 0.15s;
+  transition-delay: 0.13s;
 }
 
 .fade-section.is-visible .service-card:nth-child(3) {
-  transition-delay: 0.25s;
+  transition-delay: 0.26s;
 }
 
 .service-icon {
