@@ -27,7 +27,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20260826" />
 </head>
 <body>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
@@ -58,17 +58,10 @@
     <!-- 1. Hero -->
     <section id="hero" class="section hero fade-section">
       <div class="hero-doodles" aria-hidden="true">
-        <!-- Primary: core identity mark — code brackets, full opacity -->
-        <div class="hero-doodle hero-doodle--code">
-          <svg viewBox="0 0 90 50" xmlns="http://www.w3.org/2000/svg">
-            <path d="M28 6 L6 25 L28 44" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M62 6 L84 25 L62 44" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <line x1="52" y1="2" x2="38" y2="48" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </div>
-
-        <!-- Secondary: mini before/after illustration, echoes the full Case
-             Study slider — auto-sweeps, draggable, pauses on interaction -->
+        <!-- Mini before/after illustration, echoes the full Case Study
+             slider — auto-sweeps, draggable, pauses on interaction.
+             Tucked into the bottom-left corner so it stays out of the
+             way of the badge/title/photo column above it. -->
         <div class="hero-doodle hero-doodle--compare" id="hero-mini-compare">
           <div class="hero-mini-panel hero-mini-before">
             <span class="hero-mini-label">Before</span>
@@ -93,60 +86,79 @@
             <span class="hero-mini-handle-dot"></span>
           </div>
         </div>
-
-        <!-- Secondary: browser window mockup -->
-        <div class="hero-doodle hero-doodle--browser">
-          <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="116" height="86" rx="6" fill="#FAFAFA" stroke="#0A0A0A" stroke-width="2" />
-            <line x1="2" y1="20" x2="118" y2="20" stroke="#0A0A0A" stroke-width="2" />
-            <circle cx="14" cy="11" r="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
-            <circle cx="24" cy="11" r="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
-            <circle cx="34" cy="11" r="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
-            <rect x="10" y="30" width="100" height="24" fill="#6B1E23" opacity="0.45" />
-            <line x1="10" y1="64" x2="80" y2="64" stroke="#8A8A8A" stroke-width="2" />
-            <line x1="10" y1="74" x2="60" y2="74" stroke="#8A8A8A" stroke-width="2" />
-          </svg>
-        </div>
-
-        <!-- Secondary: phone / app mockup -->
-        <div class="hero-doodle hero-doodle--phone">
-          <svg viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="2" width="52" height="96" rx="10" fill="#FAFAFA" stroke="#0A0A0A" stroke-width="2" />
-            <rect x="14" y="16" width="14" height="14" rx="3" fill="#6B1E23" opacity="0.45" />
-            <rect x="32" y="16" width="14" height="14" rx="3" fill="none" stroke="#8A8A8A" stroke-width="2" />
-            <rect x="14" y="34" width="14" height="14" rx="3" fill="none" stroke="#8A8A8A" stroke-width="2" />
-            <rect x="32" y="34" width="14" height="14" rx="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
-            <circle cx="30" cy="90" r="4" fill="none" stroke="#0A0A0A" stroke-width="2" />
-          </svg>
-        </div>
       </div>
-      <div class="container hero-inner">
-        <p class="eyebrow">Information Management × AI-Assisted Development</p>
 
-        <h1 class="hero-title">
-          Websites are
-          <span class="hero-highlight">
-            the easy part
-            <svg class="hero-underline" viewBox="0 0 220 20" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M2 14 Q 40 4, 80 12 T 160 10 T 218 14" fill="none" stroke="#6B1E23" stroke-width="4" stroke-linecap="butt" />
-            </svg>
-          </span>.
-        </h1>
+      <div class="container hero-grid">
+        <div class="hero-col hero-col--left">
+          <div class="hero-col-top">
+            <!-- Top-left: availability badge -->
+            <span class="hero-badge">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              OPEN FOR PROJECTS
+            </span>
 
-        <p class="hero-subtitle">Finding what's actually costing you customers — that's the work I do.</p>
+            <!-- Top-left: headline -->
+            <h1 class="hero-title">
+              Websites are
+              <span class="hero-highlight">
+                the easy part
+                <svg class="hero-underline" viewBox="0 0 220 20" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M2 14 Q 40 4, 80 12 T 160 10 T 218 14" fill="none" stroke="#6B1E23" stroke-width="4" stroke-linecap="butt" />
+                </svg>
+              </span>.
+            </h1>
 
-        <p class="hero-fine-print">For small businesses whose digital experience is quietly costing them customers.</p>
+            <!-- Top-left: skill pills -->
+            <div class="hero-skills">
+              <span class="hero-skill-pill">VUE.JS</span>
+              <span class="hero-skill-pill">NUXT</span>
+              <span class="hero-skill-pill">AI-ASSISTED DEV</span>
+            </div>
+          </div>
 
-        <div class="hero-rotator" id="hero-rotator" aria-live="polite">
-          <span class="hero-rotator-item is-active">Customers can't find you online.</span>
-          <span class="hero-rotator-item">Booking is stuck in manual messages.</span>
-          <span class="hero-rotator-item">International visitors can't understand your service.</span>
+          <!-- Middle-left: portrait -->
+          <div class="hero-photo-block">
+            <div class="hero-photo">
+              <span class="hero-photo-frame" aria-hidden="true"></span>
+              <img
+                class="hero-photo-img"
+                src="image/hero-portrait.jpeg"
+                alt="Photo of Selina"
+                width="300"
+                height="400"
+                loading="lazy"
+              />
+            </div>
+            <p class="hero-location"><span aria-hidden="true">→</span> Based in Taichung, working worldwide</p>
+          </div>
         </div>
 
-        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" id="hero-cta" class="btn btn-primary hero-cta">
-          <span>Let's talk on WhatsApp</span>
-        </a>
+        <div class="hero-col hero-col--right">
+          <!-- Top-right: origin tag -->
+          <p class="eyebrow hero-origin">01 / FROM TAIWAN, WITH LOVE</p>
 
+          <!-- Middle-right: subtitle + rotating pain points -->
+          <div class="hero-message">
+            <p class="hero-subtitle">Finding what's actually costing you customers — that's the work I do.</p>
+
+            <div class="hero-rotator" id="hero-rotator" aria-live="polite">
+              <span class="hero-rotator-item is-active">Customers can't find you online.</span>
+              <span class="hero-rotator-item">Booking is stuck in manual messages.</span>
+              <span class="hero-rotator-item">International visitors can't understand your service.</span>
+            </div>
+
+            <p class="hero-fine-print">For small businesses whose digital experience is quietly costing them customers.</p>
+          </div>
+        </div>
+
+        <!-- Bottom: giant name mark + CTA, spans the full width -->
+        <div class="hero-name-block">
+          <h2 class="hero-name">SELINA HUANG</h2>
+          <p class="hero-name-caption">2026 Portfolio</p>
+          <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" id="hero-cta" class="btn btn-primary hero-cta">
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -686,6 +698,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20260826"></script>
 </body>
 </html>
