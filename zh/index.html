@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -405,109 +405,163 @@
       </div>
     </section>
 
-    <!-- 3. Case Study -->
-    <section id="projects" class="section case-study fade-section">
-      <div class="container">
-        <span class="section-label">02 — 作品集</span>
-        <h2 class="section-title">我做過的幾個東西。</h2>
-      </div>
+    <!-- 3. Projects -->
+    <section id="projects" class="projects-section section fade-section">
+      <div class="container" data-projects-stage>
+        <p class="proj-eyebrow" data-projects-anim="fade">02 — 精選案例</p>
+        <div class="proj-rule" data-projects-anim="rule"></div>
 
-      <div class="case-carousel">
-        <div class="case-track" id="case-track">
-          <article class="case-card">
-            <div class="case-card-media case-card-media--browser case-card-media--browser-frame">
-              <div class="case-browser-chrome" aria-hidden="true">
-                <span class="case-browser-dot"></span>
-                <span class="case-browser-dot"></span>
-                <span class="case-browser-dot"></span>
-              </div>
-              <div class="case-browser-media">
-                <img
-                  class="case-browser-img"
-                  src="../image/sompisi-preview.jpg"
-                  alt="Sompisi Transport 網站首頁截圖"
-                  loading="lazy"
-                  style="filter: grayscale(30%) sepia(10%) saturate(110%);"
-                />
-              </div>
-            </div>
-            <div class="case-card-body">
-              <span class="case-tag">接送服務</span>
-              <h3 class="case-card-title">Sompisi Transport</h3>
-              <p class="case-card-text">
-                一間位於史瓦帝尼姆巴巴內的家族接送服務，賣點是叫車 App 給不了的東西——你永遠知道是誰在開車。我把整個網站圍繞這一點打造：用真實姓名取代車隊感，訂車流程完全跳過後端——填好行程資訊，直接開啟已經預填好內容的
-                WhatsApp 訊息，由老闆本人在一小時內親自確認。沒有伺服器、沒有資料庫、沒有金流——只是一個能更快促成真人對話的靜態網站。
-              </p>
-              <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                <span>查看網站</span>
-              </a>
-            </div>
-          </article>
+        <h2 class="proj-headline">
+          <span class="proj-mask" data-projects-anim="mask"><span>每一個，都是從</span></span>
+          <span class="proj-mask" data-projects-anim="mask"><span><em>生意</em>上的問題開始的。</span></span>
+        </h2>
 
-          <article class="case-card">
-            <div class="case-card-media case-card-media--browser">
-              <div class="case-browser-media">
-                <img
-                  class="case-browser-img"
-                  src="../image/pu-graduation-preview.jpg"
-                  alt="靜宜大學畢業專區網站首頁截圖"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div class="case-card-body">
-              <span class="case-tag">大學網站</span>
-              <h3 class="case-card-title">靜宜大學畢業專區</h3>
-              <p class="case-card-text">
-                一所公立大學需要一個地方，讓畢業生、家長、師長都能找到畢業季的所有資訊——典禮時間地點、學士服租借、離校手續、榮譽榜。我獨自規劃、建置、上線整個網站，把三種不同讀者、不同需求的資訊整理成一個清楚的架構。
-              </p>
-              <a href="https://sites.google.com/gm.pu.edu.tw/pugraduation" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                <span>查看網站</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="case-card">
-            <div class="case-card-media case-card-media--browser case-card-media--browser-frame">
-              <div class="case-browser-chrome" aria-hidden="true">
-                <span class="case-browser-dot"></span>
-                <span class="case-browser-dot"></span>
-                <span class="case-browser-dot"></span>
-              </div>
-              <div class="case-browser-media">
-                <img
-                  class="case-browser-img"
-                  src="../image/triptally-preview.jpg"
-                  alt="TripTally 旅程花費明細畫面截圖"
-                  loading="lazy"
-                  style="filter: grayscale(35%) sepia(10%) saturate(110%);"
-                />
-              </div>
-            </div>
-            <div class="case-card-body">
-              <span class="case-tag">旅遊記帳 App</span>
-              <h3 class="case-card-title">TripTally</h3>
-              <p class="case-card-text">
-                一個手機優先的 PWA，10 秒內完成一筆含匯率換算的記帳，離線也能使用。每筆支出的匯率在建立當下即被鎖定，確保歷史紀錄不受後續匯率變動影響。獨立使用
-                Nuxt 3、Vue 3、TypeScript 開發，完全運行於本機儲存，不需要後端或登入機制。目前正透過今年 10 月的泰國旅行進行實地測試。
-              </p>
-              <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                <span>查看網站</span>
-              </a>
-            </div>
-          </article>
+        <div class="proj-ticker-wrap">
+          <div class="proj-ticker">
+            <span>問題先於方案</span>
+            <span>全端交付</span>
+            <span>雙語介面</span>
+            <span>系統分析</span>
+            <span>流程自動化</span>
+            <span>AI 輔助工作流</span>
+            <span>問題先於方案</span>
+            <span>全端交付</span>
+            <span>雙語介面</span>
+            <span>系統分析</span>
+            <span>流程自動化</span>
+            <span>AI 輔助工作流</span>
+          </div>
         </div>
-      </div>
 
-      <div class="container case-carousel-nav">
-        <button class="carousel-btn" id="case-prev" type="button" aria-label="上一個案例">
-          <span aria-hidden="true">&larr;</span>
-        </button>
-        <button class="carousel-btn" id="case-next" type="button" aria-label="下一個案例">
-          <span aria-hidden="true">&rarr;</span>
-        </button>
-      </div>
+        <article class="proj-item">
+          <div class="proj-item-head">
+            <span class="proj-num" data-projects-anim="fade">01</span>
+            <h3 class="proj-title" data-projects-anim="mask"><span>Sompisi Transport</span></h3>
+            <span class="proj-tag" data-projects-anim="fade">接送服務 · 史瓦帝尼</span>
+          </div>
+          <div class="proj-item-rule" data-projects-anim="rule"></div>
 
+          <div class="proj-item-body">
+            <div class="proj-copy">
+              <div class="proj-block" data-projects-anim="fade">
+                <p class="proj-label">問題</p>
+                <p class="proj-text">
+                  史瓦帝尼的家族接送服務，只靠口碑與老闆的電話接單。找不到聯絡方式的國際旅客，等於看不見這個服務。
+                </p>
+              </div>
+              <div class="proj-block" data-projects-anim="fade">
+                <p class="proj-label">解法</p>
+                <p class="proj-text">
+                  全站圍繞「你永遠知道是誰在開車」：用真實姓名取代車隊感。表單直接產生預填的 WhatsApp
+                  訊息，老闆一小時內親自確認。
+                </p>
+              </div>
+              <div class="proj-block" data-projects-anim="fade">
+                <p class="proj-label">結果</p>
+                <p class="proj-text">幾分鐘就能把行程確認到老闆手上；網站不碰金流，維護成本接近零。</p>
+              </div>
+              <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta" data-projects-anim="fade">
+                <span>查看網站</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
+
+            <div class="proj-media">
+              <div class="proj-media-wipe" data-projects-anim="wipe">
+                <div class="proj-media-frame" style="aspect-ratio: 16 / 10">
+                  <img
+                    class="proj-media-img"
+                    src="../image/sompisi-preview.jpg"
+                    alt="Sompisi Transport 網站首頁截圖"
+                    loading="lazy"
+                    style="filter: grayscale(30%) sepia(10%) saturate(110%);"
+                  />
+                </div>
+              </div>
+              <div class="proj-stack" data-projects-anim="fade">
+                <span class="proj-stack-label">技術</span>
+                <div class="proj-stack-list">
+                  <span class="proj-stack-tag">Vue 3</span>
+                  <span class="proj-stack-tag">Nuxt 3</span>
+                  <span class="proj-stack-tag">純靜態網站</span>
+                  <span class="proj-stack-tag">Netlify</span>
+                  <span class="proj-stack-tag">WhatsApp 深層連結</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-item">
+          <div class="proj-item-head">
+            <span class="proj-num" data-projects-anim="fade">02</span>
+            <h3 class="proj-title" data-projects-anim="mask"><span>TripTally</span></h3>
+            <span class="proj-tag" data-projects-anim="fade">行動 App · PWA</span>
+          </div>
+          <div class="proj-item-rule" data-projects-anim="rule"></div>
+
+          <div class="proj-item-body">
+            <div class="proj-copy">
+              <div class="proj-block" data-projects-anim="fade">
+                <p class="proj-label">問題</p>
+                <p class="proj-text">
+                  旅行中要即時換算才有感，但手動記帳打斷節奏；紀錄若被最新匯率重算，過去的花費就對不上帳單。
+                </p>
+              </div>
+              <div class="proj-block" data-projects-anim="fade">
+                <p class="proj-label">解法</p>
+                <p class="proj-text">
+                  手機優先的 PWA：十秒完成「輸入 → 換算 →
+                  存檔」，離線可用。核心規則是歷史匯率凍結，建立當下的匯率永久寫死。
+                </p>
+              </div>
+              <div class="proj-block" data-projects-anim="fade">
+                <p class="proj-label">結果</p>
+                <p class="proj-text">多趟旅行各自追蹤預算與分類；過去的紀錄永遠對得上帳單。</p>
+              </div>
+              <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta" data-projects-anim="fade">
+                <span>查看網站</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
+
+            <div class="proj-media">
+              <div class="proj-media-wipe" data-projects-anim="wipe">
+                <div class="proj-media-frame" style="aspect-ratio: 16 / 11">
+                  <img
+                    class="proj-media-img"
+                    src="../image/triptally-preview.jpg"
+                    alt="TripTally 旅程花費明細畫面截圖"
+                    loading="lazy"
+                    style="filter: grayscale(35%) sepia(10%) saturate(110%);"
+                  />
+                </div>
+              </div>
+              <div class="proj-stack" data-projects-anim="fade">
+                <span class="proj-stack-label">技術</span>
+                <div class="proj-stack-list">
+                  <span class="proj-stack-tag">Nuxt 3</span>
+                  <span class="proj-stack-tag">Vue 3</span>
+                  <span class="proj-stack-tag">TypeScript（strict）</span>
+                  <span class="proj-stack-tag">SPA（關閉 SSR）</span>
+                  <span class="proj-stack-tag">Tailwind</span>
+                  <span class="proj-stack-tag">@nuxtjs/i18n</span>
+                  <span class="proj-stack-tag">Chart.js</span>
+                  <span class="proj-stack-tag">open.er-api.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-item proj-item--placeholder">
+          <div class="proj-item-head">
+            <span class="proj-num" data-projects-anim="fade">03</span>
+          </div>
+          <div class="proj-item-rule" data-projects-anim="rule"></div>
+          <div class="proj-placeholder-panel" data-projects-anim="fade">
+            <p class="proj-placeholder-text">更多作品陸續更新</p>
+          </div>
+        </article>
+      </div>
     </section>
 
     <!-- 4. Services -->

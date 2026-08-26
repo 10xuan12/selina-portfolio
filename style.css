@@ -348,7 +348,6 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   .fade-section,
   .fade-section .service-card,
-  .fade-section .case-card,
   .hero-inner > * {
     opacity: 1;
     transform: none;
@@ -359,8 +358,24 @@ h3 {
   .skill-fill,
   .methodology-ring g circle,
   .methodology-ring-signature,
-  .case-card-media--browser {
+  .proj-media-frame,
+  .proj-ticker {
     transition: none;
+  }
+
+  .proj-ticker {
+    animation: none;
+  }
+
+  [data-projects-anim] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    animation: none !important;
+  }
+
+  [data-projects-anim="mask"] > span {
+    transform: none !important;
   }
 
   .hero-doodle {
@@ -1181,203 +1196,348 @@ h3 {
 }
 
 /* ==========================================================================
-   Case Study
+   Projects — editorial redesign (from Claude Design canvas
+   "Selina Huang Projects.dc.html"). Scroll-reveal choreography (mask/fade/
+   wipe/rule) is driven by [data-projects-anim] + .in, toggled in script.js.
    ========================================================================== */
-.case-study {
+.projects-section {
   background-color: var(--white);
   border-top: 1px solid rgba(138, 138, 138, 0.2);
+  overflow: hidden;
 }
 
-.case-carousel {
-  margin-top: 3rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  cursor: grab;
+.proj-eyebrow {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray);
 }
 
-.case-carousel::-webkit-scrollbar {
-  display: none;
+.proj-rule {
+  height: 1px;
+  background-color: var(--black);
+  margin-top: 1rem;
+  transform-origin: left;
 }
 
-.case-carousel.is-dragging {
-  cursor: grabbing;
-  scroll-snap-type: none;
-  user-select: none;
-}
-
-.case-track {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-  padding-inline: var(--container-padding);
-  padding-block: 0.5rem;
-}
-
-.case-carousel-nav {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: flex-end;
-  margin-top: 2rem;
-}
-
-.carousel-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--gray);
-  background-color: transparent;
+.proj-headline {
+  margin: 3rem 0 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 6.2vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
   color: var(--black);
-  font-size: 1.1rem;
+  max-width: 22ch;
+}
+
+.proj-mask {
+  display: block;
+}
+
+.proj-headline em {
+  font-style: italic;
+  color: var(--wine);
+}
+
+.proj-ticker-wrap {
+  margin-top: 2.5rem;
+  overflow: hidden;
+  border-block: 1px solid rgba(138, 138, 138, 0.2);
+  padding-block: 0.7rem;
+}
+
+.proj-ticker {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2rem;
+  width: max-content;
+  animation: proj-ticker 34s linear infinite;
+  white-space: nowrap;
+}
+
+.proj-ticker span {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+@keyframes proj-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.proj-item {
+  margin-top: 5rem;
+}
+
+.proj-item-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.proj-num {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--wine);
+}
+
+.proj-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 5vw, 3.6rem);
   line-height: 1;
-  cursor: pointer;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.proj-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-left: auto;
+}
+
+.proj-item-rule {
+  height: 1px;
+  background-color: var(--black);
+  margin-top: 0.9rem;
+  transform-origin: left;
+}
+
+.proj-item-body {
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.proj-copy {
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.proj-block {
+  max-width: 42ch;
+}
+
+.proj-label {
+  margin: 0 0 0.3rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: var(--wine);
+}
+
+.proj-text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--black) 82%, var(--white));
+}
+
+.proj-cta {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast),
-    color var(--transition-fast), transform var(--transition-fast);
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--wine);
+  padding-bottom: 0.25rem;
+  color: var(--wine);
+  transition: gap var(--transition-slow), color var(--transition-fast);
 }
 
-.carousel-btn:hover,
-.carousel-btn:focus-visible {
-  border-color: var(--wine);
-  background-color: var(--wine);
-  color: var(--white);
-  transform: translateY(-2px);
+.proj-cta:hover {
+  gap: 1.1rem;
+  color: var(--black);
 }
 
-.carousel-btn:disabled {
-  opacity: 0.35;
-  cursor: default;
-  pointer-events: none;
+.proj-cta-arrow {
+  font-family: var(--font-serif);
+  font-size: 1rem;
 }
 
-.case-card {
-  scroll-snap-align: start;
-  flex: 0 0 auto;
-  width: min(85vw, 340px);
-  display: flex;
-  flex-direction: column;
+.proj-media-wipe {
+  overflow: hidden;
+}
+
+.proj-media-frame {
   border: 1px solid rgba(138, 138, 138, 0.2);
-  border-radius: 4px;
-  overflow: hidden;
-  background-color: var(--white);
-  opacity: 0;
-  translate: 0 24px;
-  transition: opacity var(--transition-slow), translate var(--transition-base), border-color var(--transition-base);
+  transition: transform 1.3s var(--ease);
 }
 
-.case-card:hover {
-  border-color: var(--wine);
+.proj-media-frame:hover {
+  transform: scale(1.035);
 }
 
-.fade-section.is-visible .case-card {
-  opacity: 1;
-  translate: 0 0;
-}
-
-.fade-section.is-visible .case-card:nth-child(1) {
-  transition-delay: 0.05s;
-}
-
-.fade-section.is-visible .case-card:nth-child(2) {
-  transition-delay: 0.15s;
-}
-
-.fade-section.is-visible .case-card:nth-child(3) {
-  transition-delay: 0.25s;
-}
-
-.case-card-media {
-  height: 220px;
-  background: linear-gradient(135deg, var(--wine) 0%, var(--black) 100%);
-}
-
-/* Browser-window variant — a real screenshot filling the media block,
-   with a wine background as a safety net if the image doesn't fully cover. */
-.case-card-media--browser {
-  display: flex;
-  flex-direction: column;
-  background: var(--wine);
-}
-
-.case-browser-media {
-  flex: 1 1 auto;
-  overflow: hidden;
-}
-
-.case-browser-img {
+.proj-media-img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  filter: grayscale(40%) sepia(15%) saturate(120%);
 }
 
-.case-card-body {
-  padding: 2rem;
+.proj-stack {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--black);
+  padding-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 1rem;
 }
 
-.case-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+.proj-stack-label {
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--gray);
+}
+
+.proj-stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+}
+
+.proj-stack-tag {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--black) 82%, var(--white));
+  border: 1px solid rgba(138, 138, 138, 0.2);
+  padding: 0.35rem 0.6rem;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.proj-stack-tag:hover {
+  border-color: var(--wine);
   color: var(--wine);
-  margin-bottom: 0.75rem;
 }
 
-.case-card-title {
-  font-size: 1.5rem;
-  color: var(--black);
-  margin-bottom: 0.75rem;
+/* Reserved slot — reads as "intentionally held open", not "forgot to fill in" */
+.proj-item--placeholder .proj-num {
+  opacity: 0.45;
 }
 
-.case-card-text {
-  color: var(--gray);
-  margin-bottom: 1.75rem;
-  max-width: 60ch;
-}
-
-/* Reserved-but-empty case study slots — read as "intentionally held open",
-   not "content we forgot to fill in". */
-.case-card--placeholder {
-  border-style: dashed;
-}
-
-.fade-section.is-visible .case-card--placeholder {
-  opacity: 0.6;
-}
-
-.case-card-placeholder-text {
-  padding-block: 2.5rem 0.5rem;
-  color: var(--gray);
-  font-style: italic;
+.proj-placeholder-panel {
+  margin-top: 1.75rem;
+  border: 1px dashed rgba(138, 138, 138, 0.35);
+  padding: 3rem 1.5rem;
   text-align: center;
 }
 
-/* Wireframe browser-frame variant — thin black outline, transparent
-   background, a bare chrome bar of three dots above a real screenshot. */
-.case-card-media--browser-frame {
-  background: transparent;
+.proj-placeholder-text {
+  margin: 0;
+  color: var(--gray);
+  font-style: italic;
 }
 
-.case-browser-chrome {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  height: 28px;
-  padding-inline: 12px;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.7);
+/* Scroll-reveal choreography — mirrors the Claude Design canvas source
+   (mask/fade/wipe/rule), driven by [data-projects-anim] in script.js.
+   Ungated baseline keeps everything visible if JS never runs. */
+[data-projects-anim] {
+  opacity: 1;
 }
 
-.case-browser-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  border: 1px solid rgba(10, 10, 10, 0.7);
+[data-projects-anim='mask'] {
+  overflow: hidden;
+  padding-bottom: 0.24em;
+  margin-bottom: -0.24em;
+}
+
+[data-projects-anim='mask'] > span {
+  display: block;
+  padding-bottom: 0.02em;
+}
+
+[data-projects-ready] [data-projects-anim] {
+  opacity: 0;
+}
+
+[data-projects-ready] [data-projects-anim].in {
+  opacity: 1;
+}
+
+[data-projects-ready] [data-projects-anim='mask'] > span {
+  transform: translateY(115%);
+}
+
+[data-projects-ready] [data-projects-anim='mask'].in > span {
+  animation: proj-mask-up 1.05s var(--ease) both;
+}
+
+[data-projects-ready] [data-projects-anim='fade'].in {
+  animation: proj-fade-up 0.85s var(--ease) both;
+}
+
+[data-projects-ready] [data-projects-anim='wipe'] {
+  clip-path: inset(0 0 100% 0);
+}
+
+[data-projects-ready] [data-projects-anim='wipe'].in {
+  animation: proj-wipe 1.15s var(--ease) both;
+}
+
+[data-projects-ready] [data-projects-anim='rule'] {
+  transform: scaleX(0);
+  opacity: 1;
+}
+
+[data-projects-ready] [data-projects-anim='rule'].in {
+  animation: proj-rule-grow 1s var(--ease) both;
+}
+
+@keyframes proj-mask-up {
+  from {
+    transform: translateY(115%) rotate(2deg);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes proj-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes proj-wipe {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes proj-rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* ==========================================================================
@@ -1634,8 +1794,17 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .case-card {
-    width: 360px;
+  .proj-item-body {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem 2rem;
+  }
+
+  .proj-copy {
+    grid-column: 1 / span 5;
+  }
+
+  .proj-media {
+    grid-column: 6 / span 7;
   }
 
   .contact-links {
@@ -1677,13 +1846,12 @@ h3 {
     gap: 2rem;
   }
 
-  .case-card {
-    width: 400px;
+  .proj-item-body {
+    gap: 1.5rem 2.5rem;
   }
 
-  .case-track {
-    padding-inline-start: max(2.5rem, calc((100vw - var(--container-width)) / 2));
-    padding-inline-end: 3rem;
+  .proj-copy {
+    grid-column: 1 / span 4;
   }
 }
 

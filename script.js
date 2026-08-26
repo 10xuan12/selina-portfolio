@@ -280,90 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------
-     Case Study carousel: scroll-snap track driven by arrows + drag
-     ------------------------------------------------------------------ */
-  const caseTrack = document.getElementById('case-track');
-  // .case-track is just the flex wrapper; .case-carousel (its parent) is the
-  // element that actually scrolls (overflow-x: auto lives there).
-  const caseViewport = caseTrack ? caseTrack.parentElement : null;
-  const casePrev = document.getElementById('case-prev');
-  const caseNext = document.getElementById('case-next');
-
-  if (caseTrack && caseViewport && casePrev && caseNext) {
-    const getStep = () => {
-      const card = caseTrack.querySelector('.case-card');
-      if (!card) return caseViewport.clientWidth;
-      const gap = parseFloat(getComputedStyle(caseTrack).columnGap || '0');
-      return card.getBoundingClientRect().width + gap;
-    };
-
-    const updateCaseNav = () => {
-      const maxScroll = caseViewport.scrollWidth - caseViewport.clientWidth - 1;
-      casePrev.disabled = caseViewport.scrollLeft <= 0;
-      caseNext.disabled = caseViewport.scrollLeft >= maxScroll;
-    };
-
-    casePrev.addEventListener('click', () => {
-      caseViewport.scrollBy({ left: -getStep(), behavior: 'smooth' });
-    });
-
-    caseNext.addEventListener('click', () => {
-      caseViewport.scrollBy({ left: getStep(), behavior: 'smooth' });
-    });
-
-    caseViewport.addEventListener('scroll', updateCaseNav, { passive: true });
-    window.addEventListener('resize', updateCaseNav);
-    updateCaseNav();
-
-    // Mouse drag-to-scroll for desktop pointers; touch already scrolls
-    // natively so it's left untouched.
-    let isDragging = false;
-    let hasDragged = false;
-    let startX = 0;
-    let startScrollLeft = 0;
-    const DRAG_THRESHOLD = 6;
-
-    caseViewport.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'touch') return;
-      isDragging = true;
-      hasDragged = false;
-      startX = event.clientX;
-      startScrollLeft = caseViewport.scrollLeft;
-      caseViewport.classList.add('is-dragging');
-      caseViewport.setPointerCapture(event.pointerId);
-    });
-
-    caseViewport.addEventListener('pointermove', (event) => {
-      if (!isDragging) return;
-      const delta = event.clientX - startX;
-      if (Math.abs(delta) > DRAG_THRESHOLD) hasDragged = true;
-      caseViewport.scrollLeft = startScrollLeft - delta;
-    });
-
-    const endDrag = () => {
-      isDragging = false;
-      caseViewport.classList.remove('is-dragging');
-    };
-
-    caseViewport.addEventListener('pointerup', endDrag);
-    caseViewport.addEventListener('pointercancel', endDrag);
-    caseViewport.addEventListener('pointerleave', endDrag);
-
-    // Swallow the click that follows a drag so links/buttons inside the
-    // cards don't get triggered by the release.
-    caseViewport.addEventListener(
-      'click',
-      (event) => {
-        if (hasDragged) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-      },
-      true
-    );
-  }
-
-  /* ------------------------------------------------------------------
      Skills: bars fill from 0 to their target width (+ percentage count-up)
      once the Skills sub-block scrolls into view. Fires once.
      ------------------------------------------------------------------ */
@@ -443,40 +359,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------
-     Project cards: subtle 3D tilt following the mouse, on the screenshot
-     preview only. Desktop pointers only — touch devices are untouched.
+     Projects: scroll-reveal choreography for the editorial layout
+     (mask / fade / wipe / rule), ported from the Claude Design canvas
+     source "Selina Huang Projects.dc.html". Each [data-projects-anim]
+     element animates in once, staggered by its position among its
+     [data-projects-anim] siblings. Progressive enhancement: elements stay
+     fully visible unless JS actually sets data-projects-ready first, so a
+     failed/slow script never leaves the section blank.
      ------------------------------------------------------------------ */
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const MAX_TILT_DEG = 6;
+  const projectsStage = document.querySelector('[data-projects-stage]');
 
-    document.querySelectorAll('.case-card-media--browser').forEach((media) => {
-      // Cache the untransformed rect once per hover session — reading
-      // getBoundingClientRect() fresh on every mousemove would pick up the
-      // element's own perspective-skewed box mid-tilt and feed back into
-      // itself, making the tilt drift instead of tracking the cursor.
-      let rect = null;
+  if (projectsStage && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    projectsStage.setAttribute('data-projects-ready', '');
 
-      media.addEventListener('mouseenter', () => {
-        rect = media.getBoundingClientRect();
-      });
+    const projAnimObserver = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const siblings = Array.from(el.parentElement.querySelectorAll(':scope > [data-projects-anim]'));
+          const index = Math.max(0, siblings.indexOf(el));
+          el.style.animationDelay = `${index * 90}ms`;
+          el.classList.add('in');
+          const inner = el.querySelector(':scope > span');
+          if (inner) inner.style.animationDelay = `${index * 90}ms`;
+          obs.unobserve(el);
+        });
+      },
+      { threshold: 0.01, rootMargin: '0px 0px -6% 0px' }
+    );
 
-      media.addEventListener('mousemove', (event) => {
-        if (!rect) rect = media.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = (event.clientY - rect.top) / rect.height;
-        const rotateY = (x - 0.5) * 2 * MAX_TILT_DEG;
-        const rotateX = (0.5 - y) * 2 * MAX_TILT_DEG;
+    const projAnimEls = projectsStage.querySelectorAll('[data-projects-anim]');
+    projAnimEls.forEach((el) => projAnimObserver.observe(el));
 
-        media.style.transition = 'none';
-        media.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-
-      media.addEventListener('mouseleave', () => {
-        rect = null;
-        media.style.transition = 'transform 0.4s ease';
-        media.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg)';
-      });
-    });
+    // Safety net: if nothing has revealed itself after a while (an
+    // observer edge case, an element that never scrolls into range),
+    // just show everything rather than leave the section blank.
+    setTimeout(() => {
+      if (projectsStage.querySelectorAll('[data-projects-anim].in').length === 0) {
+        projAnimEls.forEach((el) => el.classList.add('in'));
+      }
+    }, 1200);
   }
 
 });
