@@ -386,4 +386,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1200);
   }
 
+  /* ------------------------------------------------------------------
+     Projects browser: clicking a thumbnail in the left nav swaps which
+     project's detail panel shows on the right, via a fade-out/fade-in
+     crossfade (not a hard cut). Fully keyboard-operable — plain buttons,
+     native Enter/Space activation.
+     ------------------------------------------------------------------ */
+  const projNav = document.querySelector('.proj-nav');
+  const projDetail = document.getElementById('proj-detail');
+
+  if (projNav && projDetail) {
+    const projNavItems = Array.from(projNav.querySelectorAll('.proj-nav-item'));
+    const FADE_MS = 220;
+    let switching = false;
+
+    projNavItems.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.project;
+        if (switching || btn.classList.contains('is-active')) return;
+
+        const nextPanel = document.getElementById(`proj-panel-${key}`);
+        const currentPanel = projDetail.querySelector('.proj-panel.is-active');
+        if (!nextPanel || nextPanel === currentPanel) return;
+
+        switching = true;
+
+        projNavItems.forEach((item) => {
+          const active = item === btn;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-selected', String(active));
+        });
+
+        if (currentPanel) currentPanel.classList.remove('is-active');
+
+        setTimeout(() => {
+          if (currentPanel) currentPanel.hidden = true;
+          nextPanel.hidden = false;
+          // Force a layout flush so the browser registers the pre-fade
+          // state before .is-active flips opacity, or it'd skip straight
+          // to the end state with no visible transition.
+          void nextPanel.offsetWidth;
+          nextPanel.classList.add('is-active');
+          switching = false;
+        }, FADE_MS);
+      });
+    });
+  }
+
 });

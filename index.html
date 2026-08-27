@@ -417,159 +417,175 @@
           <span class="proj-mask" data-projects-anim="mask"><span>as a <em>business</em> problem.</span></span>
         </h2>
 
-        <div class="proj-ticker-wrap">
-          <div class="proj-ticker">
-            <span>problem before solution</span>
-            <span>full-stack delivery</span>
-            <span>bilingual interfaces</span>
-            <span>systems analysis</span>
-            <span>workflow automation</span>
-            <span>AI-assisted ops</span>
-            <span>problem before solution</span>
-            <span>full-stack delivery</span>
-            <span>bilingual interfaces</span>
-            <span>systems analysis</span>
-            <span>workflow automation</span>
-            <span>AI-assisted ops</span>
+        <div class="proj-browser" data-projects-anim="fade">
+          <div class="proj-nav" role="tablist" aria-label="Projects">
+            <button class="proj-nav-item is-active" type="button" role="tab" id="proj-tab-sompisi" aria-controls="proj-panel-sompisi" aria-selected="true" data-project="sompisi">
+              <span class="proj-nav-indicator" aria-hidden="true"></span>
+              <span class="proj-nav-thumb">
+                <img src="image/sompisi-preview.jpg" alt="" loading="lazy" style="filter: grayscale(30%) sepia(10%) saturate(110%);" />
+              </span>
+              <span class="proj-nav-info">
+                <span class="proj-nav-num">01</span>
+                <span class="proj-nav-name">Sompisi Transport</span>
+              </span>
+            </button>
+
+            <button class="proj-nav-item" type="button" role="tab" id="proj-tab-triptally" aria-controls="proj-panel-triptally" aria-selected="false" data-project="triptally">
+              <span class="proj-nav-indicator" aria-hidden="true"></span>
+              <span class="proj-nav-thumb">
+                <img src="image/triptally-preview.jpg" alt="" loading="lazy" style="filter: grayscale(35%) sepia(10%) saturate(110%);" />
+              </span>
+              <span class="proj-nav-info">
+                <span class="proj-nav-num">02</span>
+                <span class="proj-nav-name">TripTally</span>
+              </span>
+            </button>
+
+            <button class="proj-nav-item proj-nav-item--placeholder" type="button" role="tab" id="proj-tab-soon" aria-controls="proj-panel-soon" aria-selected="false" data-project="soon">
+              <span class="proj-nav-indicator" aria-hidden="true"></span>
+              <span class="proj-nav-thumb proj-nav-thumb--placeholder" aria-hidden="true"></span>
+              <span class="proj-nav-info">
+                <span class="proj-nav-num">03</span>
+                <span class="proj-nav-name">More soon</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="proj-detail" id="proj-detail">
+            <article class="proj-panel is-active" role="tabpanel" id="proj-panel-sompisi" aria-labelledby="proj-tab-sompisi" tabindex="0">
+              <div class="proj-panel-head">
+                <span class="proj-num">01</span>
+                <h3 class="proj-title">Sompisi Transport</h3>
+                <span class="proj-tag">Private transport · Eswatini</span>
+              </div>
+              <div class="proj-item-rule"></div>
+
+              <div class="proj-panel-body">
+                <div class="proj-media">
+                  <div class="proj-media-frame" style="aspect-ratio: 16 / 10">
+                    <img
+                      class="proj-media-img"
+                      src="image/sompisi-preview.jpg"
+                      alt="Screenshot of the Sompisi Transport homepage"
+                      loading="lazy"
+                      style="filter: grayscale(30%) sepia(10%) saturate(110%);"
+                    />
+                  </div>
+                </div>
+
+                <div class="proj-copy">
+                  <div class="proj-block">
+                    <p class="proj-label">the problem</p>
+                    <p class="proj-text">
+                      A family-run transport service in Eswatini, bookable only by word of mouth.
+                      Travellers without the number never found it.
+                    </p>
+                  </div>
+                  <div class="proj-block">
+                    <p class="proj-label">the solution</p>
+                    <p class="proj-text">
+                      Built on "you always know who's driving" — real names, not a fleet. The form
+                      opens a prefilled WhatsApp message the owner confirms within the hour.
+                    </p>
+                  </div>
+                  <div class="proj-block">
+                    <p class="proj-label">the result</p>
+                    <p class="proj-text">
+                      A trip is confirmed in minutes. No payments touch the site, so upkeep is near
+                      zero.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="proj-stack">
+                  <span class="proj-stack-label">Stack</span>
+                  <div class="proj-stack-list">
+                    <span class="proj-stack-tag">Vue 3</span>
+                    <span class="proj-stack-tag">Nuxt 3</span>
+                    <span class="proj-stack-tag">Fully static</span>
+                    <span class="proj-stack-tag">Netlify</span>
+                    <span class="proj-stack-tag">WhatsApp deep links</span>
+                  </div>
+                </div>
+
+                <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
+                  <span>Live site</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="proj-panel" role="tabpanel" id="proj-panel-triptally" aria-labelledby="proj-tab-triptally" tabindex="0" hidden>
+              <div class="proj-panel-head">
+                <span class="proj-num">02</span>
+                <h3 class="proj-title">TripTally</h3>
+                <span class="proj-tag">Mobile app · PWA</span>
+              </div>
+              <div class="proj-item-rule"></div>
+
+              <div class="proj-panel-body">
+                <div class="proj-media">
+                  <div class="proj-media-frame" style="aspect-ratio: 16 / 11">
+                    <img
+                      class="proj-media-img"
+                      src="image/triptally-preview.jpg"
+                      alt="Screenshot of the TripTally trip expense breakdown screen"
+                      loading="lazy"
+                      style="filter: grayscale(35%) sepia(10%) saturate(110%);"
+                    />
+                  </div>
+                </div>
+
+                <div class="proj-copy">
+                  <div class="proj-block">
+                    <p class="proj-label">the problem</p>
+                    <p class="proj-text">
+                      Costs only land once converted — but logging them breaks the trip, and rerunning
+                      old entries at today's rate breaks the history.
+                    </p>
+                  </div>
+                  <div class="proj-block">
+                    <p class="proj-label">the solution</p>
+                    <p class="proj-text">
+                      A mobile-first PWA: enter, convert, save — ten seconds, offline too. Core rule:
+                      the rate at entry is frozen for good.
+                    </p>
+                  </div>
+                  <div class="proj-block">
+                    <p class="proj-label">the result</p>
+                    <p class="proj-text">
+                      Each trip tracks its own budget and categories, and past records always match
+                      the bill.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="proj-stack">
+                  <span class="proj-stack-label">Stack</span>
+                  <div class="proj-stack-list">
+                    <span class="proj-stack-tag">Nuxt 3</span>
+                    <span class="proj-stack-tag">Vue 3</span>
+                    <span class="proj-stack-tag">TypeScript (strict)</span>
+                    <span class="proj-stack-tag">SPA (SSR off)</span>
+                    <span class="proj-stack-tag">Tailwind</span>
+                    <span class="proj-stack-tag">@nuxtjs/i18n</span>
+                    <span class="proj-stack-tag">Chart.js</span>
+                    <span class="proj-stack-tag">open.er-api.com</span>
+                  </div>
+                </div>
+
+                <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
+                  <span>Live site</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="proj-panel proj-panel--placeholder" role="tabpanel" id="proj-panel-soon" aria-labelledby="proj-tab-soon" tabindex="0" hidden>
+              <div class="proj-placeholder-panel">
+                <p class="proj-placeholder-text">More projects coming soon</p>
+              </div>
+            </article>
           </div>
         </div>
-
-        <article class="proj-item">
-          <div class="proj-item-head">
-            <span class="proj-num" data-projects-anim="fade">01</span>
-            <h3 class="proj-title" data-projects-anim="mask"><span>Sompisi Transport</span></h3>
-            <span class="proj-tag" data-projects-anim="fade">Private transport · Eswatini</span>
-          </div>
-          <div class="proj-item-rule" data-projects-anim="rule"></div>
-
-          <div class="proj-item-body">
-            <div class="proj-copy">
-              <div class="proj-block" data-projects-anim="fade">
-                <p class="proj-label">the problem</p>
-                <p class="proj-text">
-                  A family-run transport service in Eswatini, bookable only by word of mouth.
-                  Travellers without the number never found it.
-                </p>
-              </div>
-              <div class="proj-block" data-projects-anim="fade">
-                <p class="proj-label">the solution</p>
-                <p class="proj-text">
-                  Built on "you always know who's driving" — real names, not a fleet. The form
-                  opens a prefilled WhatsApp message the owner confirms within the hour.
-                </p>
-              </div>
-              <div class="proj-block" data-projects-anim="fade">
-                <p class="proj-label">the result</p>
-                <p class="proj-text">
-                  A trip is confirmed in minutes. No payments touch the site, so upkeep is near
-                  zero.
-                </p>
-              </div>
-              <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta" data-projects-anim="fade">
-                <span>Live site</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
-              </a>
-            </div>
-
-            <div class="proj-media">
-              <div class="proj-media-wipe" data-projects-anim="wipe">
-                <div class="proj-media-frame" style="aspect-ratio: 16 / 10">
-                  <img
-                    class="proj-media-img"
-                    src="image/sompisi-preview.jpg"
-                    alt="Screenshot of the Sompisi Transport homepage"
-                    loading="lazy"
-                    style="filter: grayscale(30%) sepia(10%) saturate(110%);"
-                  />
-                </div>
-              </div>
-              <div class="proj-stack" data-projects-anim="fade">
-                <span class="proj-stack-label">Stack</span>
-                <div class="proj-stack-list">
-                  <span class="proj-stack-tag">Vue 3</span>
-                  <span class="proj-stack-tag">Nuxt 3</span>
-                  <span class="proj-stack-tag">Fully static</span>
-                  <span class="proj-stack-tag">Netlify</span>
-                  <span class="proj-stack-tag">WhatsApp deep links</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj-item">
-          <div class="proj-item-head">
-            <span class="proj-num" data-projects-anim="fade">02</span>
-            <h3 class="proj-title" data-projects-anim="mask"><span>TripTally</span></h3>
-            <span class="proj-tag" data-projects-anim="fade">Mobile app · PWA</span>
-          </div>
-          <div class="proj-item-rule" data-projects-anim="rule"></div>
-
-          <div class="proj-item-body">
-            <div class="proj-copy">
-              <div class="proj-block" data-projects-anim="fade">
-                <p class="proj-label">the problem</p>
-                <p class="proj-text">
-                  Costs only land once converted — but logging them breaks the trip, and rerunning
-                  old entries at today's rate breaks the history.
-                </p>
-              </div>
-              <div class="proj-block" data-projects-anim="fade">
-                <p class="proj-label">the solution</p>
-                <p class="proj-text">
-                  A mobile-first PWA: enter, convert, save — ten seconds, offline too. Core rule:
-                  the rate at entry is frozen for good.
-                </p>
-              </div>
-              <div class="proj-block" data-projects-anim="fade">
-                <p class="proj-label">the result</p>
-                <p class="proj-text">
-                  Each trip tracks its own budget and categories, and past records always match
-                  the bill.
-                </p>
-              </div>
-              <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta" data-projects-anim="fade">
-                <span>Live site</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
-              </a>
-            </div>
-
-            <div class="proj-media">
-              <div class="proj-media-wipe" data-projects-anim="wipe">
-                <div class="proj-media-frame" style="aspect-ratio: 16 / 11">
-                  <img
-                    class="proj-media-img"
-                    src="image/triptally-preview.jpg"
-                    alt="Screenshot of the TripTally trip expense breakdown screen"
-                    loading="lazy"
-                    style="filter: grayscale(35%) sepia(10%) saturate(110%);"
-                  />
-                </div>
-              </div>
-              <div class="proj-stack" data-projects-anim="fade">
-                <span class="proj-stack-label">Stack</span>
-                <div class="proj-stack-list">
-                  <span class="proj-stack-tag">Nuxt 3</span>
-                  <span class="proj-stack-tag">Vue 3</span>
-                  <span class="proj-stack-tag">TypeScript (strict)</span>
-                  <span class="proj-stack-tag">SPA (SSR off)</span>
-                  <span class="proj-stack-tag">Tailwind</span>
-                  <span class="proj-stack-tag">@nuxtjs/i18n</span>
-                  <span class="proj-stack-tag">Chart.js</span>
-                  <span class="proj-stack-tag">open.er-api.com</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj-item proj-item--placeholder">
-          <div class="proj-item-head">
-            <span class="proj-num" data-projects-anim="fade">03</span>
-          </div>
-          <div class="proj-item-rule" data-projects-anim="rule"></div>
-          <div class="proj-placeholder-panel" data-projects-anim="fade">
-            <p class="proj-placeholder-text">More projects coming soon</p>
-          </div>
-        </article>
       </div>
     </section>
 
