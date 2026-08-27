@@ -139,12 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------
-     Custom cursor: dot follower (with lag) + handwritten CTA tooltip.
+     Custom cursor: dot follower (with lag) that grows on hover.
      Desktop pointers only — touch devices keep native tap behaviour.
      ------------------------------------------------------------------ */
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     const cursorDot = document.getElementById('cursor-dot');
-    const cursorTip = document.getElementById('cursor-tip');
 
     if (cursorDot) {
       const LERP = 0.18;
@@ -169,30 +168,15 @@ document.addEventListener('DOMContentLoaded', () => {
         dotX += (mouseX - dotX) * LERP;
         dotY += (mouseY - dotY) * LERP;
         cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
-        if (cursorTip) {
-          cursorTip.style.transform = `translate3d(${dotX + 24}px, ${dotY - 12}px, 0)`;
-        }
         requestAnimationFrame(renderCursor);
       };
 
       requestAnimationFrame(renderCursor);
 
-      document.querySelectorAll('.nav-link, .lang-fab').forEach((el) => {
+      document.querySelectorAll('.nav-link, .lang-fab, #hero-cta').forEach((el) => {
         el.addEventListener('mouseenter', () => cursorDot.classList.add('is-hover'));
         el.addEventListener('mouseleave', () => cursorDot.classList.remove('is-hover'));
       });
-
-      const heroCta = document.getElementById('hero-cta');
-      if (heroCta && cursorTip) {
-        heroCta.addEventListener('mouseenter', () => {
-          cursorDot.classList.add('is-hover');
-          cursorTip.classList.add('is-visible');
-        });
-        heroCta.addEventListener('mouseleave', () => {
-          cursorDot.classList.remove('is-hover');
-          cursorTip.classList.remove('is-visible');
-        });
-      }
     }
   }
 

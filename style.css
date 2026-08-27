@@ -70,9 +70,10 @@ ul {
 h1,
 h2,
 h3 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  line-height: 1.15;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .container {
@@ -646,12 +647,14 @@ h3 {
   display: inline-block;
 }
 
-.hero-underline {
+.hero-highlight::after {
+  content: '';
   position: absolute;
   inset-inline-start: 0;
-  inset-block-end: -0.08em;
+  inset-block-end: -0.06em;
   width: 100%;
-  height: 0.3em;
+  height: 0.09em;
+  background-color: var(--wine);
   pointer-events: none;
 }
 
@@ -683,22 +686,10 @@ h3 {
 }
 
 .hero-photo {
-  position: relative;
   width: 140px;
-  rotate: -2deg;
-}
-
-.hero-photo-frame {
-  position: absolute;
-  inset: 8px -8px -8px 8px;
-  border: 2px solid var(--wine);
-  rotate: 3deg;
-  z-index: 0;
 }
 
 .hero-photo-img {
-  position: relative;
-  z-index: 1;
   display: block;
   width: 100%;
   height: auto;
@@ -706,8 +697,7 @@ h3 {
   object-fit: cover;
   object-position: center 20%;
   filter: grayscale(20%) sepia(5%);
-  border: 3px solid var(--white);
-  box-shadow: 0 6px 16px rgba(10, 10, 10, 0.18);
+  border: 1px solid var(--gray);
 }
 
 .hero-location {
@@ -958,7 +948,7 @@ h3 {
 
 .marquee-item {
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--white);
@@ -1030,30 +1020,16 @@ h3 {
 }
 
 .about-methodology-title {
-  font-family: var(--font-serif);
   font-size: clamp(1.4rem, 3.5vw, 1.9rem);
-  font-weight: 600;
   color: var(--black);
 }
 
 .about-photo {
-  position: relative;
   width: min(60%, 220px);
   margin: 2rem 0 2.5rem;
-  rotate: -2deg;
-}
-
-.about-photo-frame {
-  position: absolute;
-  inset: 12px -12px -12px 12px;
-  border: 2px solid var(--wine);
-  rotate: 3deg;
-  z-index: 0;
 }
 
 .about-photo-img {
-  position: relative;
-  z-index: 1;
   display: block;
   width: 100%;
   height: auto;
@@ -1061,22 +1037,7 @@ h3 {
   object-fit: cover;
   object-position: center 20%;
   filter: grayscale(20%) sepia(5%);
-  border: 4px solid var(--white);
-  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.15);
-}
-
-.about-photo-tag {
-  position: absolute;
-  z-index: 2;
-  inset-block-end: -0.9rem;
-  inset-inline-end: -1.1rem;
-  padding: 0.15rem 0.6rem;
-  background-color: var(--white);
-  font-family: 'Caveat', cursive;
-  font-size: 1.4rem;
-  color: var(--wine);
-  rotate: -6deg;
-  box-shadow: 0 2px 6px rgba(10, 10, 10, 0.1);
+  border: 1px solid var(--gray);
 }
 
 /* Methodology ring — six-segment ring diagram in the right column,
@@ -1134,6 +1095,10 @@ h3 {
 }
 
 .methodology-ring-signature {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 30px;
+  fill: var(--black);
   opacity: 0;
   transition: opacity 0.6s ease;
 }
@@ -1146,8 +1111,9 @@ h3 {
 .methodology-ring-label {
   position: absolute;
   translate: -50% -50%;
-  font-family: var(--font-serif);
-  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
   color: var(--black);
   white-space: nowrap;
 }
@@ -1188,9 +1154,7 @@ h3 {
    for the Experience / Skills / Certifications sub-blocks below it. */
 .about-methodology-title,
 .about-block-title {
-  font-family: var(--font-serif);
   font-size: clamp(1.4rem, 3.5vw, 1.9rem);
-  font-weight: 600;
   color: var(--black);
 }
 
@@ -1258,7 +1222,6 @@ h3 {
 
 .timeline-year {
   display: block;
-  font-family: var(--font-serif);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--black);
@@ -1288,9 +1251,10 @@ h3 {
 }
 
 .skills-group-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--black);
   margin-bottom: 1.25rem;
 }
@@ -1312,8 +1276,8 @@ h3 {
 }
 
 .skill-name {
-  font-family: var(--font-serif);
   font-size: 1rem;
+  font-weight: 600;
   color: var(--black);
 }
 
@@ -1394,11 +1358,8 @@ h3 {
 
 .proj-headline {
   margin: 3rem 0 0;
-  font-family: var(--font-serif);
-  font-weight: 500;
   font-size: clamp(2.1rem, 6.2vw, 5rem);
   line-height: 0.98;
-  letter-spacing: -0.02em;
   color: var(--black);
   max-width: 22ch;
 }
@@ -1408,7 +1369,8 @@ h3 {
 }
 
 .proj-headline em {
-  font-style: italic;
+  font-style: normal;
+  font-weight: inherit;
   color: var(--wine);
 }
 
@@ -1463,11 +1425,8 @@ h3 {
 
 .proj-title {
   margin: 0;
-  font-family: var(--font-serif);
-  font-weight: 500;
   font-size: clamp(1.9rem, 5vw, 3.6rem);
   line-height: 1;
-  letter-spacing: -0.02em;
   color: var(--black);
 }
 
@@ -1505,9 +1464,11 @@ h3 {
 }
 
 .proj-label {
-  margin: 0 0 0.3rem;
-  font-family: 'Caveat', cursive;
-  font-size: 1.4rem;
+  margin: 0 0 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--wine);
 }
 
@@ -1537,7 +1498,7 @@ h3 {
 }
 
 .proj-cta-arrow {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1rem;
 }
 
@@ -1770,8 +1731,8 @@ h3 {
 
 .service-number {
   display: block;
-  font-family: var(--font-serif);
   font-size: 1.1rem;
+  font-weight: 700;
   color: var(--wine);
   margin-bottom: 1rem;
 }
@@ -2027,7 +1988,7 @@ h3 {
 }
 
 /* ==========================================================================
-   Custom cursor — dot follower + handwritten CTA tooltip
+   Custom cursor — dot follower with hover scale.
    Desktop pointers only; touch devices keep native tap behaviour.
    ========================================================================== */
 @media (hover: hover) and (pointer: fine) {
@@ -2057,25 +2018,6 @@ h3 {
     margin: -20px 0 0 -20px;
     background-color: var(--wine);
     opacity: 0.85;
-  }
-
-  .cursor-tip {
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-family: 'Caveat', cursive;
-    font-size: 1.4rem;
-    color: var(--wine);
-    white-space: nowrap;
-    rotate: -6deg;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transition: opacity var(--transition-fast);
-  }
-
-  .cursor-tip.is-visible {
-    opacity: 1;
   }
 
   .nav-link,
