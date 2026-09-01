@@ -27,7 +27,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="../style.css?v=20260826" />
+  <link rel="stylesheet" href="../style.css?v=20260901" />
 </head>
 <body>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
@@ -409,169 +409,254 @@
           <span class="proj-mask" data-projects-anim="mask"><span><em>生意</em>上的問題開始的。</span></span>
         </h2>
 
-        <div class="proj-browser" data-projects-anim="fade">
-          <div class="proj-nav" role="tablist" aria-label="作品集">
-            <button class="proj-nav-item is-active" type="button" role="tab" id="proj-tab-sompisi" aria-controls="proj-panel-sompisi" aria-selected="true" data-project="sompisi">
-              <span class="proj-nav-indicator" aria-hidden="true"></span>
-              <span class="proj-nav-thumb">
+        <div class="proj-scale" data-projects-anim="fade" data-proj-app>
+          <div class="proj-controls" data-proj-controls hidden>
+            <div class="proj-filters" data-proj-filters role="group" aria-label="篩選作品"></div>
+            <button type="button" class="proj-grid-toggle" data-proj-grid-toggle hidden>全部 &#8594;</button>
+            <div class="proj-search">
+              <span class="proj-search-icon" aria-hidden="true">&#8981;</span>
+              <input type="search" class="proj-search-input" data-proj-search placeholder="搜尋名稱．技術．產業" aria-label="搜尋作品" />
+              <button type="button" class="proj-search-clear" data-proj-search-clear hidden aria-label="清除搜尋">&#10005;</button>
+            </div>
+          </div>
+
+          <div class="proj-skeleton" data-proj-skeleton aria-hidden="true">
+            <span class="proj-skeleton-card"></span>
+            <span class="proj-skeleton-card"></span>
+            <span class="proj-skeleton-card"></span>
+          </div>
+
+          <p class="proj-empty" data-proj-empty>
+            <span data-proj-empty-text>沒有符合的作品</span>
+            <button type="button" class="proj-empty-clear" data-proj-empty-clear>清除搜尋 &#10005;</button>
+          </p>
+
+          <div class="proj-strip" data-proj-strip role="tablist" aria-label="作品集">
+            <button
+              class="proj-card"
+              type="button"
+              role="tab"
+              id="proj-tab-sompisi"
+              aria-controls="proj-panel-sompisi"
+              aria-selected="false"
+              data-project="sompisi"
+              data-year="2025"
+              data-status="shipped"
+              data-search="sompisi transport 接送服務 史瓦帝尼 vue 3 nuxt 3 netlify whatsapp"
+            >
+              <span class="proj-card-top">
+                <span class="proj-card-num">01</span>
+                <span class="proj-card-flag">已上線 · 2025</span>
+              </span>
+              <span class="proj-card-media">
                 <img src="../image/sompisi-preview.jpg" alt="" loading="lazy" style="filter: grayscale(30%) sepia(10%) saturate(110%);" />
               </span>
-              <span class="proj-nav-info">
-                <span class="proj-nav-num">01</span>
-                <span class="proj-nav-name">Sompisi Transport</span>
+              <span class="proj-card-info">
+                <span class="proj-card-name">Sompisi Transport</span>
+                <span class="proj-card-short">接送服務 · 史瓦帝尼</span>
               </span>
             </button>
 
-            <button class="proj-nav-item" type="button" role="tab" id="proj-tab-triptally" aria-controls="proj-panel-triptally" aria-selected="false" data-project="triptally">
-              <span class="proj-nav-indicator" aria-hidden="true"></span>
-              <span class="proj-nav-thumb">
+            <button
+              class="proj-card"
+              type="button"
+              role="tab"
+              id="proj-tab-triptally"
+              aria-controls="proj-panel-triptally"
+              aria-selected="false"
+              data-project="triptally"
+              data-year="2025"
+              data-status="shipped"
+              data-search="triptally 旅程 記帳 pwa nuxt vue typescript"
+            >
+              <span class="proj-card-top">
+                <span class="proj-card-num">02</span>
+                <span class="proj-card-flag">已上線 · PWA</span>
+              </span>
+              <span class="proj-card-media">
                 <img src="../image/triptally-preview.jpg" alt="" loading="lazy" style="filter: grayscale(35%) sepia(10%) saturate(110%);" />
               </span>
-              <span class="proj-nav-info">
-                <span class="proj-nav-num">02</span>
-                <span class="proj-nav-name">TripTally</span>
+              <span class="proj-card-info">
+                <span class="proj-card-name">TripTally</span>
+                <span class="proj-card-short">行動 App · PWA</span>
               </span>
             </button>
 
-            <button class="proj-nav-item proj-nav-item--placeholder" type="button" role="tab" id="proj-tab-soon" aria-controls="proj-panel-soon" aria-selected="false" data-project="soon">
-              <span class="proj-nav-indicator" aria-hidden="true"></span>
-              <span class="proj-nav-thumb proj-nav-thumb--placeholder" aria-hidden="true"></span>
-              <span class="proj-nav-info">
-                <span class="proj-nav-num">03</span>
-                <span class="proj-nav-name">敬請期待</span>
+            <button
+              class="proj-card proj-card--placeholder"
+              type="button"
+              role="tab"
+              id="proj-tab-soon"
+              aria-controls="proj-panel-soon"
+              aria-selected="false"
+              data-project="soon"
+              data-status="bench"
+              data-search="更多作品陸續更新 敬請期待"
+            >
+              <span class="proj-card-top">
+                <span class="proj-card-num">03</span>
+                <span class="proj-card-flag">籌備中</span>
+              </span>
+              <span class="proj-card-media proj-card-media--placeholder" aria-hidden="true"></span>
+              <span class="proj-card-info">
+                <span class="proj-card-name">敬請期待</span>
+                <span class="proj-card-short">更多作品陸續更新</span>
               </span>
             </button>
           </div>
+        </div>
 
-          <div class="proj-detail" id="proj-detail">
-            <article class="proj-panel is-active" role="tabpanel" id="proj-panel-sompisi" aria-labelledby="proj-tab-sompisi" tabindex="0">
-              <div class="proj-panel-head">
-                <span class="proj-num">01</span>
-                <h3 class="proj-title">Sompisi Transport</h3>
-                <span class="proj-tag">接送服務 · 史瓦帝尼</span>
-              </div>
-              <div class="proj-item-rule"></div>
-
-              <div class="proj-panel-body">
-                <div class="proj-media">
-                  <div class="proj-media-frame" style="aspect-ratio: 16 / 10">
-                    <img
-                      class="proj-media-img"
-                      src="../image/sompisi-preview.jpg"
-                      alt="Sompisi Transport 網站首頁截圖"
-                      loading="lazy"
-                      style="filter: grayscale(30%) sepia(10%) saturate(110%);"
-                    />
-                  </div>
-                </div>
-
-                <div class="proj-copy">
-                  <div class="proj-block">
-                    <p class="proj-label">問題</p>
-                    <p class="proj-text">
-                      史瓦帝尼的家族接送服務，只靠口碑與老闆的電話接單。找不到聯絡方式的國際旅客，等於看不見這個服務。
-                    </p>
-                  </div>
-                  <div class="proj-block">
-                    <p class="proj-label">解法</p>
-                    <p class="proj-text">
-                      全站圍繞「你永遠知道是誰在開車」：用真實姓名取代車隊感。表單直接產生預填的 WhatsApp
-                      訊息，老闆一小時內親自確認。
-                    </p>
-                  </div>
-                  <div class="proj-block">
-                    <p class="proj-label">結果</p>
-                    <p class="proj-text">幾分鐘就能把行程確認到老闆手上；網站不碰金流，維護成本接近零。</p>
-                  </div>
-                </div>
-
-                <div class="proj-stack">
-                  <span class="proj-stack-label">技術</span>
-                  <div class="proj-stack-list">
-                    <span class="proj-stack-tag">Vue 3</span>
-                    <span class="proj-stack-tag">Nuxt 3</span>
-                    <span class="proj-stack-tag">純靜態網站</span>
-                    <span class="proj-stack-tag">Netlify</span>
-                    <span class="proj-stack-tag">WhatsApp 深層連結</span>
-                  </div>
-                </div>
-
-                <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-                  <span>查看網站</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
-                </a>
-              </div>
-            </article>
-
-            <article class="proj-panel" role="tabpanel" id="proj-panel-triptally" aria-labelledby="proj-tab-triptally" tabindex="0" hidden>
-              <div class="proj-panel-head">
-                <span class="proj-num">02</span>
-                <h3 class="proj-title">TripTally</h3>
-                <span class="proj-tag">行動 App · PWA</span>
-              </div>
-              <div class="proj-item-rule"></div>
-
-              <div class="proj-panel-body">
-                <div class="proj-media">
-                  <div class="proj-media-frame" style="aspect-ratio: 16 / 11">
-                    <img
-                      class="proj-media-img"
-                      src="../image/triptally-preview.jpg"
-                      alt="TripTally 旅程花費明細畫面截圖"
-                      loading="lazy"
-                      style="filter: grayscale(35%) sepia(10%) saturate(110%);"
-                    />
-                  </div>
-                </div>
-
-                <div class="proj-copy">
-                  <div class="proj-block">
-                    <p class="proj-label">問題</p>
-                    <p class="proj-text">
-                      旅行中要即時換算才有感，但手動記帳打斷節奏；紀錄若被最新匯率重算，過去的花費就對不上帳單。
-                    </p>
-                  </div>
-                  <div class="proj-block">
-                    <p class="proj-label">解法</p>
-                    <p class="proj-text">
-                      手機優先的 PWA：十秒完成「輸入 → 換算 →
-                      存檔」，離線可用。核心規則是歷史匯率凍結，建立當下的匯率永久寫死。
-                    </p>
-                  </div>
-                  <div class="proj-block">
-                    <p class="proj-label">結果</p>
-                    <p class="proj-text">多趟旅行各自追蹤預算與分類；過去的紀錄永遠對得上帳單。</p>
-                  </div>
-                </div>
-
-                <div class="proj-stack">
-                  <span class="proj-stack-label">技術</span>
-                  <div class="proj-stack-list">
-                    <span class="proj-stack-tag">Nuxt 3</span>
-                    <span class="proj-stack-tag">Vue 3</span>
-                    <span class="proj-stack-tag">TypeScript（strict）</span>
-                    <span class="proj-stack-tag">SPA（關閉 SSR）</span>
-                    <span class="proj-stack-tag">Tailwind</span>
-                    <span class="proj-stack-tag">@nuxtjs/i18n</span>
-                    <span class="proj-stack-tag">Chart.js</span>
-                    <span class="proj-stack-tag">open.er-api.com</span>
-                  </div>
-                </div>
-
-                <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-                  <span>查看網站</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
-                </a>
-              </div>
-            </article>
-
-            <article class="proj-panel proj-panel--placeholder" role="tabpanel" id="proj-panel-soon" aria-labelledby="proj-tab-soon" tabindex="0" hidden>
-              <div class="proj-placeholder-panel">
-                <p class="proj-placeholder-text">更多作品陸續更新</p>
-              </div>
-            </article>
+        <div class="proj-endcta" data-projects-anim="fade">
+          <div class="proj-endcta-copy">
+            <span class="proj-endcta-eyebrow">下一位，也許就是你</span>
+            <span class="proj-endcta-title">找我做類似的。</span>
           </div>
+          <a href="#contact" class="btn proj-endcta-btn"><span>開始一個專案 &#8594;</span></a>
         </div>
       </div>
     </section>
+
+    <div class="proj-scrim" data-proj-scrim hidden></div>
+
+    <aside class="proj-drawer" data-proj-drawer aria-label="作品詳情">
+      <div class="proj-drawer-head">
+        <span class="proj-drawer-counter" data-proj-counter>01 / 03</span>
+        <div class="proj-drawer-actions">
+          <button type="button" class="proj-drawer-btn" data-proj-prev aria-label="上一件作品">&#8592;</button>
+          <button type="button" class="proj-drawer-btn" data-proj-next aria-label="下一件作品">&#8594;</button>
+          <button type="button" class="proj-drawer-close" data-proj-close>
+            <span>關閉</span><span class="proj-drawer-close-key" aria-hidden="true">ESC</span><span aria-hidden="true">&#10005;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="proj-drawer-body" data-proj-drawer-body>
+        <article class="proj-panel is-active" role="tabpanel" id="proj-panel-sompisi" aria-labelledby="proj-tab-sompisi" tabindex="0">
+          <div class="proj-panel-head">
+            <span class="proj-num">01</span>
+            <h3 class="proj-title"><span class="proj-title-word"><span>Sompisi</span></span> <span class="proj-title-word"><span>Transport</span></span></h3>
+            <span class="proj-tag">接送服務 · 史瓦帝尼</span>
+          </div>
+          <div class="proj-item-rule"></div>
+
+          <div class="proj-panel-body">
+            <div class="proj-media">
+              <div class="proj-media-frame" style="aspect-ratio: 16 / 10">
+                <img
+                  class="proj-media-img"
+                  src="../image/sompisi-preview.jpg"
+                  alt="Sompisi Transport 網站首頁截圖"
+                  loading="lazy"
+                  style="filter: grayscale(30%) sepia(10%) saturate(110%);"
+                />
+              </div>
+            </div>
+
+            <div class="proj-copy">
+              <div class="proj-block">
+                <p class="proj-label">問題</p>
+                <p class="proj-text">
+                  史瓦帝尼的家族接送服務，只靠口碑與老闆的電話接單。找不到聯絡方式的國際旅客，等於看不見這個服務。
+                </p>
+              </div>
+              <div class="proj-block">
+                <p class="proj-label">解法</p>
+                <p class="proj-text">
+                  全站圍繞「你永遠知道是誰在開車」：用真實姓名取代車隊感。表單直接產生預填的 WhatsApp
+                  訊息，老闆一小時內親自確認。
+                </p>
+              </div>
+              <div class="proj-block">
+                <p class="proj-label">結果</p>
+                <p class="proj-text">幾分鐘就能把行程確認到老闆手上；網站不碰金流，維護成本接近零。</p>
+              </div>
+            </div>
+
+            <div class="proj-stack">
+              <span class="proj-stack-label">技術</span>
+              <div class="proj-stack-list">
+                <span class="proj-stack-tag">Vue 3</span>
+                <span class="proj-stack-tag">Nuxt 3</span>
+                <span class="proj-stack-tag">純靜態網站</span>
+                <span class="proj-stack-tag">Netlify</span>
+                <span class="proj-stack-tag">WhatsApp 深層連結</span>
+              </div>
+            </div>
+
+            <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
+              <span>查看網站</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-panel is-active" role="tabpanel" id="proj-panel-triptally" aria-labelledby="proj-tab-triptally" tabindex="0">
+          <div class="proj-panel-head">
+            <span class="proj-num">02</span>
+            <h3 class="proj-title"><span class="proj-title-word"><span>TripTally</span></span></h3>
+            <span class="proj-tag">行動 App · PWA</span>
+          </div>
+          <div class="proj-item-rule"></div>
+
+          <div class="proj-panel-body">
+            <div class="proj-media">
+              <div class="proj-media-frame" style="aspect-ratio: 16 / 11">
+                <img
+                  class="proj-media-img"
+                  src="../image/triptally-preview.jpg"
+                  alt="TripTally 旅程花費明細畫面截圖"
+                  loading="lazy"
+                  style="filter: grayscale(35%) sepia(10%) saturate(110%);"
+                />
+              </div>
+            </div>
+
+            <div class="proj-copy">
+              <div class="proj-block">
+                <p class="proj-label">問題</p>
+                <p class="proj-text">
+                  旅行中要即時換算才有感，但手動記帳打斷節奏；紀錄若被最新匯率重算，過去的花費就對不上帳單。
+                </p>
+              </div>
+              <div class="proj-block">
+                <p class="proj-label">解法</p>
+                <p class="proj-text">
+                  手機優先的 PWA：十秒完成「輸入 → 換算 →
+                  存檔」，離線可用。核心規則是歷史匯率凍結，建立當下的匯率永久寫死。
+                </p>
+              </div>
+              <div class="proj-block">
+                <p class="proj-label">結果</p>
+                <p class="proj-text">多趟旅行各自追蹤預算與分類；過去的紀錄永遠對得上帳單。</p>
+              </div>
+            </div>
+
+            <div class="proj-stack">
+              <span class="proj-stack-label">技術</span>
+              <div class="proj-stack-list">
+                <span class="proj-stack-tag">Nuxt 3</span>
+                <span class="proj-stack-tag">Vue 3</span>
+                <span class="proj-stack-tag">TypeScript（strict）</span>
+                <span class="proj-stack-tag">SPA（關閉 SSR）</span>
+                <span class="proj-stack-tag">Tailwind</span>
+                <span class="proj-stack-tag">@nuxtjs/i18n</span>
+                <span class="proj-stack-tag">Chart.js</span>
+                <span class="proj-stack-tag">open.er-api.com</span>
+              </div>
+            </div>
+
+            <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
+              <span>查看網站</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-panel proj-panel--placeholder is-active" role="tabpanel" id="proj-panel-soon" aria-labelledby="proj-tab-soon" tabindex="0">
+          <div class="proj-placeholder-panel">
+            <p class="proj-placeholder-text">更多作品陸續更新</p>
+          </div>
+        </article>
+      </div>
+    </aside>
 
     <!-- 4. Services -->
     <section id="services" class="section services fade-section">
@@ -679,6 +764,6 @@
     </div>
   </footer>
 
-  <script src="../script.js?v=20260826"></script>
+  <script src="../script.js?v=20260901"></script>
 </body>
 </html>
