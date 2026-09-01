@@ -387,50 +387,356 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------
-     Projects browser: clicking a thumbnail in the left nav swaps which
-     project's detail panel shows on the right, via a fade-out/fade-in
-     crossfade (not a hard cut). Fully keyboard-operable — plain buttons,
-     native Enter/Space activation.
+     Projects: filter/search + snap-scroll strip + slide-in detail drawer
+     ("E · Scale" layout, ported from the Claude Design canvas source
+     Projects Layouts.dc.html). Baseline markup (see index.html) ships
+     every project panel visible and un-hidden, so a crawler or a visitor
+     without JS still gets the full write-up for all three case studies —
+     everything below is what turns that into the interactive drawer.
      ------------------------------------------------------------------ */
-  const projNav = document.querySelector('.proj-nav');
-  const projDetail = document.getElementById('proj-detail');
+  const projSection = document.querySelector('.projects-section');
+  const projScale = document.querySelector('[data-proj-app]');
+  const projStrip = projScale && projScale.querySelector('[data-proj-strip]');
+  const scrim = document.querySelector('[data-proj-scrim]');
+  const drawer = document.querySelector('[data-proj-drawer]');
+  const drawerBody = drawer && drawer.querySelector('[data-proj-drawer-body]');
 
-  if (projNav && projDetail) {
-    const projNavItems = Array.from(projNav.querySelectorAll('.proj-nav-item'));
+  if (projSection && projScale && projStrip && scrim && drawer && drawerBody) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const cards = Array.from(projStrip.querySelectorAll('.proj-card'));
+    const panels = Array.from(drawerBody.querySelectorAll('.proj-panel'));
+    const projControls = projScale.querySelector('[data-proj-controls]');
+    const projFiltersEl = projScale.querySelector('[data-proj-filters]');
+    const gridToggle = projScale.querySelector('[data-proj-grid-toggle]');
+    const searchInput = projScale.querySelector('[data-proj-search]');
+    const searchClear = projScale.querySelector('[data-proj-search-clear]');
+    const emptyClearBtn = projScale.querySelector('[data-proj-empty-clear]');
+    const emptyTextEl = projScale.querySelector('[data-proj-empty-text]');
+    const counterEl = drawer.querySelector('[data-proj-counter]');
+    const prevBtn = drawer.querySelector('[data-proj-prev]');
+    const nextBtn = drawer.querySelector('[data-proj-next]');
+    const closeBtn = drawer.querySelector('[data-proj-close]');
+
+    // Below this many projects, filter chips + search + the "all" grid
+    // would just repeat "ALL" back at you — see chat notes: the layout
+    // was built to survive a dozen-plus case studies, but with a
+    // handful it's pure clutter. Add a 4th project and the controls
+    // appear on their own; nothing here needs to change by hand.
+    const SCALE_FILTER_THRESHOLD = 6;
     const FADE_MS = 220;
-    let switching = false;
+    const AUTOPLAY_MS = 4500;
+    const CLOSE_MS = prefersReducedMotion ? 0 : 700;
 
-    projNavItems.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const key = btn.dataset.project;
-        if (switching || btn.classList.contains('is-active')) return;
+    let activeIndex = 0;
+    let isOpen = false;
+    let isHovering = false;
+    let autoplayTimer = null;
+    let currentFilterKey = 'all';
+    let currentQuery = '';
+    let gridOpen = false;
 
-        const nextPanel = document.getElementById(`proj-panel-${key}`);
-        const currentPanel = projDetail.querySelector('.proj-panel.is-active');
-        if (!nextPanel || nextPanel === currentPanel) return;
+    // Now that script.js is driving the drawer, switch it from the
+    // baseline "everything visible in normal flow" fallback over to the
+    // fixed overlay (see the .proj-js-ready selectors in style.css) and
+    // collapse every panel back to just the active one.
+    projSection.classList.add('proj-js-ready');
+    panels.forEach((panel) => {
+      panel.classList.remove('is-active');
+      panel.hidden = true;
+    });
+    scrim.hidden = true;
+    drawer.hidden = true;
+    drawer.setAttribute('aria-hidden', 'true');
 
-        switching = true;
+    const visibleCards = () => cards.filter((c) => !c.hidden);
+    const panelFor = (card) => drawerBody.querySelector('#proj-panel-' + card.dataset.project);
 
-        projNavItems.forEach((item) => {
-          const active = item === btn;
-          item.classList.toggle('is-active', active);
-          item.setAttribute('aria-selected', String(active));
+    function buildFilterDefs() {
+      const years = Array.from(new Set(cards.map((c) => c.dataset.year).filter(Boolean))).sort((a, b) => b - a);
+      const defs = [{ key: 'all', label: 'All', test: () => true }];
+      if (cards.some((c) => c.dataset.status === 'shipped')) {
+        defs.push({ key: 'shipped', label: 'Shipped', test: (c) => c.dataset.status === 'shipped' });
+      }
+      years.forEach((y) => defs.push({ key: 'year:' + y, label: y, test: (c) => c.dataset.year === y }));
+      if (cards.some((c) => c.dataset.status === 'bench')) {
+        defs.push({ key: 'bench', label: 'On the bench', test: (c) => c.dataset.status === 'bench' });
+      }
+      return defs;
+    }
+
+    const filterDefs = buildFilterDefs();
+
+    function renderFilters() {
+      if (!projFiltersEl) return;
+      projFiltersEl.innerHTML = '';
+      filterDefs.forEach((def) => {
+        const count = cards.filter(def.test).length;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'proj-filter' + (def.key === currentFilterKey ? ' is-active' : '');
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = def.label;
+        const countSpan = document.createElement('span');
+        countSpan.className = 'proj-filter-count';
+        countSpan.textContent = String(count);
+        btn.append(labelSpan, countSpan);
+        btn.addEventListener('click', () => {
+          if (currentFilterKey === def.key) return;
+          currentFilterKey = def.key;
+          if (isOpen) closeDrawer();
+          applyFilters({ animate: true });
+          renderFilters();
         });
+        projFiltersEl.appendChild(btn);
+      });
+    }
 
-        if (currentPanel) currentPanel.classList.remove('is-active');
+    function staggerIn(list) {
+      if (prefersReducedMotion) return;
+      list.forEach((card, i) => {
+        card.style.animationDelay = `${Math.min(i, 11) * 55}ms`;
+        card.classList.remove('is-entering');
+        void card.offsetWidth;
+        card.classList.add('is-entering');
+      });
+    }
 
-        setTimeout(() => {
-          if (currentPanel) currentPanel.hidden = true;
-          nextPanel.hidden = false;
-          // Force a layout flush so the browser registers the pre-fade
-          // state before .is-active flips opacity, or it'd skip straight
-          // to the end state with no visible transition.
-          void nextPanel.offsetWidth;
-          nextPanel.classList.add('is-active');
-          switching = false;
-        }, FADE_MS);
+    function updateCounter() {
+      const list = visibleCards();
+      if (!counterEl) return;
+      counterEl.textContent = list.length
+        ? `${String(activeIndex + 1).padStart(2, '0')} / ${String(list.length).padStart(2, '0')}`
+        : '00 / 00';
+    }
+
+    function retriggerTitleReveal(panel) {
+      const words = panel.querySelectorAll('.proj-title-word > span');
+      panel.classList.remove('is-revealing');
+      void panel.offsetWidth;
+      words.forEach((w, i) => {
+        w.style.animationDelay = `${110 + i * 90}ms`;
+      });
+      panel.classList.add('is-revealing');
+    }
+
+    function showPanel(card) {
+      const panel = panelFor(card);
+      if (!panel) return;
+      const current = drawerBody.querySelector('.proj-panel.is-active');
+      if (panel === current) return;
+
+      const commit = () => {
+        if (current) current.hidden = true;
+        panel.hidden = false;
+        void panel.offsetWidth;
+        panel.classList.add('is-active');
+        retriggerTitleReveal(panel);
+      };
+
+      if (current) {
+        current.classList.remove('is-active');
+        setTimeout(commit, FADE_MS);
+      } else {
+        commit();
+      }
+    }
+
+    function setActive(idx, opts = {}) {
+      const list = visibleCards();
+      if (!list.length) return;
+      activeIndex = ((idx % list.length) + list.length) % list.length;
+      const activeCard = list[activeIndex];
+      cards.forEach((c) => {
+        const isThis = c === activeCard;
+        c.classList.toggle('is-active', isThis);
+        c.setAttribute('aria-selected', String(isThis));
+      });
+      updateCounter();
+      if (isOpen) showPanel(activeCard);
+      if (opts.scroll !== false) {
+        activeCard.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          inline: 'nearest',
+          block: 'nearest',
+        });
+      }
+    }
+
+    function onEscClose(e) {
+      if (e.key === 'Escape') closeDrawer();
+    }
+
+    function openProject(idx) {
+      setActive(idx, { scroll: false });
+      stopAutoplay();
+      isOpen = true;
+      scrim.hidden = false;
+      drawer.hidden = false;
+      drawer.setAttribute('aria-hidden', 'false');
+      void drawer.offsetWidth;
+      scrim.classList.add('is-open');
+      drawer.classList.add('is-open');
+      showPanel(visibleCards()[activeIndex]);
+      document.addEventListener('keydown', onEscClose);
+    }
+
+    function closeDrawer() {
+      if (!isOpen) return;
+      isOpen = false;
+      scrim.classList.remove('is-open');
+      drawer.classList.remove('is-open');
+      document.removeEventListener('keydown', onEscClose);
+      setTimeout(() => {
+        scrim.hidden = true;
+        drawer.hidden = true;
+        drawer.setAttribute('aria-hidden', 'true');
+      }, CLOSE_MS);
+      startAutoplay();
+    }
+
+    function startAutoplay() {
+      if (prefersReducedMotion || isOpen || isHovering) return;
+      stopAutoplay();
+      autoplayTimer = setInterval(() => {
+        if (isHovering || isOpen) return;
+        if (visibleCards().length < 2) return;
+        setActive(activeIndex + 1, { scroll: false });
+      }, AUTOPLAY_MS);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function clearSearch() {
+      currentQuery = '';
+      if (searchInput) searchInput.value = '';
+      if (searchClear) searchClear.hidden = true;
+      applyFilters({ animate: true });
+    }
+
+    function applyFilters(opts = {}) {
+      const def = filterDefs.find((d) => d.key === currentFilterKey) || filterDefs[0];
+      const q = currentQuery.trim().toLowerCase();
+      const visible = [];
+      cards.forEach((card) => {
+        const show = def.test(card) && (!q || (card.dataset.search || '').includes(q));
+        card.hidden = !show;
+        if (show) visible.push(card);
+      });
+      const isEmpty = !visible.length;
+      projScale.classList.toggle('has-empty', isEmpty);
+      if (emptyTextEl) emptyTextEl.textContent = `No match for “${currentQuery.trim()}”`;
+      if (!isEmpty) {
+        setActive(0, { scroll: false });
+        if (opts.animate) staggerIn(visible);
+      }
+    }
+
+    // Card selection: clicking the already-open card closes it again;
+    // any other card opens (or, if the drawer's already open, swaps in
+    // place without a close/reopen round trip).
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const idx = visibleCards().indexOf(card);
+        if (idx === -1) return;
+        if (gridOpen) {
+          gridOpen = false;
+          projStrip.classList.remove('is-grid');
+          if (gridToggle) gridToggle.textContent = `All ${cards.length} →`;
+        }
+        if (isOpen && idx === activeIndex) {
+          closeDrawer();
+        } else if (isOpen) {
+          setActive(idx, { scroll: false });
+        } else {
+          openProject(idx);
+        }
       });
     });
+
+    // Autoplay pauses for as long as the pointer is anywhere over the
+    // strip, not just over the active card — a fast pass-through
+    // shouldn't restart the clock mid-glance.
+    projStrip.addEventListener('mouseenter', () => {
+      isHovering = true;
+      stopAutoplay();
+    });
+    projStrip.addEventListener('mouseleave', () => {
+      isHovering = false;
+      startAutoplay();
+    });
+
+    // Arrow-key browsing is scoped to the strip itself (roving focus on
+    // native <button> cards), not bound globally — so it never hijacks
+    // normal page scrolling or a focused form field elsewhere on the
+    // page. Works whether the drawer is open or closed.
+    projStrip.addEventListener('keydown', (e) => {
+      if (!(e.target instanceof HTMLElement) || !e.target.classList.contains('proj-card')) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        setActive(activeIndex + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActive(activeIndex - 1);
+      }
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', () => setActive(activeIndex - 1, { scroll: false }));
+    if (nextBtn) nextBtn.addEventListener('click', () => setActive(activeIndex + 1, { scroll: false }));
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    scrim.addEventListener('click', closeDrawer);
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        currentQuery = searchInput.value;
+        if (searchClear) searchClear.hidden = !currentQuery;
+        if (isOpen) closeDrawer();
+        applyFilters({ animate: true });
+      });
+    }
+    if (searchClear) searchClear.addEventListener('click', clearSearch);
+    if (emptyClearBtn) emptyClearBtn.addEventListener('click', clearSearch);
+
+    if (gridToggle) {
+      gridToggle.addEventListener('click', () => {
+        gridOpen = !gridOpen;
+        projStrip.classList.toggle('is-grid', gridOpen);
+        gridToggle.textContent = gridOpen ? 'Strip view' : `All ${cards.length} →`;
+      });
+    }
+
+    // Filters/search/grid-toggle only show once there's enough work to
+    // sort through (see SCALE_FILTER_THRESHOLD above).
+    if (projControls && cards.length > SCALE_FILTER_THRESHOLD) {
+      projControls.hidden = false;
+      if (gridToggle) {
+        gridToggle.hidden = false;
+        gridToggle.textContent = `All ${cards.length} →`;
+      }
+      renderFilters();
+    }
+
+    // Skeleton: a brief shimmer on first paint, then reveal the strip
+    // with the same staggered entrance used for filter/search changes.
+    // Skipped entirely under prefers-reduced-motion — and skipped, not
+    // just shortened, because unlike the shimmer's tick this one paints
+    // real content immediately, and there's nothing worth waiting for.
+    setActive(0, { scroll: false });
+    if (prefersReducedMotion) {
+      applyFilters();
+    } else {
+      projScale.classList.add('is-loading');
+      setTimeout(() => {
+        projScale.classList.remove('is-loading');
+        applyFilters({ animate: true });
+      }, 700);
+    }
+
+    startAutoplay();
   }
 
 });
