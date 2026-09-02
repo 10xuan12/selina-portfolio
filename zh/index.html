@@ -20,21 +20,24 @@
   <meta name="twitter:description" content="Selina 打造能解決真實商業問題的數位系統——從診斷、設計到技術實現。" />
   <meta name="twitter:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
 
+  <script>document.documentElement.classList.add('js');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="../style.css?v=20260901b" />
+  <link rel="stylesheet" href="../style.css?v=20260902" />
 </head>
 <body>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a href="#hero" class="logo">Selina Huang</a>
+    <div class="header-inner">
+      <a href="#top" class="logo">Selina Huang</a>
 
       <button class="nav-toggle" id="nav-toggle" aria-label="開啟選單" aria-expanded="false" aria-controls="primary-nav">
         <span></span>
@@ -43,686 +46,390 @@
       </button>
 
       <nav class="nav" id="primary-nav">
-        <a href="#about" class="nav-link">關於</a>
-        <a href="#projects" class="nav-link">作品集</a>
-        <a href="#services" class="nav-link">服務</a>
-        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="nav-link nav-cta">Contact</a>
+        <a href="#about" class="nav-link">01 關於</a>
+        <a href="#track" class="nav-link">02 經歷</a>
+        <a href="#work" class="nav-link">03 作品</a>
+        <a href="#services" class="nav-link">04 服務</a>
+        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="nav-link nav-cta">聯絡 →</a>
       </nav>
     </div>
   </header>
 
   <a href="../index.html" class="lang-fab" id="lang-toggle" hreflang="en" aria-label="切換為英文">EN</a>
 
-  <main>
-    <!-- 1. Hero -->
-    <section id="hero" class="section hero fade-section">
-      <div class="container hero-grid">
-        <div class="hero-col hero-col--left">
-          <!-- Availability badge -->
-          <span class="hero-badge">
-            <span class="hero-badge-dot" aria-hidden="true"></span>
-            接案中
-          </span>
+  <main id="top">
 
-          <!-- Headline -->
-          <h1 class="hero-title">
-            架網站是
-            <span class="hero-highlight">簡單的部分</span>。
-          </h1>
+    <!-- ══════════ HERO ══════════ -->
+    <section class="sec hero">
+      <div class="hero-status">
+        <span class="hero-status-dot">接案中</span>
+        <span class="hero-status-loc">台灣台中 · UTC+8</span>
+      </div>
 
-          <!-- Skill pills -->
-          <div class="hero-skills">
-            <span class="hero-skill-pill">VUE.JS</span>
-            <span class="hero-skill-pill">NUXT</span>
-            <span class="hero-skill-pill">AI-ASSISTED DEV</span>
-          </div>
+      <div class="hero-grid grid12">
+        <div class="hero-lead">
+          <h1 class="hero-title">SELINA HUANG</h1>
 
-          <!-- Subtitle + rotating pain points -->
           <div class="hero-message">
-            <p class="hero-subtitle">找出真正讓你流失客戶的原因——那才是我做的事。</p>
-
-            <div class="hero-rotator" id="hero-rotator" aria-live="polite">
-              <span class="hero-rotator-item is-active">客戶找不到你。</span>
-              <span class="hero-rotator-item">訂位卡在人工訊息裡。</span>
-              <span class="hero-rotator-item">國際旅客看不懂你的服務。</span>
+            <p class="hero-subtitle">找出真正讓你流失客戶的原因 — 這就是我在做的事。</p>
+            <div class="hero-problem">
+              <span class="hero-problem-tag">例如</span>
+              <span class="hero-problem-text" id="hero-problem">國外訪客看不懂你的服務內容。</span>
             </div>
+          </div>
 
-            <p class="hero-fine-print">專為那些正因數位體驗問題而悄悄流失客戶的中小企業所設計。</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn--dark">開始合作 <span aria-hidden="true">→</span></a>
+            <a href="#work" class="btn btn--ghost">看作品</a>
+          </div>
+
+          <div class="hero-pills">
+            <span class="pill">Vue.js</span>
+            <span class="pill">Nuxt</span>
+            <span class="pill">TypeScript</span>
+            <span class="pill">AI 輔助開發</span>
           </div>
         </div>
 
-        <div class="hero-col hero-col--right">
-          <!-- Origin tag -->
-          <p class="eyebrow hero-origin">01 / 來自台灣</p>
-
-          <!-- Portrait -->
-          <div class="hero-photo-block">
-            <div class="hero-photo">
-              <img
-                class="hero-photo-img"
-                src="../image/hero-portrait.jpeg"
-                alt="Selina 的照片"
-                width="300"
-                height="400"
-                loading="lazy"
-              />
-            </div>
-            <p class="hero-location"><span aria-hidden="true">→</span> 位於台中，服務國際客戶</p>
+        <div class="hero-figure">
+          <div class="hero-figure-cap">
+            <span>Fig. 01</span>
+            <span>來自台灣</span>
           </div>
-        </div>
-
-        <!-- Bottom: giant name mark + CTA, spans the full width -->
-        <div class="hero-name-block">
-          <h2 class="hero-name">SELINA HUANG</h2>
-          <div class="hero-name-meta">
-            <p class="hero-name-caption">2026 Portfolio</p>
-            <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" id="hero-cta" class="btn btn-primary hero-cta">
-              <span>透過 WhatsApp 聯繫</span>
-            </a>
+          <div class="hero-figure-media">
+            <img src="../image/hero-portrait.jpeg" alt="Selina 的照片" width="300" height="400" loading="lazy" />
           </div>
+          <p class="hero-figure-note">→ 位於台中，服務全球</p>
         </div>
       </div>
     </section>
 
-    <!-- Marquee divider -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <div class="marquee-group">
-          <span class="marquee-item">問題</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">洞察</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">策略</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">體驗</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">系統</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">技術</span>
-          <span class="marquee-arrow">→</span>
-        </div>
-        <div class="marquee-group">
-          <span class="marquee-item">問題</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">洞察</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">策略</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">體驗</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">系統</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">技術</span>
-          <span class="marquee-arrow">→</span>
-        </div>
+    <!-- ══════════ 01 關於 ══════════ -->
+    <section id="about" class="sec sec--about">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <span class="sec-label">關於</span>
       </div>
-    </div>
 
-    <!-- 2. About -->
-    <section id="about" class="section about fade-section">
-      <div class="container">
-
-        <!-- Sub-block 1: who I am -->
-        <div class="about-intro">
-          <div class="about-photo">
-            <img
-              class="about-photo-img"
-              src="../image/selina-portrait.jpg"
-              alt="Selina 的照片"
-              width="600"
-              height="769"
-              loading="lazy"
-            />
-          </div>
-
-          <div class="about-intro-text">
-            <span class="section-label">01 — About</span>
-            <h2 class="section-title">嗨，我是 Selina</h2>
-            <p class="section-text">
-              我讀資訊管理，會做前端、後端、App，最近也開始用 AI 輔助開發。我有跨國、跨文化的經驗，做每個專案前我都先問一個問題：這個生意到底卡在哪裡？這才是我真正想解決的事。
-            </p>
+      <div class="about-body grid12 reveal">
+        <div class="about-portrait">
+          <div class="about-portrait-media">
+            <img src="../image/selina-portrait.jpg" alt="Selina 的肖像照" width="600" height="600" loading="lazy" />
           </div>
         </div>
-
-        <hr class="about-divider" />
-
-        <!-- Sub-block 2: how I work -->
-        <div class="about-methodology">
-          <div class="about-methodology-heading">
-            <h3 class="about-methodology-title">我的工作方法</h3>
-            <p class="section-text">
-              每個專案都從同一個問題開始：我不會問「你需要什麼網站？」而是問「你到底正在因為什麼而流失客戶、時間，或收入？」這個問題決定了接下來的每一步——直到最後才輪到技術，而不是從技術開始。
-            </p>
-          </div>
-
-          <div class="about-methodology-body">
-            <div class="methodology-ring-wrap" aria-hidden="true">
-              <svg viewBox="0 0 200 200" class="methodology-ring">
-                <g transform="rotate(-90 100 100)">
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="0" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-83.78" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-167.55" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-251.33" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#6B1E23" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-335.10" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#8A8A8A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-418.88" />
-                </g>
-                <!-- Center mark: a clean sans-serif monogram, not left empty -->
-                <text class="methodology-ring-signature" x="100" y="100" text-anchor="middle" dominant-baseline="central">SH</text>
-              </svg>
-              <div class="methodology-ring-label methodology-ring-label--problem">問題</div>
-              <div class="methodology-ring-label methodology-ring-label--insight">洞察</div>
-              <div class="methodology-ring-label methodology-ring-label--strategy">策略</div>
-              <div class="methodology-ring-label methodology-ring-label--experience">體驗</div>
-              <div class="methodology-ring-label methodology-ring-label--system">系統</div>
-              <div class="methodology-ring-label methodology-ring-label--technology">技術</div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="about-divider" />
-
-        <!-- Sub-block 3: 工作經歷時間軸 -->
-        <div class="about-experience">
-          <h3 class="about-block-title">工作經歷</h3>
-          <ol class="timeline">
-            <li class="timeline-item timeline-item--current">
-              <div class="timeline-marker">
-                <span class="timeline-dot" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <span class="timeline-year">2025–2026</span>
-                <p class="timeline-text">
-                  <strong>豐聯資訊 專案助理</strong> — 使用 Vue、TypeScript、Nuxt 開發肥料電商平台前台。
-                </p>
-              </div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-marker">
-                <span class="timeline-dot" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <span class="timeline-year">2024–2025</span>
-                <p class="timeline-text">
-                  <strong>銀河英語學校 英文老師</strong> — 為國小學生設計互動式英語課程。
-                </p>
-              </div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-marker">
-                <span class="timeline-dot" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <span class="timeline-year">2023–至今</span>
-                <p class="timeline-text">
-                  <strong>靜宜大學資訊管理學系 程式設計助教</strong> — 指導大一學生 Java 程式設計與演算法。
-                </p>
-              </div>
-            </li>
-          </ol>
-        </div>
-
-        <hr class="about-divider" />
-
-        <!-- Sub-block 4: 技能 -->
-        <div class="about-skills">
-          <h3 class="about-block-title">技能</h3>
-          <div class="skills-columns">
-            <div class="skills-group">
-              <h4 class="skills-group-title">前端開發</h4>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">HTML/CSS</span>
-                  <span class="skill-percent">90%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="90"></div></div>
-              </div>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">JavaScript</span>
-                  <span class="skill-percent">85%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
-              </div>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">Vue.js / Nuxt</span>
-                  <span class="skill-percent">80%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <h4 class="skills-group-title">後端開發</h4>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">Java</span>
-                  <span class="skill-percent">85%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
-              </div>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">TypeScript</span>
-                  <span class="skill-percent">75%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-              </div>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">MySQL</span>
-                  <span class="skill-percent">80%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="about-divider" />
-
-        <!-- Sub-block 5: 證照與競賽 -->
-        <div class="about-certs">
-          <h3 class="about-block-title">證照與競賽</h3>
-          <ul class="certs-list">
-            <li class="certs-item">
-              <span class="certs-year">2025</span>
-              <span class="certs-name">TOEIC 835</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2025</span>
-              <span class="certs-name">ITSA 生成式 AI 應用網頁設計競賽入圍</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2025</span>
-              <span class="certs-name">靜宜大學資訊學院畢業專題成果展 佳作</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2024</span>
-              <span class="certs-name">靜宜大學校園黑客松創意提案競賽 佳作</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2024</span>
-              <span class="certs-name">ICDL Artificial Intelligence 1.0 認證</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2024</span>
-              <span class="certs-name">ICDL Internet of Things 1.0 認證</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 3. Projects -->
-    <section id="projects" class="projects-section section fade-section">
-      <div class="container" data-projects-stage>
-        <p class="proj-eyebrow" data-projects-anim="fade">02 — 精選案例</p>
-        <div class="proj-rule" data-projects-anim="rule"></div>
-
-        <h2 class="proj-headline">
-          <span class="proj-mask" data-projects-anim="mask"><span>每一個，都是從</span></span>
-          <span class="proj-mask" data-projects-anim="mask"><span><em>生意</em>上的問題開始的。</span></span>
-        </h2>
-
-        <div class="proj-scale" data-projects-anim="fade" data-proj-app>
-          <div class="proj-controls" data-proj-controls hidden>
-            <div class="proj-filters" data-proj-filters role="group" aria-label="篩選作品"></div>
-            <button type="button" class="proj-grid-toggle" data-proj-grid-toggle hidden>全部 &#8594;</button>
-            <div class="proj-search">
-              <span class="proj-search-icon" aria-hidden="true">&#8981;</span>
-              <input type="search" class="proj-search-input" data-proj-search placeholder="搜尋名稱．技術．產業" aria-label="搜尋作品" />
-              <button type="button" class="proj-search-clear" data-proj-search-clear hidden aria-label="清除搜尋">&#10005;</button>
-            </div>
-          </div>
-
-          <div class="proj-skeleton" data-proj-skeleton aria-hidden="true">
-            <span class="proj-skeleton-card"></span>
-            <span class="proj-skeleton-card"></span>
-            <span class="proj-skeleton-card"></span>
-          </div>
-
-          <p class="proj-empty" data-proj-empty>
-            <span data-proj-empty-text>沒有符合的作品</span>
-            <button type="button" class="proj-empty-clear" data-proj-empty-clear>清除搜尋 &#10005;</button>
+        <div class="about-copy">
+          <h2>嗨，我是 Selina<span class="accent">.</span></h2>
+          <p>
+            我念的是資訊管理，什麼都做——前端、後端、行動裝置，最近則是 AI 輔助的工作流程。我在不同文化與國家之間
+            工作過，最在意的只有一個問題：<strong>這門生意真正卡住成長的地方在哪？</strong>每個專案，我都從這個問題開始。
           </p>
-
-          <div class="proj-strip" data-proj-strip role="tablist" aria-label="作品集">
-            <button
-              class="proj-card"
-              type="button"
-              role="tab"
-              id="proj-tab-sompisi"
-              aria-controls="proj-panel-sompisi"
-              aria-selected="false"
-              data-project="sompisi"
-              data-year="2025"
-              data-status="shipped"
-              data-search="sompisi transport 接送服務 史瓦帝尼 vue 3 nuxt 3 netlify whatsapp"
-            >
-              <span class="proj-card-top">
-                <span class="proj-card-num">01</span>
-                <span class="proj-card-flag">已上線 · 2025</span>
-              </span>
-              <span class="proj-card-media">
-                <img src="../image/sompisi-preview.jpg" alt="" loading="lazy" style="filter: grayscale(30%) sepia(10%) saturate(110%);" />
-              </span>
-              <span class="proj-card-info">
-                <span class="proj-card-name">Sompisi Transport</span>
-                <span class="proj-card-short">接送服務 · 史瓦帝尼</span>
-              </span>
-            </button>
-
-            <button
-              class="proj-card"
-              type="button"
-              role="tab"
-              id="proj-tab-triptally"
-              aria-controls="proj-panel-triptally"
-              aria-selected="false"
-              data-project="triptally"
-              data-year="2025"
-              data-status="shipped"
-              data-search="triptally 旅程 記帳 pwa nuxt vue typescript"
-            >
-              <span class="proj-card-top">
-                <span class="proj-card-num">02</span>
-                <span class="proj-card-flag">已上線 · PWA</span>
-              </span>
-              <span class="proj-card-media">
-                <img src="../image/triptally-preview.jpg" alt="" loading="lazy" style="filter: grayscale(35%) sepia(10%) saturate(110%);" />
-              </span>
-              <span class="proj-card-info">
-                <span class="proj-card-name">TripTally</span>
-                <span class="proj-card-short">行動 App · PWA</span>
-              </span>
-            </button>
-
-            <button
-              class="proj-card proj-card--placeholder"
-              type="button"
-              role="tab"
-              id="proj-tab-soon"
-              aria-controls="proj-panel-soon"
-              aria-selected="false"
-              data-project="soon"
-              data-status="bench"
-              data-search="更多作品陸續更新 敬請期待"
-            >
-              <span class="proj-card-top">
-                <span class="proj-card-num">03</span>
-                <span class="proj-card-flag">籌備中</span>
-              </span>
-              <span class="proj-card-media proj-card-media--placeholder" aria-hidden="true"></span>
-              <span class="proj-card-info">
-                <span class="proj-card-name">敬請期待</span>
-                <span class="proj-card-short">更多作品陸續更新</span>
-              </span>
-            </button>
+          <div class="about-facts">
+            <div class="about-fact">
+              <span class="about-fact-key">座標</span>
+              <span class="about-fact-val">台灣台中</span>
+            </div>
+            <div class="about-fact">
+              <span class="about-fact-key">語言</span>
+              <span class="about-fact-val">中文 · English</span>
+            </div>
+            <div class="about-fact">
+              <span class="about-fact-key">專注</span>
+              <span class="about-fact-val">小型企業網站</span>
+            </div>
+            <div class="about-fact">
+              <span class="about-fact-key">檔期</span>
+              <span class="about-fact-val accent">現在</span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="proj-endcta" data-projects-anim="fade">
-          <div class="proj-endcta-copy">
-            <span class="proj-endcta-eyebrow">下一位，也許就是你</span>
-            <span class="proj-endcta-title">找我做類似的。</span>
+      <div class="process reveal">
+        <div class="process-head">
+          <h3>我怎麼工作</h3>
+        </div>
+        <div class="process-track">
+          <div class="process-steps">
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 01</span>
+              <span class="process-step-title">問題</span>
+              <p>現在有什麼正在悄悄讓你流失客戶。</p>
+            </div>
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 02</span>
+              <span class="process-step-title">洞察</span>
+              <p>客戶實際上是在哪一步離開的。</p>
+            </div>
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 03</span>
+              <span class="process-step-title">策略</span>
+              <p>先修哪裡，又刻意不做哪些。</p>
+            </div>
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 04</span>
+              <span class="process-step-title">體驗</span>
+              <p>真實客戶從頭到尾走過的完整流程。</p>
+            </div>
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 05</span>
+              <span class="process-step-title">技術</span>
+              <p>最後才選 — 因為技術是為上面四件事服務的。</p>
+            </div>
           </div>
-          <a href="#contact" class="btn proj-endcta-btn"><span>開始一個專案 &#8594;</span></a>
         </div>
       </div>
     </section>
 
-    <div class="proj-scrim" data-proj-scrim hidden></div>
+    <!-- ══════════ 02 經歷 ══════════ -->
+    <section id="track" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <span class="sec-label">經歷</span>
+      </div>
 
-    <aside class="proj-drawer" data-proj-drawer aria-label="作品詳情">
-      <div class="proj-drawer-head">
-        <span class="proj-drawer-counter" data-proj-counter>01 / 03</span>
-        <div class="proj-drawer-actions">
-          <button type="button" class="proj-drawer-btn" data-proj-prev aria-label="上一件作品">&#8592;</button>
-          <button type="button" class="proj-drawer-btn" data-proj-next aria-label="下一件作品">&#8594;</button>
-          <button type="button" class="proj-drawer-close" data-proj-close>
-            <span>關閉</span><span class="proj-drawer-close-key" aria-hidden="true">ESC</span><span aria-hidden="true">&#10005;</span>
-          </button>
+      <div class="track-block reveal">
+        <h3 class="track-h">工作經歷</h3>
+        <div class="exp-list">
+          <div class="exp-row exp-row--current">
+            <div class="exp-year">2025 — 2026</div>
+            <div class="exp-role">
+              <div class="exp-role-title">專案助理</div>
+              <div class="exp-role-org">Fengluh IT</div>
+            </div>
+            <p class="exp-desc">以 Vue、TypeScript 與 Nuxt 開發肥料電商平台前端。</p>
+            <span class="exp-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="exp-row">
+            <div class="exp-year">2024 — 2025</div>
+            <div class="exp-role">
+              <div class="exp-role-title">英文老師</div>
+              <div class="exp-role-org">Galaxy English School</div>
+            </div>
+            <p class="exp-desc">為國小學生設計互動課程 — 在這裡學會把難的事講簡單。</p>
+            <span class="exp-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="exp-row">
+            <div class="exp-year">2023 — 至今</div>
+            <div class="exp-role">
+              <div class="exp-role-title">程式設計助教</div>
+              <div class="exp-role-org">Providence University</div>
+            </div>
+            <p class="exp-desc">教授大一學生 Java 程式設計與演算法。</p>
+            <span class="exp-arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </div>
 
-      <div class="proj-drawer-body" data-proj-drawer-body>
-        <article class="proj-panel is-active" role="tabpanel" id="proj-panel-sompisi" aria-labelledby="proj-tab-sompisi" tabindex="0">
-          <div class="proj-panel-head">
-            <span class="proj-num">01</span>
-            <h3 class="proj-title"><span class="proj-title-word"><span>Sompisi</span></span> <span class="proj-title-word"><span>Transport</span></span></h3>
-            <span class="proj-tag">接送服務 · 史瓦帝尼</span>
+      <div class="track-block reveal">
+        <div class="track-h-row">
+          <h3 class="track-h">技術棧</h3>
+          <div class="legend">
+            <span><span class="legend-sw legend-sw--solid"></span> 主力</span>
+            <span><span class="legend-sw legend-sw--outline"></span> 熟悉</span>
           </div>
-          <div class="proj-item-rule"></div>
-
-          <div class="proj-panel-body">
-            <div class="proj-media">
-              <div class="proj-media-frame" style="aspect-ratio: 16 / 10">
-                <img
-                  class="proj-media-img"
-                  src="../image/sompisi-preview.jpg"
-                  alt="Sompisi Transport 網站首頁截圖"
-                  loading="lazy"
-                  style="filter: grayscale(30%) sepia(10%) saturate(110%);"
-                />
-              </div>
-            </div>
-
-            <div class="proj-copy">
-              <div class="proj-block">
-                <p class="proj-label">問題</p>
-                <p class="proj-text">
-                  史瓦帝尼的家族接送服務，只靠口碑與老闆的電話接單。找不到聯絡方式的國際旅客，等於看不見這個服務。
-                </p>
-              </div>
-              <div class="proj-block">
-                <p class="proj-label">解法</p>
-                <p class="proj-text">
-                  全站圍繞「你永遠知道是誰在開車」：用真實姓名取代車隊感。表單直接產生預填的 WhatsApp
-                  訊息，老闆一小時內親自確認。
-                </p>
-              </div>
-              <div class="proj-block">
-                <p class="proj-label">結果</p>
-                <p class="proj-text">幾分鐘就能把行程確認到老闆手上；網站不碰金流，維護成本接近零。</p>
-              </div>
-            </div>
-
-            <div class="proj-stack">
-              <span class="proj-stack-label">技術</span>
-              <div class="proj-stack-list">
-                <span class="proj-stack-tag">Vue 3</span>
-                <span class="proj-stack-tag">Nuxt 3</span>
-                <span class="proj-stack-tag">純靜態網站</span>
-                <span class="proj-stack-tag">Netlify</span>
-                <span class="proj-stack-tag">WhatsApp 深層連結</span>
-              </div>
-            </div>
-
-            <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-              <span>查看網站</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="proj-panel is-active" role="tabpanel" id="proj-panel-triptally" aria-labelledby="proj-tab-triptally" tabindex="0">
-          <div class="proj-panel-head">
-            <span class="proj-num">02</span>
-            <h3 class="proj-title"><span class="proj-title-word"><span>TripTally</span></span></h3>
-            <span class="proj-tag">行動 App · PWA</span>
-          </div>
-          <div class="proj-item-rule"></div>
-
-          <div class="proj-panel-body">
-            <div class="proj-media">
-              <div class="proj-media-frame" style="aspect-ratio: 16 / 11">
-                <img
-                  class="proj-media-img"
-                  src="../image/triptally-preview.jpg"
-                  alt="TripTally 旅程花費明細畫面截圖"
-                  loading="lazy"
-                  style="filter: grayscale(35%) sepia(10%) saturate(110%);"
-                />
-              </div>
-            </div>
-
-            <div class="proj-copy">
-              <div class="proj-block">
-                <p class="proj-label">問題</p>
-                <p class="proj-text">
-                  旅行中要即時換算才有感，但手動記帳打斷節奏；紀錄若被最新匯率重算，過去的花費就對不上帳單。
-                </p>
-              </div>
-              <div class="proj-block">
-                <p class="proj-label">解法</p>
-                <p class="proj-text">
-                  手機優先的 PWA：十秒完成「輸入 → 換算 →
-                  存檔」，離線可用。核心規則是歷史匯率凍結，建立當下的匯率永久寫死。
-                </p>
-              </div>
-              <div class="proj-block">
-                <p class="proj-label">結果</p>
-                <p class="proj-text">多趟旅行各自追蹤預算與分類；過去的紀錄永遠對得上帳單。</p>
-              </div>
-            </div>
-
-            <div class="proj-stack">
-              <span class="proj-stack-label">技術</span>
-              <div class="proj-stack-list">
-                <span class="proj-stack-tag">Nuxt 3</span>
-                <span class="proj-stack-tag">Vue 3</span>
-                <span class="proj-stack-tag">TypeScript（strict）</span>
-                <span class="proj-stack-tag">SPA（關閉 SSR）</span>
-                <span class="proj-stack-tag">Tailwind</span>
-                <span class="proj-stack-tag">@nuxtjs/i18n</span>
-                <span class="proj-stack-tag">Chart.js</span>
-                <span class="proj-stack-tag">open.er-api.com</span>
-              </div>
-            </div>
-
-            <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-              <span>查看網站</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="proj-panel proj-panel--placeholder is-active" role="tabpanel" id="proj-panel-soon" aria-labelledby="proj-tab-soon" tabindex="0">
-          <div class="proj-placeholder-panel">
-            <p class="proj-placeholder-text">更多作品陸續更新</p>
-          </div>
-        </article>
+        </div>
+        <div class="chips">
+          <span class="chip">HTML / CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Vue.js</span>
+          <span class="chip">Nuxt</span>
+          <span class="chip chip--wine">TypeScript</span>
+          <span class="chip">Java</span>
+          <span class="chip">MySQL</span>
+          <span class="chip chip--wine">AI 輔助流程</span>
+          <span class="chip chip--outline">Tailwind</span>
+          <span class="chip chip--outline">Node.js</span>
+          <span class="chip chip--outline">Python</span>
+          <span class="chip chip--outline">Git</span>
+          <span class="chip chip--outline">Figma</span>
+          <span class="chip chip--outline">PWA</span>
+          <span class="chip chip--outline">REST APIs</span>
+        </div>
       </div>
-    </aside>
 
-    <!-- 4. Services -->
-    <section id="services" class="section services fade-section">
-      <div class="container">
-        <span class="section-label">03 — Services</span>
-        <h2 class="section-title">三種方式，解決正在流失你客戶的問題。</h2>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <!-- 數位體驗診斷：放大鏡疊加心電圖波形 -->
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="12" fill="none" stroke="#0A0A0A" stroke-width="2" />
-                <line x1="29" y1="29" x2="42" y2="42" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
-                <polyline points="12,20 16,20 18,14 22,26 25,20 28,20" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-            <span class="service-number">01</span>
-            <h3 class="service-title">數位診斷</h3>
-            <p class="service-text">檢視你的網站、訂購流程與客戶旅程，找出你正在流失客戶的確切環節，以及該優先修哪裡。</p>
-          </article>
-
-          <article class="service-card">
-            <!-- 客製化網站/App 開發：瀏覽器視窗與手機外框局部重疊 -->
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="6" width="30" height="22" rx="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
-                <line x1="2" y1="12" x2="32" y2="12" stroke="#0A0A0A" stroke-width="2" />
-                <rect x="24" y="18" width="16" height="26" rx="4" fill="#FAFAFA" stroke="#0A0A0A" stroke-width="2" />
-                <line x1="30" y1="40" x2="34" y2="40" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </div>
-            <span class="service-number">02</span>
-            <h3 class="service-title">客製化數位系統</h3>
-            <p class="service-text">網站、訂購工具、或客戶入口網站——無論哪一種能解決你的問題，都會依照你的商業需求打造，而不是套模板。</p>
-          </article>
-
-          <article class="service-card">
-            <!-- AI 輔助工作流程：3 個節點以單向箭頭連接 -->
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <marker id="svc-flow-arrow-zh" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                    <path d="M0 0 L6 3 L0 6 Z" fill="#0A0A0A" />
-                  </marker>
-                </defs>
-                <line x1="11" y1="24" x2="19" y2="24" stroke="#0A0A0A" stroke-width="2" marker-end="url(#svc-flow-arrow-zh)" />
-                <line x1="29" y1="24" x2="37" y2="24" stroke="#0A0A0A" stroke-width="2" marker-end="url(#svc-flow-arrow-zh)" />
-                <circle cx="6" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
-                <circle cx="24" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
-                <circle cx="42" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
-              </svg>
-            </div>
-            <span class="service-number">03</span>
-            <h3 class="service-title">AI 輔助工作流程</h3>
-            <p class="service-text">把經營中重複性的工作自動化，例如客戶詢問或訂單確認，讓你少花時間在人工往返溝通上。</p>
-          </article>
+      <div class="track-block reveal">
+        <h3 class="track-h">證照與獲獎</h3>
+        <div class="certs">
+          <div class="cert-row"><span class="cert-year">2025</span><span class="cert-name">多益 835</span></div>
+          <div class="cert-row"><span class="cert-year">2025</span><span class="cert-name">ITSA 生成式 AI 網頁設計競賽 — 決賽入圍</span></div>
+          <div class="cert-row"><span class="cert-year">2025</span><span class="cert-name">靜宜大學專題成果展 — 佳作</span></div>
+          <div class="cert-row"><span class="cert-year">2024</span><span class="cert-name">靜宜大學校園黑客松 — 佳作</span></div>
+          <div class="cert-row"><span class="cert-year">2024</span><span class="cert-name">ICDL 人工智慧 1.0 認證</span></div>
+          <div class="cert-row"><span class="cert-year">2024</span><span class="cert-name">ICDL 物聯網 1.0 認證</span></div>
         </div>
       </div>
     </section>
 
-    <!-- 5. Contact -->
-    <section id="contact" class="section contact fade-section">
-      <div class="contact-doodle" aria-hidden="true">
-        <svg viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 8 h78 a4 4 0 0 1 4 4 v34 a4 4 0 0 1 -4 4 h-50 l-16 16 v-16 h-12 a4 4 0 0 1 -4 -4 v-34 a4 4 0 0 1 4 -4 z" fill="none" stroke="#0A0A0A" stroke-width="2" />
-          <line x1="16" y1="22" x2="70" y2="22" stroke="#0A0A0A" stroke-width="2" opacity="0.6" />
-          <line x1="16" y1="32" x2="54" y2="32" stroke="#0A0A0A" stroke-width="2" opacity="0.6" />
-        </svg>
+    <!-- ══════════ 03 精選作品 ══════════ -->
+    <section id="work" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <span class="sec-label">精選作品</span>
       </div>
 
-      <div class="container">
-        <span class="section-label">04 — Contact</span>
-        <h2 class="section-title">來聊聊，是什麼正在讓你流失客戶。</h2>
-        <p class="section-text">不管是一個小問題，還是一整個專案，用你覺得最方便的方式聯繫我都可以。</p>
+      <h2 class="work-headline reveal">每一個，都是從一個 <span class="accent">商業問題</span> 開始的。</h2>
 
-        <div class="contact-links">
-          <a href="mailto:selina101292@gmail.com" class="contact-link">
-            <span class="contact-link-label">Email</span>
-            <span class="contact-link-value">selina101292@gmail.com</span>
-          </a>
-
-          <a href="https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <span class="contact-link-label">LinkedIn</span>
-            <span class="contact-link-value">/in/玟瑄-黃</span>
-          </a>
-
-          <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="contact-link" id="whatsapp-link">
-            <span class="contact-link-label">WhatsApp</span>
-            <span class="contact-link-value">+886 965 418 312</span>
-          </a>
+      <div class="work-list">
+        <!-- 01 -->
+        <div class="work-row reveal">
+          <div class="grid12">
+            <div class="work-media-col">
+              <div class="work-media">
+                <img src="../image/sompisi-preview.jpg" alt="Sompisi Transport 網站截圖" loading="lazy" />
+              </div>
+            </div>
+            <div class="work-info">
+              <div class="work-meta">
+                <span>01</span>
+                <span class="work-meta-status">已上線 · 2025</span>
+                <span class="work-meta-sector">史瓦帝尼</span>
+              </div>
+              <h3 class="work-title">Sompisi Transport</h3>
+              <div class="work-facts">
+                <div class="work-fact">
+                  <span class="work-fact-key">問題</span>
+                  <p>一家家族經營的私人接送服務，旅客在網路上找不到、也無從判斷是否可信。</p>
+                </div>
+                <div class="work-fact">
+                  <span class="work-fact-key">做了什麼</span>
+                  <p>以手機優先的網站，寫出真正的司機是誰、實際路線價格，並直接導入 WhatsApp 預約。</p>
+                </div>
+              </div>
+              <div class="work-tags">
+                <span class="tag">Nuxt</span>
+                <span class="tag">Tailwind</span>
+                <span class="tag">WhatsApp API</span>
+                <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">前往網站 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="whatsapp-qr">
-          <img id="whatsapp-qr-img" alt="WhatsApp QR code" width="140" height="140" />
-          <span class="whatsapp-qr-caption">掃描直接開始 WhatsApp 對話</span>
+        <!-- 02 -->
+        <div class="work-row reveal">
+          <div class="grid12">
+            <div class="work-media-col">
+              <div class="work-media">
+                <img src="../image/triptally-preview.jpg" alt="TripTally 應用程式截圖" loading="lazy" />
+              </div>
+            </div>
+            <div class="work-info">
+              <div class="work-meta">
+                <span>02</span>
+                <span class="work-meta-status">已上線 · PWA</span>
+                <span class="work-meta-sector">個人專案</span>
+              </div>
+              <h3 class="work-title">TripTally</h3>
+              <div class="work-facts">
+                <div class="work-fact">
+                  <span class="work-fact-key">問題</span>
+                  <p>跨幣別分帳最後總是變成一團亂的群組訊息，和一張沒人更新的試算表。</p>
+                </div>
+                <div class="work-fact">
+                  <span class="work-fact-key">做了什麼</span>
+                  <p>離線優先的記帳工具，含每日預算、即時匯率換算與共用旅程帳本。</p>
+                </div>
+              </div>
+              <div class="work-tags">
+                <span class="tag">Vue</span>
+                <span class="tag">PWA</span>
+                <span class="tag">IndexedDB</span>
+                <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">前往網站 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- 03 空位 -->
+        <div class="work-row">
+          <div class="grid12">
+            <div class="work-media-col">
+              <div class="work-slot" aria-hidden="true">+</div>
+            </div>
+            <div class="work-slot-info">
+              <div class="eyebrow">03 · 空位</div>
+              <h3>這裡可以是你的專案。</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-cta reveal">
+        <div class="work-cta-copy">
+          <span class="work-cta-eyebrow">下一個可以是你</span>
+          <span class="work-cta-title">下一個，一起做。</span>
+        </div>
+        <a href="#contact" class="btn btn--light">開始合作 <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- ══════════ 04 服務 ══════════ -->
+    <section id="services" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">04</span>
+        <span class="sec-label">服務</span>
+      </div>
+
+      <h2 class="services-headline reveal">三種方式，修好正在讓你流失客戶的地方。</h2>
+
+      <div class="services-grid reveal">
+        <div class="service">
+          <div class="service-num">01</div>
+          <h3>數位健檢</h3>
+          <p>我會走過你的網站、預約流程與客戶動線，找出你到底在哪裡流失客人，以及該先修哪一個。</p>
+          <div class="service-deliver">交付 · 書面診斷報告</div>
+        </div>
+        <div class="service">
+          <div class="service-num">02</div>
+          <h3>客製數位系統</h3>
+          <p>網站、預約工具或客戶專區 — 能解決你問題的都做，為你的生意量身打造，不套版。</p>
+          <div class="service-deliver">交付 · 上線的產品</div>
+        </div>
+        <div class="service">
+          <div class="service-num">03</div>
+          <h3>AI 輔助流程</h3>
+          <p>把生意裡重複的部分自動化 — 詢問回覆、預約確認 — 讓你少花時間在來回溝通上。</p>
+          <div class="service-deliver">交付 · 自動化設定</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ 05 聯絡 ══════════ -->
+    <section id="contact" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">05</span>
+        <span class="sec-label">聯絡</span>
+      </div>
+
+      <div class="contact-body grid12 reveal">
+        <div class="contact-lead">
+          <h2>聊聊什麼正在讓你流失客戶<span class="accent">.</span></h2>
+          <p>不論是一個小問題還是完整專案 — 用你最方便的方式找我，我一天內回覆。</p>
+        </div>
+        <div class="contact-qr">
+          <img id="whatsapp-qr-img" alt="WhatsApp QR code" width="128" height="128" />
+          <span class="contact-qr-cap">掃描開始 WhatsApp 對話</span>
+        </div>
+      </div>
+
+      <div class="contact-links reveal">
+        <a href="mailto:selina101292@gmail.com" class="contact-link">
+          <span class="contact-link-key">Email</span>
+          <span class="contact-link-val">selina101292@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-link-key">LinkedIn</span>
+          <span class="contact-link-val">/in/玟瑄-黃</span>
+        </a>
+        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="contact-link" id="whatsapp-link">
+          <span class="contact-link-key">WhatsApp</span>
+          <span class="contact-link-val">+886 965 418 312</span>
+        </a>
       </div>
     </section>
   </main>
@@ -733,6 +440,6 @@
     </div>
   </footer>
 
-  <script src="../script.js?v=20260901"></script>
+  <script src="../script.js?v=20260902"></script>
 </body>
 </html>

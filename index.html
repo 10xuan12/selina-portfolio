@@ -20,21 +20,24 @@
   <meta name="twitter:description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
   <meta name="twitter:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
 
+  <script>document.documentElement.classList.add('js');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="style.css?v=20260901b" />
+  <link rel="stylesheet" href="style.css?v=20260902" />
 </head>
 <body>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a href="#hero" class="logo">Selina Huang</a>
+    <div class="header-inner">
+      <a href="#top" class="logo">Selina Huang</a>
 
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
         <span></span>
@@ -43,702 +46,392 @@
       </button>
 
       <nav class="nav" id="primary-nav">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="nav-link nav-cta">Contact</a>
+        <a href="#about" class="nav-link">01 About</a>
+        <a href="#track" class="nav-link">02 Track</a>
+        <a href="#work" class="nav-link">03 Work</a>
+        <a href="#services" class="nav-link">04 Services</a>
+        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="nav-link nav-cta">Contact →</a>
       </nav>
     </div>
   </header>
 
   <a href="zh/index.html" class="lang-fab" id="lang-toggle" hreflang="zh-Hant" aria-label="Switch to Chinese">中</a>
 
-  <main>
-    <!-- 1. Hero -->
-    <section id="hero" class="section hero fade-section">
-      <div class="container hero-grid">
-        <div class="hero-col hero-col--left">
-          <!-- Availability badge -->
-          <span class="hero-badge">
-            <span class="hero-badge-dot" aria-hidden="true"></span>
-            OPEN FOR PROJECTS
-          </span>
+  <main id="top">
 
-          <!-- Headline -->
-          <h1 class="hero-title">
-            Websites are
-            <span class="hero-highlight">the easy part</span>.
-          </h1>
+    <!-- ══════════ HERO ══════════ -->
+    <section class="sec hero">
+      <div class="hero-status">
+        <span class="hero-status-dot">Open for projects</span>
+        <span class="hero-status-loc">Taichung, Taiwan · UTC+8</span>
+      </div>
 
-          <!-- Skill pills -->
-          <div class="hero-skills">
-            <span class="hero-skill-pill">VUE.JS</span>
-            <span class="hero-skill-pill">NUXT</span>
-            <span class="hero-skill-pill">AI-ASSISTED DEV</span>
-          </div>
+      <div class="hero-grid grid12">
+        <div class="hero-lead">
+          <h1 class="hero-title">SELINA HUANG</h1>
 
-          <!-- Subtitle + rotating pain points -->
           <div class="hero-message">
             <p class="hero-subtitle">Finding what's actually costing you customers — that's the work I do.</p>
-
-            <div class="hero-rotator" id="hero-rotator" aria-live="polite">
-              <span class="hero-rotator-item is-active">Customers can't find you online.</span>
-              <span class="hero-rotator-item">Booking is stuck in manual messages.</span>
-              <span class="hero-rotator-item">International visitors can't understand your service.</span>
+            <div class="hero-problem">
+              <span class="hero-problem-tag">e.g.</span>
+              <span class="hero-problem-text" id="hero-problem">International visitors can't understand your service.</span>
             </div>
+          </div>
 
-            <p class="hero-fine-print">For small businesses whose digital experience is quietly costing them customers.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn--dark">Start a project <span aria-hidden="true">→</span></a>
+            <a href="#work" class="btn btn--ghost">See the work</a>
+          </div>
+
+          <div class="hero-pills">
+            <span class="pill">Vue.js</span>
+            <span class="pill">Nuxt</span>
+            <span class="pill">TypeScript</span>
+            <span class="pill">AI-assisted dev</span>
           </div>
         </div>
 
-        <div class="hero-col hero-col--right">
-          <!-- Origin tag -->
-          <p class="eyebrow hero-origin">01 / FROM TAIWAN, WITH LOVE</p>
-
-          <!-- Portrait -->
-          <div class="hero-photo-block">
-            <div class="hero-photo">
-              <img
-                class="hero-photo-img"
-                src="image/hero-portrait.jpeg"
-                alt="Photo of Selina"
-                width="300"
-                height="400"
-                loading="lazy"
-              />
-            </div>
-            <p class="hero-location"><span aria-hidden="true">→</span> Based in Taichung, working worldwide</p>
+        <div class="hero-figure">
+          <div class="hero-figure-cap">
+            <span>Fig. 01</span>
+            <span>From Taiwan</span>
           </div>
-        </div>
-
-        <!-- Bottom: giant name mark + CTA, spans the full width -->
-        <div class="hero-name-block">
-          <h2 class="hero-name">SELINA HUANG</h2>
-          <div class="hero-name-meta">
-            <p class="hero-name-caption">2026 Portfolio</p>
-            <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" id="hero-cta" class="btn btn-primary hero-cta">
-              <span>Chat on WhatsApp</span>
-            </a>
+          <div class="hero-figure-media">
+            <img src="image/hero-portrait.jpeg" alt="Photo of Selina" width="300" height="400" loading="lazy" />
           </div>
+          <p class="hero-figure-note">→ Based in Taichung, working worldwide</p>
         </div>
       </div>
     </section>
 
-    <!-- Marquee divider -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <div class="marquee-group">
-          <span class="marquee-item">Problem</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">Insight</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">Strategy</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">Experience</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">System</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">Technology</span>
-          <span class="marquee-arrow">→</span>
-        </div>
-        <div class="marquee-group">
-          <span class="marquee-item">Problem</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">Insight</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">Strategy</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">Experience</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">System</span>
-          <span class="marquee-arrow">→</span>
-          <span class="marquee-item">Technology</span>
-          <span class="marquee-arrow">→</span>
-        </div>
+    <!-- ══════════ 01 ABOUT ══════════ -->
+    <section id="about" class="sec sec--about">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <span class="sec-label">About</span>
       </div>
-    </div>
 
-    <!-- 2. About -->
-    <section id="about" class="section about fade-section">
-      <div class="container">
-
-        <!-- Sub-block 1: who I am -->
-        <div class="about-intro">
-          <div class="about-photo">
-            <img
-              class="about-photo-img"
-              src="image/selina-portrait.jpg"
-              alt="Portrait of Selina"
-              width="600"
-              height="769"
-              loading="lazy"
-            />
-          </div>
-
-          <div class="about-intro-text">
-            <span class="section-label">01 — About</span>
-            <h2 class="section-title">Hi, I'm Selina</h2>
-            <p class="section-text">
-              I studied Information Management, and I build things — frontend, backend, mobile,
-              and lately, AI-assisted workflows. I've worked across cultures and borders, and I
-              care about one question above all: what's actually stopping this business from
-              growing? That's the question I start every project with.
-            </p>
+      <div class="about-body grid12 reveal">
+        <div class="about-portrait">
+          <div class="about-portrait-media">
+            <img src="image/selina-portrait.jpg" alt="Portrait of Selina" width="600" height="600" loading="lazy" />
           </div>
         </div>
-
-        <hr class="about-divider" />
-
-        <!-- Sub-block 2: how I work -->
-        <div class="about-methodology">
-          <div class="about-methodology-heading">
-            <h3 class="about-methodology-title">How I Work</h3>
-            <p class="section-text">
-              Every project starts the same way: I don't ask 'what website do you need?' I ask
-              'what's actually costing you customers, time, or revenue?' That question shapes
-              everything that follows — right up until technology, which comes last, not first.
-            </p>
-          </div>
-
-          <div class="about-methodology-body">
-            <div class="methodology-ring-wrap" aria-hidden="true">
-              <svg viewBox="0 0 200 200" class="methodology-ring">
-                <g transform="rotate(-90 100 100)">
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="0" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-83.78" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-167.55" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#0A0A0A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-251.33" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#6B1E23" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-335.10" />
-                  <circle cx="100" cy="100" r="80" fill="none" stroke="#8A8A8A" stroke-width="24"
-                    stroke-dasharray="78 424.65" stroke-dashoffset="-418.88" />
-                </g>
-                <!-- Center mark: a clean sans-serif monogram, not left empty -->
-                <text class="methodology-ring-signature" x="100" y="100" text-anchor="middle" dominant-baseline="central">SH</text>
-              </svg>
-              <div class="methodology-ring-label methodology-ring-label--problem">Problem</div>
-              <div class="methodology-ring-label methodology-ring-label--insight">Insight</div>
-              <div class="methodology-ring-label methodology-ring-label--strategy">Strategy</div>
-              <div class="methodology-ring-label methodology-ring-label--experience">Experience</div>
-              <div class="methodology-ring-label methodology-ring-label--system">System</div>
-              <div class="methodology-ring-label methodology-ring-label--technology">Technology</div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="about-divider" />
-
-        <!-- Sub-block 3: experience timeline -->
-        <div class="about-experience">
-          <h3 class="about-block-title">Experience</h3>
-          <ol class="timeline">
-            <li class="timeline-item timeline-item--current">
-              <div class="timeline-marker">
-                <span class="timeline-dot" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <span class="timeline-year">2025–2026</span>
-                <p class="timeline-text">
-                  <strong>Project Assistant, Fengluh IT</strong> — Developed the frontend for a
-                  fertilizer e-commerce platform using Vue, TypeScript, and Nuxt.
-                </p>
-              </div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-marker">
-                <span class="timeline-dot" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <span class="timeline-year">2024–2025</span>
-                <p class="timeline-text">
-                  <strong>English Teacher, Galaxy English School</strong> — Designed interactive
-                  lessons for elementary students.
-                </p>
-              </div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-marker">
-                <span class="timeline-dot" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <span class="timeline-year">2023–Present</span>
-                <p class="timeline-text">
-                  <strong>Programming TA, Providence University</strong> — Taught Java programming
-                  and algorithms to first-year students.
-                </p>
-              </div>
-            </li>
-          </ol>
-        </div>
-
-        <hr class="about-divider" />
-
-        <!-- Sub-block 4: skills -->
-        <div class="about-skills">
-          <h3 class="about-block-title">Skills</h3>
-          <div class="skills-columns">
-            <div class="skills-group">
-              <h4 class="skills-group-title">Frontend</h4>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">HTML/CSS</span>
-                  <span class="skill-percent">90%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="90"></div></div>
-              </div>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">JavaScript</span>
-                  <span class="skill-percent">85%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
-              </div>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">Vue.js / Nuxt</span>
-                  <span class="skill-percent">80%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <h4 class="skills-group-title">Backend</h4>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">Java</span>
-                  <span class="skill-percent">85%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
-              </div>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">TypeScript</span>
-                  <span class="skill-percent">75%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-              </div>
-
-              <div class="skill-bar">
-                <div class="skill-bar-head">
-                  <span class="skill-name">MySQL</span>
-                  <span class="skill-percent">80%</span>
-                </div>
-                <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="about-divider" />
-
-        <!-- Sub-block 5: certifications & achievements -->
-        <div class="about-certs">
-          <h3 class="about-block-title">Certifications &amp; Achievements</h3>
-          <ul class="certs-list">
-            <li class="certs-item">
-              <span class="certs-year">2025</span>
-              <span class="certs-name">TOEIC 835</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2025</span>
-              <span class="certs-name">ITSA Generative AI Web Design Competition — Finalist</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2025</span>
-              <span class="certs-name">Providence University Capstone Showcase — Honorable Mention</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2024</span>
-              <span class="certs-name">PU Campus Hackathon — Honorable Mention</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2024</span>
-              <span class="certs-name">ICDL Artificial Intelligence 1.0 Certification</span>
-            </li>
-            <li class="certs-item">
-              <span class="certs-year">2024</span>
-              <span class="certs-name">ICDL Internet of Things 1.0 Certification</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 3. Projects -->
-    <section id="projects" class="projects-section section fade-section">
-      <div class="container" data-projects-stage>
-        <p class="proj-eyebrow" data-projects-anim="fade">02 — Selected Work</p>
-        <div class="proj-rule" data-projects-anim="rule"></div>
-
-        <h2 class="proj-headline">
-          <span class="proj-mask" data-projects-anim="mask"><span>Every one of these started</span></span>
-          <span class="proj-mask" data-projects-anim="mask"><span>as a <em>business</em> problem.</span></span>
-        </h2>
-
-        <div class="proj-scale" data-projects-anim="fade" data-proj-app>
-          <div class="proj-controls" data-proj-controls hidden>
-            <div class="proj-filters" data-proj-filters role="group" aria-label="Filter projects"></div>
-            <button type="button" class="proj-grid-toggle" data-proj-grid-toggle hidden>All &#8594;</button>
-            <div class="proj-search">
-              <span class="proj-search-icon" aria-hidden="true">&#8981;</span>
-              <input type="search" class="proj-search-input" data-proj-search placeholder="Search name · stack · sector" aria-label="Search projects" />
-              <button type="button" class="proj-search-clear" data-proj-search-clear hidden aria-label="Clear search">&#10005;</button>
-            </div>
-          </div>
-
-          <div class="proj-skeleton" data-proj-skeleton aria-hidden="true">
-            <span class="proj-skeleton-card"></span>
-            <span class="proj-skeleton-card"></span>
-            <span class="proj-skeleton-card"></span>
-          </div>
-
-          <p class="proj-empty" data-proj-empty>
-            <span data-proj-empty-text>No match</span>
-            <button type="button" class="proj-empty-clear" data-proj-empty-clear>Clear search &#10005;</button>
+        <div class="about-copy">
+          <h2>Hi, I'm Selina<span class="accent">.</span></h2>
+          <p>
+            I studied Information Management, and I build things — frontend, backend, mobile, and lately
+            AI-assisted workflows. I've worked across cultures and borders, and I care about one question
+            above all: <strong>what's actually stopping this business from growing?</strong> That's the
+            question I start every project with.
           </p>
-
-          <div class="proj-strip" data-proj-strip role="tablist" aria-label="Projects">
-            <button
-              class="proj-card"
-              type="button"
-              role="tab"
-              id="proj-tab-sompisi"
-              aria-controls="proj-panel-sompisi"
-              aria-selected="false"
-              data-project="sompisi"
-              data-year="2025"
-              data-status="shipped"
-              data-search="sompisi transport private eswatini vue 3 nuxt 3 fully static netlify whatsapp deep links"
-            >
-              <span class="proj-card-top">
-                <span class="proj-card-num">01</span>
-                <span class="proj-card-flag">Shipped · 2025</span>
-              </span>
-              <span class="proj-card-media">
-                <img src="image/sompisi-preview.jpg" alt="" loading="lazy" style="filter: grayscale(30%) sepia(10%) saturate(110%);" />
-              </span>
-              <span class="proj-card-info">
-                <span class="proj-card-name">Sompisi Transport</span>
-                <span class="proj-card-short">Private transport · Eswatini</span>
-              </span>
-            </button>
-
-            <button
-              class="proj-card"
-              type="button"
-              role="tab"
-              id="proj-tab-triptally"
-              aria-controls="proj-panel-triptally"
-              aria-selected="false"
-              data-project="triptally"
-              data-year="2025"
-              data-status="shipped"
-              data-search="triptally mobile app pwa nuxt 3 vue 3 typescript tailwind"
-            >
-              <span class="proj-card-top">
-                <span class="proj-card-num">02</span>
-                <span class="proj-card-flag">Shipped · PWA</span>
-              </span>
-              <span class="proj-card-media">
-                <img src="image/triptally-preview.jpg" alt="" loading="lazy" style="filter: grayscale(35%) sepia(10%) saturate(110%);" />
-              </span>
-              <span class="proj-card-info">
-                <span class="proj-card-name">TripTally</span>
-                <span class="proj-card-short">Mobile app · PWA</span>
-              </span>
-            </button>
-
-            <button
-              class="proj-card proj-card--placeholder"
-              type="button"
-              role="tab"
-              id="proj-tab-soon"
-              aria-controls="proj-panel-soon"
-              aria-selected="false"
-              data-project="soon"
-              data-status="bench"
-              data-search="more projects coming soon"
-            >
-              <span class="proj-card-top">
-                <span class="proj-card-num">03</span>
-                <span class="proj-card-flag">In progress</span>
-              </span>
-              <span class="proj-card-media proj-card-media--placeholder" aria-hidden="true"></span>
-              <span class="proj-card-info">
-                <span class="proj-card-name">More soon</span>
-                <span class="proj-card-short">More projects coming soon</span>
-              </span>
-            </button>
+          <div class="about-facts">
+            <div class="about-fact">
+              <span class="about-fact-key">Based</span>
+              <span class="about-fact-val">Taichung, TW</span>
+            </div>
+            <div class="about-fact">
+              <span class="about-fact-key">Languages</span>
+              <span class="about-fact-val">中文 · English</span>
+            </div>
+            <div class="about-fact">
+              <span class="about-fact-key">Focus</span>
+              <span class="about-fact-val">Small business web</span>
+            </div>
+            <div class="about-fact">
+              <span class="about-fact-key">Available</span>
+              <span class="about-fact-val accent">Now</span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="proj-endcta" data-projects-anim="fade">
-          <div class="proj-endcta-copy">
-            <span class="proj-endcta-eyebrow">Next one could be yours</span>
-            <span class="proj-endcta-title">Let's build yours next.</span>
+      <div class="process reveal">
+        <div class="process-head">
+          <h3>How I work</h3>
+        </div>
+        <div class="process-track">
+          <div class="process-steps">
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 01</span>
+              <span class="process-step-title">Problem</span>
+              <p>What is quietly losing you customers right now.</p>
+            </div>
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 02</span>
+              <span class="process-step-title">Insight</span>
+              <p>Where in the journey people actually drop off.</p>
+            </div>
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 03</span>
+              <span class="process-step-title">Strategy</span>
+              <p>What to fix first, and what to deliberately skip.</p>
+            </div>
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 04</span>
+              <span class="process-step-title">Experience</span>
+              <p>The flow a real customer walks through, end to end.</p>
+            </div>
+            <div class="process-step">
+              <span class="process-marker"></span>
+              <span class="process-step-num">STEP 05</span>
+              <span class="process-step-title">Technology</span>
+              <p>Chosen last — because it serves the four above.</p>
+            </div>
           </div>
-          <a href="#contact" class="btn proj-endcta-btn"><span>Start a project &#8594;</span></a>
         </div>
       </div>
     </section>
 
-    <div class="proj-scrim" data-proj-scrim hidden></div>
+    <!-- ══════════ 02 TRACK RECORD ══════════ -->
+    <section id="track" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <span class="sec-label">Track record</span>
+      </div>
 
-    <aside class="proj-drawer" data-proj-drawer aria-label="Project detail">
-      <div class="proj-drawer-head">
-        <span class="proj-drawer-counter" data-proj-counter>01 / 03</span>
-        <div class="proj-drawer-actions">
-          <button type="button" class="proj-drawer-btn" data-proj-prev aria-label="Previous project">&#8592;</button>
-          <button type="button" class="proj-drawer-btn" data-proj-next aria-label="Next project">&#8594;</button>
-          <button type="button" class="proj-drawer-close" data-proj-close>
-            <span>Close</span><span class="proj-drawer-close-key" aria-hidden="true">ESC</span><span aria-hidden="true">&#10005;</span>
-          </button>
+      <div class="track-block reveal">
+        <h3 class="track-h">Experience</h3>
+        <div class="exp-list">
+          <div class="exp-row exp-row--current">
+            <div class="exp-year">2025 — 2026</div>
+            <div class="exp-role">
+              <div class="exp-role-title">Project Assistant</div>
+              <div class="exp-role-org">Fengluh IT</div>
+            </div>
+            <p class="exp-desc">Built the frontend for a fertilizer e-commerce platform in Vue, TypeScript and Nuxt.</p>
+            <span class="exp-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="exp-row">
+            <div class="exp-year">2024 — 2025</div>
+            <div class="exp-role">
+              <div class="exp-role-title">English Teacher</div>
+              <div class="exp-role-org">Galaxy English School</div>
+            </div>
+            <p class="exp-desc">Designed interactive lessons for elementary students — where I learned to explain hard things simply.</p>
+            <span class="exp-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="exp-row">
+            <div class="exp-year">2023 — Present</div>
+            <div class="exp-role">
+              <div class="exp-role-title">Programming TA</div>
+              <div class="exp-role-org">Providence University</div>
+            </div>
+            <p class="exp-desc">Taught Java programming and algorithms to first-year students.</p>
+            <span class="exp-arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </div>
 
-      <div class="proj-drawer-body" data-proj-drawer-body>
-        <article class="proj-panel is-active" role="tabpanel" id="proj-panel-sompisi" aria-labelledby="proj-tab-sompisi" tabindex="0">
-          <div class="proj-panel-head">
-            <span class="proj-num">01</span>
-            <h3 class="proj-title"><span class="proj-title-word"><span>Sompisi</span></span> <span class="proj-title-word"><span>Transport</span></span></h3>
-            <span class="proj-tag">Private transport · Eswatini</span>
+      <div class="track-block reveal">
+        <div class="track-h-row">
+          <h3 class="track-h">Stack</h3>
+          <div class="legend">
+            <span><span class="legend-sw legend-sw--solid"></span> Core</span>
+            <span><span class="legend-sw legend-sw--outline"></span> Working knowledge</span>
           </div>
-          <div class="proj-item-rule"></div>
-
-          <div class="proj-panel-body">
-            <div class="proj-media">
-              <div class="proj-media-frame" style="aspect-ratio: 16 / 10">
-                <img
-                  class="proj-media-img"
-                  src="image/sompisi-preview.jpg"
-                  alt="Screenshot of the Sompisi Transport homepage"
-                  loading="lazy"
-                  style="filter: grayscale(30%) sepia(10%) saturate(110%);"
-                />
-              </div>
-            </div>
-
-            <div class="proj-copy">
-              <div class="proj-block">
-                <p class="proj-label">the problem</p>
-                <p class="proj-text">
-                  A family-run transport service in Eswatini, bookable only by word of mouth.
-                  Travellers without the number never found it.
-                </p>
-              </div>
-              <div class="proj-block">
-                <p class="proj-label">the solution</p>
-                <p class="proj-text">
-                  Built on "you always know who's driving" — real names, not a fleet. The form
-                  opens a prefilled WhatsApp message the owner confirms within the hour.
-                </p>
-              </div>
-              <div class="proj-block">
-                <p class="proj-label">the result</p>
-                <p class="proj-text">
-                  A trip is confirmed in minutes. No payments touch the site, so upkeep is near
-                  zero.
-                </p>
-              </div>
-            </div>
-
-            <div class="proj-stack">
-              <span class="proj-stack-label">Stack</span>
-              <div class="proj-stack-list">
-                <span class="proj-stack-tag">Vue 3</span>
-                <span class="proj-stack-tag">Nuxt 3</span>
-                <span class="proj-stack-tag">Fully static</span>
-                <span class="proj-stack-tag">Netlify</span>
-                <span class="proj-stack-tag">WhatsApp deep links</span>
-              </div>
-            </div>
-
-            <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-              <span>Live site</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="proj-panel is-active" role="tabpanel" id="proj-panel-triptally" aria-labelledby="proj-tab-triptally" tabindex="0">
-          <div class="proj-panel-head">
-            <span class="proj-num">02</span>
-            <h3 class="proj-title"><span class="proj-title-word"><span>TripTally</span></span></h3>
-            <span class="proj-tag">Mobile app · PWA</span>
-          </div>
-          <div class="proj-item-rule"></div>
-
-          <div class="proj-panel-body">
-            <div class="proj-media">
-              <div class="proj-media-frame" style="aspect-ratio: 16 / 11">
-                <img
-                  class="proj-media-img"
-                  src="image/triptally-preview.jpg"
-                  alt="Screenshot of the TripTally trip expense breakdown screen"
-                  loading="lazy"
-                  style="filter: grayscale(35%) sepia(10%) saturate(110%);"
-                />
-              </div>
-            </div>
-
-            <div class="proj-copy">
-              <div class="proj-block">
-                <p class="proj-label">the problem</p>
-                <p class="proj-text">
-                  Costs only land once converted — but logging them breaks the trip, and rerunning
-                  old entries at today's rate breaks the history.
-                </p>
-              </div>
-              <div class="proj-block">
-                <p class="proj-label">the solution</p>
-                <p class="proj-text">
-                  A mobile-first PWA: enter, convert, save — ten seconds, offline too. Core rule:
-                  the rate at entry is frozen for good.
-                </p>
-              </div>
-              <div class="proj-block">
-                <p class="proj-label">the result</p>
-                <p class="proj-text">
-                  Each trip tracks its own budget and categories, and past records always match
-                  the bill.
-                </p>
-              </div>
-            </div>
-
-            <div class="proj-stack">
-              <span class="proj-stack-label">Stack</span>
-              <div class="proj-stack-list">
-                <span class="proj-stack-tag">Nuxt 3</span>
-                <span class="proj-stack-tag">Vue 3</span>
-                <span class="proj-stack-tag">TypeScript (strict)</span>
-                <span class="proj-stack-tag">SPA (SSR off)</span>
-                <span class="proj-stack-tag">Tailwind</span>
-                <span class="proj-stack-tag">@nuxtjs/i18n</span>
-                <span class="proj-stack-tag">Chart.js</span>
-                <span class="proj-stack-tag">open.er-api.com</span>
-              </div>
-            </div>
-
-            <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-              <span>Live site</span><span class="proj-cta-arrow" aria-hidden="true">&#8599;</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="proj-panel proj-panel--placeholder is-active" role="tabpanel" id="proj-panel-soon" aria-labelledby="proj-tab-soon" tabindex="0">
-          <div class="proj-placeholder-panel">
-            <p class="proj-placeholder-text">More projects coming soon</p>
-          </div>
-        </article>
+        </div>
+        <div class="chips">
+          <span class="chip">HTML / CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Vue.js</span>
+          <span class="chip">Nuxt</span>
+          <span class="chip chip--wine">TypeScript</span>
+          <span class="chip">Java</span>
+          <span class="chip">MySQL</span>
+          <span class="chip chip--wine">AI-assisted workflows</span>
+          <span class="chip chip--outline">Tailwind</span>
+          <span class="chip chip--outline">Node.js</span>
+          <span class="chip chip--outline">Python</span>
+          <span class="chip chip--outline">Git</span>
+          <span class="chip chip--outline">Figma</span>
+          <span class="chip chip--outline">PWA</span>
+          <span class="chip chip--outline">REST APIs</span>
+        </div>
       </div>
-    </aside>
 
-    <!-- 4. Services -->
-    <section id="services" class="section services fade-section">
-      <div class="container">
-        <span class="section-label">03 — Services</span>
-        <h2 class="section-title">Three ways to fix what's costing you customers.</h2>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <!-- Digital experience diagnosis: magnifying glass over a heartbeat/ECG line -->
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="12" fill="none" stroke="#0A0A0A" stroke-width="2" />
-                <line x1="29" y1="29" x2="42" y2="42" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
-                <polyline points="12,20 16,20 18,14 22,26 25,20 28,20" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-            <span class="service-number">01</span>
-            <h3 class="service-title">Digital Diagnostic</h3>
-            <p class="service-text">I look at your website, booking flow, and customer journey to find exactly where you're losing customers — and what to fix first.</p>
-          </article>
-
-          <article class="service-card">
-            <!-- Custom website/app development: browser window overlapped by a phone frame -->
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="6" width="30" height="22" rx="3" fill="none" stroke="#0A0A0A" stroke-width="2" />
-                <line x1="2" y1="12" x2="32" y2="12" stroke="#0A0A0A" stroke-width="2" />
-                <rect x="24" y="18" width="16" height="26" rx="4" fill="#FAFAFA" stroke="#0A0A0A" stroke-width="2" />
-                <line x1="30" y1="40" x2="34" y2="40" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </div>
-            <span class="service-number">02</span>
-            <h3 class="service-title">Custom Digital Systems</h3>
-            <p class="service-text">Websites, booking tools, or customer portals — whatever solves your specific problem, built to fit your business, not a template.</p>
-          </article>
-
-          <article class="service-card">
-            <!-- AI-assisted workflow: 3 nodes connected by one-directional arrows -->
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <marker id="svc-flow-arrow-en" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                    <path d="M0 0 L6 3 L0 6 Z" fill="#0A0A0A" />
-                  </marker>
-                </defs>
-                <line x1="11" y1="24" x2="19" y2="24" stroke="#0A0A0A" stroke-width="2" marker-end="url(#svc-flow-arrow-en)" />
-                <line x1="29" y1="24" x2="37" y2="24" stroke="#0A0A0A" stroke-width="2" marker-end="url(#svc-flow-arrow-en)" />
-                <circle cx="6" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
-                <circle cx="24" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
-                <circle cx="42" cy="24" r="5" fill="none" stroke="#0A0A0A" stroke-width="2" />
-              </svg>
-            </div>
-            <span class="service-number">03</span>
-            <h3 class="service-title">AI-Assisted Workflows</h3>
-            <p class="service-text">Automating the repetitive parts of running your business, like customer inquiries or booking confirmations, so you spend less time on manual back-and-forth.</p>
-          </article>
+      <div class="track-block reveal">
+        <h3 class="track-h">Certifications &amp; achievements</h3>
+        <div class="certs">
+          <div class="cert-row"><span class="cert-year">2025</span><span class="cert-name">TOEIC 835</span></div>
+          <div class="cert-row"><span class="cert-year">2025</span><span class="cert-name">ITSA Generative AI Web Design Competition — Finalist</span></div>
+          <div class="cert-row"><span class="cert-year">2025</span><span class="cert-name">Providence University Capstone Showcase — Honorable Mention</span></div>
+          <div class="cert-row"><span class="cert-year">2024</span><span class="cert-name">PU Campus Hackathon — Honorable Mention</span></div>
+          <div class="cert-row"><span class="cert-year">2024</span><span class="cert-name">ICDL Artificial Intelligence 1.0 Certification</span></div>
+          <div class="cert-row"><span class="cert-year">2024</span><span class="cert-name">ICDL Internet of Things 1.0 Certification</span></div>
         </div>
       </div>
     </section>
 
-    <!-- 5. Contact -->
-    <section id="contact" class="section contact fade-section">
-      <div class="contact-doodle" aria-hidden="true">
-        <svg viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 8 h78 a4 4 0 0 1 4 4 v34 a4 4 0 0 1 -4 4 h-50 l-16 16 v-16 h-12 a4 4 0 0 1 -4 -4 v-34 a4 4 0 0 1 4 -4 z" fill="none" stroke="#0A0A0A" stroke-width="2" />
-          <line x1="16" y1="22" x2="70" y2="22" stroke="#0A0A0A" stroke-width="2" opacity="0.6" />
-          <line x1="16" y1="32" x2="54" y2="32" stroke="#0A0A0A" stroke-width="2" opacity="0.6" />
-        </svg>
+    <!-- ══════════ 03 SELECTED WORK ══════════ -->
+    <section id="work" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <span class="sec-label">Selected work</span>
       </div>
 
-      <div class="container">
-        <span class="section-label">04 — Contact</span>
-        <h2 class="section-title">Let's talk about what's costing you customers.</h2>
-        <p class="section-text">Whether it's a quick question or a full project — reach out however's easiest for you.</p>
+      <h2 class="work-headline reveal">Every one of these started as a <span class="accent">business problem</span>.</h2>
 
-        <div class="contact-links">
-          <a href="mailto:selina101292@gmail.com" class="contact-link">
-            <span class="contact-link-label">Email</span>
-            <span class="contact-link-value">selina101292@gmail.com</span>
-          </a>
-
-          <a href="https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <span class="contact-link-label">LinkedIn</span>
-            <span class="contact-link-value">/in/玟瑄-黃</span>
-          </a>
-
-          <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="contact-link" id="whatsapp-link">
-            <span class="contact-link-label">WhatsApp</span>
-            <span class="contact-link-value">+886 965 418 312</span>
-          </a>
+      <div class="work-list">
+        <!-- 01 -->
+        <div class="work-row reveal">
+          <div class="grid12">
+            <div class="work-media-col">
+              <div class="work-media">
+                <img src="image/sompisi-preview.jpg" alt="Sompisi Transport screenshot" loading="lazy" />
+              </div>
+            </div>
+            <div class="work-info">
+              <div class="work-meta">
+                <span>01</span>
+                <span class="work-meta-status">Shipped · 2025</span>
+                <span class="work-meta-sector">Eswatini</span>
+              </div>
+              <h3 class="work-title">Sompisi Transport</h3>
+              <div class="work-facts">
+                <div class="work-fact">
+                  <span class="work-fact-key">Problem</span>
+                  <p>A family-run private driving service with no way for travellers to find or trust them online.</p>
+                </div>
+                <div class="work-fact">
+                  <span class="work-fact-key">Built</span>
+                  <p>A mobile-first site that names the actual driver, prices the actual routes, and books straight into WhatsApp.</p>
+                </div>
+              </div>
+              <div class="work-tags">
+                <span class="tag">Nuxt</span>
+                <span class="tag">Tailwind</span>
+                <span class="tag">WhatsApp API</span>
+                <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">Live site <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="whatsapp-qr">
-          <img id="whatsapp-qr-img" alt="WhatsApp QR code" width="140" height="140" />
-          <span class="whatsapp-qr-caption">Scan to start a WhatsApp chat</span>
+        <!-- 02 -->
+        <div class="work-row reveal">
+          <div class="grid12">
+            <div class="work-media-col">
+              <div class="work-media">
+                <img src="image/triptally-preview.jpg" alt="TripTally screenshot" loading="lazy" />
+              </div>
+            </div>
+            <div class="work-info">
+              <div class="work-meta">
+                <span>02</span>
+                <span class="work-meta-status">Shipped · PWA</span>
+                <span class="work-meta-sector">Personal</span>
+              </div>
+              <h3 class="work-title">TripTally</h3>
+              <div class="work-facts">
+                <div class="work-fact">
+                  <span class="work-fact-key">Problem</span>
+                  <p>Splitting travel costs across currencies always ends in a messy group chat and a spreadsheet nobody updates.</p>
+                </div>
+                <div class="work-fact">
+                  <span class="work-fact-key">Built</span>
+                  <p>An offline-first expense tracker with per-day budgets, live currency conversion and a shared trip ledger.</p>
+                </div>
+              </div>
+              <div class="work-tags">
+                <span class="tag">Vue</span>
+                <span class="tag">PWA</span>
+                <span class="tag">IndexedDB</span>
+                <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">Live site <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- 03 open slot -->
+        <div class="work-row">
+          <div class="grid12">
+            <div class="work-media-col">
+              <div class="work-slot" aria-hidden="true">+</div>
+            </div>
+            <div class="work-slot-info">
+              <div class="eyebrow">03 · Open slot</div>
+              <h3>Your project could sit here.</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-cta reveal">
+        <div class="work-cta-copy">
+          <span class="work-cta-eyebrow">Next one could be yours</span>
+          <span class="work-cta-title">Let's build yours next.</span>
+        </div>
+        <a href="#contact" class="btn btn--light">Start a project <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- ══════════ 04 SERVICES ══════════ -->
+    <section id="services" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">04</span>
+        <span class="sec-label">Services</span>
+      </div>
+
+      <h2 class="services-headline reveal">Three ways to fix what's costing you customers.</h2>
+
+      <div class="services-grid reveal">
+        <div class="service">
+          <div class="service-num">01</div>
+          <h3>Digital diagnostic</h3>
+          <p>I go through your site, booking flow and customer journey to find exactly where you're losing people — and what to fix first.</p>
+          <div class="service-deliver">Deliverable · Written audit</div>
+        </div>
+        <div class="service">
+          <div class="service-num">02</div>
+          <h3>Custom digital systems</h3>
+          <p>Websites, booking tools or customer portals — whatever solves your specific problem, built to fit your business, not a template.</p>
+          <div class="service-deliver">Deliverable · Shipped product</div>
+        </div>
+        <div class="service">
+          <div class="service-num">03</div>
+          <h3>AI-assisted workflows</h3>
+          <p>Automating the repetitive parts of running your business — inquiries, booking confirmations — so you spend less time on manual back-and-forth.</p>
+          <div class="service-deliver">Deliverable · Automation setup</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ 05 CONTACT ══════════ -->
+    <section id="contact" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">05</span>
+        <span class="sec-label">Contact</span>
+      </div>
+
+      <div class="contact-body grid12 reveal">
+        <div class="contact-lead">
+          <h2>Let's talk about what's costing you customers<span class="accent">.</span></h2>
+          <p>A quick question or a full project — reach out however's easiest for you. I reply within a day.</p>
+        </div>
+        <div class="contact-qr">
+          <img id="whatsapp-qr-img" alt="WhatsApp QR code" width="128" height="128" />
+          <span class="contact-qr-cap">Scan to start a WhatsApp chat</span>
+        </div>
+      </div>
+
+      <div class="contact-links reveal">
+        <a href="mailto:selina101292@gmail.com" class="contact-link">
+          <span class="contact-link-key">Email</span>
+          <span class="contact-link-val">selina101292@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-link-key">LinkedIn</span>
+          <span class="contact-link-val">/in/玟瑄-黃</span>
+        </a>
+        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="contact-link" id="whatsapp-link">
+          <span class="contact-link-key">WhatsApp</span>
+          <span class="contact-link-val">+886 965 418 312</span>
+        </a>
       </div>
     </section>
   </main>
@@ -749,6 +442,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20260901"></script>
+  <script src="script.js?v=20260902"></script>
 </body>
 </html>
