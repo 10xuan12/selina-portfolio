@@ -7,15 +7,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const isZh = (document.documentElement.lang || 'en').toLowerCase().startsWith('zh');
 
   /* ------------------------------------------------------------------
-     Scroll progress bar
+     Intro curtain — plays once per session (the <head> gate adds
+     .intro-seen on every later load). Remove it from the DOM once it
+     has swept off, or immediately when it isn't going to play.
+     ------------------------------------------------------------------ */
+  const root = document.documentElement;
+  const introSeen = root.classList.contains('intro-seen');
+  const curtain = document.getElementById('om-curtain');
+
+  if (introSeen || prefersReducedMotion) {
+    root.classList.add('intro-done');
+    if (curtain) curtain.remove();
+  } else {
+    if (curtain) {
+      curtain.addEventListener('animationend', (e) => {
+        if (e.animationName === 'curtain') curtain.remove();
+      });
+      setTimeout(() => curtain.remove(), 2600);
+    }
+    // Lock the hero into its resting state once the staggered
+    // sequence (last step ~1980ms + photo zoom to ~4100ms) has run.
+    setTimeout(() => root.classList.add('intro-done'), 4300);
+  }
+
+  /* ------------------------------------------------------------------
+     Scroll progress bar. Browsers with scroll-driven animations fill
+     it natively via CSS (animation-timeline: scroll(root)); this is
+     the fallback for everything else.
      ------------------------------------------------------------------ */
   const progress = document.getElementById('scroll-progress');
-  if (progress) {
+  const nativeScrollTimeline =
+    window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll(root)');
+
+  if (progress && !nativeScrollTimeline) {
     const updateProgress = () => {
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
       const pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
-      progress.style.width = `${Math.min(100, Math.max(0, pct * 100))}%`;
+      progress.style.transform = `scaleX(${Math.min(1, Math.max(0, pct))})`;
     };
     updateProgress();
     window.addEventListener('scroll', updateProgress, { passive: true });
@@ -99,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------
      Scroll reveal: elements marked .reveal fade/rise in once
      ------------------------------------------------------------------ */
-  const revealEls = document.querySelectorAll('.reveal');
+  const revealEls = document.querySelectorAll('.reveal, .reveal--stagger');
 
   if (revealEls.length) {
     if (prefersReducedMotion || !('IntersectionObserver' in window)) {

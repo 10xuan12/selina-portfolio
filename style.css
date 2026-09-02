@@ -122,10 +122,65 @@ strong {
   top: 0;
   left: 0;
   height: 3px;
-  width: 0;
+  width: 100%;
   background: var(--wine);
   z-index: 60;
-  transition: width 90ms linear;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+/* Native scroll-driven fill where supported; script.js drives the same
+   transform on browsers without animation-timeline. */
+@supports (animation-timeline: scroll(root)) {
+  #scroll-progress {
+    animation: barGrow linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+/* ==========================================================================
+   Intro curtain — plays once per session (see the inline <head> gate)
+   ========================================================================== */
+#om-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: var(--ink);
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: curtain 900ms cubic-bezier(0.76, 0, 0.24, 1) 1150ms forwards;
+}
+
+.intro-seen #om-curtain {
+  display: none;
+}
+
+.om-curtain-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  animation: curtainInner 900ms cubic-bezier(0.76, 0, 0.24, 1) 1150ms forwards;
+}
+
+.om-curtain-name {
+  font-family: var(--sans);
+  font-size: clamp(28px, 5vw, 72px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--paper);
+  animation: curtainText 2050ms var(--ease) both;
+}
+
+.om-curtain-rule {
+  width: min(320px, 40vw);
+  height: 2px;
+  background: var(--wine);
+  transform-origin: 0 50%;
+  animation: curtainRule 2050ms var(--ease) both;
 }
 
 /* ==========================================================================
@@ -450,16 +505,116 @@ main {
   color: var(--gray);
 }
 
-/* Scroll reveal — only active when JS has tagged <html class="js"> */
+/* --------------------------------------------------------------------------
+   Scroll reveal — only active when JS has tagged <html class="js">.
+   Each .reveal block rises (52px up + fade) once it scrolls into view;
+   .reveal--stagger instead animates its direct children in sequence.
+   -------------------------------------------------------------------------- */
 .js .reveal {
   opacity: 0;
-  transform: translateY(38px);
+  transform: translateY(52px);
 }
 
 .js .reveal.in {
+  animation: rise 0.85s var(--ease) both;
+}
+
+.js .reveal--stagger,
+.js .reveal--stagger.in {
   opacity: 1;
   transform: none;
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  animation: none;
+}
+
+.js .reveal--stagger > * {
+  opacity: 0;
+  transform: translateY(52px);
+}
+
+.js .reveal--stagger.in > * {
+  animation: rise 0.8s var(--ease) both;
+}
+
+.js .reveal--stagger.in > *:nth-child(2) { animation-delay: 0.08s; }
+.js .reveal--stagger.in > *:nth-child(3) { animation-delay: 0.16s; }
+.js .reveal--stagger.in > *:nth-child(4) { animation-delay: 0.24s; }
+.js .reveal--stagger.in > *:nth-child(5) { animation-delay: 0.32s; }
+.js .reveal--stagger.in > *:nth-child(6) { animation-delay: 0.40s; }
+
+/* "How I work" horizontal line draws left→right with the block */
+.js .process-line {
+  transform: scaleX(0);
+}
+
+.js .process.in .process-line {
+  animation: growx 0.9s var(--ease) both;
+}
+
+/* About portrait + work thumbnails: wipe up + slow zoom on reveal */
+.js .about-portrait-media,
+.js .work-media {
+  clip-path: inset(100% 0 0 0);
+}
+
+.js .about-body.in .about-portrait-media,
+.js .work-row.in .work-media {
+  animation: clipUp 1s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.js .about-body.in .about-portrait-media img,
+.js .work-row.in .work-media img {
+  animation: slowZoom 2000ms var(--ease) both;
+}
+
+/* --------------------------------------------------------------------------
+   Hero intro sequence — time-staggered, gated so it only runs on the
+   first load of a session (alongside the curtain). On later loads
+   (.intro-seen) the hero is simply shown.
+   -------------------------------------------------------------------------- */
+.js:not(.intro-seen) .fx-fade,
+.js:not(.intro-seen) .fx-rise {
+  opacity: 0;
+}
+
+.js:not(.intro-seen) .fx-rise {
+  transform: translateY(52px);
+}
+
+.js:not(.intro-seen) .fx-fade {
+  animation: fade 700ms ease var(--fx-delay, 0ms) both;
+}
+
+.js:not(.intro-seen) .fx-rise {
+  animation: rise 900ms var(--ease) var(--fx-delay, 0ms) both;
+}
+
+.js:not(.intro-seen) .hero-figure-media {
+  clip-path: inset(100% 0 0 0);
+  animation: clipUp 1000ms cubic-bezier(0.76, 0, 0.24, 1) 1700ms both;
+}
+
+.js:not(.intro-seen) .hero-figure-media img {
+  animation: slowZoom 2400ms var(--ease) 1700ms both;
+}
+
+/* Once the intro sequence has run (script.js adds .intro-done after it
+   finishes, or immediately on a repeat visit), pin the hero to its
+   resting state so nothing can be left mid-animation. */
+.intro-done .fx-fade,
+.intro-done .fx-rise {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.intro-done .hero-figure-media {
+  clip-path: none !important;
+  animation: none !important;
+}
+
+.intro-done .hero-figure-media img {
+  animation: none !important;
+  transform: none !important;
 }
 
 /* ==========================================================================
@@ -749,14 +904,14 @@ main {
   margin-top: 44px;
 }
 
-.process-track::before {
-  content: '';
+.process-line {
   position: absolute;
   top: 7px;
   left: 0;
   right: 0;
   height: 1px;
   background: var(--ink);
+  transform-origin: 0 50%;
 }
 
 .process-steps {
@@ -1470,6 +1625,106 @@ main {
   }
 }
 
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(52px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes growx {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes barGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes clipUp {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1.16);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes curtain {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-101%);
+  }
+}
+
+@keyframes curtainInner {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(40%);
+  }
+}
+
+@keyframes curtainText {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  22%,
+  62% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes curtainRule {
+  0% {
+    transform: scaleX(0);
+  }
+  55%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
@@ -1554,7 +1809,7 @@ main {
     gap: 32px 24px;
   }
 
-  .process-track::before {
+  .process-line {
     display: none;
   }
 
@@ -1646,8 +1901,39 @@ main {
     transition-duration: 0.001ms !important;
   }
 
-  .js .reveal {
-    opacity: 1;
-    transform: none;
+  #om-curtain {
+    display: none !important;
+  }
+
+  .js .reveal,
+  .js .reveal--stagger > *,
+  .js .fx-fade,
+  .js .fx-rise {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .js .hero-figure-media,
+  .js .about-portrait-media,
+  .js .work-media {
+    clip-path: none !important;
+    animation: none !important;
+  }
+
+  .js .hero-figure-media img,
+  .js .about-portrait-media img,
+  .js .work-media img {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .js .process-line {
+    transform: scaleX(1) !important;
+    animation: none !important;
+  }
+
+  #scroll-progress {
+    transform: scaleX(0);
   }
 }
