@@ -27,7 +27,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="../style.css?v=20260901" />
+  <link rel="stylesheet" href="../style.css?v=20260901b" />
 </head>
 <body>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
@@ -56,61 +56,46 @@
   <main>
     <!-- 1. Hero -->
     <section id="hero" class="section hero fade-section">
-      <div class="hero-doodles" aria-hidden="true">
-        <!-- Mini before/after illustration, echoes the full Case Study
-             slider — auto-sweeps, draggable, pauses on interaction.
-             Tucked into the bottom-left corner so it stays out of the
-             way of the badge/title/photo column above it. -->
-        <div class="hero-doodle hero-doodle--compare" id="hero-mini-compare">
-          <div class="hero-mini-panel hero-mini-before">
-            <span class="hero-mini-label">之前</span>
-            <svg class="hero-mini-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M8 20 C8 12, 16 10, 20 14 C24 18, 14 18, 16 24 C18 30, 28 28, 26 20 C24 12, 32 14, 32 20 C32 26, 26 30, 20 28 C14 26, 10 28, 8 20 Z"
-                fill="none"
-                stroke="#0A0A0A"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-          <div class="hero-mini-panel hero-mini-after" id="hero-mini-after">
-            <span class="hero-mini-label">之後</span>
-            <svg class="hero-mini-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 21 L17 28 L30 12" fill="none" stroke="#6B1E23" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="hero-mini-handle" id="hero-mini-handle">
-            <span class="hero-mini-handle-dot"></span>
-          </div>
-        </div>
-      </div>
-
       <div class="container hero-grid">
         <div class="hero-col hero-col--left">
-          <div class="hero-col-top">
-            <!-- Top-left: availability badge -->
-            <span class="hero-badge">
-              <span class="hero-badge-dot" aria-hidden="true"></span>
-              接案中
-            </span>
+          <!-- Availability badge -->
+          <span class="hero-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            接案中
+          </span>
 
-            <!-- Top-left: headline -->
-            <h1 class="hero-title">
-              架網站是
-              <span class="hero-highlight">簡單的部分</span>。
-            </h1>
+          <!-- Headline -->
+          <h1 class="hero-title">
+            架網站是
+            <span class="hero-highlight">簡單的部分</span>。
+          </h1>
 
-            <!-- Top-left: skill pills -->
-            <div class="hero-skills">
-              <span class="hero-skill-pill">VUE.JS</span>
-              <span class="hero-skill-pill">NUXT</span>
-              <span class="hero-skill-pill">AI-ASSISTED DEV</span>
-            </div>
+          <!-- Skill pills -->
+          <div class="hero-skills">
+            <span class="hero-skill-pill">VUE.JS</span>
+            <span class="hero-skill-pill">NUXT</span>
+            <span class="hero-skill-pill">AI-ASSISTED DEV</span>
           </div>
 
-          <!-- Middle-left: portrait -->
+          <!-- Subtitle + rotating pain points -->
+          <div class="hero-message">
+            <p class="hero-subtitle">找出真正讓你流失客戶的原因——那才是我做的事。</p>
+
+            <div class="hero-rotator" id="hero-rotator" aria-live="polite">
+              <span class="hero-rotator-item is-active">客戶找不到你。</span>
+              <span class="hero-rotator-item">訂位卡在人工訊息裡。</span>
+              <span class="hero-rotator-item">國際旅客看不懂你的服務。</span>
+            </div>
+
+            <p class="hero-fine-print">專為那些正因數位體驗問題而悄悄流失客戶的中小企業所設計。</p>
+          </div>
+        </div>
+
+        <div class="hero-col hero-col--right">
+          <!-- Origin tag -->
+          <p class="eyebrow hero-origin">01 / 來自台灣</p>
+
+          <!-- Portrait -->
           <div class="hero-photo-block">
             <div class="hero-photo">
               <img
@@ -126,31 +111,15 @@
           </div>
         </div>
 
-        <div class="hero-col hero-col--right">
-          <!-- Top-right: origin tag -->
-          <p class="eyebrow hero-origin">01 / 來自台灣</p>
-
-          <!-- Middle-right: subtitle + rotating pain points -->
-          <div class="hero-message">
-            <p class="hero-subtitle">找出真正讓你流失客戶的原因——那才是我做的事。</p>
-
-            <div class="hero-rotator" id="hero-rotator" aria-live="polite">
-              <span class="hero-rotator-item is-active">客戶找不到你。</span>
-              <span class="hero-rotator-item">訂位卡在人工訊息裡。</span>
-              <span class="hero-rotator-item">國際旅客看不懂你的服務。</span>
-            </div>
-
-            <p class="hero-fine-print">專為那些正因數位體驗問題而悄悄流失客戶的中小企業所設計。</p>
-          </div>
-        </div>
-
         <!-- Bottom: giant name mark + CTA, spans the full width -->
         <div class="hero-name-block">
           <h2 class="hero-name">SELINA HUANG</h2>
-          <p class="hero-name-caption">2026 Portfolio</p>
-          <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" id="hero-cta" class="btn btn-primary hero-cta">
-            <span>透過 WhatsApp 聯繫</span>
-          </a>
+          <div class="hero-name-meta">
+            <p class="hero-name-caption">2026 Portfolio</p>
+            <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" id="hero-cta" class="btn btn-primary hero-cta">
+              <span>透過 WhatsApp 聯繫</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

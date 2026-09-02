@@ -385,10 +385,6 @@ h3 {
     transform: none !important;
   }
 
-  .hero-doodle {
-    animation: none;
-  }
-
   .hero-rotator-item {
     transition: none;
   }
@@ -443,121 +439,6 @@ h3 {
     var(--white);
 }
 
-.hero-doodles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero-doodle {
-  position: absolute;
-  animation: doodle-float 10s var(--ease) infinite;
-}
-
-.hero-doodle svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-@keyframes doodle-float {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 -14px;
-  }
-}
-
-/* Mini before/after — the only decorative doodle left in the hero.
-   Hidden on mobile/tablet (the badge/title/photo column already fills
-   that space); tucked into the bottom-left corner on desktop, below
-   the photo column, so it reads as a quiet footnote, not competition
-   for the name mark's visual weight. It carries its own motion
-   (auto-sweeping divider) so it skips the shared doodle-float bob, and
-   it opts back into pointer events since it's draggable. */
-.hero-doodle--compare {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .hero-doodle--compare {
-    display: block;
-    bottom: 3rem;
-    left: 4%;
-    width: 130px;
-    opacity: 0.65;
-    animation: none;
-    pointer-events: auto;
-  }
-}
-
-.hero-doodle--compare {
-  --mini-pos: 50%;
-  position: absolute;
-  height: 68px;
-  overflow: hidden;
-  border: 1px solid rgba(138, 138, 138, 0.35);
-  border-radius: 4px;
-  background-color: var(--white);
-  cursor: ew-resize;
-  touch-action: none;
-  user-select: none;
-}
-
-.hero-mini-panel {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.3rem;
-  padding: 0.6rem 0.7rem;
-}
-
-.hero-mini-after {
-  align-items: flex-end;
-  text-align: right;
-  clip-path: inset(0 0 0 var(--mini-pos));
-}
-
-.hero-mini-label {
-  font-size: 0.55rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--wine);
-}
-
-.hero-doodle--compare .hero-mini-icon {
-  width: 22px;
-  height: 22px;
-}
-
-.hero-mini-handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--mini-pos);
-  width: 2px;
-  background-color: var(--wine);
-  translate: -50% 0;
-  pointer-events: none;
-}
-
-.hero-mini-handle-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--wine);
-  translate: -50% -50%;
-}
-
 /* ---- Layout: a single-column stack on mobile, an asymmetric
    left/right grid from 1024px up. .hero-col--left and .hero-col--right
    are plain flex columns on mobile (their own internal order is what
@@ -577,14 +458,11 @@ h3 {
 .hero-col {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.35rem;
 }
 
-.hero-col-top {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.1rem;
+.hero-col--right {
+  gap: 1rem;
 }
 
 .hero-message {
@@ -682,7 +560,8 @@ h3 {
 }
 
 .hero-photo {
-  width: 140px;
+  width: 100%;
+  max-width: 240px;
 }
 
 .hero-photo-img {
@@ -757,21 +636,31 @@ h3 {
   opacity: 1;
 }
 
-/* ---- Giant name mark ---- */
+/* ---- Giant name mark ----
+   A full-width baseline band: hairline rule on top, name left-aligned,
+   caption + CTA stacked to the right of it on desktop. ---- */
 .hero-name-block {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0.3rem;
-  text-align: right;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  border-top: 1px solid rgba(138, 138, 138, 0.4);
 }
 
 .hero-name {
   margin: 0;
-  font-size: clamp(2.8rem, 15vw, 6rem);
-  line-height: 0.92;
-  letter-spacing: -0.01em;
+  font-size: clamp(2.6rem, 13vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
   color: var(--black);
+}
+
+.hero-name-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
 }
 
 .hero-name-caption {
@@ -784,7 +673,7 @@ h3 {
 }
 
 .hero-cta {
-  margin-top: 0.75rem;
+  margin-top: 0.15rem;
 }
 
 /* ---- Scroll-in stagger — targets the 7 content blocks by class
@@ -849,22 +738,18 @@ h3 {
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: clamp(2rem, 6vw, 5rem);
-    row-gap: 1.5rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    column-gap: clamp(2.5rem, 6vw, 5rem);
+    row-gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: start;
   }
 
   .hero-col {
+    gap: 1.5rem;
+  }
+
+  .hero-col--left {
     gap: 1.75rem;
-  }
-
-  .hero-col-top {
-    gap: 0.85rem;
-  }
-
-  .hero-col--left,
-  .hero-col--right {
-    justify-content: space-between;
   }
 
   .hero-title {
@@ -872,20 +757,26 @@ h3 {
   }
 
   .hero-photo {
-    width: 150px;
+    max-width: 340px;
   }
 
   .hero-name-block {
     grid-column: 1 / -1;
-    gap: 0.2rem;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
   }
 
   .hero-name {
-    font-size: clamp(4rem, 9.5vw, 7.5rem);
+    font-size: clamp(3.4rem, 9vw, 6.5rem);
   }
 
-  .hero-cta {
-    margin-top: 0.5rem;
+  .hero-name-meta {
+    flex: 0 0 auto;
+    align-items: flex-end;
+    text-align: right;
+    padding-bottom: 0.35rem;
   }
 }
 
@@ -901,7 +792,7 @@ h3 {
   }
 
   .hero-col {
-    gap: 2rem;
+    gap: 1.35rem;
   }
 }
 
@@ -1590,12 +1481,10 @@ h3 {
 
 /* ---- Strip: horizontal snap-scroll selector cards ---- */
 .proj-strip {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  padding-block-end: 0.35rem;
-  -webkit-overflow-scrolling: touch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
   scrollbar-width: none;
 }
 
@@ -1611,8 +1500,6 @@ h3 {
 
 .proj-card {
   position: relative;
-  flex: 0 0 220px;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(138, 138, 138, 0.25);
@@ -1664,9 +1551,9 @@ h3 {
 }
 
 .proj-card--placeholder {
-  border-style: dashed;
-  opacity: 0.7;
   cursor: default;
+  border-color: rgba(138, 138, 138, 0.2);
+  background-color: color-mix(in srgb, var(--gray) 6%, transparent);
 }
 
 /* Number + flag sit in their own bar above the screenshot rather than
@@ -1699,7 +1586,7 @@ h3 {
 }
 
 .proj-card-media {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   background-color: var(--gray-dark);
 }
 
@@ -1712,13 +1599,19 @@ h3 {
 }
 
 .proj-card-media--placeholder {
-  background-image: repeating-linear-gradient(
-    135deg,
-    rgba(138, 138, 138, 0.18) 0,
-    rgba(138, 138, 138, 0.18) 5px,
-    transparent 5px,
-    transparent 10px
-  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: color-mix(in srgb, var(--gray) 10%, transparent);
+}
+
+.proj-card-media--placeholder::after {
+  content: '+';
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--gray);
 }
 
 .proj-card-info {
@@ -2074,13 +1967,14 @@ h3 {
 
 /* ---- End-of-section CTA ---- */
 .proj-endcta {
-  margin-top: 0.5rem;
+  margin-top: 2.5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 2rem 1.75rem;
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 4px;
   background-color: var(--wine);
 }
 
@@ -2127,8 +2021,8 @@ h3 {
 }
 
 @media (min-width: 1024px) {
-  .proj-card {
-    flex: 0 0 260px;
+  .proj-strip {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
   .projects-section.proj-js-ready ~ .proj-drawer {
