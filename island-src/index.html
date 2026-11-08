@@ -1,51 +1,56 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta name="theme-color" content="#d5eef0" />
-    <meta name="description" content="Selina 黃玟瑄，來自台灣的全端網頁工程師。走進小島的四個營地，看看她的作品、經歷與旅行。" />
-    <title>Selina 的小島 · 全端工程師作品集</title>
+    <meta name="theme-color" content="#f4eee6" />
+    <meta name="description" content="Selina Huang is a full-stack web developer from Taiwan. Walk into the four camps on her island to see her work, experience and travels." />
+    <title>Selina's Island · Full-stack developer portfolio</title>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob: data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" hreflang="en" href="https://10xuan12.github.io/selina-portfolio/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/zh/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Selina 的小島 · 全端工程師作品集" />
-    <meta property="og:description" content="走進小島的四個營地，看看 Selina 的作品、經歷與旅行。" />
+    <meta property="og:title" content="Selina's Island · Full-stack developer portfolio" />
+    <meta property="og:description" content="Walk into the four camps to see Selina's work, experience and travels." />
     <meta property="og:url" content="https://10xuan12.github.io/selina-portfolio/" />
     <meta property="og:image" content="https://10xuan12.github.io/selina-portfolio/og-island.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="750" />
     <meta name="twitter:card" content="summary_large_image" />
   </head>
-  <body data-theme="forest">
+  <body data-theme="home">
     <main id="app">
-      <div id="world" aria-label="漫遊作品集三維場景"></div>
+      <div id="world" aria-label="Selina's Island, 3D scene"></div>
       <div class="edge-light" aria-hidden="true"></div>
       <div id="loading" role="status">
         <div class="loading-island">✳</div>
-        <p>正在抵達你的好奇心小島…</p>
+        <p>Arriving at Selina's Island…</p>
         <span>A LITTLE WORLD, A LOT TO DISCOVER.</span>
       </div>
       <header class="topbar">
-        <button id="home" class="brand" aria-label="顯示歡迎介紹">
+        <button id="home" class="brand" aria-label="Show the welcome intro">
           <span class="brand-mark">S<span>·</span></span
           ><span class="brand-copy"
-            >漫遊作品集<small>A UNIVERSE OF CURIOSITY</small></span
+            >Selina's Island<small>FULL-STACK DEV · REMOTE-READY</small></span
           >
         </button>
         <div class="top-controls">
-          <div class="theme-picker" role="group" aria-label="小島主題">
-            <button data-theme="forest" aria-pressed="true">
-              <span>♧</span> 森嶼</button
-            ><button data-theme="desert" aria-pressed="false">
-              <span>☼</span> 沙洲</button
+          <div class="theme-picker" role="group" aria-label="Island theme">
+            <button data-theme="home" aria-pressed="true">
+              <span>✦</span> Home</button
+            ><button data-theme="forest" aria-pressed="false">
+              <span>♧</span> Eswatini</button
             ><button data-theme="ocean" aria-pressed="false">
-              <span>≈</span> 淺海
+              <span>≈</span> Da Nang
             </button>
           </div>
+          <a class="round-button lang-switch" href="./zh/" hreflang="zh-Hant" aria-label="切換為中文">中</a>
           <button
             id="sound"
             class="round-button"
-            aria-label="開啟環境音"
+            aria-label="Turn sound on"
             aria-pressed="false"
           >
             <svg
@@ -59,7 +64,7 @@
               <path d="M10 5 5 9H2v6h3l5 4V5Z" />
               <path id="sound-waves" d="m16 9 5 6m0-6-5 6" />
             </svg></button
-          ><button id="help" class="round-button" aria-label="檢視玩法">
+          ><button id="help" class="round-button" aria-label="How to explore">
             ?
           </button>
         </div>
@@ -67,31 +72,31 @@
       <section id="welcome" class="welcome">
         <p class="eyebrow"><span></span> A WORLD OF YOUR OWN</p>
         <h1>
-          歡迎來到<br /><span>漫遊作品集<span class="title-dot">。</span></span>
+          Welcome to<br /><span>Selina's Island<span class="title-dot">.</span></span>
         </h1>
         <p class="welcome-story">
-          用你自己的經歷，開啟這段旅程。
+          Full-stack dev from Taiwan. Walk into the four camps to see what I’ve built.
         </p>
         <div class="welcome-instructions">
           <p>
-            <span class="instruction-symbol">↔</span><b>拖動環顧</b
-            ><span>360° 看看這座小島</span>
+            <span class="instruction-symbol">↔</span><b>Drag</b
+            ><span>look around the island in 360°</span>
           </p>
           <p>
-            <span class="instruction-symbol">⌖</span><b>點選行走</b
-            ><span>走近微光，發現我的故事</span>
+            <span class="instruction-symbol">⌖</span><b>Tap</b
+            ><span>walk to the glowing spots to find my stories</span>
           </p>
         </div>
         <button id="explore" class="primary-button">
-          出發，去逛逛 <span>↗</span></button
+          Start exploring <span>↗</span></button
         ><button id="channel" class="channel-link">
-          與我聯絡 <span>↗</span>
+          Contact me <span>↗</span>
         </button>
-        <p class="welcome-note">也可以使用 WASD / 方向鍵自由行走</p>
+        <p class="welcome-note">You can also walk with WASD / arrow keys</p>
       </section>
-      <div id="camp-labels" aria-label="島上的營地"></div>
-      <aside id="work" class="work-panel" aria-label="作品分類詳情" hidden>
-        <button id="close-work" class="close-button" aria-label="關閉詳情">
+      <div id="camp-labels" aria-label="Camps on the island"></div>
+      <aside id="work" class="work-panel" aria-label="Camp details" hidden>
+        <button id="close-work" class="close-button" aria-label="Close details">
           ×
         </button>
         <div class="panel-scene">
@@ -139,12 +144,12 @@
           <p id="work-description"></p>
           <div id="work-sections"></div>
           <button id="continue" class="continue-button">
-            繼續逛小島 <span>→</span>
+            Keep exploring <span>→</span>
           </button>
         </div>
       </aside>
-      <dialog id="evidence-dialog" aria-label="檢視完整圖片">
-        <button id="close-evidence" aria-label="關閉圖片">×</button
+      <dialog id="evidence-dialog" aria-label="Full image">
+        <button id="close-evidence" aria-label="Close image">×</button
         ><img alt="" />
         <p></p>
       </dialog>
@@ -161,16 +166,16 @@
             <circle cx="12" cy="12" r="8" />
             <path d="M4 12h16M12 4c5 4 5 12 0 16-5-4-5-12 0-16Z" />
           </svg>
-          全島視角 <span>↗</span>
+          Island view <span>↗</span>
         </button>
-        <div class="minimap" aria-label="全島位置圖">
+        <div class="minimap" aria-label="Island map">
           <span class="map-north">N</span>
           <div class="map-island">
             <span class="map-lake"></span>
             <div id="map-sites"></div>
-            <span id="map-player" aria-label="你的位置"></span>
+            <span id="map-player" aria-label="You"></span>
           </div>
-          <span class="map-caption"><i></i> 你在這裡</span>
+          <span class="map-caption"><i></i> You are here</span>
         </div>
         <div class="compass" aria-hidden="true">
           <span id="compass-needle">↑</span><span>N</span>
@@ -178,70 +183,70 @@
       </aside>
       <footer class="bottom-bar">
         <div class="world-caption">
-          <span id="theme-english">FOREST ISLAND</span>
-          <p id="theme-caption">把好奇心，走成一座島。</p>
+          <span id="theme-english">HOME · TAICHUNG</span>
+          <p id="theme-caption">Starting from Taichung, heading anywhere.</p>
         </div>
         <nav
           id="category-nav"
           class="category-nav"
-          aria-label="前往作品分類"
+          aria-label="Go to a camp"
         ></nav>
         <div class="discovery">
           <span id="visited-count">00</span
-          ><span>/ <b id="camp-total">04</b><small>營地探索</small></span>
+          ><span>/ <b id="camp-total">04</b><small>camps explored</small></span>
         </div>
       </footer>
       <div id="walk-status" class="walk-status" role="status">
-        點選地面，自由探索
+        Tap the ground to explore
       </div>
-      <div class="touch-pad" aria-label="移動方向控制">
-        <button data-dir="0,-1" aria-label="向前走">↑</button
-        ><button data-dir="-1,0" aria-label="向左走">←</button><span>✦</span
-        ><button data-dir="1,0" aria-label="向右走">→</button
-        ><button data-dir="0,1" aria-label="向後走">↓</button>
+      <div class="touch-pad" aria-label="Movement controls">
+        <button data-dir="0,-1" aria-label="Walk forward">↑</button
+        ><button data-dir="-1,0" aria-label="Walk left">←</button><span>✦</span
+        ><button data-dir="1,0" aria-label="Walk right">→</button
+        ><button data-dir="0,1" aria-label="Walk back">↓</button>
       </div>
       <div id="toast" role="status" hidden></div>
       <dialog id="help-dialog">
-        <button id="close-help" class="close-button" aria-label="關閉玩法">
+        <button id="close-help" class="close-button" aria-label="Close guide">
           ×
         </button>
         <p class="eyebrow">A FIELD GUIDE</p>
-        <h2>小島漫遊指南</h2>
+        <h2>How to explore</h2>
         <p class="help-intro">
-          不必按順序，也沒有規定路線。<br />找到微光，就能找到一個故事。
+          No set order, no fixed route.<br />Find a glowing spot, find a story.
         </p>
         <dl>
           <div>
-            <dt>環顧小島</dt>
-            <dd>滑鼠按住拖動 / 單指拖動，360° 旋轉；視角俯仰有邊界。</dd>
+            <dt>Look around</dt>
+            <dd>Drag with the mouse or one finger to rotate 360°.</dd>
           </div>
           <div>
-            <dt>靠近風景</dt>
-            <dd>滾輪 / 雙指捏合縮放，始終停留在舒適的觀看範圍。</dd>
+            <dt>Zoom</dt>
+            <dd>Scroll or pinch to zoom in and out.</dd>
           </div>
           <div>
-            <dt>自由行走</dt>
-            <dd>點選地面，或使用 WASD / 方向鍵。手機可按住左下方向按鈕。</dd>
+            <dt>Walk</dt>
+            <dd>Tap the ground, or use WASD / arrow keys. On a phone, hold the arrows at the bottom left.</dd>
           </div>
           <div>
-            <dt>發現故事</dt>
+            <dt>Find stories</dt>
             <dd>
-              走進發光圓點會開啟營地。點選分類或地圖示記，也會帶你走過去。
+              Step into a glowing circle to open a camp. Tapping a camp name or a map dot walks you there.
             </dd>
           </div>
           <div>
-            <dt>切換世界</dt>
-            <dd>森嶼、沙洲、淺海擁有不同風景，營地故事和你的位置保持不變。</dd>
+            <dt>Switch scenery</dt>
+            <dd>Home, Eswatini and Da Nang are three looks for the same island — your spot and the camps stay put.</dd>
           </div>
         </dl>
         <p class="help-foot">
-          湖泊和岸邊會擋住腳步，不會掉出小島。<br />按 Esc 可關閉詳情或指南。
+          The lake and shore stop you from wandering off.<br />Press Esc to close details or this guide.
         </p>
-        <button id="help-done" class="primary-button">知道了，出發 ↗</button>
+        <button id="help-done" class="primary-button">Got it, let’s go ↗</button>
       </dialog>
       <div id="fallback" hidden>
-        <h2>這座小島需要 WebGL 支援</h2>
-        <p>仍可透過下方分類閱讀內容。換用支援 WebGL 的瀏覽器即可自由漫遊。</p>
+        <h2>This island needs WebGL</h2>
+        <p>You can still read everything through the camps below. Use a browser with WebGL to walk around.</p>
       </div>
     </main>
     <script type="module" src="/src/main.js"></script>

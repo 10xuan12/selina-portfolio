@@ -1,371 +1,256 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Poh2ZiVzg8PSsKZcqxItIT7Pb4npj2jEmCtIr5EFWCo='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <title>Selina Huang — 全端網頁工程師</title>
-  <meta name="description" content="Selina 黃玟瑄，來自台灣的全端網頁工程師，從真實問題出發做網頁應用。" />
-
-  <link rel="icon" href="../image/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="../image/favicon-32.png" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="../image/apple-touch-icon.png" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://10xuan12.github.io/selina-portfolio/zh/index.html" />
-  <meta property="og:title" content="Selina Huang — 全端網頁工程師" />
-  <meta property="og:description" content="Selina 黃玟瑄，來自台灣的全端網頁工程師，從真實問題出發做網頁應用。" />
-  <meta property="og:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Selina Huang — 全端網頁工程師" />
-  <meta name="twitter:description" content="Selina 黃玟瑄，來自台灣的全端網頁工程師，從真實問題出發做網頁應用。" />
-  <meta name="twitter:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
-
-  <link rel="alternate" hreflang="en" href="https://10xuan12.github.io/selina-portfolio/" />
-  <link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/zh/index.html" />
-  <link rel="alternate" hreflang="x-default" href="https://10xuan12.github.io/selina-portfolio/" />
-
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('js');
-      try {
-        if (sessionStorage.getItem('sh-intro-seen')) d.classList.add('intro-seen');
-        else sessionStorage.setItem('sh-intro-seen', '1');
-      } catch (e) {
-        d.classList.add('intro-seen');
-      }
-    })();
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="stylesheet" href="../style.css?v=20261108c" />
-</head>
-<body>
-  <div id="om-curtain" aria-hidden="true">
-    <div class="om-curtain-inner">
-      <div class="om-curtain-name">SELINA HUANG</div>
-      <div class="om-curtain-rule"></div>
-    </div>
-  </div>
-
-  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-  <div id="scroll-progress" aria-hidden="true"></div>
-
-  <header class="site-header" id="site-header">
-    <div class="header-inner">
-      <a href="#top" class="logo">Selina Huang</a>
-
-      <button class="nav-toggle" id="nav-toggle" aria-label="開啟選單" aria-expanded="false" aria-controls="primary-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="nav" id="primary-nav">
-        <a href="#work" class="nav-link">01 作品</a>
-        <a href="#about" class="nav-link">02 關於</a>
-        <a href="#track" class="nav-link">03 經歷</a>
-        <a href="#contact" class="nav-link nav-cta">打聲招呼 →</a>
-      </nav>
-    </div>
-  </header>
-
-  <aside aria-label="Language"><a href="../index.html" class="lang-fab" id="lang-toggle" hreflang="en" aria-label="切換為英文">EN</a></aside>
-
-  <main id="top">
-
-    <!-- ══════════ HERO ══════════ -->
-    <section class="sec hero">
-      <div class="hero-status fx-fade" style="--fx-delay: 450ms">
-        <span class="hero-status-dot">開放遠端工作</span>
-        <span class="hero-status-loc">台灣台中 · UTC+8</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#f4eee6" />
+    <meta name="description" content="Selina 黃玟瑄，來自台灣的全端網頁工程師。走進小島的四個營地，看看她的作品、經歷與旅行。" />
+    <title>Selina 的小島 · 全端工程師作品集</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob: data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" hreflang="en" href="https://10xuan12.github.io/selina-portfolio/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/zh/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Selina 的小島 · 全端工程師作品集" />
+    <meta property="og:description" content="走進小島的四個營地，看看 Selina 的作品、經歷與旅行。" />
+    <meta property="og:url" content="https://10xuan12.github.io/selina-portfolio/zh/" />
+    <meta property="og:image" content="https://10xuan12.github.io/selina-portfolio/og-island.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="750" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="module" crossorigin src="/selina-portfolio/assets/three-DdXJh4JX.js"></script>
+    <script type="module" crossorigin src="/selina-portfolio/assets/main-CuxRYsi4.js"></script>
+    <link rel="stylesheet" crossorigin href="/selina-portfolio/assets/main-Bma1vRmB.css">
+  </head>
+  <body data-theme="home">
+    <main id="app">
+      <div id="world" aria-label="Selina 的小島三維場景"></div>
+      <div class="edge-light" aria-hidden="true"></div>
+      <div id="loading" role="status">
+        <div class="loading-island">✳</div>
+        <p>正在抵達 Selina 的小島…</p>
+        <span>A LITTLE WORLD, A LOT TO DISCOVER.</span>
       </div>
-
-      <div class="hero-grid grid12">
-        <div class="hero-lead">
-          <h1 class="hero-title fx-rise" style="--fx-delay: 550ms">SELINA HUANG</h1>
-
-          <div class="hero-message fx-rise" style="--fx-delay: 800ms">
-            <p class="hero-subtitle">台灣出身的全端工程師。從前端到後端，專做真的能解決問題的東西。</p>
+      <header class="topbar">
+        <button id="home" class="brand" aria-label="顯示歡迎介紹">
+          <span class="brand-mark">S<span>·</span></span
+          ><span class="brand-copy"
+            >Selina 的小島<small>FULL-STACK DEV · REMOTE-READY</small></span
+          >
+        </button>
+        <div class="top-controls">
+          <div class="theme-picker" role="group" aria-label="小島主題">
+            <button data-theme="home" aria-pressed="true">
+              <span>✦</span> 台中・家</button
+            ><button data-theme="forest" aria-pressed="false">
+              <span>♧</span> 史瓦帝尼</button
+            ><button data-theme="ocean" aria-pressed="false">
+              <span>≈</span> 峴港
+            </button>
           </div>
-
-          <div class="hero-actions fx-rise" style="--fx-delay: 900ms">
-            <a href="#work" class="btn btn--dark">看我做了啥 <span aria-hidden="true">→</span></a>
-            <a href="#contact" class="btn btn--ghost">打聲招呼 👋</a>
-          </div>
-
-          <div class="hero-pills fx-rise" style="--fx-delay: 1000ms">
-            <span class="pill">Vue · Nuxt</span>
-            <span class="pill">TypeScript</span>
-            <span class="pill">PHP · MySQL</span>
-            <span class="pill">C# · SQL Server</span>
-          </div>
+          <a class="round-button lang-switch" href="../" hreflang="en" aria-label="Switch to English">EN</a>
+          <button
+            id="sound"
+            class="round-button"
+            aria-label="開啟環境音"
+            aria-pressed="false"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M10 5 5 9H2v6h3l5 4V5Z" />
+              <path id="sound-waves" d="m16 9 5 6m0-6-5 6" />
+            </svg></button
+          ><button id="help" class="round-button" aria-label="檢視玩法">
+            ?
+          </button>
         </div>
-
-        <div class="hero-figure fx-rise" style="--fx-delay: 700ms">
-          <div class="hero-figure-cap">
-            <span>Fig. 01</span>
-            <span>來自台灣</span>
-          </div>
-          <div class="hero-figure-media">
-            <img src="../image/hero-portrait.jpeg" alt="Selina 的照片" width="300" height="400" loading="lazy" />
-          </div>
+      </header>
+      <section id="welcome" class="welcome">
+        <p class="eyebrow"><span></span> A WORLD OF YOUR OWN</p>
+        <h1>
+          歡迎來到<br /><span>Selina 的小島<span class="title-dot">。</span></span>
+        </h1>
+        <p class="welcome-story">
+          台灣出身的全端工程師。走進四個營地，看看我做了啥。
+        </p>
+        <div class="welcome-instructions">
+          <p>
+            <span class="instruction-symbol">↔</span><b>拖動環顧</b
+            ><span>360° 看看這座小島</span>
+          </p>
+          <p>
+            <span class="instruction-symbol">⌖</span><b>點選行走</b
+            ><span>走近微光，發現我的故事</span>
+          </p>
         </div>
-      </div>
-    </section>
-
-    <div class="band" aria-hidden="true"><div class="band-track"><span>Vue.js</span><span class="band-sep" aria-hidden="true">✦</span><span>Nuxt</span><span class="band-sep" aria-hidden="true">✦</span><span>TypeScript</span><span class="band-sep" aria-hidden="true">✦</span><span>PHP</span><span class="band-sep" aria-hidden="true">✦</span><span>MySQL</span><span class="band-sep" aria-hidden="true">✦</span><span>C#</span><span class="band-sep" aria-hidden="true">✦</span><span>SQL Server</span><span class="band-sep" aria-hidden="true">✦</span><span>REST APIs</span><span class="band-sep" aria-hidden="true">✦</span><span>AI 輔助開發</span><span class="band-sep" aria-hidden="true">✦</span><span>LLM 工作流程</span><span class="band-sep" aria-hidden="true">✦</span><span>Vue.js</span><span class="band-sep" aria-hidden="true">✦</span><span>Nuxt</span><span class="band-sep" aria-hidden="true">✦</span><span>TypeScript</span><span class="band-sep" aria-hidden="true">✦</span><span>PHP</span><span class="band-sep" aria-hidden="true">✦</span><span>MySQL</span><span class="band-sep" aria-hidden="true">✦</span><span>C#</span><span class="band-sep" aria-hidden="true">✦</span><span>SQL Server</span><span class="band-sep" aria-hidden="true">✦</span><span>REST APIs</span><span class="band-sep" aria-hidden="true">✦</span><span>AI 輔助開發</span><span class="band-sep" aria-hidden="true">✦</span><span>LLM 工作流程</span><span class="band-sep" aria-hidden="true">✦</span></div></div>
-
-    <!-- ══════════ 01 WORK ══════════ -->
-    <section id="work" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">01</span>
-        <span class="sec-label">精選作品</span>
-      </div>
-
-      <h2 class="work-headline reveal">真問題，<span class="accent">真解法。</span></h2>
-
-      <div class="work-list">
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media work-media--scroll work-media--video">
-                <video class="work-video" src="../image/video/sompisi.mp4" poster="../image/video/sompisi-poster.jpg" muted loop playsinline preload="none" aria-label="操作錄影：在 Sompisi Transport 預約接送"></video>
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>01</span>
-                <span class="work-meta-status">已上線 · 2025</span>
-                <span class="work-meta-sector">史瓦帝尼</span>
-              </div>
-              <h3 class="work-title">Sompisi Transport</h3>
-              <p class="work-line">旅客找不到、也不敢信的家族接送服務——現在找得到、看得懂，手機點一點就能用 WhatsApp 預約。</p>
-              <div class="work-tags">
-                <span class="tag">Nuxt</span>
-                <span class="tag">Tailwind</span>
-                <span class="tag">WhatsApp 預約</span>
-                <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">前往網站 <span aria-hidden="true">→</span></a>
-                <a href="https://github.com/10xuan12/sompisi-transport" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">看程式碼 <span aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </div>
+        <button id="explore" class="primary-button">
+          出發，去逛逛 <span>↗</span></button
+        ><button id="channel" class="channel-link">
+          與我聯絡 <span>↗</span>
+        </button>
+        <p class="welcome-note">也可以使用 WASD / 方向鍵自由行走</p>
+      </section>
+      <div id="camp-labels" aria-label="島上的營地"></div>
+      <aside id="work" class="work-panel" aria-label="作品分類詳情" hidden>
+        <button id="close-work" class="close-button" aria-label="關閉詳情">
+          ×
+        </button>
+        <div class="panel-scene">
+          <span id="panel-number"></span
+          ><svg
+            id="panel-art"
+            viewBox="0 0 240 120"
+            fill="none"
+            aria-hidden="true"
+          >
+            <ellipse
+              cx="125"
+              cy="102"
+              rx="79"
+              ry="9"
+              fill="currentColor"
+              opacity=".08"
+            />
+            <path
+              d="M45 100 116 24l75 76H45Z"
+              stroke="currentColor"
+              stroke-width="1.4"
+            />
+            <path
+              d="m116 24-3 76m0-48-30 48m30-48 28 48M45 100l-15 8m161-8 15 8"
+              stroke="currentColor"
+              stroke-width="1.4"
+            />
+            <circle cx="189" cy="31" r="12" stroke="currentColor" />
+            <path
+              d="M201 31h9m-21-21V3m-20 28h-8m28 21v9"
+              stroke="currentColor"
+            />
+            <path
+              d="m39 63 4-6 4 6m-4-6v17m151 8 3-5 3 5m-3-5v12"
+              stroke="currentColor"
+            />
+          </svg>
+          <p id="panel-english"></p>
         </div>
-
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media work-media--scroll work-media--video">
-                <video class="work-video" src="../image/video/triptally.mp4" poster="../image/video/triptally-poster.jpg" muted loop playsinline preload="none" aria-label="操作錄影：在 TripTally 記一筆旅費"></video>
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>02</span>
-                <span class="work-meta-status">已上線 · PWA</span>
-                <span class="work-meta-sector">個人專案</span>
-              </div>
-              <h3 class="work-title">TripTally</h3>
-              <p class="work-line">出國分帳遇到好幾種幣別就頭痛？它全包：每日預算、即時匯率，沒網路也能用。</p>
-              <div class="work-tags">
-                <span class="tag">Vue</span>
-                <span class="tag">PWA</span>
-                <span class="tag">IndexedDB</span>
-                <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">前往網站 <span aria-hidden="true">→</span></a>
-                <a href="https://github.com/10xuan12/triptally" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">看程式碼 <span aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </div>
+        <div class="panel-body">
+          <p class="eyebrow" id="panel-category"></p>
+          <h2 id="work-title"></h2>
+          <p id="work-intro" class="work-intro"></p>
+          <p id="work-description"></p>
+          <div id="work-sections"></div>
+          <button id="continue" class="continue-button">
+            繼續逛小島 <span>→</span>
+          </button>
         </div>
-
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media">
-                <img src="../image/costco-ai-preview-zh.jpg" alt="重新設計後的退貨流程，AI 步驟以紅色標示" loading="lazy" />
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>03</span>
-                <span class="work-meta-status">案例研究 · 2026</span>
-                <span class="work-meta-sector">零售 · AI</span>
-              </div>
-              <h3 class="work-title">好市多線上退貨 AI 流程改造</h3>
-              <p class="work-line">把亂糟糟的退貨來信變成清楚的案件，還拿 Claude、Gemini、ChatGPT 實測過。</p>
-              <div class="work-tags">
-                <span class="tag">流程分析</span>
-                <span class="tag">提示詞設計</span>
-                <span class="tag">LLM 評估</span>
-              </div>
-            </div>
+      </aside>
+      <dialog id="evidence-dialog" aria-label="檢視完整圖片">
+        <button id="close-evidence" aria-label="關閉圖片">×</button
+        ><img alt="" />
+        <p></p>
+      </dialog>
+      <aside class="island-tools">
+        <button id="overview" class="overview-button">
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <circle cx="12" cy="12" r="8" />
+            <path d="M4 12h16M12 4c5 4 5 12 0 16-5-4-5-12 0-16Z" />
+          </svg>
+          全島視角 <span>↗</span>
+        </button>
+        <div class="minimap" aria-label="全島位置圖">
+          <span class="map-north">N</span>
+          <div class="map-island">
+            <span class="map-lake"></span>
+            <div id="map-sites"></div>
+            <span id="map-player" aria-label="你的位置"></span>
           </div>
+          <span class="map-caption"><i></i> 你在這裡</span>
         </div>
-      </div>
-    </section>
-
-    <!-- ══════════ 02 ABOUT ══════════ -->
-    <section id="about" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">02</span>
-        <span class="sec-label">關於</span>
-      </div>
-
-      <div class="about-body grid12 reveal">
-        <div class="about-portrait">
-          <div class="about-portrait-media">
-            <img src="../image/selina-portrait.jpg" alt="Selina 的照片" width="600" height="600" loading="lazy" />
-          </div>
+        <div class="compass" aria-hidden="true">
+          <span id="compass-needle">↑</span><span>N</span>
         </div>
-        <div class="about-copy">
-          <h2>嗨，我是 Selina 👋<span class="accent">.</span></h2>
-          <p>資管畢業，現在在念碩士。寫 code 之前我會先問：到底誰在用？他們卡在哪？寫程式放最後——老實說，那是最簡單的部分。</p>
-          <div class="about-facts">
-            <div class="about-fact">
-              <span class="about-fact-key">座標</span>
-              <span class="about-fact-val">台灣台中</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact-key">語言</span>
-              <span class="about-fact-val">中文 · English</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact-key">尋找</span>
-              <span class="about-fact-val"><span class="accent">遠端全端職缺</span></span>
-            </div>
-          </div>
+      </aside>
+      <footer class="bottom-bar">
+        <div class="world-caption">
+          <span id="theme-english">HOME · TAICHUNG</span>
+          <p id="theme-caption">從台中出發，走向世界。</p>
         </div>
-      </div>
-
-      <div class="stats reveal">
-        <div class="stat"><span class="stat-num" data-count="4">4</span><span class="stat-label">年資管訓練</span></div>
-        <div class="stat"><span class="stat-num" data-count="3">3</span><span class="stat-label">年程式助教</span></div>
-        <div class="stat"><span class="stat-num" data-count="12+">12+</span><span class="stat-label">個後台模組</span></div>
-        <div class="stat"><span class="stat-num" data-count="2">2</span><span class="stat-label">個上線網站</span></div>
-      </div>
-
-      <div class="travel reveal">
-        <p class="travel-label">去過的地方 → 下一個要去的地方</p>
-        <div class="travel-strip"><div class="travel-track"><figure class="polaroid" style="--tilt:-4deg"><img src="../image/travel/t4.jpg" alt="旅行照片： Safari 日・史瓦帝尼" width="600" height="800" loading="lazy" /><figcaption>Safari 日・史瓦帝尼</figcaption></figure><figure class="polaroid" style="--tilt:3deg"><img src="../image/travel/t1.jpg" alt="旅行照片： 泰國" width="600" height="800" loading="lazy" /><figcaption>泰國</figcaption></figure><figure class="polaroid" style="--tilt:-2deg"><img src="../image/travel/t6.jpg" alt="旅行照片： 越南峴港" width="600" height="800" loading="lazy" /><figcaption>越南峴港</figcaption></figure><figure class="polaroid" style="--tilt:5deg"><img src="../image/travel/t5.jpg" alt="旅行照片： 史瓦帝尼" width="600" height="800" loading="lazy" /><figcaption>史瓦帝尼</figcaption></figure><figure class="polaroid" style="--tilt:-3deg"><img src="../image/travel/t8.jpg" alt="旅行照片： 泰國" width="600" height="800" loading="lazy" /><figcaption>泰國</figcaption></figure><figure class="polaroid" style="--tilt:2deg"><img src="../image/travel/t7.jpg" alt="旅行照片： 海邊日・越南峴港" width="600" height="800" loading="lazy" /><figcaption>海邊日・越南峴港</figcaption></figure><figure class="polaroid" style="--tilt:-5deg"><img src="../image/travel/t3.jpg" alt="旅行照片： 曬太陽散步・南非約翰尼斯堡" width="600" height="800" loading="lazy" /><figcaption>曬太陽散步・南非約翰尼斯堡</figcaption></figure><figure class="polaroid" style="--tilt:4deg"><img src="../image/travel/t2.jpg" alt="旅行照片： 續命咖啡・越南峴港" width="600" height="800" loading="lazy" /><figcaption>續命咖啡・越南峴港</figcaption></figure><figure class="polaroid" style="--tilt:-4deg" aria-hidden="true"><img src="../image/travel/t4.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Safari 日・史瓦帝尼</figcaption></figure><figure class="polaroid" style="--tilt:3deg" aria-hidden="true"><img src="../image/travel/t1.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>泰國</figcaption></figure><figure class="polaroid" style="--tilt:-2deg" aria-hidden="true"><img src="../image/travel/t6.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>越南峴港</figcaption></figure><figure class="polaroid" style="--tilt:5deg" aria-hidden="true"><img src="../image/travel/t5.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>史瓦帝尼</figcaption></figure><figure class="polaroid" style="--tilt:-3deg" aria-hidden="true"><img src="../image/travel/t8.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>泰國</figcaption></figure><figure class="polaroid" style="--tilt:2deg" aria-hidden="true"><img src="../image/travel/t7.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>海邊日・越南峴港</figcaption></figure><figure class="polaroid" style="--tilt:-5deg" aria-hidden="true"><img src="../image/travel/t3.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>曬太陽散步・南非約翰尼斯堡</figcaption></figure><figure class="polaroid" style="--tilt:4deg" aria-hidden="true"><img src="../image/travel/t2.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>續命咖啡・越南峴港</figcaption></figure></div></div>
-      </div>
-
-
-      <div class="kb reveal">
-        <h3 class="kb-h">知識庫</h3>
-        <div class="kb-tabs" role="tablist" aria-label="關於 Selina"><button type="button" role="tab" class="kb-tab" id="kb-tab-me" aria-controls="kb-me" aria-selected="true" tabindex="0"><span class="kb-tab-n">01</span>我是誰</button><button type="button" role="tab" class="kb-tab" id="kb-tab-skills" aria-controls="kb-skills" aria-selected="false" tabindex="-1"><span class="kb-tab-n">02</span>我會什麼</button><button type="button" role="tab" class="kb-tab" id="kb-tab-jobs" aria-controls="kb-jobs" aria-selected="false" tabindex="-1"><span class="kb-tab-n">03</span>夢想職位</button><button type="button" role="tab" class="kb-tab" id="kb-tab-life" aria-controls="kb-life" aria-selected="false" tabindex="-1"><span class="kb-tab-n">04</span>我想過的生活</button><span class="kb-bar" aria-hidden="true"></span></div>
-        <div class="kb-panel" role="tabpanel" id="kb-me" aria-labelledby="kb-tab-me" tabindex="0"><ul class="kb-list"><li class="kb-row"><span class="kb-row-n">01</span><strong class="kb-row-t">衝刺時全力投入，平常重視平衡</strong><span class="kb-row-d">死線模式一開就衝到上線；做完就真的下班。</span></li><li class="kb-row"><span class="kb-row-n">02</span><strong class="kb-row-t">上線的成就感最上頭</strong><span class="kb-row-d">把東西從零做到上線那一刻，真的很爽。</span></li><li class="kb-row"><span class="kb-row-n">03</span><strong class="kb-row-t">細節控</strong><span class="kb-row-d">小地方會再三確認，不讓使用者踩雷。</span></li><li class="kb-row"><span class="kb-row-n">04</span><strong class="kb-row-t">永遠在計畫下一趟旅行</strong><span class="kb-row-d">新地方讓我保持好奇，跨時區合作也很習慣。</span></li><li class="kb-row"><span class="kb-row-n">05</span><strong class="kb-row-t">工作 ≠ 辦公桌</strong><span class="kb-row-d">成果比座位重要，有 Wi-Fi 就能交付。</span></li></ul></div><div class="kb-panel" role="tabpanel" id="kb-skills" aria-labelledby="kb-tab-skills" tabindex="0"><blockquote class="kb-quote"><p>會什麼不是重點。有 AI，什麼都學得會——重點是<mark>想學的心</mark>，和<mark>把事情負責到底</mark>。</p><footer><span>證明</span> 在豐聯我從前端做起；團隊需要後端時，我就學 C# 接下來。</footer></blockquote><div class="kb-groups"><div class="kb-group"><span class="kb-group-h">前端</span><div class="kb-chips"><span class="chip">HTML / CSS</span><span class="chip">JavaScript</span><span class="chip">Vue.js</span><span class="chip">Nuxt</span><span class="chip">TypeScript</span><span class="chip chip--outline">Tailwind</span><span class="chip chip--outline">PWA</span></div></div><div class="kb-group"><span class="kb-group-h">後端</span><div class="kb-chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Java</span><span class="chip chip--outline">C#</span><span class="chip chip--outline">SQL Server</span><span class="chip chip--outline">REST APIs</span><span class="chip chip--outline">Node.js</span><span class="chip chip--outline">Firebase</span></div></div><div class="kb-group"><span class="kb-group-h">AI</span><div class="kb-chips"><span class="chip">AI 輔助開發</span><span class="chip chip--outline">LLM 提示詞設計與評估</span><span class="chip chip--outline">Python</span></div></div><div class="kb-group"><span class="kb-group-h">工具</span><div class="kb-chips"><span class="chip chip--outline">Git</span><span class="chip chip--outline">Figma</span></div></div></div><div class="legend kb-legend"><span><span class="legend-sw legend-sw--solid"></span> 主力</span><span><span class="legend-sw legend-sw--outline"></span> 熟悉</span></div></div><div class="kb-panel" role="tabpanel" id="kb-jobs" aria-labelledby="kb-tab-jobs" tabindex="0"><div class="kb-jobs"><a href="#work" class="kb-job"><span class="kb-row-n">01</span><strong class="kb-job-t">遠端全端工程師</strong><span class="kb-job-d">前端 Vue／Nuxt，後端 PHP、C#、SQL，兩邊都包。</span><span class="kb-proof"><span>證明</span> 豐聯後台 · Sompisi Transport <span aria-hidden="true">→</span></span></a><a href="#work" class="kb-job"><span class="kb-row-n">02</span><strong class="kb-job-t">AI 相關工程師</strong><span class="kb-job-d">做出大家真的敢用的 LLM 工作流程，而且認真測過。</span><span class="kb-proof"><span>證明</span> 好市多退貨 AI 案例 <span aria-hidden="true">→</span></span></a></div></div><div class="kb-panel" role="tabpanel" id="kb-life" aria-labelledby="kb-tab-life" tabindex="0"><div class="kb-life kb-life--photos"><div class="kb-fan" aria-hidden="true"><figure class="polaroid polaroid--fan" style="--i:0"><img src="../image/travel/t4.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Safari 日・史瓦帝尼</figcaption></figure><figure class="polaroid polaroid--fan" style="--i:1"><img src="../image/travel/t1.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>泰國</figcaption></figure><figure class="polaroid polaroid--fan" style="--i:2"><img src="../image/travel/t7.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>海邊日・越南峴港</figcaption></figure></div><div class="kb-life-item"><strong class="kb-life-t">全遠端</strong><span class="kb-life-d">一台筆電＋穩定 Wi-Fi＝辦公室。</span></div><div class="kb-life-item"><strong class="kb-life-t">Work–life balance</strong><span class="kb-life-d">該拚就拚，下班就真的下班。</span></div><div class="kb-life-item"><strong class="kb-life-t">旅行</strong><span class="kb-life-d">邊看世界，邊做酷東西。</span></div></div></div>
-      </div>
-    </section>
-
-    <!-- ══════════ 03 EXPERIENCE ══════════ -->
-    <section id="track" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">03</span>
-        <span class="sec-label">經歷</span>
-      </div>
-
-      <div class="track-block reveal">
-        <h3 class="track-h">工作經歷</h3>
-        <div class="exp-list">
-          <div class="exp-row exp-row--current">
-            <div class="exp-year">2026 — 現在</div>
-            <div class="exp-role">
-              <div class="exp-role-title">資訊管理碩士</div>
-              <div class="exp-role-org">靜宜大學</div>
-            </div>
-            <p class="exp-desc">研究所 AI 課——正在讓 LLM 去改造真實流程。</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row exp-row--current">
-            <div class="exp-year">2026 — 現在</div>
-            <div class="exp-role">
-              <div class="exp-role-title">網站維護</div>
-              <div class="exp-role-org">在地非營利組織</div>
-            </div>
-            <p class="exp-desc">先用 Nuxt 做好，再照他們的需求搬到 Google Sites，現在持續維護。</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2025 — 2026</div>
-            <div class="exp-role">
-              <div class="exp-role-title">軟體開發實習生</div>
-              <div class="exp-role-org">豐聯資訊 Info-Link Services</div>
-            </div>
-            <p class="exp-desc">前端：用 Nuxt + TS 做出 12+ 個後台模組。後端：C# API＋SQL Server。兩邊都做。</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2023 — 2026</div>
-            <div class="exp-role">
-              <div class="exp-role-title">程式設計助教</div>
-              <div class="exp-role-org">靜宜大學</div>
-            </div>
-            <p class="exp-desc">教大一 Java 和演算法（大家都平安存活）。</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2024 — 2025</div>
-            <div class="exp-role">
-              <div class="exp-role-title">英文助理教師</div>
-              <div class="exp-role-org">Galaxy English School</div>
-            </div>
-            <p class="exp-desc">在這裡練成把難的事講簡單。</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
+        <nav
+          id="category-nav"
+          class="category-nav"
+          aria-label="前往作品分類"
+        ></nav>
+        <div class="discovery">
+          <span id="visited-count">00</span
+          ><span>/ <b id="camp-total">04</b><small>營地探索</small></span>
         </div>
+      </footer>
+      <div id="walk-status" class="walk-status" role="status">
+        點選地面，自由探索
       </div>
-
-    </section>
-
-    <!-- ══════════ 04 CONTACT ══════════ -->
-    <section id="contact" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">04</span>
-        <span class="sec-label">聯絡</span>
+      <div class="touch-pad" aria-label="移動方向控制">
+        <button data-dir="0,-1" aria-label="向前走">↑</button
+        ><button data-dir="-1,0" aria-label="向左走">←</button><span>✦</span
+        ><button data-dir="1,0" aria-label="向右走">→</button
+        ><button data-dir="0,1" aria-label="向後走">↓</button>
       </div>
-
-      <div class="contact-body grid12 reveal">
-        <div class="contact-lead">
-          <h2>一起做點什麼吧<span class="accent">.</span></h2>
-          <p>在找遠端全端人才？直接敲我，一天內回。</p>
-        </div>
+      <div id="toast" role="status" hidden></div>
+      <dialog id="help-dialog">
+        <button id="close-help" class="close-button" aria-label="關閉玩法">
+          ×
+        </button>
+        <p class="eyebrow">A FIELD GUIDE</p>
+        <h2>小島漫遊指南</h2>
+        <p class="help-intro">
+          不必按順序，也沒有規定路線。<br />找到微光，就能找到一個故事。
+        </p>
+        <dl>
+          <div>
+            <dt>環顧小島</dt>
+            <dd>滑鼠按住拖動 / 單指拖動，360° 旋轉；視角俯仰有邊界。</dd>
+          </div>
+          <div>
+            <dt>靠近風景</dt>
+            <dd>滾輪 / 雙指捏合縮放，始終停留在舒適的觀看範圍。</dd>
+          </div>
+          <div>
+            <dt>自由行走</dt>
+            <dd>點選地面，或使用 WASD / 方向鍵。手機可按住左下方向按鈕。</dd>
+          </div>
+          <div>
+            <dt>發現故事</dt>
+            <dd>
+              走進發光圓點會開啟營地。點選分類或地圖示記，也會帶你走過去。
+            </dd>
+          </div>
+          <div>
+            <dt>切換世界</dt>
+            <dd>台中・家、史瓦帝尼、峴港三種風景，營地內容和你的位置都不變。</dd>
+          </div>
+        </dl>
+        <p class="help-foot">
+          湖泊和岸邊會擋住腳步，不會掉出小島。<br />按 Esc 可關閉詳情或指南。
+        </p>
+        <button id="help-done" class="primary-button">知道了，出發 ↗</button>
+      </dialog>
+      <div id="fallback" hidden>
+        <h2>這座小島需要 WebGL 支援</h2>
+        <p>仍可透過下方分類閱讀內容。換用支援 WebGL 的瀏覽器即可自由漫遊。</p>
       </div>
-
-      <div class="contact-links contact-links--4 reveal">
-        <a href="#contact" class="contact-link" data-u="selina101292" data-d="gmail.com">
-          <span class="contact-link-key">Email</span>
-          <span class="contact-link-val">selina101292 [at] gmail.com</span>
-        </a>
-        <a href="https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <span class="contact-link-key">LinkedIn</span>
-          <span class="contact-link-val">/in/玟瑄-黃</span>
-        </a>
-        <a href="https://github.com/10xuan12" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <span class="contact-link-key">GitHub</span>
-          <span class="contact-link-val">@10xuan12</span>
-        </a>
-        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="contact-link" id="whatsapp-link">
-          <span class="contact-link-key">WhatsApp</span>
-          <span class="contact-link-val">+886 965 418 312</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; 2026 Selina Huang. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="../script.js?v=20261108c"></script>
-</body>
+    </main>
+  </body>
 </html>

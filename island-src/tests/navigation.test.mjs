@@ -76,7 +76,7 @@ test("A click inside a landmark resolves to accessible nearby ground", () => {
 test("Configured modules and all three themes are available",()=>{
  assert.ok([3,4].includes(categories.length));
  assert.equal(new Set(categories.map(c=>c.id)).size,categories.length);
- assert.deepEqual(Object.keys(themes),['forest','desert','ocean']);
+ assert.deepEqual(Object.keys(themes),['home','forest','ocean']);
  assert.ok(profile.name && profile.title);
  assert.ok(CAMERA_LIMITS.minDistance < CAMERA_LIMITS.maxDistance);
 });

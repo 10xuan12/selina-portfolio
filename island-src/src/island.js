@@ -1,3 +1,4 @@
+import { L } from "./i18n.js";
 import * as T from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
@@ -120,12 +121,12 @@ export function createIsland(
   container.appendChild(renderer.domElement);
   renderer.domElement.setAttribute(
     "aria-label",
-    "可拖動環顧的三維島嶼，點選地面行走",
+    L("可拖動環顧的三維島嶼，點選地面行走", "3D island: drag to look around, tap the ground to walk"),
   );
   renderer.domElement.tabIndex = 0;
   const scene = new T.Scene();
-  scene.background = new T.Color(themes.forest.background);
-  scene.fog = new T.Fog(themes.forest.background, 65, 135);
+  scene.background = new T.Color(themes.home.background);
+  scene.fog = new T.Fog(themes.home.background, 65, 135);
   const camera = new T.PerspectiveCamera(
       innerWidth < 700 ? 55 : 38,
       innerWidth / innerHeight,
@@ -274,22 +275,22 @@ export function createIsland(
   const palette = {
     forest: {
       tree: ["#72a481", "#a3c47b"],
-      ground: "#8db86e",
-      sand: "#e3d6af",
+      ground: "#a9b46f",
+      sand: "#d49770",
       rock: "#c6c7af",
       flower: ["#efc5bb", "#e8d9a6", "#b5c8d4"],
     },
-    desert: {
-      tree: ["#b2bb86", "#c8c8a0"],
-      ground: "#e1c394",
-      sand: "#eed8b5",
-      rock: "#d4b99c",
-      flower: ["#d6a1a0", "#d9b8c4", "#d5cd99"],
+    home: {
+      tree: ["#8e2f38", "#d39aa0"],
+      ground: "#efe6d8",
+      sand: "#e4d5bf",
+      rock: "#d9ccbc",
+      flower: ["#6b1e23", "#d9a3a8", "#fffaf2"],
     },
     ocean: {
       tree: ["#7badb1", "#a2c9c5"],
-      ground: "#b3bbd3",
-      sand: "#d9d3d9",
+      ground: "#eadfc7",
+      sand: "#f3e9d4",
       rock: "#b7bfd2",
       flower: ["#ba99c8", "#d5a5bc", "#8bb9d5"],
     },
@@ -310,14 +311,10 @@ export function createIsland(
       if (id === "forest") {
         if (t.type === 0) pine(scenery, t.x, y, t.z, t.scale * 0.95, "#588d7a");
         else roundTree(scenery, t.x, y, t.z, t.scale, p.tree);
-      } else if (id === "desert") {
-        if (i % 3 === 0) palm(scenery, t.x, y, t.z, t.scale, "#98ad8b");
-        else if (i % 3 === 1) cactus(scenery, t.x, y, t.z, t.scale);
-        else {
-          let g = group(scenery, [t.x, y, t.z]);
-          ball(g, p.rock, [0, 0.5, 0], [0.55, 0.95, 0.55]);
-          ball(g, p.rock, [0.3, 0.2, 0], [0.5, 0.4, 0.4]);
-        }
+      } else if (id === "home") {
+        // wine and blush trees on an ivory island
+        if (t.type === 0) pine(scenery, t.x, y, t.z, t.scale * 0.9, "#5e1a21");
+        else roundTree(scenery, t.x, y, t.z, t.scale, p.tree);
       } else {
         if (i % 3 === 0) palm(scenery, t.x, y, t.z, t.scale, "#82a9bf");
         else
@@ -362,7 +359,7 @@ export function createIsland(
           height = 0.18 + rng() * 0.18;
         rod(
           f,
-          id === "ocean" ? "#92a9b7" : "#8eaa77",
+          id === "ocean" ? "#92a9b7" : id === "home" ? "#a7868a" : "#8eaa77",
           [0, 0, 0],
           [0, height, 0],
           0.013,
@@ -432,7 +429,7 @@ export function createIsland(
         if (o.isMesh) o.userData.category = i;
       });
       props.add(prop);
-      if (id === "ocean" && i === 0) animated[id].push(prop);
+      
     });
     if (id === "ocean") {
       for (let i = 0; i < 6; i++) {
@@ -441,7 +438,7 @@ export function createIsland(
         animated[id].push(f);
       }
     }
-    root.visible = id === "forest";
+    root.visible = id === "home";
   }
   const beacons = [],
     labels = [...document.querySelectorAll(".camp-label")];
@@ -539,7 +536,7 @@ export function createIsland(
   );
   targetMarker.rotation.x = -Math.PI / 2;
   targetMarker.visible = false;
-  let theme = "forest",
+  let theme = "home",
     path = [],
     near = -1,
     moveSpeed = 0,
@@ -587,7 +584,7 @@ export function createIsland(
   function moveTo(destination) {
     const route = findRoute(playerPosition, destination, obstacles);
     if (!route.length) {
-      onBoundary?.("這裡暫時走不過去，試試旁邊的空地。");
+      onBoundary?.(L("這裡暫時走不過去，試試旁邊的空地。", "Can’t walk there — try the open ground nearby."));
       return false;
     }
     path = route;
@@ -653,7 +650,7 @@ export function createIsland(
     }
     const hit = raycaster.intersectObject(land)[0];
     if (hit) moveTo([hit.point.x, hit.point.z]);
-    else onBoundary?.("小島之外是海，沿岸探索就好。");
+    else onBoundary?.(L("小島之外是海，沿岸探索就好。", "That’s the sea — stick to the island."));
   });
   canvas.addEventListener("pointercancel", () => {
     pointerDown = null;
@@ -721,16 +718,16 @@ export function createIsland(
     landMat.color.set(palette[id].ground);
     sandMat.color.set(palette[id].sand);
     earth.material.color.set(
-      id === "forest" ? "#a6b393" : id === "desert" ? "#c4a883" : "#a6acc4",
+      id === "forest" ? "#b4805f" : id === "home" ? "#cdb9a2" : "#a6acc4",
     );
     waterMat.uniforms.color.value.set(themes[id].water);
     scene.background.set(themes[id].background);
     scene.fog.color.copy(scene.background);
     hemi.groundColor.set(
-      id === "desert" ? "#d3bd9c" : id === "ocean" ? "#9badcd" : "#96b9a4",
+      id === "home" ? "#dccbb8" : id === "ocean" ? "#9badcd" : "#96b9a4",
     );
     lakeMat.color.set(
-      id === "desert" ? "#87c0b1" : id === "ocean" ? "#7dadd1" : "#7cc9c7",
+      id === "home" ? "#a9c6c4" : id === "ocean" ? "#7dadd1" : "#7cc9c7",
     );
     container.dataset.theme = id;
     onTheme?.(id);
@@ -1005,5 +1002,6 @@ export function createIsland(
     if (++frame === 2) onReady?.();
   }
   requestAnimationFrame(render);
+  setTheme(document.body?.dataset?.theme || "home");
   return api;
 }

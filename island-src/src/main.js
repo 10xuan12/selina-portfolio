@@ -1,3 +1,4 @@
+import { L } from "./i18n.js";
 import "./style.css";
 import "./exhibits.css";
 import { mountExhibit } from "./exhibits.js";
@@ -13,13 +14,13 @@ let island,
   started = false,
   toastTimer,
   webglFailed = false;
-document.title = `${profile.title} · 全端工程師作品集`;
+document.title = `${profile.title} · ${L("全端工程師作品集", "Full-stack developer portfolio")}`;
 const brand = document.querySelector('.brand > span:last-child');
 if (brand) brand.innerHTML = `${escapeHTML(profile.title)}<small>${escapeHTML(profile.subtitle || 'A WORLD OF CURIOSITY')}</small>`;
-document.querySelector('.welcome h1').innerHTML = `歡迎來到<br /><span>${escapeHTML(profile.title)}<span class="title-dot">。</span></span>`;
-document.querySelector('.welcome-story').textContent = profile.intro || `你好，我是${profile.name}。歡迎來看看我的作品與經歷。`;
-document.querySelector('meta[name="description"]').content = profile.intro || `${profile.name}的個人作品集`;
-$("world").setAttribute('aria-label', `${profile.title}三維場景`);
+document.querySelector('.welcome h1').innerHTML = `${L('歡迎來到', 'Welcome to')}<br /><span>${escapeHTML(profile.title)}<span class="title-dot">${L('。', '.')}</span></span>`;
+document.querySelector('.welcome-story').textContent = profile.intro || L(`你好，我是${profile.name}。歡迎來看看我的作品與經歷。`, `Hi, I’m ${profile.name}. Come see my work.`);
+document.querySelector('meta[name="description"]').content = profile.intro || L(`${profile.name}的個人作品集`, `${profile.name}’s portfolio`);
+$("world").setAttribute('aria-label', L(`${profile.title}三維場景`, `${profile.title}, 3D scene`));
 $("camp-total").textContent = String(categories.length).padStart(2,'0');
 $("channel").hidden = !profile.links.length;
 if(profile.links.length) $("channel").textContent = `${profile.links[0].label} ↗`;
@@ -27,20 +28,20 @@ categories.forEach((c, i) => {
   const label = document.createElement("button");
   label.className = "camp-label";
   label.dataset.camp = i;
-  label.setAttribute("aria-label", `走向${escapeHTML(c.name)}`);
+  label.setAttribute("aria-label", L(`走向${c.name}`, `Walk to ${c.name}`));
   label.innerHTML = `<span>${c.number}</span>${escapeHTML(c.short)}<i></i>`;
   $("camp-labels").append(label);
   const nav = document.createElement("button");
   nav.dataset.camp = i;
   nav.innerHTML = `<span>${c.number}</span>${escapeHTML(c.name)}`;
-  nav.setAttribute("aria-label", `前往${escapeHTML(c.name)}`);
+  nav.setAttribute("aria-label", L(`前往${c.name}`, `Go to ${c.name}`));
   $("category-nav").append(nav);
   const dot = document.createElement("button");
   dot.className = "map-site";
   dot.dataset.camp = i;
   dot.style.left = `${50 + (c.arrival[0] / 28) * 100}%`;
   dot.style.top = `${50 + (c.arrival[1] / 28) * 100}%`;
-  dot.setAttribute("aria-label", `地圖：${escapeHTML(c.name)}`);
+  dot.setAttribute("aria-label", L(`地圖：${c.name}`, `Map: ${c.name}`));
   $("map-sites").append(dot);
 });
 function toast(text) {
@@ -53,7 +54,7 @@ function begin() {
   started = true;
   document.body.classList.add("exploring");
   $("welcome").setAttribute("inert", "");
-  $("walk-status").textContent = "點選地面行走 · 拖動環顧 · 走近微光發現故事";
+  $("walk-status").textContent = L("點選地面行走 · 拖動環顧 · 走近微光發現故事", "Tap the ground to walk · drag to look around · find the glowing spots");
 }
 function closeWork() {
   active = -1;
@@ -84,7 +85,7 @@ function openWork(i) {
     b.classList.toggle("visited", visited.has(idx));
     b.classList.toggle("active", idx === i);
   });
-  $("walk-status").textContent = `已抵達 · ${c.short}`;
+  $("walk-status").textContent = L(`已抵達 · ${c.short}`, `Arrived · ${c.short}`);
 }
 function navigate(i) {
   begin();
@@ -94,7 +95,7 @@ function navigate(i) {
     return;
   }
   island?.travelTo(i);
-  $("walk-status").textContent = `正在走向 · ${categories[i].short}`;
+  $("walk-status").textContent = L(`正在走向 · ${categories[i].short}`, `Walking to · ${categories[i].short}`);
 }
 document
   .querySelectorAll("[data-camp]")
@@ -107,7 +108,7 @@ $("continue").addEventListener("click", closeWork);
 $("overview").addEventListener("click", () => {
   closeWork();
   island?.overview();
-  $("walk-status").textContent = `全島視角 · ${categories.length} 個營地，隨心出發`;
+  $("walk-status").textContent = L(`全島視角 · ${categories.length} 個營地，隨心出發`, `Island view · ${categories.length} camps, go anywhere`);
 });
 $("home").addEventListener("click", () => {
   closeWork();
@@ -155,8 +156,8 @@ document.querySelectorAll(".theme-picker button").forEach((b) =>
     const drawings = {
       forest:
         '<path d="m38 98 74-75 76 75H38Zm74-75v75m0-47-30 47m30-47 28 47M27 99h178"/><circle cx="184" cy="30" r="12"/>',
-      desert:
-        '<path d="M8 94q45-44 90-5t130-9M7 110q80-43 146-5M121 81V31m0 20q-19 0-19-18m19 7q17 0 17-17"/><circle cx="190" cy="31" r="17"/>',
+      home:
+        '<path d="M60 98V58l50-34 50 34v40H60Zm40 0V72h20v26M28 98h186"/><path d="M178 40c-6-8-18-2-12 8l12 12 12-12c6-10-6-16-12-8Z"/>',
       ocean:
         '<path d="M12 84q18-12 36 0t36 0t36 0t36 0t36 0t36 0M12 104q18-12 36 0t36 0t36 0t36 0t36 0t36 0M91 65l20-17-20-17q49-24 72 17-23 39-72 17Z"/><circle cx="147" cy="45" r="2"/><circle cx="187" cy="22" r="5"/>',
     };
@@ -171,14 +172,14 @@ $("sound").addEventListener("click", async () => {
     $("sound").setAttribute("aria-pressed", String(enabled));
     $("sound").setAttribute(
       "aria-label",
-      enabled ? "關閉環境音" : "開啟環境音",
+      enabled ? L("關閉環境音", "Turn sound off") : L("開啟環境音", "Turn sound on"),
     );
     $("sound-waves").setAttribute(
       "d",
       enabled ? "M15 8c3 2 3 6 0 8m3-11c5 4 5 10 0 14" : "m16 9 5 6m0-6-5 6",
     );
   } catch {
-    toast("當前瀏覽器暫時無法播放環境音。");
+    toast(L("當前瀏覽器暫時無法播放環境音。", "This browser can’t play the ambient sound right now."));
   }
 });
 document.addEventListener("visibilitychange", () => {

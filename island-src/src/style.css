@@ -1,5 +1,5 @@
 :root {
-  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "PingFang SC", "Microsoft YaHei", sans-serif;
   color: #244b46;
   background: #d5eef0;
   font-synthesis: none;
@@ -15,6 +15,7 @@
 body {
   margin: 0;
   overflow: hidden;
+  color: var(--ink);
 }
 button,
 a {
@@ -843,11 +844,11 @@ dialog .primary-button {
 [hidden] {
   display: none !important;
 }
-body[data-theme="desert"] {
-  --accent: #a47348;
-  --ink: #715b46;
-  --muted: #99836b;
-  --line: #937c601c;
+body[data-theme="home"] {
+  --accent: #6b1e23;
+  --ink: #4a2427;
+  --muted: #7e6466;
+  --line: #6b1e231c;
 }
 body[data-theme="ocean"] {
   --accent: #587ba1;
@@ -855,12 +856,12 @@ body[data-theme="ocean"] {
   --muted: #8291a8;
   --line: #526a921a;
 }
-body[data-theme="desert"] .edge-light {
+body[data-theme="home"] .edge-light {
   background:
-    linear-gradient(90deg, #f9edda77, transparent 40%),
+    linear-gradient(90deg, #f8efe577, transparent 40%),
     linear-gradient(
       0deg,
-      #e6ebe780,
+      #efe3d880,
       transparent 22%,
       transparent 80%,
       #fbefdf88
@@ -877,15 +878,15 @@ body[data-theme="ocean"] .edge-light {
       #edf3fa88
     );
 }
-body[data-theme="desert"] .primary-button {
-  background: #98724d;
+body[data-theme="home"] .primary-button {
+  background: #6b1e23;
 }
 body[data-theme="ocean"] .primary-button {
   background: #5e7e9f;
 }
-body[data-theme="desert"] .panel-scene {
-  background: linear-gradient(145deg, #ecddc2, #f6ead8);
-  color: #b09c7f;
+body[data-theme="home"] .panel-scene {
+  background: linear-gradient(145deg, #f1e3d8, #f8efe6);
+  color: #b07c80;
 }
 body[data-theme="ocean"] .panel-scene {
   background: linear-gradient(145deg, #dce5ed, #e5ddea);
@@ -1371,3 +1372,14 @@ body:not(.exploring) .walk-status {
     margin-top: 17px;
   }
 }
+
+/* Home (wine & ivory) touches on pieces that were hard-coded green/olive */
+body[data-theme="home"] .minimap { background: #fbf6ef99; }
+body[data-theme="home"] .map-island { background: #e9d9d052; border-color: #8e2f3840; }
+body[data-theme="home"] .map-site { background: #8e2f38; border-color: #fbf3ea; }
+body[data-theme="home"] #map-player { background: #3a1014; }
+body[data-theme="home"] .welcome .eyebrow span,
+body[data-theme="home"] .eyebrow span { background: #6b1e23; }
+.lang-switch { display: inline-grid; place-items: center; text-decoration: none; color: inherit; font-weight: 600; }
+body[data-theme="home"] .title-dot { color: #8e2f38; }
+body[data-theme="home"] .welcome-story { color: #6d5154; }

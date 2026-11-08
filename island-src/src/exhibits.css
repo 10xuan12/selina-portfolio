@@ -8,14 +8,14 @@ body {
   --stamp: #597c56;
   --glow: #d7e8be;
 }
-body[data-theme="desert"] {
-  --paper: #fff5e8;
-  --paper-deep: #f0dfc3;
-  --ink: #684b36;
-  --line: #9873452b;
-  --soft: #92775f;
-  --stamp: #b07b44;
-  --glow: #efd2a0;
+body[data-theme="home"] {
+  --paper: #fffaf3;
+  --paper-deep: #f1e3d8;
+  --ink: #4a2326;
+  --line: #6b1e2326;
+  --soft: #7e6466;
+  --stamp: #6b1e23;
+  --glow: #ecc9cc;
 }
 body[data-theme="ocean"] {
   --paper: #f3fbff;
@@ -79,10 +79,10 @@ body[data-theme="ocean"] {
   font-size: 8px;
   color: var(--ink);
 }
-body[data-theme="desert"] .work-panel .panel-scene {
+body[data-theme="home"] .work-panel .panel-scene {
   background:
-    radial-gradient(ellipse at 30% 150%, #c9975c66 0 40%, transparent 40%),
-    radial-gradient(ellipse at 80% 120%, #e6be8a99 0 50%, transparent 50%),
+    radial-gradient(ellipse at 30% 150%, #8e2f3833 0 40%, transparent 40%),
+    radial-gradient(ellipse at 80% 120%, #d9a3a866 0 50%, transparent 50%),
     var(--paper-deep);
 }
 body[data-theme="ocean"] .work-panel .panel-scene {

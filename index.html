@@ -1,371 +1,256 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Poh2ZiVzg8PSsKZcqxItIT7Pb4npj2jEmCtIr5EFWCo='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <title>Selina Huang — Full-Stack Web Developer</title>
-  <meta name="description" content="Selina Huang is a full-stack web developer from Taiwan who builds web apps around real problems." />
-
-  <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="image/favicon-32.png" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="image/apple-touch-icon.png" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://10xuan12.github.io/selina-portfolio/" />
-  <meta property="og:title" content="Selina Huang — Full-Stack Web Developer" />
-  <meta property="og:description" content="Selina Huang is a full-stack web developer from Taiwan who builds web apps around real problems." />
-  <meta property="og:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Selina Huang — Full-Stack Web Developer" />
-  <meta name="twitter:description" content="Selina Huang is a full-stack web developer from Taiwan who builds web apps around real problems." />
-  <meta name="twitter:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
-
-  <link rel="alternate" hreflang="en" href="https://10xuan12.github.io/selina-portfolio/" />
-  <link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/zh/index.html" />
-  <link rel="alternate" hreflang="x-default" href="https://10xuan12.github.io/selina-portfolio/" />
-
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('js');
-      try {
-        if (sessionStorage.getItem('sh-intro-seen')) d.classList.add('intro-seen');
-        else sessionStorage.setItem('sh-intro-seen', '1');
-      } catch (e) {
-        d.classList.add('intro-seen');
-      }
-    })();
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="stylesheet" href="style.css?v=20261108c" />
-</head>
-<body>
-  <div id="om-curtain" aria-hidden="true">
-    <div class="om-curtain-inner">
-      <div class="om-curtain-name">SELINA HUANG</div>
-      <div class="om-curtain-rule"></div>
-    </div>
-  </div>
-
-  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-  <div id="scroll-progress" aria-hidden="true"></div>
-
-  <header class="site-header" id="site-header">
-    <div class="header-inner">
-      <a href="#top" class="logo">Selina Huang</a>
-
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="nav" id="primary-nav">
-        <a href="#work" class="nav-link">01 Work</a>
-        <a href="#about" class="nav-link">02 About</a>
-        <a href="#track" class="nav-link">03 Experience</a>
-        <a href="#contact" class="nav-link nav-cta">Say hi →</a>
-      </nav>
-    </div>
-  </header>
-
-  <aside aria-label="Language"><a href="zh/index.html" class="lang-fab" id="lang-toggle" hreflang="zh-Hant" aria-label="Switch to Chinese">中</a></aside>
-
-  <main id="top">
-
-    <!-- ══════════ HERO ══════════ -->
-    <section class="sec hero">
-      <div class="hero-status fx-fade" style="--fx-delay: 450ms">
-        <span class="hero-status-dot">Open to remote roles</span>
-        <span class="hero-status-loc">Taichung, Taiwan · UTC+8</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#f4eee6" />
+    <meta name="description" content="Selina Huang is a full-stack web developer from Taiwan. Walk into the four camps on her island to see her work, experience and travels." />
+    <title>Selina's Island · Full-stack developer portfolio</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob: data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" hreflang="en" href="https://10xuan12.github.io/selina-portfolio/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/zh/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Selina's Island · Full-stack developer portfolio" />
+    <meta property="og:description" content="Walk into the four camps to see Selina's work, experience and travels." />
+    <meta property="og:url" content="https://10xuan12.github.io/selina-portfolio/" />
+    <meta property="og:image" content="https://10xuan12.github.io/selina-portfolio/og-island.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="750" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="module" crossorigin src="/selina-portfolio/assets/three-DdXJh4JX.js"></script>
+    <script type="module" crossorigin src="/selina-portfolio/assets/main-CuxRYsi4.js"></script>
+    <link rel="stylesheet" crossorigin href="/selina-portfolio/assets/main-Bma1vRmB.css">
+  </head>
+  <body data-theme="home">
+    <main id="app">
+      <div id="world" aria-label="Selina's Island, 3D scene"></div>
+      <div class="edge-light" aria-hidden="true"></div>
+      <div id="loading" role="status">
+        <div class="loading-island">✳</div>
+        <p>Arriving at Selina's Island…</p>
+        <span>A LITTLE WORLD, A LOT TO DISCOVER.</span>
       </div>
-
-      <div class="hero-grid grid12">
-        <div class="hero-lead">
-          <h1 class="hero-title fx-rise" style="--fx-delay: 550ms">SELINA HUANG</h1>
-
-          <div class="hero-message fx-rise" style="--fx-delay: 800ms">
-            <p class="hero-subtitle">Full-stack dev from Taiwan. Front to back, I build stuff that actually fixes real problems.</p>
+      <header class="topbar">
+        <button id="home" class="brand" aria-label="Show the welcome intro">
+          <span class="brand-mark">S<span>·</span></span
+          ><span class="brand-copy"
+            >Selina's Island<small>FULL-STACK DEV · REMOTE-READY</small></span
+          >
+        </button>
+        <div class="top-controls">
+          <div class="theme-picker" role="group" aria-label="Island theme">
+            <button data-theme="home" aria-pressed="true">
+              <span>✦</span> Home</button
+            ><button data-theme="forest" aria-pressed="false">
+              <span>♧</span> Eswatini</button
+            ><button data-theme="ocean" aria-pressed="false">
+              <span>≈</span> Da Nang
+            </button>
           </div>
-
-          <div class="hero-actions fx-rise" style="--fx-delay: 900ms">
-            <a href="#work" class="btn btn--dark">See what I built <span aria-hidden="true">→</span></a>
-            <a href="#contact" class="btn btn--ghost">Say hi 👋</a>
-          </div>
-
-          <div class="hero-pills fx-rise" style="--fx-delay: 1000ms">
-            <span class="pill">Vue · Nuxt</span>
-            <span class="pill">TypeScript</span>
-            <span class="pill">PHP · MySQL</span>
-            <span class="pill">C# · SQL Server</span>
-          </div>
+          <a class="round-button lang-switch" href="./zh/" hreflang="zh-Hant" aria-label="切換為中文">中</a>
+          <button
+            id="sound"
+            class="round-button"
+            aria-label="Turn sound on"
+            aria-pressed="false"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M10 5 5 9H2v6h3l5 4V5Z" />
+              <path id="sound-waves" d="m16 9 5 6m0-6-5 6" />
+            </svg></button
+          ><button id="help" class="round-button" aria-label="How to explore">
+            ?
+          </button>
         </div>
-
-        <div class="hero-figure fx-rise" style="--fx-delay: 700ms">
-          <div class="hero-figure-cap">
-            <span>Fig. 01</span>
-            <span>From Taiwan</span>
-          </div>
-          <div class="hero-figure-media">
-            <img src="image/hero-portrait.jpeg" alt="Photo of Selina" width="300" height="400" loading="lazy" />
-          </div>
+      </header>
+      <section id="welcome" class="welcome">
+        <p class="eyebrow"><span></span> A WORLD OF YOUR OWN</p>
+        <h1>
+          Welcome to<br /><span>Selina's Island<span class="title-dot">.</span></span>
+        </h1>
+        <p class="welcome-story">
+          Full-stack dev from Taiwan. Walk into the four camps to see what I’ve built.
+        </p>
+        <div class="welcome-instructions">
+          <p>
+            <span class="instruction-symbol">↔</span><b>Drag</b
+            ><span>look around the island in 360°</span>
+          </p>
+          <p>
+            <span class="instruction-symbol">⌖</span><b>Tap</b
+            ><span>walk to the glowing spots to find my stories</span>
+          </p>
         </div>
-      </div>
-    </section>
-
-    <div class="band" aria-hidden="true"><div class="band-track"><span>Vue.js</span><span class="band-sep" aria-hidden="true">✦</span><span>Nuxt</span><span class="band-sep" aria-hidden="true">✦</span><span>TypeScript</span><span class="band-sep" aria-hidden="true">✦</span><span>PHP</span><span class="band-sep" aria-hidden="true">✦</span><span>MySQL</span><span class="band-sep" aria-hidden="true">✦</span><span>C#</span><span class="band-sep" aria-hidden="true">✦</span><span>SQL Server</span><span class="band-sep" aria-hidden="true">✦</span><span>REST APIs</span><span class="band-sep" aria-hidden="true">✦</span><span>AI-assisted dev</span><span class="band-sep" aria-hidden="true">✦</span><span>LLM workflows</span><span class="band-sep" aria-hidden="true">✦</span><span>Vue.js</span><span class="band-sep" aria-hidden="true">✦</span><span>Nuxt</span><span class="band-sep" aria-hidden="true">✦</span><span>TypeScript</span><span class="band-sep" aria-hidden="true">✦</span><span>PHP</span><span class="band-sep" aria-hidden="true">✦</span><span>MySQL</span><span class="band-sep" aria-hidden="true">✦</span><span>C#</span><span class="band-sep" aria-hidden="true">✦</span><span>SQL Server</span><span class="band-sep" aria-hidden="true">✦</span><span>REST APIs</span><span class="band-sep" aria-hidden="true">✦</span><span>AI-assisted dev</span><span class="band-sep" aria-hidden="true">✦</span><span>LLM workflows</span><span class="band-sep" aria-hidden="true">✦</span></div></div>
-
-    <!-- ══════════ 01 WORK ══════════ -->
-    <section id="work" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">01</span>
-        <span class="sec-label">Selected work</span>
-      </div>
-
-      <h2 class="work-headline reveal">Real problems. <span class="accent">Real fixes.</span></h2>
-
-      <div class="work-list">
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media work-media--scroll work-media--video">
-                <video class="work-video" src="image/video/sompisi.mp4" poster="image/video/sompisi-poster.jpg" muted loop playsinline preload="none" aria-label="Screen recording: booking a ride on Sompisi Transport"></video>
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>01</span>
-                <span class="work-meta-status">Shipped · 2025</span>
-                <span class="work-meta-sector">Eswatini</span>
-              </div>
-              <h3 class="work-title">Sompisi Transport</h3>
-              <p class="work-line">Travellers couldn’t find or trust this family driving biz online. Now they can — and book it on WhatsApp in a few taps.</p>
-              <div class="work-tags">
-                <span class="tag">Nuxt</span>
-                <span class="tag">Tailwind</span>
-                <span class="tag">WhatsApp booking</span>
-                <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">Live site <span aria-hidden="true">→</span></a>
-                <a href="https://github.com/10xuan12/sompisi-transport" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">Code <span aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </div>
+        <button id="explore" class="primary-button">
+          Start exploring <span>↗</span></button
+        ><button id="channel" class="channel-link">
+          Contact me <span>↗</span>
+        </button>
+        <p class="welcome-note">You can also walk with WASD / arrow keys</p>
+      </section>
+      <div id="camp-labels" aria-label="Camps on the island"></div>
+      <aside id="work" class="work-panel" aria-label="Camp details" hidden>
+        <button id="close-work" class="close-button" aria-label="Close details">
+          ×
+        </button>
+        <div class="panel-scene">
+          <span id="panel-number"></span
+          ><svg
+            id="panel-art"
+            viewBox="0 0 240 120"
+            fill="none"
+            aria-hidden="true"
+          >
+            <ellipse
+              cx="125"
+              cy="102"
+              rx="79"
+              ry="9"
+              fill="currentColor"
+              opacity=".08"
+            />
+            <path
+              d="M45 100 116 24l75 76H45Z"
+              stroke="currentColor"
+              stroke-width="1.4"
+            />
+            <path
+              d="m116 24-3 76m0-48-30 48m30-48 28 48M45 100l-15 8m161-8 15 8"
+              stroke="currentColor"
+              stroke-width="1.4"
+            />
+            <circle cx="189" cy="31" r="12" stroke="currentColor" />
+            <path
+              d="M201 31h9m-21-21V3m-20 28h-8m28 21v9"
+              stroke="currentColor"
+            />
+            <path
+              d="m39 63 4-6 4 6m-4-6v17m151 8 3-5 3 5m-3-5v12"
+              stroke="currentColor"
+            />
+          </svg>
+          <p id="panel-english"></p>
         </div>
-
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media work-media--scroll work-media--video">
-                <video class="work-video" src="image/video/triptally.mp4" poster="image/video/triptally-poster.jpg" muted loop playsinline preload="none" aria-label="Screen recording: logging a trip expense in TripTally"></video>
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>02</span>
-                <span class="work-meta-status">Shipped · PWA</span>
-                <span class="work-meta-sector">Personal</span>
-              </div>
-              <h3 class="work-title">TripTally</h3>
-              <p class="work-line">Splitting trip costs across currencies? Handled — daily budgets, live rates, works offline.</p>
-              <div class="work-tags">
-                <span class="tag">Vue</span>
-                <span class="tag">PWA</span>
-                <span class="tag">IndexedDB</span>
-                <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">Live site <span aria-hidden="true">→</span></a>
-                <a href="https://github.com/10xuan12/triptally" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">Code <span aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </div>
+        <div class="panel-body">
+          <p class="eyebrow" id="panel-category"></p>
+          <h2 id="work-title"></h2>
+          <p id="work-intro" class="work-intro"></p>
+          <p id="work-description"></p>
+          <div id="work-sections"></div>
+          <button id="continue" class="continue-button">
+            Keep exploring <span>→</span>
+          </button>
         </div>
-
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media">
-                <img src="image/costco-ai-preview.jpg" alt="Redesigned return flow, with the AI steps highlighted in red" loading="lazy" />
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>03</span>
-                <span class="work-meta-status">Case study · 2026</span>
-                <span class="work-meta-sector">Retail · AI</span>
-              </div>
-              <h3 class="work-title">AI-assisted returns for Costco Taiwan</h3>
-              <p class="work-line">Messy return emails → clean cases for staff. Stress-tested on Claude, Gemini and ChatGPT.</p>
-              <div class="work-tags">
-                <span class="tag">Process mapping</span>
-                <span class="tag">Prompt design</span>
-                <span class="tag">LLM evaluation</span>
-              </div>
-            </div>
+      </aside>
+      <dialog id="evidence-dialog" aria-label="Full image">
+        <button id="close-evidence" aria-label="Close image">×</button
+        ><img alt="" />
+        <p></p>
+      </dialog>
+      <aside class="island-tools">
+        <button id="overview" class="overview-button">
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <circle cx="12" cy="12" r="8" />
+            <path d="M4 12h16M12 4c5 4 5 12 0 16-5-4-5-12 0-16Z" />
+          </svg>
+          Island view <span>↗</span>
+        </button>
+        <div class="minimap" aria-label="Island map">
+          <span class="map-north">N</span>
+          <div class="map-island">
+            <span class="map-lake"></span>
+            <div id="map-sites"></div>
+            <span id="map-player" aria-label="You"></span>
           </div>
+          <span class="map-caption"><i></i> You are here</span>
         </div>
-      </div>
-    </section>
-
-    <!-- ══════════ 02 ABOUT ══════════ -->
-    <section id="about" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">02</span>
-        <span class="sec-label">About</span>
-      </div>
-
-      <div class="about-body grid12 reveal">
-        <div class="about-portrait">
-          <div class="about-portrait-media">
-            <img src="image/selina-portrait.jpg" alt="Portrait of Selina" width="600" height="600" loading="lazy" />
-          </div>
+        <div class="compass" aria-hidden="true">
+          <span id="compass-needle">↑</span><span>N</span>
         </div>
-        <div class="about-copy">
-          <h2>Hey, I’m Selina 👋<span class="accent">.</span></h2>
-          <p>Info Management grad, now doing my master’s. Before I code, I ask: who’s using this, and where do they get stuck? Code comes last — honestly, it’s the easy part.</p>
-          <div class="about-facts">
-            <div class="about-fact">
-              <span class="about-fact-key">Based</span>
-              <span class="about-fact-val">Taichung, TW</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact-key">Languages</span>
-              <span class="about-fact-val">中文 · English</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact-key">Looking for</span>
-              <span class="about-fact-val"><span class="accent">Remote full-stack roles</span></span>
-            </div>
-          </div>
+      </aside>
+      <footer class="bottom-bar">
+        <div class="world-caption">
+          <span id="theme-english">HOME · TAICHUNG</span>
+          <p id="theme-caption">Starting from Taichung, heading anywhere.</p>
         </div>
-      </div>
-
-      <div class="stats reveal">
-        <div class="stat"><span class="stat-num" data-count="4">4</span><span class="stat-label">yrs of Info Management</span></div>
-        <div class="stat"><span class="stat-num" data-count="3">3</span><span class="stat-label">yrs teaching code</span></div>
-        <div class="stat"><span class="stat-num" data-count="12+">12+</span><span class="stat-label">admin modules shipped</span></div>
-        <div class="stat"><span class="stat-num" data-count="2">2</span><span class="stat-label">sites live</span></div>
-      </div>
-
-      <div class="travel reveal">
-        <p class="travel-label">Places I’ve been → places I’m going next</p>
-        <div class="travel-strip"><div class="travel-track"><figure class="polaroid" style="--tilt:-4deg"><img src="image/travel/t4.jpg" alt="Travel photo: Safari day · Eswatini" width="600" height="800" loading="lazy" /><figcaption>Safari day · Eswatini</figcaption></figure><figure class="polaroid" style="--tilt:3deg"><img src="image/travel/t1.jpg" alt="Travel photo: Thailand" width="600" height="800" loading="lazy" /><figcaption>Thailand</figcaption></figure><figure class="polaroid" style="--tilt:-2deg"><img src="image/travel/t6.jpg" alt="Travel photo: Da Nang, Vietnam" width="600" height="800" loading="lazy" /><figcaption>Da Nang, Vietnam</figcaption></figure><figure class="polaroid" style="--tilt:5deg"><img src="image/travel/t5.jpg" alt="Travel photo: Eswatini" width="600" height="800" loading="lazy" /><figcaption>Eswatini</figcaption></figure><figure class="polaroid" style="--tilt:-3deg"><img src="image/travel/t8.jpg" alt="Travel photo: Thailand" width="600" height="800" loading="lazy" /><figcaption>Thailand</figcaption></figure><figure class="polaroid" style="--tilt:2deg"><img src="image/travel/t7.jpg" alt="Travel photo: Beach day · Da Nang" width="600" height="800" loading="lazy" /><figcaption>Beach day · Da Nang</figcaption></figure><figure class="polaroid" style="--tilt:-5deg"><img src="image/travel/t3.jpg" alt="Travel photo: Sunny walk · Johannesburg" width="600" height="800" loading="lazy" /><figcaption>Sunny walk · Johannesburg</figcaption></figure><figure class="polaroid" style="--tilt:4deg"><img src="image/travel/t2.jpg" alt="Travel photo: Coffee run · Da Nang" width="600" height="800" loading="lazy" /><figcaption>Coffee run · Da Nang</figcaption></figure><figure class="polaroid" style="--tilt:-4deg" aria-hidden="true"><img src="image/travel/t4.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Safari day · Eswatini</figcaption></figure><figure class="polaroid" style="--tilt:3deg" aria-hidden="true"><img src="image/travel/t1.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Thailand</figcaption></figure><figure class="polaroid" style="--tilt:-2deg" aria-hidden="true"><img src="image/travel/t6.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Da Nang, Vietnam</figcaption></figure><figure class="polaroid" style="--tilt:5deg" aria-hidden="true"><img src="image/travel/t5.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Eswatini</figcaption></figure><figure class="polaroid" style="--tilt:-3deg" aria-hidden="true"><img src="image/travel/t8.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Thailand</figcaption></figure><figure class="polaroid" style="--tilt:2deg" aria-hidden="true"><img src="image/travel/t7.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Beach day · Da Nang</figcaption></figure><figure class="polaroid" style="--tilt:-5deg" aria-hidden="true"><img src="image/travel/t3.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Sunny walk · Johannesburg</figcaption></figure><figure class="polaroid" style="--tilt:4deg" aria-hidden="true"><img src="image/travel/t2.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Coffee run · Da Nang</figcaption></figure></div></div>
-      </div>
-
-
-      <div class="kb reveal">
-        <h3 class="kb-h">Knowledge base</h3>
-        <div class="kb-tabs" role="tablist" aria-label="About Selina"><button type="button" role="tab" class="kb-tab" id="kb-tab-me" aria-controls="kb-me" aria-selected="true" tabindex="0"><span class="kb-tab-n">01</span>Who I am</button><button type="button" role="tab" class="kb-tab" id="kb-tab-skills" aria-controls="kb-skills" aria-selected="false" tabindex="-1"><span class="kb-tab-n">02</span>What I can do</button><button type="button" role="tab" class="kb-tab" id="kb-tab-jobs" aria-controls="kb-jobs" aria-selected="false" tabindex="-1"><span class="kb-tab-n">03</span>Dream roles</button><button type="button" role="tab" class="kb-tab" id="kb-tab-life" aria-controls="kb-life" aria-selected="false" tabindex="-1"><span class="kb-tab-n">04</span>The life I’m building</button><span class="kb-bar" aria-hidden="true"></span></div>
-        <div class="kb-panel" role="tabpanel" id="kb-me" aria-labelledby="kb-tab-me" tabindex="0"><ul class="kb-list"><li class="kb-row"><span class="kb-row-n">01</span><strong class="kb-row-t">All-in on sprints, balanced the rest of the time</strong><span class="kb-row-d">Deadline mode on? I’m locked in till it ships. After that, I actually log off.</span></li><li class="kb-row"><span class="kb-row-n">02</span><strong class="kb-row-t">Shipping hits different</strong><span class="kb-row-d">Nothing beats taking something from zero to live.</span></li><li class="kb-row"><span class="kb-row-n">03</span><strong class="kb-row-t">Detail nerd</strong><span class="kb-row-d">I triple-check the small stuff so users never trip on it.</span></li><li class="kb-row"><span class="kb-row-n">04</span><strong class="kb-row-t">Always planning the next trip</strong><span class="kb-row-d">New places keep me curious — and fluent in time zones.</span></li><li class="kb-row"><span class="kb-row-n">05</span><strong class="kb-row-t">Work ≠ a desk</strong><span class="kb-row-d">Results > seats. Give me Wi-Fi and I’ll deliver.</span></li></ul></div><div class="kb-panel" role="tabpanel" id="kb-skills" aria-labelledby="kb-tab-skills" tabindex="0"><blockquote class="kb-quote"><p>It’s not about what I already know. With AI, I can learn anything — what counts is <mark>wanting to learn</mark>, and <mark>owning what I ship</mark>.</p><footer><span>Proof</span> At Info-Link I started on front end — when the team needed back end, I picked up C# and took it on.</footer></blockquote><div class="kb-groups"><div class="kb-group"><span class="kb-group-h">Front end</span><div class="kb-chips"><span class="chip">HTML / CSS</span><span class="chip">JavaScript</span><span class="chip">Vue.js</span><span class="chip">Nuxt</span><span class="chip">TypeScript</span><span class="chip chip--outline">Tailwind</span><span class="chip chip--outline">PWA</span></div></div><div class="kb-group"><span class="kb-group-h">Back end</span><div class="kb-chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Java</span><span class="chip chip--outline">C#</span><span class="chip chip--outline">SQL Server</span><span class="chip chip--outline">REST APIs</span><span class="chip chip--outline">Node.js</span><span class="chip chip--outline">Firebase</span></div></div><div class="kb-group"><span class="kb-group-h">AI</span><div class="kb-chips"><span class="chip">AI-assisted dev</span><span class="chip chip--outline">LLM prompt design &amp; evaluation</span><span class="chip chip--outline">Python</span></div></div><div class="kb-group"><span class="kb-group-h">Tools</span><div class="kb-chips"><span class="chip chip--outline">Git</span><span class="chip chip--outline">Figma</span></div></div></div><div class="legend kb-legend"><span><span class="legend-sw legend-sw--solid"></span> Core</span><span><span class="legend-sw legend-sw--outline"></span> Working knowledge</span></div></div><div class="kb-panel" role="tabpanel" id="kb-jobs" aria-labelledby="kb-tab-jobs" tabindex="0"><div class="kb-jobs"><a href="#work" class="kb-job"><span class="kb-row-n">01</span><strong class="kb-job-t">Remote full-stack engineer</strong><span class="kb-job-d">Vue / Nuxt up front, PHP · C# · SQL in the back. I do both.</span><span class="kb-proof"><span>Proof</span> Info-Link back office · Sompisi Transport <span aria-hidden="true">→</span></span></a><a href="#work" class="kb-job"><span class="kb-row-n">02</span><strong class="kb-job-t">AI engineer</strong><span class="kb-job-d">Building LLM workflows people can actually trust — and testing them properly.</span><span class="kb-proof"><span>Proof</span> Costco AI returns case <span aria-hidden="true">→</span></span></a></div></div><div class="kb-panel" role="tabpanel" id="kb-life" aria-labelledby="kb-tab-life" tabindex="0"><div class="kb-life kb-life--photos"><div class="kb-fan" aria-hidden="true"><figure class="polaroid polaroid--fan" style="--i:0"><img src="image/travel/t4.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Safari day · Eswatini</figcaption></figure><figure class="polaroid polaroid--fan" style="--i:1"><img src="image/travel/t1.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Thailand</figcaption></figure><figure class="polaroid polaroid--fan" style="--i:2"><img src="image/travel/t7.jpg" alt="" width="600" height="800" loading="lazy" /><figcaption>Beach day · Da Nang</figcaption></figure></div><div class="kb-life-item"><strong class="kb-life-t">Fully remote</strong><span class="kb-life-d">Laptop + good Wi-Fi = office.</span></div><div class="kb-life-item"><strong class="kb-life-t">Work–life balance</strong><span class="kb-life-d">Lock in, then log off. For real.</span></div><div class="kb-life-item"><strong class="kb-life-t">Travel</strong><span class="kb-life-d">See the world, ship cool stuff.</span></div></div></div>
-      </div>
-    </section>
-
-    <!-- ══════════ 03 EXPERIENCE ══════════ -->
-    <section id="track" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">03</span>
-        <span class="sec-label">Experience</span>
-      </div>
-
-      <div class="track-block reveal">
-        <h3 class="track-h">Experience</h3>
-        <div class="exp-list">
-          <div class="exp-row exp-row--current">
-            <div class="exp-year">2026 — Now</div>
-            <div class="exp-role">
-              <div class="exp-role-title">M.S. Information Management</div>
-              <div class="exp-role-org">Providence University</div>
-            </div>
-            <p class="exp-desc">Grad-level AI classes — currently getting LLMs to fix real processes.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row exp-row--current">
-            <div class="exp-year">2026 — Now</div>
-            <div class="exp-role">
-              <div class="exp-role-title">Website Maintainer</div>
-              <div class="exp-role-org">Local non-profit</div>
-            </div>
-            <p class="exp-desc">Built it in Nuxt, then moved it to Google Sites at their request. Still running it.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2025 — 2026</div>
-            <div class="exp-role">
-              <div class="exp-role-title">Software Development Intern</div>
-              <div class="exp-role-org">Info-Link Services</div>
-            </div>
-            <p class="exp-desc">Front end: 12+ admin modules in Nuxt + TS. Back end: C# APIs and SQL Server. Did both.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2023 — 2026</div>
-            <div class="exp-role">
-              <div class="exp-role-title">Programming TA</div>
-              <div class="exp-role-org">Providence University</div>
-            </div>
-            <p class="exp-desc">Taught first-years Java and algorithms (we all survived).</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2024 — 2025</div>
-            <div class="exp-role">
-              <div class="exp-role-title">Supplementary English Teacher</div>
-              <div class="exp-role-org">Galaxy English School</div>
-            </div>
-            <p class="exp-desc">Where I learned to explain hard stuff simply.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
+        <nav
+          id="category-nav"
+          class="category-nav"
+          aria-label="Go to a camp"
+        ></nav>
+        <div class="discovery">
+          <span id="visited-count">00</span
+          ><span>/ <b id="camp-total">04</b><small>camps explored</small></span>
         </div>
+      </footer>
+      <div id="walk-status" class="walk-status" role="status">
+        Tap the ground to explore
       </div>
-
-    </section>
-
-    <!-- ══════════ 04 CONTACT ══════════ -->
-    <section id="contact" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">04</span>
-        <span class="sec-label">Contact</span>
+      <div class="touch-pad" aria-label="Movement controls">
+        <button data-dir="0,-1" aria-label="Walk forward">↑</button
+        ><button data-dir="-1,0" aria-label="Walk left">←</button><span>✦</span
+        ><button data-dir="1,0" aria-label="Walk right">→</button
+        ><button data-dir="0,1" aria-label="Walk back">↓</button>
       </div>
-
-      <div class="contact-body grid12 reveal">
-        <div class="contact-lead">
-          <h2>Let’s build something<span class="accent">.</span></h2>
-          <p>Hiring for remote full-stack? Hit me up — I reply within a day.</p>
-        </div>
+      <div id="toast" role="status" hidden></div>
+      <dialog id="help-dialog">
+        <button id="close-help" class="close-button" aria-label="Close guide">
+          ×
+        </button>
+        <p class="eyebrow">A FIELD GUIDE</p>
+        <h2>How to explore</h2>
+        <p class="help-intro">
+          No set order, no fixed route.<br />Find a glowing spot, find a story.
+        </p>
+        <dl>
+          <div>
+            <dt>Look around</dt>
+            <dd>Drag with the mouse or one finger to rotate 360°.</dd>
+          </div>
+          <div>
+            <dt>Zoom</dt>
+            <dd>Scroll or pinch to zoom in and out.</dd>
+          </div>
+          <div>
+            <dt>Walk</dt>
+            <dd>Tap the ground, or use WASD / arrow keys. On a phone, hold the arrows at the bottom left.</dd>
+          </div>
+          <div>
+            <dt>Find stories</dt>
+            <dd>
+              Step into a glowing circle to open a camp. Tapping a camp name or a map dot walks you there.
+            </dd>
+          </div>
+          <div>
+            <dt>Switch scenery</dt>
+            <dd>Home, Eswatini and Da Nang are three looks for the same island — your spot and the camps stay put.</dd>
+          </div>
+        </dl>
+        <p class="help-foot">
+          The lake and shore stop you from wandering off.<br />Press Esc to close details or this guide.
+        </p>
+        <button id="help-done" class="primary-button">Got it, let’s go ↗</button>
+      </dialog>
+      <div id="fallback" hidden>
+        <h2>This island needs WebGL</h2>
+        <p>You can still read everything through the camps below. Use a browser with WebGL to walk around.</p>
       </div>
-
-      <div class="contact-links contact-links--4 reveal">
-        <a href="#contact" class="contact-link" data-u="selina101292" data-d="gmail.com">
-          <span class="contact-link-key">Email</span>
-          <span class="contact-link-val">selina101292 [at] gmail.com</span>
-        </a>
-        <a href="https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <span class="contact-link-key">LinkedIn</span>
-          <span class="contact-link-val">/in/玟瑄-黃</span>
-        </a>
-        <a href="https://github.com/10xuan12" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <span class="contact-link-key">GitHub</span>
-          <span class="contact-link-val">@10xuan12</span>
-        </a>
-        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="contact-link" id="whatsapp-link">
-          <span class="contact-link-key">WhatsApp</span>
-          <span class="contact-link-val">+886 965 418 312</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; 2026 Selina Huang. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="script.js?v=20261108c"></script>
-</body>
+    </main>
+  </body>
 </html>
