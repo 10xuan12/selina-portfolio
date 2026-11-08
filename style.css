@@ -1937,3 +1937,39 @@ main {
     transform: scaleX(0);
   }
 }
+
+/* ==========================================================================
+   Nov 2026 — simplified portfolio (less copy, work first)
+   ========================================================================== */
+.work-line {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--slate);
+  text-wrap: pretty;
+}
+
+.contact-links--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.process--compact .process-step-title {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1180px) {
+  .contact-links--4 { grid-template-columns: repeat(2, 1fr); }
+  .contact-links--4 .contact-link:nth-child(3) { border-left: none; }
+  .contact-links--4 .contact-link:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+@media (max-width: 899px) {
+  .contact-links--4 { grid-template-columns: 1fr; }
+  .contact-links--4 .contact-link:nth-child(n+2) { border-top: 1px solid var(--line); }
+}
+
+/* Titles-only steps fit three per row on phones */
+@media (max-width: 899px) {
+  .process--compact .process-steps { grid-template-columns: repeat(3, 1fr); gap: 24px 16px; }
+}
