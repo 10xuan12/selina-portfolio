@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
       curtain.addEventListener('animationend', (e) => {
         if (e.animationName === 'curtain') curtain.remove();
       });
-      setTimeout(() => curtain.remove(), 2600);
+      setTimeout(() => curtain.remove(), 1400);
     }
     // Lock the hero into its resting state once the staggered
     // sequence (last step ~1980ms + photo zoom to ~4100ms) has run.
-    setTimeout(() => root.classList.add('intro-done'), 4300);
+    setTimeout(() => root.classList.add('intro-done'), 2500);
   }
 
   /* ------------------------------------------------------------------

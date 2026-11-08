@@ -10,7 +10,7 @@
   --ink: #0A0A0A;
   --wine: #6B1E23;
   --wine-tint: #C48F94;
-  --gray: #8A8A8A;
+  --gray: #6B6B6B;
   --slate: #4A4643;
   --line: #D8D6D2;
   --line-soft: #C9C5BF;
@@ -151,7 +151,7 @@ strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: curtain 900ms cubic-bezier(0.76, 0, 0.24, 1) 1150ms forwards;
+  animation: curtain 700ms cubic-bezier(0.76, 0, 0.24, 1) 500ms forwards;
 }
 
 .intro-seen #om-curtain {
@@ -163,7 +163,7 @@ strong {
   flex-direction: column;
   align-items: center;
   gap: 18px;
-  animation: curtainInner 900ms cubic-bezier(0.76, 0, 0.24, 1) 1150ms forwards;
+  animation: curtainInner 700ms cubic-bezier(0.76, 0, 0.24, 1) 500ms forwards;
 }
 
 .om-curtain-name {
@@ -172,7 +172,7 @@ strong {
   font-weight: 900;
   letter-spacing: -0.05em;
   color: var(--paper);
-  animation: curtainText 2050ms var(--ease) both;
+  animation: curtainText 1100ms var(--ease) both;
 }
 
 .om-curtain-rule {
@@ -180,7 +180,7 @@ strong {
   height: 2px;
   background: var(--wine);
   transform-origin: 0 50%;
-  animation: curtainRule 2050ms var(--ease) both;
+  animation: curtainRule 1100ms var(--ease) both;
 }
 
 /* ==========================================================================
@@ -590,11 +590,11 @@ main {
 
 .js:not(.intro-seen) .hero-figure-media {
   clip-path: inset(100% 0 0 0);
-  animation: clipUp 1000ms cubic-bezier(0.76, 0, 0.24, 1) 1700ms both;
+  animation: clipUp 900ms cubic-bezier(0.76, 0, 0.24, 1) 700ms both;
 }
 
 .js:not(.intro-seen) .hero-figure-media img {
-  animation: slowZoom 2400ms var(--ease) 1700ms both;
+  animation: slowZoom 2000ms var(--ease) 700ms both;
 }
 
 /* Once the intro sequence has run (script.js adds .intro-done after it
@@ -2416,3 +2416,9 @@ main {
 }
 .work-row:hover .work-media--video .work-video { translate: -50% -14px; }
 @media (max-width: 899px) { .work-media--video .work-video { width: 52%; } }
+
+/* Work: "Code" link next to "Live site" */
+.work-tags .btn + .btn { margin-left: 0; }
+
+/* Footer text on the wine background: light, readable (contrast > 7:1) */
+.site-footer p { color: rgba(250, 250, 248, 0.82); }
