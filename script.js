@@ -1,233 +1,130 @@
-// Single source of truth for the WhatsApp number — used to build both the
-// contact link href and the QR code image URL below.
+// Single source of truth for the WhatsApp number — used for every
+// WhatsApp link and the QR code image.
 const WHATSAPP_NUMBER = '886965418312';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isZh = (document.documentElement.lang || 'en').toLowerCase().startsWith('zh');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-  /* ------------------------------------------------------------------
-     Intro curtain — plays once per session (the <head> gate adds
-     .intro-seen on every later load). Remove it from the DOM once it
-     has swept off, or immediately when it isn't going to play.
-     ------------------------------------------------------------------ */
-  const root = document.documentElement;
-  const introSeen = root.classList.contains('intro-seen');
-  const curtain = document.getElementById('om-curtain');
+  /* ---------- WhatsApp links + QR ---------- */
+  document.querySelectorAll('.js-wa').forEach((a) => { a.href = waUrl; });
+  const qr = document.getElementById('qr');
+  if (qr) qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=264x264&margin=0&data=${encodeURIComponent(waUrl)}`;
 
-  if (introSeen || prefersReducedMotion) {
-    root.classList.add('intro-done');
-    if (curtain) curtain.remove();
-  } else {
-    if (curtain) {
-      curtain.addEventListener('animationend', (e) => {
-        if (e.animationName === 'curtain') curtain.remove();
-      });
-      setTimeout(() => curtain.remove(), 2600);
-    }
-    // Lock the hero into its resting state once the staggered
-    // sequence (last step ~1980ms + photo zoom to ~4100ms) has run.
-    setTimeout(() => root.classList.add('intro-done'), 4300);
-  }
+  /* ---------- Filters (with counts) ---------- */
+  const tiles = [...document.querySelectorAll('#grid .tile')];
+  const filters = [...document.querySelectorAll('.filter')];
 
-  /* ------------------------------------------------------------------
-     Scroll progress bar. Browsers with scroll-driven animations fill
-     it natively via CSS (animation-timeline: scroll(root)); this is
-     the fallback for everything else.
-     ------------------------------------------------------------------ */
-  const progress = document.getElementById('scroll-progress');
-  const nativeScrollTimeline =
-    window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll(root)');
+  filters.forEach((btn) => {
+    const cat = btn.dataset.filter;
+    const n = cat === 'all' ? tiles.length : tiles.filter((t) => t.dataset.cat === cat).length;
+    const badge = btn.querySelector('.n');
+    if (badge) badge.textContent = n;
 
-  if (progress && !nativeScrollTimeline) {
-    const updateProgress = () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      const pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
-      progress.style.transform = `scaleX(${Math.min(1, Math.max(0, pct))})`;
-    };
-    updateProgress();
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener('resize', updateProgress);
-  }
-
-  /* ------------------------------------------------------------------
-     Header: solid background once the page has scrolled
-     ------------------------------------------------------------------ */
-  const header = document.getElementById('site-header');
-  if (header) {
-    const updateHeaderState = () => {
-      header.classList.toggle('is-scrolled', window.scrollY > 8);
-    };
-    updateHeaderState();
-    window.addEventListener('scroll', updateHeaderState, { passive: true });
-  }
-
-  /* ------------------------------------------------------------------
-     Mobile nav toggle
-     ------------------------------------------------------------------ */
-  const navToggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('primary-nav');
-
-  if (navToggle && nav) {
-    const closeNav = () => {
-      nav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    };
-
-    navToggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
+    btn.addEventListener('click', () => {
+      const apply = () => {
+        filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        tiles.forEach((t) => { t.hidden = !(cat === 'all' || t.dataset.cat === cat); });
+      };
+      if (!reduceMotion && typeof document.startViewTransition === 'function') {
+        document.startViewTransition(apply);
+      } else {
+        apply();
+      }
     });
+  });
 
-    nav.querySelectorAll('.nav-link').forEach((link) => {
-      link.addEventListener('click', closeNav);
-    });
+  /* ---------- Case dialogs ---------- */
+  document.querySelectorAll('[data-dialog]').forEach((tile) => {
+    const dlg = document.getElementById(tile.dataset.dialog);
+    if (!dlg) return;
+    tile.addEventListener('click', () => dlg.showModal());
+  });
+  document.querySelectorAll('dialog.case').forEach((dlg) => {
+    dlg.querySelector('[data-close]')?.addEventListener('click', () => dlg.close());
+    // click on the backdrop closes
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+  });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeNav();
-    });
-  }
-
-  /* ------------------------------------------------------------------
-     Language switcher (fixed circular button, bottom-right)
-     Cross-fade into the other language via the View Transitions API.
-     ------------------------------------------------------------------ */
-  const langToggle = document.getElementById('lang-toggle');
-
-  if (langToggle) {
-    langToggle.addEventListener('click', (event) => {
-      const destination = langToggle.getAttribute('href');
-      if (!destination || typeof document.startViewTransition !== 'function') return;
-
-      event.preventDefault();
+  /* ---------- Copy email ---------- */
+  const mailTile = document.getElementById('copy-mail');
+  if (mailTile) {
+    const state = mailTile.querySelector('.mail-state');
+    const original = state ? state.textContent : '';
+    mailTile.addEventListener('click', async () => {
+      const mail = mailTile.dataset.mail;
       try {
-        document.startViewTransition(() => {
-          window.location.href = destination;
-        });
+        await navigator.clipboard.writeText(mail);
+        if (state) state.textContent = `✓ ${mailTile.dataset.copied}`;
+        setTimeout(() => { if (state) state.textContent = original; }, 1800);
       } catch (err) {
-        window.location.href = destination;
+        window.location.href = `mailto:${mail}`;
       }
     });
   }
 
-  /* ------------------------------------------------------------------
-     WhatsApp: derive the chat link + QR code from WHATSAPP_NUMBER so the
-     number only ever lives in one place
-     ------------------------------------------------------------------ */
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}`;
+  /* ---------- Live clocks: Taichung vs Mbabane ---------- */
+  const clocks = document.querySelectorAll('[data-tz]');
+  const tick = () => {
+    clocks.forEach((el) => {
+      try {
+        el.textContent = new Intl.DateTimeFormat('en-GB', {
+          hour: '2-digit', minute: '2-digit', hour12: false, timeZone: el.dataset.tz,
+        }).format(new Date());
+      } catch (e) { /* unsupported zone: leave placeholder */ }
+    });
+  };
+  tick();
+  setInterval(tick, 15000);
 
-  const whatsappLink = document.getElementById('whatsapp-link');
-  if (whatsappLink) whatsappLink.href = whatsappUrl;
+  if (reduceMotion) return;
 
-  const whatsappQrImg = document.getElementById('whatsapp-qr-img');
-  if (whatsappQrImg) {
-    whatsappQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(whatsappUrl)}`;
-  }
-
-  /* ------------------------------------------------------------------
-     Scroll reveal: elements marked .reveal fade/rise in once
-     ------------------------------------------------------------------ */
-  const revealEls = document.querySelectorAll('.reveal, .reveal--stagger');
-
-  if (revealEls.length) {
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => el.classList.add('in'));
-    } else {
-      const revealObserver = new IntersectionObserver(
-        (entries, obs) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('in');
-            obs.unobserve(entry.target);
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
-      );
-      revealEls.forEach((el) => revealObserver.observe(el));
-
-      // Safety net: never leave content hidden if the observer misfires.
-      setTimeout(() => {
-        revealEls.forEach((el) => {
-          if (!el.classList.contains('in')) {
-            const r = el.getBoundingClientRect();
-            if (r.top < window.innerHeight) el.classList.add('in');
-          }
-        });
-      }, 1400);
-    }
-  }
-
-  /* ------------------------------------------------------------------
-     Hero problem line: cycle through pain-point sentences every 2.8s
-     ------------------------------------------------------------------ */
-  const heroProblem = document.getElementById('hero-problem');
-
-  if (heroProblem && !prefersReducedMotion) {
-    const problems = isZh
-      ? [
-          '國外訪客看不懂你的服務內容。',
-          '預約流程在最後一步流失客人。',
-          '客戶看不出來自己到底找的是誰。',
-          '同一個問題你一週回答二十次。',
-        ]
-      : [
-          "International visitors can't understand your service.",
-          'Your booking flow loses people at the last step.',
-          "Customers can't tell who they're actually hiring.",
-          'You answer the same enquiry twenty times a week.',
-        ];
-
-    let idx = 0;
+  /* ---------- Rotating problem line ---------- */
+  const pline = document.getElementById('pline');
+  if (pline && pline.dataset.lines) {
+    const lines = pline.dataset.lines.split('|');
+    let i = 0;
     setInterval(() => {
-      idx = (idx + 1) % problems.length;
-      heroProblem.classList.add('is-swapping');
-      setTimeout(() => {
-        heroProblem.textContent = problems[idx];
-        heroProblem.classList.remove('is-swapping');
-      }, 300);
-    }, 2800);
+      i = (i + 1) % lines.length;
+      pline.classList.add('is-out');
+      setTimeout(() => { pline.textContent = lines[i]; pline.classList.remove('is-out'); }, 350);
+    }, 3000);
   }
 
-  /* ------------------------------------------------------------------
-     Custom cursor: dot follower (with lag) that grows on hover.
-     Desktop pointers only — touch devices keep native tap behaviour.
-     ------------------------------------------------------------------ */
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const cursorDot = document.getElementById('cursor-dot');
+  /* ---------- Process steps light up in order ---------- */
+  const steps = [...document.querySelectorAll('#steps li')];
+  if (steps.length) {
+    let s = 0;
+    const paint = () => {
+      steps.forEach((li, k) => {
+        li.classList.toggle('on', k === s);
+        li.classList.toggle('past', k < s);
+      });
+      s = (s + 1) % (steps.length + 1); // one beat of rest before restarting
+    };
+    paint();
+    setInterval(paint, 1100);
+  }
 
-    if (cursorDot) {
-      const LERP = 0.18;
-      let mouseX = 0;
-      let mouseY = 0;
-      let dotX = 0;
-      let dotY = 0;
-      let hasMoved = false;
-
-      document.addEventListener('mousemove', (event) => {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-        if (!hasMoved) {
-          hasMoved = true;
-          dotX = mouseX;
-          dotY = mouseY;
-          cursorDot.classList.add('is-active');
+  /* ---------- "×47" repeated-reply counter ---------- */
+  const cnt = document.getElementById('cnt');
+  if (cnt) {
+    const run = () => {
+      let n = 1;
+      cnt.classList.remove('done');
+      const id = setInterval(() => {
+        n += 1;
+        cnt.textContent = `×${n}`;
+        if (n >= 47) {
+          clearInterval(id);
+          setTimeout(() => {
+            cnt.textContent = `✓ ${cnt.dataset.done}`;
+            cnt.classList.add('done');
+            setTimeout(run, 2600);
+          }, 600);
         }
-      });
-
-      const renderCursor = () => {
-        dotX += (mouseX - dotX) * LERP;
-        dotY += (mouseY - dotY) * LERP;
-        cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
-        requestAnimationFrame(renderCursor);
-      };
-
-      requestAnimationFrame(renderCursor);
-
-      document.querySelectorAll('a, button, .nav-link, .lang-fab').forEach((el) => {
-        el.addEventListener('mouseenter', () => cursorDot.classList.add('is-hover'));
-        el.addEventListener('mouseleave', () => cursorDot.classList.remove('is-hover'));
-      });
-    }
+      }, 45);
+    };
+    run();
   }
 });
