@@ -2395,3 +2395,24 @@ main {
   .travel-strip { overflow-x: auto; }
   .kb-panel:not([hidden]) .polaroid--fan { animation: none !important; transform: translateX(var(--fx)) rotate(var(--fr)); }
 }
+
+/* Work: real screen recordings inside the phone frame (replace the auto-scroll) */
+.work-media--video .work-video {
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  width: 46%;
+  height: auto;
+  aspect-ratio: 390 / 794;
+  object-fit: cover;
+  object-position: top;
+  background: var(--ink);
+  border: 6px solid var(--ink);
+  border-bottom: 0;
+  border-radius: 26px 26px 0 0;
+  box-shadow: 0 30px 60px rgba(10, 10, 10, 0.25);
+  translate: -50% 0;
+  transition: translate 600ms var(--ease);
+}
+.work-row:hover .work-media--video .work-video { translate: -50% -14px; }
+@media (max-width: 899px) { .work-media--video .work-video { width: 52%; } }

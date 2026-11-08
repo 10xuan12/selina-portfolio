@@ -164,6 +164,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+
+  /* ------------------------------------------------------------------
+     Work screen recordings: play only while on screen (saves data and
+     battery), never autoplay for people who prefer reduced motion.
+     ------------------------------------------------------------------ */
+  const workVideos = document.querySelectorAll('.work-video');
+  if (workVideos.length && !prefersReducedMotion && 'IntersectionObserver' in window) {
+    const videoIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const v = entry.target;
+        if (entry.isIntersecting) {
+          if (v.preload !== 'auto') v.preload = 'auto';
+          const pr = v.play();
+          if (pr && pr.catch) pr.catch(() => {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+    workVideos.forEach((v) => videoIO.observe(v));
+  }
+
   /* ------------------------------------------------------------------
      Count-up numbers in the About stats strip
      ------------------------------------------------------------------ */
