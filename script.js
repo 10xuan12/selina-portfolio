@@ -231,3 +231,167 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+/* ==========================================================================
+   Nov 2026 refresh — interactive pieces
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- Rewriting headline: "I build ___" ---------- */
+  const typer = document.getElementById('typer');
+  if (typer && typer.dataset.words && !reduce) {
+    const words = typer.dataset.words.split('|');
+    let w = 0;
+    let shown = words[0];
+    const step = () => {
+      const target = words[w];
+      if (shown === target) {
+        // hold, then start deleting
+        w = (w + 1) % words.length;
+        setTimeout(erase, 1900);
+        return;
+      }
+      shown = target.slice(0, shown.length + 1);
+      typer.textContent = shown;
+      setTimeout(step, 55);
+    };
+    const erase = () => {
+      if (shown.length === 0) { setTimeout(step, 250); return; }
+      shown = shown.slice(0, -1);
+      typer.textContent = shown;
+      setTimeout(erase, 28);
+    };
+    setTimeout(() => { w = 1; erase(); }, 3400);
+  }
+
+  /* ---------- Keynote scroll paragraph: words light up with scroll ---------- */
+  const keynote = document.getElementById('keynote');
+  if (keynote && !reduce) {
+    const words = [...keynote.querySelectorAll('.kw')];
+    const paint = () => {
+      const r = keynote.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // 0 when the paragraph's top sits at 85% of the viewport, 1 when its bottom reaches 45%
+      const start = vh * 0.85;
+      const end = vh * 0.45;
+      const total = (start - end) + r.height;
+      const progress = Math.min(1, Math.max(0, (start - r.top) / total));
+      const lit = Math.round(progress * words.length);
+      words.forEach((el, i) => el.classList.toggle('lit', i < lit));
+    };
+    paint();
+    window.addEventListener('scroll', paint, { passive: true });
+    window.addEventListener('resize', paint);
+  }
+
+  /* ---------- Count-up numbers ---------- */
+  const nums = document.querySelectorAll('.stat-num[data-count]');
+  if (nums.length && !reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        obs.unobserve(entry.target);
+        const el = entry.target;
+        const raw = el.dataset.count;
+        const target = parseInt(raw, 10);
+        const suffix = raw.replace(/^[0-9]+/, '');
+        const t0 = performance.now();
+        const dur = 1200;
+        const frame = (now) => {
+          const k = Math.min(1, (now - t0) / dur);
+          const eased = 1 - Math.pow(1 - k, 3);
+          el.textContent = Math.round(target * eased) + (k === 1 ? suffix : '');
+          if (k < 1) requestAnimationFrame(frame);
+        };
+        el.textContent = '0';
+        requestAnimationFrame(frame);
+      });
+    }, { threshold: 0.6 });
+    nums.forEach((n) => io.observe(n));
+  }
+
+  /* ---------- Project list: floating preview follows the cursor ---------- */
+  const float = document.getElementById('proj-float');
+  if (float && finePointer && !reduce) {
+    const img = float.querySelector('img');
+    let x = 0, y = 0, fx = 0, fy = 0, raf = null;
+    const loop = () => {
+      fx += (x - fx) * 0.16;
+      fy += (y - fy) * 0.16;
+      float.style.transform = `translate3d(${fx + 36}px, ${fy - 90}px, 0)`;
+      raf = requestAnimationFrame(loop);
+    };
+    document.querySelectorAll('.proj').forEach((proj) => {
+      const sum = proj.querySelector('.proj-sum');
+      sum.addEventListener('mouseenter', (e) => {
+        if (proj.open) return;
+        img.src = proj.dataset.preview;
+        x = fx = e.clientX; y = fy = e.clientY;
+        float.classList.add('is-on');
+        if (!raf) raf = requestAnimationFrame(loop);
+      });
+      sum.addEventListener('mousemove', (e) => { x = e.clientX; y = e.clientY; });
+      sum.addEventListener('mouseleave', () => {
+        float.classList.remove('is-on');
+        cancelAnimationFrame(raf); raf = null;
+      });
+      sum.addEventListener('click', () => float.classList.remove('is-on'));
+    });
+  }
+
+  /* ---------- Magnetic copy-email button + elastic toast ---------- */
+  const magnet = document.getElementById('copy-email');
+  const toast = document.getElementById('toast');
+  if (magnet) {
+    const inner = magnet.querySelector('.magnet-inner');
+    if (finePointer && !reduce) {
+      const wrap = magnet.parentElement;
+      wrap.addEventListener('mousemove', (e) => {
+        const r = magnet.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        magnet.style.transform = `translate(${dx * 0.3}px, ${dy * 0.3}px)`;
+        inner.style.transform = `translate(${dx * 0.12}px, ${dy * 0.12}px)`;
+      });
+      wrap.addEventListener('mouseleave', () => {
+        magnet.style.transform = '';
+        inner.style.transform = '';
+      });
+    }
+    let hideTimer;
+    magnet.addEventListener('click', async () => {
+      const email = magnet.dataset.email;
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch (err) {
+        window.location.href = `mailto:${email}`;
+        return;
+      }
+      if (!toast) return;
+      toast.classList.remove('is-on');
+      void toast.offsetWidth; // restart the check animation
+      toast.classList.add('is-on');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => toast.classList.remove('is-on'), 2600);
+    });
+  }
+
+  /* ---------- Back to top with progress ring ---------- */
+  const toTop = document.getElementById('to-top');
+  const ring = document.getElementById('to-top-ring');
+  if (toTop && ring) {
+    const C = 2 * Math.PI * 21;
+    ring.style.strokeDasharray = C;
+    const update = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const pct = max > 0 ? h.scrollTop / max : 0;
+      ring.style.strokeDashoffset = C * (1 - pct);
+      toTop.classList.toggle('is-on', h.scrollTop > window.innerHeight * 0.6);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+});

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selina Huang — Information Management × AI-Assisted Development</title>
-  <meta name="description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
+  <title>Selina Huang — Frontend Developer · Information Management</title>
+  <meta name="description" content="Selina Huang is a frontend developer from Taiwan who builds web apps, mobile-first sites and AI-assisted workflows." />
 
   <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="image/favicon-32.png" type="image/png" sizes="32x32" />
@@ -12,12 +12,12 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://10xuan12.github.io/selina-portfolio/" />
-  <meta property="og:title" content="Selina Huang — Information Management × AI-Assisted Development" />
-  <meta property="og:description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
+  <meta property="og:title" content="Selina Huang — Frontend Developer · Information Management" />
+  <meta property="og:description" content="Selina Huang is a frontend developer from Taiwan who builds web apps, mobile-first sites and AI-assisted workflows." />
   <meta property="og:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Selina Huang — Information Management × AI-Assisted Development" />
-  <meta name="twitter:description" content="Selina builds digital systems that solve real business problems — from diagnosis to design to technology." />
+  <meta name="twitter:title" content="Selina Huang — Frontend Developer · Information Management" />
+  <meta name="twitter:description" content="Selina Huang is a frontend developer from Taiwan who builds web apps, mobile-first sites and AI-assisted workflows." />
   <meta name="twitter:image" content="https://10xuan12.github.io/selina-portfolio/image/selina-portrait.jpg" />
 
   <link rel="alternate" hreflang="en" href="https://10xuan12.github.io/selina-portfolio/" />
@@ -44,7 +44,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="style.css?v=20260902" />
+  <link rel="stylesheet" href="style.css?v=20261108" />
 </head>
 <body>
   <div id="om-curtain" aria-hidden="true">
@@ -55,7 +55,7 @@
   </div>
 
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-  <div id="scroll-progress" aria-hidden="true"></div>
+  <div class="proj-float" id="proj-float" aria-hidden="true"><img alt="" /></div>
 
   <header class="site-header" id="site-header">
     <div class="header-inner">
@@ -69,22 +69,26 @@
 
       <nav class="nav" id="primary-nav">
         <a href="#about" class="nav-link">01 About</a>
-        <a href="#track" class="nav-link">02 Track</a>
-        <a href="#work" class="nav-link">03 Work</a>
-        <a href="#services" class="nav-link">04 Services</a>
-        <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="nav-link nav-cta">Contact →</a>
+        <a href="#work" class="nav-link">02 Work</a>
+        <a href="#track" class="nav-link">03 Experience</a>
+        <a href="#contact" class="nav-link nav-cta">Contact →</a>
       </nav>
     </div>
   </header>
 
   <a href="zh/index.html" class="lang-fab" id="lang-toggle" hreflang="zh-Hant" aria-label="Switch to Chinese">中</a>
 
+  <a href="#top" class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="to-top-track" cx="24" cy="24" r="21" /><circle class="to-top-ring" id="to-top-ring" cx="24" cy="24" r="21" /></svg>
+    <span aria-hidden="true">↑</span>
+  </a>
+
   <main id="top">
 
     <!-- ══════════ HERO ══════════ -->
     <section class="sec hero">
       <div class="hero-status fx-fade" style="--fx-delay: 1250ms">
-        <span class="hero-status-dot">Open to remote roles &amp; projects</span>
+        <span class="hero-status-dot">Open to remote roles</span>
         <span class="hero-status-loc">Taichung, Taiwan · UTC+8</span>
       </div>
 
@@ -93,24 +97,19 @@
           <h1 class="hero-title fx-rise" style="--fx-delay: 1380ms">SELINA HUANG</h1>
 
           <div class="hero-message fx-rise" style="--fx-delay: 1720ms">
-            <p class="hero-subtitle">Finding what's actually costing you customers — that's the work I do.</p>
+            <p class="hero-subtitle">Frontend developer. I <mark class="marker">start with the problem</mark>, then write the code.</p>
             <div class="hero-problem">
-              <span class="hero-problem-tag">e.g.</span>
-              <span class="hero-problem-text" id="hero-problem">International visitors can't understand your service.</span>
+              <span class="hero-problem-tag">I build</span>
+              <span class="hero-problem-text typer" id="typer" data-words="web apps|mobile-first sites|admin dashboards|AI-assisted workflows">web apps</span>
             </div>
           </div>
 
           <div class="hero-actions fx-rise" style="--fx-delay: 1860ms">
-            <a href="#contact" class="btn btn--dark">Start a project <span aria-hidden="true">→</span></a>
-            <a href="#work" class="btn btn--ghost">See the work</a>
+            <a href="#work" class="btn btn--dark">See my work <span aria-hidden="true">→</span></a>
+            <a href="#contact" class="btn btn--ghost">Get in touch</a>
           </div>
 
-          <div class="hero-pills fx-rise" style="--fx-delay: 1980ms">
-            <span class="pill">Vue.js</span>
-            <span class="pill">Nuxt</span>
-            <span class="pill">TypeScript</span>
-            <span class="pill">AI-assisted dev</span>
-          </div>
+          <div class="hero-pills fx-rise" style="--fx-delay: 1980ms"><span class="pill">Vue.js</span><span class="pill">Nuxt</span><span class="pill">TypeScript</span><span class="pill">AI-assisted dev</span></div>
         </div>
 
         <div class="hero-figure fx-rise" style="--fx-delay: 1600ms">
@@ -121,7 +120,7 @@
           <div class="hero-figure-media">
             <img src="image/hero-portrait.jpeg" alt="Photo of Selina" width="300" height="400" loading="lazy" />
           </div>
-          <p class="hero-figure-note">→ Based in Taichung, working worldwide</p>
+          <p class="hero-figure-note">→ Based in Taichung, working remotely</p>
         </div>
       </div>
     </section>
@@ -140,41 +139,13 @@
           </div>
         </div>
         <div class="about-copy">
-          <h2>Hi, I'm Selina<span class="accent">.</span></h2>
-          <p>
-            I studied Information Management for four years, and now I'm doing my master's in it. What I actually learned: most "tech problems"
-            aren't tech problems — they're nobody-wrote-down-who's-supposed-to-fix-this problems.
-          </p>
-          <p>
-            I build frontend, backend, mobile apps, and lately AI-assisted workflows. My last real client
-            was in Eswatini, 8 hours behind Taiwan — we never once had a call, just WhatsApp and a lot of
-            async trust. That taught me more about "the work" than any class did.
-          </p>
-          <p>
-            I ask annoying questions before I write a single line of code: who's actually using this,
-            where do they give up, what are we quietly assuming. The coding part comes last. It's the
-            easy part.
-          </p>
-          <div class="about-facts">
-            <div class="about-fact">
-              <span class="about-fact-key">Based</span>
-              <span class="about-fact-val">Taichung, TW</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact-key">Languages</span>
-              <span class="about-fact-val">中文 · English</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact-key">Focus</span>
-              <span class="about-fact-val">Small business web</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact-key">Available</span>
-              <span class="about-fact-val accent">Now</span>
-            </div>
-          </div>
+          <h2>Hi, I’m Selina<span class="accent">.</span></h2>
+          <p class="keynote" id="keynote"><span class="kw">Four</span> <span class="kw">years</span> <span class="kw">of</span> <span class="kw">Information</span> <span class="kw">Management</span> <span class="kw">taught</span> <span class="kw">me</span> <span class="kw">that</span> <span class="kw">most</span> <span class="kw">tech</span> <span class="kw">problems</span> <span class="kw">aren’t</span> <span class="kw">really</span> <span class="kw">tech</span> <span class="kw">problems.</span> <span class="kw">So</span> <span class="kw">before</span> <span class="kw">I</span> <span class="kw">write</span> <span class="kw">code,</span> <span class="kw">I</span> <span class="kw">ask</span> <span class="kw">who’s</span> <span class="kw">using</span> <span class="kw">it</span> <span class="kw">—</span> <span class="kw">and</span> <span class="kw">where</span> <span class="kw">they</span> <span class="kw">give</span> <span class="kw">up.</span></p>
+          <div class="about-facts"><div class="about-fact"><span class="about-fact-key">Based</span><span class="about-fact-val">Taichung, TW</span></div><div class="about-fact"><span class="about-fact-key">Languages</span><span class="about-fact-val">中文 · English</span></div><div class="about-fact"><span class="about-fact-key">Looking for</span><span class="about-fact-val"><span class="accent">Remote frontend roles</span></span></div></div>
         </div>
       </div>
+
+      <div class="stats reveal reveal--stagger"><div class="stat"><span class="stat-num" data-count="4">4</span><span class="stat-label">years of Information Management</span></div><div class="stat"><span class="stat-num" data-count="3">3</span><span class="stat-label">years as a programming TA</span></div><div class="stat"><span class="stat-num" data-count="12+">12+</span><span class="stat-label">admin modules built at Info-Link</span></div><div class="stat"><span class="stat-num" data-count="2">2</span><span class="stat-label">live sites shipped</span></div></div>
 
       <div class="process reveal">
         <div class="process-head">
@@ -182,103 +153,127 @@
         </div>
         <div class="process-track">
           <span class="process-line" aria-hidden="true"></span>
-          <div class="process-steps">
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 01</span>
-              <span class="process-step-title">Problem</span>
-              <p>What is quietly losing you customers right now.</p>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 02</span>
-              <span class="process-step-title">Insight</span>
-              <p>Where in the journey people actually drop off.</p>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 03</span>
-              <span class="process-step-title">Strategy</span>
-              <p>What to fix first, and what to deliberately skip.</p>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 04</span>
-              <span class="process-step-title">Experience</span>
-              <p>The flow a real customer walks through, end to end.</p>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 05</span>
-              <span class="process-step-title">System</span>
-              <p>The structure that makes it actually work, not just look right.</p>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 06</span>
-              <span class="process-step-title">Technology</span>
-              <p>Chosen last — because it serves the five above.</p>
-            </div>
-          </div>
+          <div class="process-steps"><div class="process-step"><span class="process-marker"></span><span class="process-step-num">STEP 01</span><span class="process-step-title">Problem</span><p>What’s going wrong</p></div><div class="process-step"><span class="process-marker"></span><span class="process-step-num">STEP 02</span><span class="process-step-title">Insight</span><p>Where people drop off</p></div><div class="process-step"><span class="process-marker"></span><span class="process-step-num">STEP 03</span><span class="process-step-title">Strategy</span><p>Fix first, skip the rest</p></div><div class="process-step"><span class="process-marker"></span><span class="process-step-num">STEP 04</span><span class="process-step-title">Experience</span><p>The flow, end to end</p></div><div class="process-step"><span class="process-marker"></span><span class="process-step-num">STEP 05</span><span class="process-step-title">System</span><p>Structure that holds</p></div><div class="process-step"><span class="process-marker"></span><span class="process-step-num">STEP 06</span><span class="process-step-title">Technology</span><p>Chosen last</p></div></div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ 02 TRACK RECORD ══════════ -->
-    <section id="track" class="sec sec--pad">
+    <!-- ══════════ 02 WORK ══════════ -->
+    <section id="work" class="sec sec--pad">
       <div class="sec-head">
         <span class="sec-num">02</span>
-        <span class="sec-label">Track record</span>
+        <span class="sec-label">Selected work</span>
+      </div>
+
+      <h2 class="work-headline reveal">Each one started as a <span class="accent">real problem</span>.</h2>
+
+      <div class="proj-list reveal">
+          <details class="proj" data-preview="image/sompisi-preview.jpg">
+            <summary class="proj-sum">
+              <span class="proj-num">01</span>
+              <span class="proj-title">Sompisi Transport</span>
+              <span class="proj-meta">2025 · Client site · Eswatini</span>
+              <span class="proj-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="proj-body">
+              <div class="proj-media"><img src="image/sompisi-preview.jpg" alt="Sompisi Transport" loading="lazy" /></div>
+              <div class="proj-info">
+                <div class="work-fact"><span class="work-fact-key">Problem</span><p>A family-run private driving service that travellers couldn’t find or trust online.</p></div>
+                <div class="work-fact"><span class="work-fact-key">Built</span><p>A mobile-first site that names the real driver, prices the real routes, and books straight into WhatsApp.</p></div>
+                <div class="work-tags"><span class="tag">Nuxt</span><span class="tag">Tailwind</span><span class="tag">WhatsApp booking</span><a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">Live site <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </div>
+          </details>
+          <details class="proj" data-preview="image/triptally-preview.jpg">
+            <summary class="proj-sum">
+              <span class="proj-num">02</span>
+              <span class="proj-title">TripTally</span>
+              <span class="proj-meta">PWA · Personal · Travel</span>
+              <span class="proj-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="proj-body">
+              <div class="proj-media"><img src="image/triptally-preview.jpg" alt="TripTally" loading="lazy" /></div>
+              <div class="proj-info">
+                <div class="work-fact"><span class="work-fact-key">Problem</span><p>Splitting travel costs across currencies always ends in a messy group chat and a spreadsheet nobody updates.</p></div>
+                <div class="work-fact"><span class="work-fact-key">Built</span><p>An offline-first expense tracker with per-day budgets, live currency conversion and a shared trip ledger.</p></div>
+                <div class="work-tags"><span class="tag">Vue</span><span class="tag">PWA</span><span class="tag">IndexedDB</span><a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">Live site <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </div>
+          </details>
+          <details class="proj" data-preview="image/costco-ai-preview.jpg">
+            <summary class="proj-sum">
+              <span class="proj-num">03</span>
+              <span class="proj-title">AI-assisted returns for Costco Taiwan</span>
+              <span class="proj-meta">2026 · Case study · Retail × AI</span>
+              <span class="proj-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="proj-body">
+              <div class="proj-media"><img src="image/costco-ai-preview.jpg" alt="AI-assisted returns for Costco Taiwan" loading="lazy" /></div>
+              <div class="proj-info">
+                <div class="work-fact"><span class="work-fact-key">Problem</span><p>Return requests arrive incomplete, and staff check each one against six-plus exception rules spread across policy pages.</p></div>
+                <div class="work-fact"><span class="work-fact-key">Built</span><p>An LLM flow that turns an email into a structured case, flags what’s missing and which rules may apply, then drafts the reply — staff keep the final call. Tested on Claude, Gemini and ChatGPT against an 11-point checklist.</p></div>
+                <div class="work-tags"><span class="tag">Process mapping</span><span class="tag">Prompt design</span><span class="tag">LLM evaluation</span></div>
+              </div>
+            </div>
+          </details>
+      </div>
+    </section>
+
+    <!-- ══════════ 03 EXPERIENCE ══════════ -->
+    <section id="track" class="sec sec--pad">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <span class="sec-label">Experience</span>
       </div>
 
       <div class="track-block reveal">
-        <h3 class="track-h">Experience</h3>
+        <h3 class="track-h">Roles</h3>
         <div class="exp-list">
-          <div class="exp-row exp-row--current">
-            <div class="exp-year">2026 — Now</div>
-            <div class="exp-role">
-              <div class="exp-role-title">M.S. Information Management</div>
-              <div class="exp-role-org">Providence University</div>
-            </div>
-            <p class="exp-desc">Graduate coursework in AI — most recently, redesigning a retail return process around LLMs and testing where they fail.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row exp-row--current">
-            <div class="exp-year">2026 — Now</div>
-            <div class="exp-role">
-              <div class="exp-role-title">Website Maintainer</div>
-              <div class="exp-role-org">Local non-profit organization</div>
-            </div>
+          <details class="exp-item is-current">
+            <summary class="exp-row">
+              <span class="exp-year">2026 — Now</span>
+              <span class="exp-role-title">M.S. Information Management</span>
+              <span class="exp-role-org">Providence University</span>
+              <span class="proj-toggle" aria-hidden="true"></span>
+            </summary>
+            <p class="exp-desc">Graduate AI coursework — most recently, redesigning a retail return process around LLMs and testing where they fail.</p>
+          </details>
+          <details class="exp-item is-current">
+            <summary class="exp-row">
+              <span class="exp-year">2026 — Now</span>
+              <span class="exp-role-title">Website Maintainer</span>
+              <span class="exp-role-org">Local non-profit</span>
+              <span class="proj-toggle" aria-hidden="true"></span>
+            </summary>
             <p class="exp-desc">Rebuilt their site in Nuxt, then moved it to Google Sites at their request. I keep it updated for their frequent events.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2025 — 2026</div>
-            <div class="exp-role">
-              <div class="exp-role-title">Software Development Intern</div>
-              <div class="exp-role-org">Info-Link Services</div>
-            </div>
-            <p class="exp-desc">Built the admin back office of a fertilizer e-commerce platform — 12+ management modules in Nuxt and TypeScript — then stepped into the back end with C# APIs and SQL Server stored procedures when the team needed it.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2023 — 2026</div>
-            <div class="exp-role">
-              <div class="exp-role-title">Programming TA</div>
-              <div class="exp-role-org">Providence University</div>
-            </div>
+          </details>
+          <details class="exp-item">
+            <summary class="exp-row">
+              <span class="exp-year">2025 — 2026</span>
+              <span class="exp-role-title">Software Development Intern</span>
+              <span class="exp-role-org">Info-Link Services</span>
+              <span class="proj-toggle" aria-hidden="true"></span>
+            </summary>
+            <p class="exp-desc">Built 12+ admin modules for a fertilizer e-commerce back office in Nuxt and TypeScript, then stepped into C# APIs and SQL Server stored procedures when the team needed it.</p>
+          </details>
+          <details class="exp-item">
+            <summary class="exp-row">
+              <span class="exp-year">2023 — 2026</span>
+              <span class="exp-role-title">Programming TA</span>
+              <span class="exp-role-org">Providence University</span>
+              <span class="proj-toggle" aria-hidden="true"></span>
+            </summary>
             <p class="exp-desc">Taught Java programming and algorithms to first-year students.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="exp-row">
-            <div class="exp-year">2024 — 2025</div>
-            <div class="exp-role">
-              <div class="exp-role-title">Supplementary English Teacher</div>
-              <div class="exp-role-org">Galaxy English School</div>
-            </div>
-            <p class="exp-desc">Supported lesson prep and classroom communication for elementary English classes — where I learned to explain hard things simply.</p>
-            <span class="exp-arrow" aria-hidden="true">→</span>
-          </div>
+          </details>
+          <details class="exp-item">
+            <summary class="exp-row">
+              <span class="exp-year">2024 — 2025</span>
+              <span class="exp-role-title">English Teaching Assistant</span>
+              <span class="exp-role-org">Galaxy English School</span>
+              <span class="proj-toggle" aria-hidden="true"></span>
+            </summary>
+            <p class="exp-desc">Supported elementary English classes — where I learned to explain hard things simply.</p>
+          </details>
         </div>
       </div>
 
@@ -290,199 +285,30 @@
             <span><span class="legend-sw legend-sw--outline"></span> Working knowledge</span>
           </div>
         </div>
-        <div class="chips">
-          <span class="chip">HTML / CSS</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">Vue.js</span>
-          <span class="chip">Nuxt</span>
-          <span class="chip">TypeScript</span>
-          <span class="chip">Java</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">AI-assisted dev</span>
-          <span class="chip chip--outline">LLM prompt design &amp; evaluation</span>
-          <span class="chip chip--outline">C#</span>
-          <span class="chip chip--outline">SQL Server</span>
-          <span class="chip chip--outline">Tailwind</span>
-          <span class="chip chip--outline">Node.js</span>
-          <span class="chip chip--outline">Python</span>
-          <span class="chip chip--outline">Git</span>
-          <span class="chip chip--outline">Figma</span>
-          <span class="chip chip--outline">PWA</span>
-          <span class="chip chip--outline">REST APIs</span>
-        </div>
+        <div class="chips"><span class="chip has-tip" tabindex="0" data-tip="Every project here">HTML / CSS</span><span class="chip">JavaScript</span><span class="chip has-tip" tabindex="0" data-tip="TripTally">Vue.js</span><span class="chip has-tip" tabindex="0" data-tip="Sompisi · Info-Link back office">Nuxt</span><span class="chip has-tip" tabindex="0" data-tip="Info-Link back office">TypeScript</span><span class="chip has-tip" tabindex="0" data-tip="Taught it as a TA">Java</span><span class="chip">MySQL</span><span class="chip has-tip" tabindex="0" data-tip="This site · Costco case">AI-assisted dev</span><span class="chip chip--outline has-tip" tabindex="0" data-tip="Costco returns case">LLM prompt design & evaluation</span><span class="chip chip--outline has-tip" tabindex="0" data-tip="Info-Link APIs">C#</span><span class="chip chip--outline has-tip" tabindex="0" data-tip="Stored procedures at Info-Link">SQL Server</span><span class="chip chip--outline has-tip" tabindex="0" data-tip="Sompisi Transport">Tailwind</span><span class="chip chip--outline">Node.js</span><span class="chip chip--outline">Python</span><span class="chip chip--outline">Git</span><span class="chip chip--outline">Figma</span><span class="chip chip--outline has-tip" tabindex="0" data-tip="TripTally">PWA</span><span class="chip chip--outline">REST APIs</span></div>
+        <p class="tip-hint">Hover a skill to see where I used it</p>
       </div>
     </section>
 
-    <!-- ══════════ 03 SELECTED WORK ══════════ -->
-    <section id="work" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">03</span>
-        <span class="sec-label">Selected work</span>
-      </div>
-
-      <h2 class="work-headline reveal">Every one of these started as a <span class="accent">business problem</span>.</h2>
-
-      <div class="work-list">
-        <!-- 01 -->
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media">
-                <img src="image/sompisi-preview.jpg" alt="Sompisi Transport screenshot" loading="lazy" />
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>01</span>
-                <span class="work-meta-status">Shipped · 2025</span>
-                <span class="work-meta-sector">Eswatini</span>
-              </div>
-              <h3 class="work-title">Sompisi Transport</h3>
-              <div class="work-facts">
-                <div class="work-fact">
-                  <span class="work-fact-key">Problem</span>
-                  <p>A family-run private driving service with no way for travellers to find or trust them online.</p>
-                </div>
-                <div class="work-fact">
-                  <span class="work-fact-key">Built</span>
-                  <p>A mobile-first site that names the actual driver, prices the actual routes, and books straight into WhatsApp.</p>
-                </div>
-              </div>
-              <div class="work-tags">
-                <span class="tag">Nuxt</span>
-                <span class="tag">Tailwind</span>
-                <span class="tag">WhatsApp booking</span>
-                <a href="https://sompisi-transport.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">Live site <span aria-hidden="true">→</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 02 -->
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media">
-                <img src="image/triptally-preview.jpg" alt="TripTally screenshot" loading="lazy" />
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>02</span>
-                <span class="work-meta-status">Shipped · PWA</span>
-                <span class="work-meta-sector">Personal</span>
-              </div>
-              <h3 class="work-title">TripTally</h3>
-              <div class="work-facts">
-                <div class="work-fact">
-                  <span class="work-fact-key">Problem</span>
-                  <p>Splitting travel costs across currencies always ends in a messy group chat and a spreadsheet nobody updates.</p>
-                </div>
-                <div class="work-fact">
-                  <span class="work-fact-key">Built</span>
-                  <p>An offline-first expense tracker with per-day budgets, live currency conversion and a shared trip ledger.</p>
-                </div>
-              </div>
-              <div class="work-tags">
-                <span class="tag">Vue</span>
-                <span class="tag">PWA</span>
-                <span class="tag">IndexedDB</span>
-                <a href="https://triptallyxuan.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--sm">Live site <span aria-hidden="true">→</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 03 -->
-        <div class="work-row reveal">
-          <div class="grid12">
-            <div class="work-media-col">
-              <div class="work-media">
-                <img src="image/costco-ai-preview.jpg" alt="Redesigned return flow, with the AI steps highlighted in red" loading="lazy" />
-              </div>
-            </div>
-            <div class="work-info">
-              <div class="work-meta">
-                <span>03</span>
-                <span class="work-meta-status">Case study · 2026</span>
-                <span class="work-meta-sector">Retail · AI</span>
-              </div>
-              <h3 class="work-title">AI-assisted returns for Costco Taiwan</h3>
-              <div class="work-facts">
-                <div class="work-fact">
-                  <span class="work-fact-key">Problem</span>
-                  <p>Online return requests can arrive incomplete, and staff have to check each one against six-plus exception rules spread across different policy pages.</p>
-                </div>
-                <div class="work-fact">
-                  <span class="work-fact-key">Built</span>
-                  <p>An LLM flow that turns a customer's email into a structured case, flags what's missing and which rules might apply, and drafts the reply — staff keep the final call. Tested on Claude, Gemini and ChatGPT against an 11-point review checklist.</p>
-                </div>
-              </div>
-              <div class="work-tags">
-                <span class="tag">Process mapping</span>
-                <span class="tag">Prompt design</span>
-                <span class="tag">LLM evaluation</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-cta reveal">
-        <div class="work-cta-copy">
-          <span class="work-cta-eyebrow">Next one could be yours</span>
-          <span class="work-cta-title">Let's build yours next.</span>
-        </div>
-        <a href="#contact" class="btn btn--light">Start a project <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <!-- ══════════ 04 SERVICES ══════════ -->
-    <section id="services" class="sec sec--pad">
-      <div class="sec-head">
-        <span class="sec-num">04</span>
-        <span class="sec-label">Services</span>
-      </div>
-
-      <h2 class="services-headline reveal">Three ways to fix what's costing you customers.</h2>
-
-      <div class="services-grid reveal reveal--stagger">
-        <div class="service">
-          <div class="service-num">01</div>
-          <h3>Digital diagnostic</h3>
-          <p>I stalk your website like a customer would: on my phone, half paying attention, ready to leave in 3 seconds. Wherever I bail, that's your problem.</p>
-          <div class="service-deliver">Deliverable · Written audit</div>
-        </div>
-        <div class="service">
-          <div class="service-num">02</div>
-          <h3>Custom digital systems</h3>
-          <p>Website, booking tool, customer portal — I build whatever actually solves it. Not whatever's trending this week.</p>
-          <div class="service-deliver">Deliverable · Shipped product</div>
-        </div>
-        <div class="service">
-          <div class="service-num">03</div>
-          <h3>AI-assisted workflows</h3>
-          <p>You know that message you've typed 47 times this month? I automate it. You're welcome.</p>
-          <div class="service-deliver">Deliverable · Automation setup</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ 05 CONTACT ══════════ -->
+    <!-- ══════════ 04 CONTACT ══════════ -->
     <section id="contact" class="sec sec--pad">
       <div class="sec-head">
-        <span class="sec-num">05</span>
+        <span class="sec-num">04</span>
         <span class="sec-label">Contact</span>
       </div>
 
-      <div class="contact-body grid12 reveal">
+      <div class="contact-hero reveal">
         <div class="contact-lead">
-          <h2>Let's talk about what's costing you customers<span class="accent">.</span></h2>
-          <p>A quick question or a full project — reach out however's easiest for you. I reply within a day.</p>
+          <h2>Say hi<span class="accent">.</span></h2>
+          <p>Hiring, or have something in mind? I reply within a day.</p>
         </div>
-        <div class="contact-qr">
-          <img id="whatsapp-qr-img" alt="WhatsApp QR code" width="128" height="128" />
-          <span class="contact-qr-cap">Scan to start a WhatsApp chat</span>
+        <div class="magnet-wrap">
+          <button type="button" class="magnet" id="copy-email" data-email="selina101292@gmail.com">
+            <span class="magnet-inner">
+              <span class="magnet-label">Copy my email</span>
+              <span class="magnet-mail">selina101292@gmail.com</span>
+            </span>
+          </button>
         </div>
       </div>
 
@@ -495,6 +321,10 @@
           <span class="contact-link-key">LinkedIn</span>
           <span class="contact-link-val">/in/玟瑄-黃</span>
         </a>
+        <a href="https://github.com/10xuan12" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-link-key">GitHub</span>
+          <span class="contact-link-val">@10xuan12</span>
+        </a>
         <a href="https://wa.me/886965418312" target="_blank" rel="noopener noreferrer" class="contact-link" id="whatsapp-link">
           <span class="contact-link-key">WhatsApp</span>
           <span class="contact-link-val">+886 965 418 312</span>
@@ -505,10 +335,15 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; 2026 Selina Huang. All rights reserved.</p>
+      <p>© 2026 Selina Huang. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="script.js?v=20260902"></script>
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span>
+    <span class="toast-text">Email copied — talk soon.</span>
+  </div>
+
+  <script src="script.js?v=20261108"></script>
 </body>
 </html>
