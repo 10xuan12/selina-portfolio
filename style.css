@@ -2138,3 +2138,42 @@ main {
   .kb-tab[aria-selected="true"] { border-bottom-color: var(--wine); }
   .kb-bar { display: none; }
 }
+
+/* "What I can do" lead-in: learning mindset + proof */
+.kb-quote {
+  margin: 28px 0 8px;
+  padding: 4px 0 4px 22px;
+  border-left: 3px solid var(--wine);
+}
+.kb-quote p {
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(22px, 2.4vw, 36px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+:lang(zh-Hant) .kb-quote p { max-width: 24em; letter-spacing: 0; line-height: 1.4; }
+.kb-quote mark {
+  color: inherit;
+  background: linear-gradient(transparent 60%, var(--wine-tint) 60%, var(--wine-tint) 92%, transparent 92%) no-repeat 0 0 / 0% 100%;
+}
+.kb-panel:not([hidden]) .kb-quote mark { animation: kbMark 900ms var(--ease) 300ms forwards; }
+@keyframes kbMark { to { background-size: 100% 100%; } }
+@media (prefers-reduced-motion: reduce) { .kb-quote mark { background-size: 100% 100%; animation: none !important; } }
+.kb-quote footer {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--slate);
+}
+.kb-quote footer span {
+  margin-right: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wine);
+}
