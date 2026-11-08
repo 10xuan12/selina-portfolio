@@ -163,6 +163,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+
+  /* ------------------------------------------------------------------
+     Count-up numbers in the About stats strip
+     ------------------------------------------------------------------ */
+  const statNums = document.querySelectorAll('.stat-num[data-count]');
+  if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window) {
+    const countIO = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        obs.unobserve(entry.target);
+        const el = entry.target;
+        const raw = el.dataset.count;
+        const target = parseInt(raw, 10);
+        const suffix = raw.replace(/^[0-9]+/, '');
+        const t0 = performance.now();
+        const frame = (now) => {
+          const k = Math.min(1, (now - t0) / 1400);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3))) + (k === 1 ? suffix : '');
+          if (k < 1) requestAnimationFrame(frame);
+        };
+        requestAnimationFrame(frame);
+      });
+    }, { threshold: 0.5 });
+    statNums.forEach((n) => { n.textContent = '0'; countIO.observe(n); });
+  }
+
   /* ------------------------------------------------------------------
      Knowledge base tabs (WAI-ARIA tabs pattern: click + arrow keys)
      ------------------------------------------------------------------ */

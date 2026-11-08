@@ -2177,3 +2177,99 @@ main {
   text-transform: uppercase;
   color: var(--wine);
 }
+
+/* ==========================================================================
+   Motion pass — scrolling device screenshots, stats count-up, skills band
+   ========================================================================== */
+
+/* Work: tall phone screenshots scroll by themselves inside a device frame */
+.work-media--scroll {
+  container-type: size;
+  background:
+    radial-gradient(70% 60% at 50% 20%, rgba(107, 30, 35, 0.12), transparent 70%),
+    var(--panel);
+}
+.js .work-row.in .work-media--scroll img,
+.work-media--scroll img {
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  width: 46%;
+  height: auto;
+  object-fit: initial;
+  border: 6px solid var(--ink);
+  border-bottom: 0;
+  border-radius: 26px 26px 0 0;
+  box-shadow: 0 30px 60px rgba(10, 10, 10, 0.25);
+  translate: -50% 0;
+  animation: shotScroll 16s ease-in-out 1s infinite alternate;
+}
+.work-row:nth-child(2) .work-media--scroll img { animation-delay: -5s; }
+@keyframes shotScroll {
+  0%, 12% { transform: translateY(0); }
+  88%, 100% { transform: translateY(calc(-100% + 100cqh - 28px)); }
+}
+.work-row:hover .work-media--scroll img { animation-duration: 7s; }
+
+/* Static screenshots (e.g. the Costco case) zoom gently on hover */
+.work-media:not(.work-media--scroll) img { transition: transform 900ms var(--ease); }
+.work-row:hover .work-media:not(.work-media--scroll) img { transform: scale(1.05); }
+
+/* About: count-up stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 80px;
+  border-top: 2px solid var(--ink);
+}
+.stat { display: flex; flex-direction: column; gap: 10px; padding: 24px 24px 0 0; }
+.stat + .stat { padding-left: 24px; border-left: 1px solid var(--line); }
+.stat-num {
+  font-size: clamp(48px, 6.4vw, 104px);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums;
+}
+.stat:first-child .stat-num { color: var(--wine); }
+.stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* Moving skills band under the hero */
+.band {
+  overflow: hidden;
+  margin: 24px calc(-1 * var(--pad)) 0;
+  padding: 18px 0;
+  background: var(--ink);
+  color: var(--paper);
+}
+.band-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  white-space: nowrap;
+  font-size: clamp(22px, 2.6vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  animation: bandSlide 38s linear infinite;
+}
+.band:hover .band-track { animation-play-state: paused; }
+.band-sep { color: var(--wine-tint); font-size: 0.5em; }
+@keyframes bandSlide { to { transform: translateX(-50%); } }
+
+@media (max-width: 899px) {
+  .stats { grid-template-columns: repeat(2, 1fr); margin-top: 56px; }
+  .stat:nth-child(3) { padding-left: 0; border-left: none; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line); margin-top: 22px; }
+  .work-media--scroll img { width: 52%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-media--scroll img, .band-track { animation: none !important; }
+}
