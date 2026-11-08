@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Poh2ZiVzg8PSsKZcqxItIT7Pb4npj2jEmCtIr5EFWCo='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Selina Huang — Full-Stack Web Developer</title>
   <meta name="description" content="Selina Huang is a full-stack web developer from Taiwan who builds web apps around real problems." />
 
@@ -44,7 +46,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="style.css?v=20261108" />
+  <link rel="stylesheet" href="style.css?v=20261108c" />
 </head>
 <body>
   <div id="om-curtain" aria-hidden="true">
@@ -239,45 +241,11 @@
         </div>
       </div>
 
-      <div class="process process--compact reveal">
-        <div class="process-head">
-          <h3>How I work</h3>
-        </div>
-        <div class="process-track">
-          <span class="process-line" aria-hidden="true"></span>
-          <div class="process-steps">
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 01</span>
-              <span class="process-step-title">Problem</span>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 02</span>
-              <span class="process-step-title">Insight</span>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 03</span>
-              <span class="process-step-title">Strategy</span>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 04</span>
-              <span class="process-step-title">Experience</span>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 05</span>
-              <span class="process-step-title">System</span>
-            </div>
-            <div class="process-step">
-              <span class="process-marker"></span>
-              <span class="process-step-num">STEP 06</span>
-              <span class="process-step-title">Technology</span>
-            </div>
-          </div>
-        </div>
+
+      <div class="kb reveal">
+        <h3 class="kb-h">Knowledge base</h3>
+        <div class="kb-tabs" role="tablist" aria-label="About Selina"><button type="button" role="tab" class="kb-tab" id="kb-tab-me" aria-controls="kb-me" aria-selected="true" tabindex="0"><span class="kb-tab-n">01</span>Who I am</button><button type="button" role="tab" class="kb-tab" id="kb-tab-skills" aria-controls="kb-skills" aria-selected="false" tabindex="-1"><span class="kb-tab-n">02</span>What I do</button><button type="button" role="tab" class="kb-tab" id="kb-tab-jobs" aria-controls="kb-jobs" aria-selected="false" tabindex="-1"><span class="kb-tab-n">03</span>Roles I want</button><button type="button" role="tab" class="kb-tab" id="kb-tab-life" aria-controls="kb-life" aria-selected="false" tabindex="-1"><span class="kb-tab-n">04</span>Life I’m building</button><span class="kb-bar" aria-hidden="true"></span></div>
+        <div class="kb-panel" role="tabpanel" id="kb-me" aria-labelledby="kb-tab-me" tabindex="0"><ul class="kb-list"><li class="kb-row"><span class="kb-row-n">01</span><strong class="kb-row-t">All-in when it counts</strong><span class="kb-row-d">When a project is on the line, I stay with it until it’s done.</span></li><li class="kb-row"><span class="kb-row-n">02</span><strong class="kb-row-t">Finishing is the fun part</strong><span class="kb-row-d">My favourite moment: taking something from zero to live.</span></li><li class="kb-row"><span class="kb-row-n">03</span><strong class="kb-row-t">Detail-oriented</strong><span class="kb-row-d">I double-check the small things so users never trip on them.</span></li><li class="kb-row"><span class="kb-row-n">04</span><strong class="kb-row-t">Balanced on purpose</strong><span class="kb-row-d">I sprint hard, then actually rest — that’s how quality lasts.</span></li><li class="kb-row"><span class="kb-row-n">05</span><strong class="kb-row-t">Loves to travel</strong><span class="kb-row-d">New places keep me curious — and used to working across cultures and time zones.</span></li><li class="kb-row"><span class="kb-row-n">06</span><strong class="kb-row-t">Work isn’t a place</strong><span class="kb-row-d">Results matter more than seats. I deliver from anywhere.</span></li></ul></div><div class="kb-panel" role="tabpanel" id="kb-skills" aria-labelledby="kb-tab-skills" tabindex="0"><div class="kb-groups"><div class="kb-group"><span class="kb-group-h">Front end</span><div class="kb-chips"><span class="chip">HTML / CSS</span><span class="chip">JavaScript</span><span class="chip">Vue.js</span><span class="chip">Nuxt</span><span class="chip">TypeScript</span><span class="chip chip--outline">Tailwind</span><span class="chip chip--outline">PWA</span></div></div><div class="kb-group"><span class="kb-group-h">Back end</span><div class="kb-chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Java</span><span class="chip chip--outline">C#</span><span class="chip chip--outline">SQL Server</span><span class="chip chip--outline">REST APIs</span><span class="chip chip--outline">Node.js</span><span class="chip chip--outline">Firebase</span></div></div><div class="kb-group"><span class="kb-group-h">AI</span><div class="kb-chips"><span class="chip">AI-assisted dev</span><span class="chip chip--outline">LLM prompt design &amp; evaluation</span><span class="chip chip--outline">Python</span></div></div><div class="kb-group"><span class="kb-group-h">Tools</span><div class="kb-chips"><span class="chip chip--outline">Git</span><span class="chip chip--outline">Figma</span></div></div></div><div class="legend kb-legend"><span><span class="legend-sw legend-sw--solid"></span> Core</span><span><span class="legend-sw legend-sw--outline"></span> Working knowledge</span></div></div><div class="kb-panel" role="tabpanel" id="kb-jobs" aria-labelledby="kb-tab-jobs" tabindex="0"><div class="kb-jobs"><a href="#work" class="kb-job"><span class="kb-row-n">01</span><strong class="kb-job-t">Remote full-stack engineer</strong><span class="kb-job-d">Vue / Nuxt on the front; PHP, C# and SQL on the back.</span><span class="kb-proof"><span>Proof</span> Info-Link back office · Sompisi Transport <span aria-hidden="true">→</span></span></a><a href="#work" class="kb-job"><span class="kb-row-n">02</span><strong class="kb-job-t">AI engineer</strong><span class="kb-job-d">Designing and testing LLM workflows that real staff can rely on.</span><span class="kb-proof"><span>Proof</span> Costco AI returns case <span aria-hidden="true">→</span></span></a></div></div><div class="kb-panel" role="tabpanel" id="kb-life" aria-labelledby="kb-tab-life" tabindex="0"><div class="kb-life"><div class="kb-life-item"><strong class="kb-life-t">Fully remote</strong><span class="kb-life-d">Work from wherever I focus best.</span></div><div class="kb-life-item"><strong class="kb-life-t">Work–life balance</strong><span class="kb-life-d">Deep focus, then real time off.</span></div><div class="kb-life-item"><strong class="kb-life-t">Travel</strong><span class="kb-life-d">See the world while building things that matter.</span></div></div></div>
       </div>
     </section>
 
@@ -339,37 +307,6 @@
         </div>
       </div>
 
-      <div class="track-block reveal">
-        <div class="track-h-row">
-          <h3 class="track-h">Stack</h3>
-          <div class="legend">
-            <span><span class="legend-sw legend-sw--solid"></span> Core</span>
-            <span><span class="legend-sw legend-sw--outline"></span> Working knowledge</span>
-          </div>
-        </div>
-        <div class="chips">
-          <span class="chip">HTML / CSS</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">Vue.js</span>
-          <span class="chip">Nuxt</span>
-          <span class="chip">TypeScript</span>
-          <span class="chip">PHP</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">Java</span>
-          <span class="chip">AI-assisted dev</span>
-          <span class="chip chip--outline">C#</span>
-          <span class="chip chip--outline">SQL Server</span>
-          <span class="chip chip--outline">REST APIs</span>
-          <span class="chip chip--outline">Node.js</span>
-          <span class="chip chip--outline">Firebase</span>
-          <span class="chip chip--outline">Python</span>
-          <span class="chip chip--outline">Tailwind</span>
-          <span class="chip chip--outline">Git</span>
-          <span class="chip chip--outline">PWA</span>
-          <span class="chip chip--outline">Figma</span>
-          <span class="chip chip--outline">LLM prompt design &amp; evaluation</span>
-        </div>
-      </div>
     </section>
 
     <!-- ══════════ 04 CONTACT ══════════ -->
@@ -387,9 +324,9 @@
       </div>
 
       <div class="contact-links contact-links--4 reveal">
-        <a href="mailto:selina101292@gmail.com" class="contact-link">
+        <a href="#contact" class="contact-link" data-u="selina101292" data-d="gmail.com">
           <span class="contact-link-key">Email</span>
-          <span class="contact-link-val">selina101292@gmail.com</span>
+          <span class="contact-link-val">selina101292 [at] gmail.com</span>
         </a>
         <a href="https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-key">LinkedIn</span>
@@ -413,6 +350,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20261108"></script>
+  <script src="script.js?v=20261108c"></script>
 </body>
 </html>

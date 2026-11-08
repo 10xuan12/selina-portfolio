@@ -112,18 +112,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------
-     WhatsApp: derive the chat link + QR code from WHATSAPP_NUMBER so the
-     number only ever lives in one place
+     WhatsApp link (no third-party QR service — nothing about the visitor
+     or the number is sent to another site)
      ------------------------------------------------------------------ */
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}`;
-
   const whatsappLink = document.getElementById('whatsapp-link');
-  if (whatsappLink) whatsappLink.href = whatsappUrl;
+  if (whatsappLink) whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-  const whatsappQrImg = document.getElementById('whatsapp-qr-img');
-  if (whatsappQrImg) {
-    whatsappQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(whatsappUrl)}`;
-  }
+  /* ------------------------------------------------------------------
+     Email: the address is not written in the HTML, so simple scrapers
+     that harvest "mailto:" links from page source don't find it.
+     It's assembled here from data-u / data-d.
+     ------------------------------------------------------------------ */
+  document.querySelectorAll('[data-u][data-d]').forEach((el) => {
+    const addr = `${el.dataset.u}@${el.dataset.d}`;
+    el.href = `mailto:${addr}`;
+    const val = el.querySelector('.contact-link-val');
+    if (val) val.textContent = addr;
+  });
 
   /* ------------------------------------------------------------------
      Scroll reveal: elements marked .reveal fade/rise in once
@@ -159,34 +164,50 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------
-     Hero problem line: cycle through pain-point sentences every 2.8s
+     Knowledge base tabs (WAI-ARIA tabs pattern: click + arrow keys)
      ------------------------------------------------------------------ */
-  const heroProblem = document.getElementById('hero-problem');
+  const kb = document.querySelector('.kb');
+  if (kb) {
+    const tabs = [...kb.querySelectorAll('[role="tab"]')];
+    const panels = [...kb.querySelectorAll('[role="tabpanel"]')];
+    const bar = kb.querySelector('.kb-bar');
 
-  if (heroProblem && !prefersReducedMotion) {
-    const problems = isZh
-      ? [
-          '國外訪客看不懂你的服務內容。',
-          '預約流程在最後一步流失客人。',
-          '客戶看不出來自己到底找的是誰。',
-          '同一個問題你一週回答二十次。',
-        ]
-      : [
-          "International visitors can't understand your service.",
-          'Your booking flow loses people at the last step.',
-          "Customers can't tell who they're actually hiring.",
-          'You answer the same enquiry twenty times a week.',
-        ];
+    const moveBar = (tab) => {
+      if (!bar) return;
+      bar.style.width = `${tab.offsetWidth}px`;
+      bar.style.transform = `translateX(${tab.offsetLeft}px)`;
+    };
 
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % problems.length;
-      heroProblem.classList.add('is-swapping');
-      setTimeout(() => {
-        heroProblem.textContent = problems[idx];
-        heroProblem.classList.remove('is-swapping');
-      }, 300);
-    }, 2800);
+    const select = (tab, focus) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((p) => { p.hidden = p.id !== tab.getAttribute('aria-controls'); });
+      moveBar(tab);
+      if (focus) tab.focus();
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab, false));
+      tab.addEventListener('keydown', (e) => {
+        let next = null;
+        if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+        if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === 'Home') next = tabs[0];
+        if (e.key === 'End') next = tabs[tabs.length - 1];
+        if (next) { e.preventDefault(); select(next, true); }
+      });
+    });
+
+    const current = tabs.find((t) => t.getAttribute('aria-selected') === 'true') || tabs[0];
+    if (current) select(current, false);
+    window.addEventListener('resize', () => {
+      const t = tabs.find((x) => x.getAttribute('aria-selected') === 'true');
+      if (t) moveBar(t);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => current && moveBar(current));
   }
 
   /* ------------------------------------------------------------------

@@ -1973,3 +1973,168 @@ main {
 @media (max-width: 899px) {
   .process--compact .process-steps { grid-template-columns: repeat(3, 1fr); gap: 24px 16px; }
 }
+
+/* ==========================================================================
+   Knowledge base (About → tabs: who I am / what I do / roles / life)
+   ========================================================================== */
+.kb { padding-top: 96px; }
+
+.kb-h {
+  margin: 0 0 20px;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.kb-tabs {
+  position: relative;
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--ink);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.kb-tabs::-webkit-scrollbar { display: none; }
+
+.kb-tab {
+  flex: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 16px 22px 14px 0;
+  margin-right: 22px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--gray);
+  transition: color 220ms ease;
+}
+.kb-tab:hover { color: var(--ink); }
+.kb-tab[aria-selected="true"] { color: var(--ink); }
+.kb-tab-n {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--wine);
+}
+.kb-bar {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 3px;
+  width: 0;
+  background: var(--wine);
+  transition: transform 450ms var(--ease), width 450ms var(--ease);
+}
+
+.kb-panel { padding-top: 8px; outline: none; }
+.kb-panel:not([hidden]) { animation: kbIn 520ms var(--ease) both; }
+@keyframes kbIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* Who I am */
+.kb-row {
+  display: grid;
+  grid-template-columns: 56px minmax(200px, 320px) 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 200ms ease, padding-left 320ms var(--ease), box-shadow 260ms ease;
+}
+.kb-row:hover { background: var(--panel-hover); padding-left: 14px; box-shadow: inset 3px 0 0 var(--wine); }
+.kb-row-n { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--wine); }
+.kb-row-t { font-size: clamp(18px, 1.7vw, 24px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; }
+.kb-row-d { font-size: 16px; line-height: 1.55; color: var(--slate); }
+
+/* What I do */
+.kb-groups {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--line);
+}
+.kb-group { padding: 26px 24px 28px 0; display: flex; flex-direction: column; gap: 14px; }
+.kb-group + .kb-group { padding-left: 24px; border-left: 1px solid var(--line); }
+.kb-group-h { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wine); }
+.kb-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.kb-legend { margin-top: 16px; }
+
+/* Roles I want */
+.kb-jobs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-bottom: 1px solid var(--line); }
+.kb-job {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px 32px 30px 0;
+  color: var(--ink);
+  overflow: hidden;
+  transition: color 300ms ease;
+}
+.kb-job + .kb-job { padding-left: 32px; border-left: 1px solid var(--line); }
+.kb-job::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 420ms var(--ease);
+  z-index: 0;
+}
+.kb-job > * { position: relative; z-index: 1; }
+.kb-job:hover { color: var(--paper); }
+.kb-job:hover::before { transform: scaleY(1); }
+.kb-job:first-child:hover { padding-left: 20px; }
+.kb-job-t { font-size: clamp(26px, 2.8vw, 42px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.kb-job-d { font-size: 16px; line-height: 1.55; color: inherit; opacity: 0.8; max-width: 42ch; }
+.kb-proof { margin-top: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--gray); }
+.kb-proof > span:first-child { color: var(--wine); font-weight: 700; text-transform: uppercase; margin-right: 6px; }
+.kb-job:hover .kb-proof { color: var(--wine-tint); }
+.kb-job:hover .kb-proof > span:first-child { color: var(--wine-tint); }
+
+/* Life I'm building */
+.kb-life { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+.kb-life-item { padding: 34px 24px 32px 0; display: flex; flex-direction: column; gap: 12px; }
+.kb-life-item + .kb-life-item { padding-left: 24px; border-left: 1px solid var(--line); }
+.kb-life-t {
+  font-size: clamp(30px, 3.6vw, 58px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  background: linear-gradient(var(--wine), var(--wine)) no-repeat 0 92% / 0% 0.14em;
+  transition: background-size 600ms var(--ease);
+}
+.kb-life-item:hover .kb-life-t { background-size: 100% 0.14em; }
+.kb-life-d { font-size: 16px; color: var(--slate); }
+
+@media (max-width: 899px) {
+  .kb { padding-top: 72px; }
+  .kb-row { grid-template-columns: 36px 1fr; gap: 6px 14px; }
+  .kb-row-d { grid-column: 2; }
+  .kb-groups { grid-template-columns: repeat(2, 1fr); }
+  .kb-group:nth-child(3) { padding-left: 0; border-left: none; }
+  .kb-group:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .kb-jobs, .kb-life { grid-template-columns: 1fr; }
+  .kb-job + .kb-job, .kb-life-item + .kb-life-item { padding-left: 0; border-left: none; border-top: 1px solid var(--line); }
+  .kb-job:hover { padding-left: 16px; }
+}
+@media (max-width: 560px) {
+  .kb-groups { grid-template-columns: 1fr; }
+  .kb-group + .kb-group { padding-left: 0; border-left: none; border-top: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kb-panel:not([hidden]) { animation: none; }
+}
+
+/* Phones: all four tabs visible at once (2 × 2) instead of a sideways scroll */
+@media (max-width: 560px) {
+  .kb-tabs { display: grid; grid-template-columns: 1fr 1fr; overflow: visible; }
+  .kb-tab { margin: 0; padding: 12px 0 10px; border-bottom: 3px solid transparent; }
+  .kb-tab[aria-selected="true"] { border-bottom-color: var(--wine); }
+  .kb-bar { display: none; }
+}
