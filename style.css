@@ -2273,3 +2273,125 @@ main {
 @media (prefers-reduced-motion: reduce) {
   .work-media--scroll img, .band-track { animation: none !important; }
 }
+
+/* ==========================================================================
+   Travel polaroids — sliding strip in About + fan in "The life I'm building"
+   ========================================================================== */
+.polaroid {
+  margin: 0;
+  flex: none;
+  width: 200px;
+  padding: 10px 10px 0;
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(10, 10, 10, 0.16), 0 2px 6px rgba(10, 10, 10, 0.08);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 450ms var(--ease), box-shadow 450ms var(--ease);
+}
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: var(--panel);
+}
+.polaroid figcaption {
+  padding: 10px 2px 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  text-align: center;
+}
+
+.travel { margin-top: 88px; }
+.travel-label {
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wine);
+}
+.travel-strip {
+  overflow: hidden;
+  margin-inline: calc(-1 * var(--pad));
+  padding: 26px 0 34px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.travel-track {
+  display: flex;
+  gap: 34px;
+  width: max-content;
+  padding-inline: 17px;
+  animation: travelSlide 70s linear infinite;
+}
+.travel-strip:hover .travel-track { animation-play-state: paused; }
+.travel-track .polaroid:hover {
+  transform: rotate(0deg) scale(1.1) translateY(-6px);
+  box-shadow: 0 24px 50px rgba(10, 10, 10, 0.24);
+  position: relative;
+  z-index: 2;
+}
+@keyframes travelSlide { to { transform: translateX(-50%); } }
+
+/* "The life I'm building": photo fan on the left, three ideas on the right */
+.kb-life--photos {
+  grid-template-columns: 1.1fr 1fr;
+  grid-auto-rows: auto;
+}
+.kb-life--photos .kb-fan { grid-row: span 3; }
+.kb-life--photos .kb-life-item,
+.kb-life--photos .kb-life-item + .kb-life-item {
+  padding: 26px 0 26px 32px;
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+}
+.kb-life--photos .kb-fan + .kb-life-item { border-top: none; }
+.kb-life--photos .kb-life-t { font-size: clamp(28px, 3vw, 46px); }
+
+.kb-fan {
+  position: relative;
+  min-height: 420px;
+}
+.polaroid--fan {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 190px;
+  margin: -150px 0 0 -95px;
+  transform: rotate(0deg);
+}
+.kb-panel:not([hidden]) .polaroid--fan { animation: fanOut 900ms var(--ease) 150ms both; }
+.polaroid--fan:nth-child(1) { --fx: -125px; --fr: -11deg; z-index: 1; }
+.polaroid--fan:nth-child(2) { --fx: 0px;    --fr: 2deg;   z-index: 3; }
+.polaroid--fan:nth-child(3) { --fx: 125px;  --fr: 12deg;  z-index: 2; }
+@keyframes fanOut {
+  from { transform: translateX(0) rotate(0deg); }
+  to   { transform: translateX(var(--fx)) rotate(var(--fr)); }
+}
+.kb-fan:hover .polaroid--fan:nth-child(1) { transform: translateX(-150px) rotate(-14deg); }
+.kb-fan:hover .polaroid--fan:nth-child(3) { transform: translateX(150px) rotate(15deg); }
+
+@media (max-width: 899px) {
+  .polaroid { width: 160px; }
+  .travel { margin-top: 64px; }
+  .travel-track { gap: 24px; animation-duration: 55s; }
+  .kb-life--photos { grid-template-columns: 1fr; }
+  .kb-life--photos .kb-fan { grid-row: auto; min-height: 330px; }
+  .polaroid--fan { width: 150px; margin: -120px 0 0 -75px; }
+  .polaroid--fan:nth-child(1) { --fx: -95px; }
+  .polaroid--fan:nth-child(3) { --fx: 95px; }
+  .kb-life--photos .kb-life-item,
+  .kb-life--photos .kb-life-item + .kb-life-item { padding-left: 0; border-left: none; }
+  .kb-life--photos .kb-fan + .kb-life-item { border-top: 1px solid var(--line); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .travel-track { animation: none !important; }
+  .travel-strip { overflow-x: auto; }
+  .kb-panel:not([hidden]) .polaroid--fan { animation: none !important; transform: translateX(var(--fx)) rotate(var(--fr)); }
+}
