@@ -1,11 +1,10 @@
-# Selina Huang — my route
+# Selina Huang — portfolio
 
 Personal site of Selina Huang (黃玟瑄), a full-stack web developer from Taiwan, open to remote roles.
 **Live:** https://10xuan12.github.io/selina-portfolio/ · [中文](https://10xuan12.github.io/selina-portfolio/zh/)
 
-The page reads like a trip: a boarding pass with the 10-second summary, then a route through
-my life — Taichung, university, teaching, my first client in Eswatini, travel, an internship,
-my master's — and the next stop.
+Four sections — Hero, About, Work, Contact — in an autumn/winter palette (wine, beige, coffee).
+Each project is a short case study: problem, what I did, result, my role, and one question to ask me in an interview.
 
 ## Updating the content (no coding needed)
 
@@ -13,8 +12,10 @@ my master's — and the next stop.
 (web or app: open the file → pencil icon → edit → *Commit changes*). The site updates in about a minute.
 
 - Each text has a Chinese and an English version: `{ "zh": "…", "en": "…" }`.
-- **Add a stop on the route:** copy one block inside `"chapters": [ … ]`, paste it where it belongs
-  in time, and change the words. `media` is optional — use `photo`, `video` or `photos`.
+- **Add a project:** copy one block inside `"projects": [ … ]`, paste it, and change the words.
+  `media` is a `photo` or a `video` (screen recording).
+- **Add a job:** add a line to `"experience"`.
+- **Résumé button:** upload your PDF to the repo and put its path in `"resume"` (e.g. `"resume.pdf"`).
 - **Add a photo:** upload it to the `image/` folder first (resize to ~1000px wide and remove location
   info), then put its path in `"src"`.
 - Keep the quotes `"` and commas `,` — if one goes missing, the site shows a red box saying which
