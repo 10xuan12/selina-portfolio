@@ -108,19 +108,26 @@ function projMedia(m) {
 }
 
 function project(pj, i) {
-  return el("article", { class: `project reveal ${i % 2 ? "flip" : ""}`, id: pj.id },
-    el("div", { class: `proj-media media-${pj.media.type}` }, projMedia(pj.media)),
-    el("div", { class: "proj-copy" },
-      el("p", { class: "proj-meta" }, el("span", { class: "proj-n" }, String(i + 1).padStart(2, "0")), `${t(pj.kind)} · ${pj.year}`),
-      el("h3", { class: "proj-title" }, t(pj.title)),
-      el("dl", { class: "proj-facts" },
-        el("div", {}, el("dt", {}, UI.problem), el("dd", {}, t(pj.problem))),
-        el("div", {}, el("dt", {}, UI.did), el("dd", {}, t(pj.did))),
-        el("div", {}, el("dt", {}, UI.result), el("dd", {}, t(pj.result)))),
-      el("p", { class: "proj-role" }, el("b", {}, UI.role), " ", t(pj.role)),
-      el("p", { class: "proj-talk" }, el("span", {}, UI.talk), " ", t(pj.talk), " →"),
-      el("p", { class: "proj-stack" }, pj.stack.join(" · ")),
-      pj.links?.length ? el("div", { class: "proj-links" }, pj.links.map((l, k) => el("a", { class: k ? "btn" : "btn btn-wine", href: l.url, ...ext(l.url) }, t(l.label), " ↗"))) : null));
+  // collapsible: a compact row you can scan, details open on tap
+  return el("details", { class: "project reveal", id: pj.id },
+    el("summary", { class: "proj-sum" },
+      el("span", { class: "proj-n" }, String(i + 1).padStart(2, "0")),
+      el("span", { class: "proj-head" },
+        el("span", { class: "proj-title" }, t(pj.title)),
+        el("span", { class: "proj-line" }, t(pj.did))),
+      el("span", { class: "proj-meta" }, `${t(pj.kind)} · ${pj.year}`),
+      el("span", { class: "proj-toggle", "aria-hidden": "true" })),
+    el("div", { class: "proj-body" },
+      el("div", { class: `proj-media media-${pj.media.type}` }, projMedia(pj.media)),
+      el("div", { class: "proj-copy" },
+        el("dl", { class: "proj-facts" },
+          el("div", {}, el("dt", {}, UI.problem), el("dd", {}, t(pj.problem))),
+          el("div", {}, el("dt", {}, UI.did), el("dd", {}, t(pj.did))),
+          el("div", {}, el("dt", {}, UI.result), el("dd", {}, t(pj.result)))),
+        el("p", { class: "proj-role" }, el("b", {}, UI.role), " ", t(pj.role)),
+        el("p", { class: "proj-talk" }, el("span", {}, UI.talk), " ", t(pj.talk), " →"),
+        el("p", { class: "proj-stack" }, pj.stack.join(" · ")),
+        pj.links?.length ? el("div", { class: "proj-links" }, pj.links.map((l, k) => el("a", { class: k ? "btn" : "btn btn-wine", href: l.url, ...ext(l.url) }, t(l.label), " ↗"))) : null)));
 }
 
 function work(c) {
@@ -186,7 +193,9 @@ fetch(root + "content.json", { cache: "no-cache" })
     try { c = JSON.parse(text); } catch (err) { showError(err, text); return; }
     document.title = `${c.profile.name} — ${t(c.profile.role)}`;
     app.replaceChildren(header(c), el("main", {}, hero(c), about(c), work(c), contact(c)));
-    if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+    const openHash = () => { const target = location.hash && document.getElementById(location.hash.slice(1)); if (target?.tagName === "DETAILS") target.open = true; target?.scrollIntoView(); };
+    openHash();
+    addEventListener("hashchange", openHash);
     requestAnimationFrame(() => document.body.classList.add("ready"));
     motion();
   })
