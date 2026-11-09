@@ -201,3 +201,4 @@ ul, ol { list-style: none; }
   .rw > span { transform: none !important; }
   .hero-photo img { clip-path: none !important; transform: none !important; }
 }
+@media (max-width: 600px) { :lang(zh-Hant) .hero-h { font-size: 34px; } }
