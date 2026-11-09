@@ -1,7 +1,7 @@
 # Selina Huang — portfolio
 
 Personal site of Selina Huang (黃玟瑄), a full-stack web developer from Taiwan, open to remote roles.
-**Live:** https://10xuan12.github.io/selina-portfolio/ · [中文](https://10xuan12.github.io/selina-portfolio/zh/)
+**Live:** https://10xuan12.github.io/selina-portfolio/ · [中文](https://10xuan12.github.io/selina-portfolio/?lang=zh)
 
 Four sections — Hero, About, Work, Contact — in an autumn/winter palette (wine, beige, coffee).
 Each project is a short case study: problem, what I did, result, my role, and one question to ask me in an interview.

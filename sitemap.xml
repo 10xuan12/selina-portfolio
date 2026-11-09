@@ -4,11 +4,11 @@
   <url>
     <loc>https://10xuan12.github.io/selina-portfolio/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://10xuan12.github.io/selina-portfolio/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/?lang=zh" />
   </url>
   <url>
-    <loc>https://10xuan12.github.io/selina-portfolio/zh/</loc>
+    <loc>https://10xuan12.github.io/selina-portfolio/?lang=zh</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://10xuan12.github.io/selina-portfolio/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://10xuan12.github.io/selina-portfolio/?lang=zh" />
   </url>
 </urlset>

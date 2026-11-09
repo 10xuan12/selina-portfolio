@@ -2,11 +2,19 @@
 // Content is inserted as text (never as HTML), so nothing in content.json can run code.
 
 const root = document.body.dataset.root || "";
-const lang = document.documentElement.lang.toLowerCase().startsWith("zh") ? "zh" : "en";
+const store = { get: (k) => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+const pickLang = () => {
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q === "zh" || q === "en") return q;
+  const saved = store.get("lang");
+  if (saved === "zh" || saved === "en") return saved;
+  return (navigator.language || "").toLowerCase().startsWith("zh") ? "zh" : "en";
+};
+let lang = pickLang();
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const app = document.getElementById("app");
 
-const UI = {
+const DICT = {
   zh: {
     nav: ["關於", "作品", "聯絡"], now: "現在", based: "地點", looking: "尋找", resume: "履歷", work: "作品", seeWork: "看作品", contact: "聯絡我",
     about: "關於我", traits: "個性", skills: "技能", exp: "經歷", problem: "問題", did: "我做了什麼", result: "結果",
@@ -21,7 +29,8 @@ const UI = {
     errorH: "content.json has a formatting error",
     errorP: "The site couldn’t read its content. Check near here for a missing comma, quote or bracket:",
   },
-}[lang];
+};
+let UI = DICT[lang];
 
 // ---------- helpers ----------
 const t = (v) => (v && typeof v === "object" && !Array.isArray(v) ? v[lang] ?? v.en ?? v.zh ?? "" : v ?? "");
@@ -48,13 +57,13 @@ function riseText(text, cls) {
 
 // ---------- sections ----------
 function header(c) {
-  const other = lang === "zh" ? { href: "../", label: "EN", hl: "en", aria: "Switch to English" } : { href: "zh/", label: "中", hl: "zh-Hant", aria: "切換為中文" };
+  const other = lang === "zh" ? { label: "EN", aria: "Switch to English" } : { label: "中", aria: "切換為中文" };
   const resume = c.profile.resume ? el("a", { class: "nav-resume", href: c.profile.resume, ...ext(c.profile.resume) }, UI.resume, " ↓") : null;
   return el("header", { class: "top" },
     el("a", { class: "brand", href: "#top" }, c.profile.name),
     el("nav", { class: "nav", "aria-label": "Main" },
       el("a", { href: "#about" }, UI.nav[0]), el("a", { href: "#work" }, UI.nav[1]), el("a", { href: "#contact" }, UI.nav[2]), resume),
-    el("a", { class: "lang", href: other.href, hreflang: other.hl, "aria-label": other.aria }, other.label));
+    el("button", { type: "button", class: "lang", "aria-label": other.aria, onclick: switchLang }, other.label));
 }
 
 function hero(c) {
@@ -160,38 +169,69 @@ function showError(err, text) {
 }
 
 // ---------- motion ----------
-function motion() {
-  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+let io, vio;
+function observe() {
+  io?.disconnect(); vio?.disconnect();
+  io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
   document.querySelectorAll(".reveal, .contact").forEach((n) => io.observe(n));
-
-  const vio = new IntersectionObserver((es) => es.forEach((e) => {
+  vio = new IntersectionObserver((es) => es.forEach((e) => {
     const v = e.target;
     if (e.isIntersecting) { v.muted = true; v.preload = "auto"; v.play()?.catch?.(() => {}); } else v.pause();
   }), { threshold: 0.35 });
   if (!reduce) document.querySelectorAll("video").forEach((v) => vio.observe(v));
-
-  const top = document.querySelector(".top");
-  const onScroll = () => {
-    top.classList.toggle("scrolled", scrollY > 10);
-    document.getElementById("to-top").classList.toggle("on", scrollY > innerHeight);
-  };
-  onScroll();
-  addEventListener("scroll", onScroll, { passive: true });
 }
+function onScroll() {
+  document.querySelector(".top")?.classList.toggle("scrolled", scrollY > 10);
+  document.getElementById("to-top").classList.toggle("on", scrollY > innerHeight);
+}
+addEventListener("scroll", onScroll, { passive: true });
+
+// ---------- render + language switch ----------
+let content;
+function render() {
+  UI = DICT[lang];
+  document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+  document.title = `${content.profile.name} — ${t(content.profile.role)}`;
+  const open = [...document.querySelectorAll("details[open]")].map((d) => d.id);
+  app.replaceChildren(header(content), el("main", {}, hero(content), about(content), work(content), contact(content)));
+  open.forEach((id) => { const d = document.getElementById(id); if (d) d.open = true; });
+  observe();
+  onScroll();
+}
+function switchLang() {
+  lang = lang === "zh" ? "en" : "zh";
+  store.set("lang", lang);
+  const url = new URL(location.href);
+  url.searchParams.set("lang", lang);
+  history.replaceState(null, "", url);
+  // remember which section/project is at the top of the screen, so you stay on it
+  const marks = [...document.querySelectorAll("main [id]")];
+  const anchor = marks.filter((n) => n.getBoundingClientRect().top <= 120).pop();
+  const anchorId = anchor?.id, anchorTop = anchor?.getBoundingClientRect().top ?? 0;
+  const y = scrollY;
+  render();
+  // already-seen sections stay visible after switching
+  document.body.classList.add("ready");
+  document.querySelectorAll(".reveal, .contact").forEach((n) => { if (n.getBoundingClientRect().top < innerHeight + y) n.classList.add("in"); });
+  const back = anchorId && document.getElementById(anchorId);
+  scrollTo({ top: back ? scrollY + back.getBoundingClientRect().top - anchorTop : y, behavior: "instant" });
+  document.querySelector(".lang")?.focus();
+}
+const openHash = () => {
+  const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+  if (target?.tagName === "DETAILS") target.open = true;
+  target?.scrollIntoView();
+};
 
 // ---------- boot ----------
 fetch(root + "content.json", { cache: "no-cache" })
   .then((r) => r.text())
   .then((text) => {
-    let c;
-    try { c = JSON.parse(text); } catch (err) { showError(err, text); return; }
-    document.title = `${c.profile.name} — ${t(c.profile.role)}`;
-    app.replaceChildren(header(c), el("main", {}, hero(c), about(c), work(c), contact(c)));
-    const openHash = () => { const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; if (target?.tagName === "DETAILS") target.open = true; target?.scrollIntoView(); };
+    try { content = JSON.parse(text); } catch (err) { showError(err, text); return; }
+    render();
     openHash();
     addEventListener("hashchange", openHash);
     requestAnimationFrame(() => document.body.classList.add("ready"));
-    motion();
   })
   .catch((err) => {
     // only a network problem lands here; never blank a page that already rendered
