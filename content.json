@@ -7,6 +7,8 @@
     "role": { "zh": "全端網頁工程師", "en": "Full-stack web developer" },
     "location": { "zh": "台灣台中", "en": "Taichung, Taiwan" },
     "status": { "zh": "開放遠端工作", "en": "Open to remote work" },
+    "now": { "zh": "資管碩士在讀", "en": "M.S. student, Information Management" },
+    "lookingFor": { "zh": "遠端全端・AI 職缺", "en": "Remote full-stack / AI roles" },
     "tagline": {
       "zh": "嗨，我是 Selina，喜歡把東西從零做到上線。",
       "en": "Hi, I’m Selina — I love taking ideas from zero to live."

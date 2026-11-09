@@ -8,17 +8,17 @@ const app = document.getElementById("app");
 
 const UI = {
   zh: {
-    nav: ["關於", "作品", "聯絡"], resume: "履歷", work: "作品", seeWork: "看作品", contact: "聯絡我",
+    nav: ["關於", "作品", "聯絡"], now: "現在", based: "地點", looking: "尋找", resume: "履歷", work: "作品", seeWork: "看作品", contact: "聯絡我",
     about: "關於我", traits: "個性", skills: "技能", exp: "經歷", problem: "問題", did: "我做了什麼", result: "結果",
     role: "我的角色", talk: "面試可以問我", copy: "複製 Email", copied: "已複製 Email，等你來信。", scroll: "往下",
-    badge: "開放遠端工作 ✦ 全端工程師 ✦ ", errorH: "content.json 格式有錯",
+    errorH: "content.json 格式有錯",
     errorP: "網站讀不到內容。請檢查這附近有沒有少了逗號、引號或括號：",
   },
   en: {
-    nav: ["About", "Work", "Contact"], resume: "Résumé", work: "Selected work", seeWork: "See my work", contact: "Contact me",
+    nav: ["About", "Work", "Contact"], now: "Now", based: "Based in", looking: "Looking for", resume: "Résumé", work: "Selected work", seeWork: "See my work", contact: "Contact me",
     about: "About", traits: "Personality", skills: "Skills", exp: "Experience", problem: "Problem", did: "What I did", result: "Result",
     role: "My role", talk: "Ask me about", copy: "Copy email", copied: "Email copied — talk soon.", scroll: "Scroll",
-    badge: "OPEN TO REMOTE ✦ FULL-STACK ✦ ", errorH: "content.json has a formatting error",
+    errorH: "content.json has a formatting error",
     errorP: "The site couldn’t read its content. Check near here for a missing comma, quote or bracket:",
   },
 }[lang];
@@ -59,22 +59,17 @@ function header(c) {
 
 function hero(c) {
   const p = c.profile;
-  // circular "open to remote" badge: fixed SVG markup, label set as text
-  const ring = el("div", { class: "badge", "aria-hidden": "true" });
-  ring.innerHTML = '<svg viewBox="0 0 120 120"><defs><path id="badge-c" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#badge-c" textLength="286" lengthAdjust="spacing"></textPath></text></svg><span class="badge-core">✦</span>';
-  ring.querySelector("textPath").textContent = UI.badge;
+  const facts = [[UI.now, t(p.now)], [UI.based, t(p.location)], [UI.looking, t(p.lookingFor)]];
   return el("section", { class: "hero", id: "top" },
-    el("div", { class: "hero-copy" },
-      el("p", { class: "eyebrow" }, el("i", { "aria-hidden": "true" }), `${t(p.role)} · ${t(p.location)}`),
-      el("h1", { class: "hero-h" }, riseText(t(p.tagline), "hero-lines")),
-      el("p", { class: "hero-sub" }, t(p.intro)),
-      el("div", { class: "hero-cta" },
-        el("a", { class: "btn btn-wine", href: "#work" }, UI.seeWork, " →"),
-        el("a", { class: "btn", href: "#contact" }, UI.contact))),
-    el("figure", { class: "hero-photo" },
-      el("img", { src: p.heroPhoto, alt: p.name, width: 760, height: 1014 }),
-      ring,
-      el("figcaption", {}, el("span", {}, p.name), el("span", {}, p.nameZh))),
+    el("p", { class: "eyebrow" }, el("i", { "aria-hidden": "true" }), t(p.role)),
+    el("h1", { class: "hero-h" }, riseText(t(p.tagline), "hero-lines")),
+    el("div", { class: "hero-foot" },
+      el("div", {},
+        el("p", { class: "hero-sub" }, t(p.intro)),
+        el("div", { class: "hero-cta" },
+          el("a", { class: "btn btn-wine", href: "#work" }, UI.seeWork, " →"),
+          el("a", { class: "btn", href: "#contact" }, UI.contact))),
+      el("dl", { class: "hero-facts" }, facts.map(([k, v]) => el("div", {}, el("dt", {}, k), el("dd", {}, v))))),
     el("a", { class: "scroll-cue", href: "#about", "aria-label": UI.scroll }, el("span", {}, UI.scroll), el("i", { "aria-hidden": "true" })));
 }
 
@@ -175,11 +170,10 @@ function motion() {
   }), { threshold: 0.35 });
   if (!reduce) document.querySelectorAll("video").forEach((v) => vio.observe(v));
 
-  const top = document.querySelector(".top"), photo = document.querySelector(".hero-photo img");
+  const top = document.querySelector(".top");
   const onScroll = () => {
     top.classList.toggle("scrolled", scrollY > 10);
     document.getElementById("to-top").classList.toggle("on", scrollY > innerHeight);
-    if (!reduce && photo && scrollY < innerHeight) photo.style.transform = `scale(1.08) translateY(${scrollY * 0.06}px)`;
   };
   onScroll();
   addEventListener("scroll", onScroll, { passive: true });
