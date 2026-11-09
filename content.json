@@ -1,0 +1,189 @@
+{
+  "about_this_file": "All words and photos on the site live here. Every text has a zh (中文) and en (English) version. Keep the quotes and commas — if the site shows a red error box, it tells you which line to fix.",
+
+  "profile": {
+    "name": "Selina Huang",
+    "nameZh": "黃玟瑄",
+    "photo": "image/selina-portrait.jpg",
+    "headline": {
+      "zh": "從台中出發，一路寫 code，一路旅行。",
+      "en": "From Taichung — coding and travelling my way forward."
+    },
+    "sub": {
+      "zh": "全端工程師，正在找遠端工作。往下捲，走一遍我的路線。",
+      "en": "Full-stack dev, open to remote roles. Scroll down and walk my route."
+    }
+  },
+
+  "pass": {
+    "from": { "zh": "台中", "en": "TAICHUNG" },
+    "to": { "zh": "遠端", "en": "REMOTE" },
+    "role": { "zh": "全端工程師 / AI 工程師", "en": "Full-stack / AI engineer" },
+    "stack": ["Vue", "Nuxt", "TypeScript", "PHP", "MySQL", "C#"],
+    "status": { "zh": "隨時可登機", "en": "Ready to board" },
+    "projects": [
+      { "label": "Sompisi Transport", "url": "https://sompisi-transport.netlify.app/" },
+      { "label": "TripTally", "url": "https://triptallyxuan.netlify.app/" },
+      { "label": { "zh": "好市多 AI 案例", "en": "Costco AI case" }, "url": "#costco" }
+    ]
+  },
+
+  "contact": {
+    "emailUser": "selina101292",
+    "emailDomain": "gmail.com",
+    "linkedin": "https://www.linkedin.com/in/%E7%8E%9F%E7%91%84-%E9%BB%83-49ba0537a/",
+    "github": "https://github.com/10xuan12"
+  },
+
+  "chapters": [
+    {
+      "id": "start",
+      "stamp": "TAICHUNG",
+      "year": "2022",
+      "place": { "zh": "台中・靜宜大學", "en": "Taichung · Providence University" },
+      "title": { "zh": "選了資管", "en": "Picked Info Management" },
+      "text": {
+        "zh": "一半商業、一半程式——我想知道科技怎麼真的幫到人。",
+        "en": "Half business, half code — I wanted to know how tech actually helps people."
+      },
+      "media": { "type": "photo", "src": "image/hero-portrait.jpeg", "alt": { "zh": "Selina 的照片", "en": "Photo of Selina" } }
+    },
+    {
+      "id": "ta",
+      "stamp": "TA",
+      "year": "2023",
+      "place": { "zh": "靜宜大學", "en": "Providence University" },
+      "title": { "zh": "當上程式助教", "en": "Became a programming TA" },
+      "text": {
+        "zh": "教大一 Java 和演算法三年（大家都平安存活）。",
+        "en": "Three years teaching first-years Java and algorithms (we all survived)."
+      }
+    },
+    {
+      "id": "english",
+      "stamp": "ABC",
+      "year": "2024",
+      "place": { "zh": "Galaxy English School", "en": "Galaxy English School" },
+      "title": { "zh": "教英文", "en": "Taught English" },
+      "text": {
+        "zh": "在這裡練成把難的事講簡單。",
+        "en": "Where I learned to explain hard stuff simply."
+      }
+    },
+    {
+      "id": "eswatini",
+      "stamp": "ESWATINI",
+      "year": "2025",
+      "place": { "zh": "史瓦帝尼", "en": "Eswatini" },
+      "title": { "zh": "第一個客戶，在 6 個時區之外", "en": "First client, six time zones away" },
+      "text": {
+        "zh": "一家旅客找不到也不敢信的接送服務——我做了網站，讓人用 WhatsApp 直接預約。",
+        "en": "A driving service travellers couldn’t find or trust. I built a site so people can book it on WhatsApp."
+      },
+      "media": { "type": "video", "src": "image/video/sompisi.mp4", "poster": "image/video/sompisi-poster.jpg", "alt": { "zh": "操作錄影：在 Sompisi Transport 預約接送", "en": "Screen recording: booking a ride on Sompisi Transport" } },
+      "links": [
+        { "label": { "zh": "前往網站", "en": "Live site" }, "url": "https://sompisi-transport.netlify.app/" },
+        { "label": { "zh": "看程式碼", "en": "Code" }, "url": "https://github.com/10xuan12/sompisi-transport" }
+      ]
+    },
+    {
+      "id": "travel",
+      "stamp": "✈",
+      "year": { "zh": "一路上", "en": "Along the way" },
+      "place": { "zh": "泰國・越南・南非・史瓦帝尼", "en": "Thailand · Vietnam · South Africa · Eswatini" },
+      "title": { "zh": "邊走邊看世界", "en": "Seeing the world" },
+      "text": {
+        "zh": "旅行讓我保持好奇，也習慣跨時區合作。",
+        "en": "Travel keeps me curious — and fluent in time zones."
+      },
+      "media": {
+        "type": "photos",
+        "items": [
+          { "src": "image/travel/t4.jpg", "caption": { "zh": "Safari 日・史瓦帝尼", "en": "Safari day · Eswatini" } },
+          { "src": "image/travel/t1.jpg", "caption": { "zh": "泰國", "en": "Thailand" } },
+          { "src": "image/travel/t6.jpg", "caption": { "zh": "越南峴港", "en": "Da Nang" } },
+          { "src": "image/travel/t3.jpg", "caption": { "zh": "曬太陽散步・約翰尼斯堡", "en": "Sunny walk · Johannesburg" } },
+          { "src": "image/travel/t7.jpg", "caption": { "zh": "海邊日・越南峴港", "en": "Beach day · Da Nang" } },
+          { "src": "image/travel/t5.jpg", "caption": { "zh": "史瓦帝尼", "en": "Eswatini" } },
+          { "src": "image/travel/t8.jpg", "caption": { "zh": "泰國", "en": "Thailand" } },
+          { "src": "image/travel/t2.jpg", "caption": { "zh": "續命咖啡・越南峴港", "en": "Coffee run · Da Nang" } }
+        ]
+      }
+    },
+    {
+      "id": "triptally",
+      "stamp": "SPLIT",
+      "year": { "zh": "旅行途中", "en": "On the road" },
+      "place": { "zh": "個人專案", "en": "Personal project" },
+      "title": { "zh": "分帳太亂，所以我做了 TripTally", "en": "Splitting costs was a mess, so I built TripTally" },
+      "text": {
+        "zh": "多幣別、每日預算、沒網路也能記帳。",
+        "en": "Multi-currency, daily budgets, works offline."
+      },
+      "media": { "type": "video", "src": "image/video/triptally.mp4", "poster": "image/video/triptally-poster.jpg", "alt": { "zh": "操作錄影：在 TripTally 記一筆旅費", "en": "Screen recording: logging a trip expense in TripTally" } },
+      "links": [
+        { "label": { "zh": "前往網站", "en": "Live site" }, "url": "https://triptallyxuan.netlify.app/" },
+        { "label": { "zh": "看程式碼", "en": "Code" }, "url": "https://github.com/10xuan12/triptally" }
+      ]
+    },
+    {
+      "id": "infolink",
+      "stamp": "FULL-STACK",
+      "year": "2025",
+      "place": { "zh": "豐聯資訊", "en": "Info-Link Services" },
+      "title": { "zh": "實習：從前端做到後端", "en": "Internship: front end to back end" },
+      "text": {
+        "zh": "用 Nuxt + TS 做出 12+ 個後台模組；團隊需要後端時，我學 C# 接下來。",
+        "en": "Built 12+ admin modules in Nuxt + TS. When the team needed back end, I picked up C# and took it on."
+      }
+    },
+    {
+      "id": "costco",
+      "stamp": "M.S.",
+      "year": "2026",
+      "place": { "zh": "靜宜大學・資管碩士", "en": "Providence University · M.S." },
+      "title": { "zh": "畢業，繼續讀碩士", "en": "Graduated, started my master’s" },
+      "text": {
+        "zh": "現在讓 LLM 改造真實流程——例如好市多的退貨，還實測了 Claude、Gemini、ChatGPT。",
+        "en": "Now getting LLMs to fix real processes — like Costco’s returns, tested on Claude, Gemini and ChatGPT."
+      },
+      "media": { "type": "photo", "src": { "zh": "image/costco-ai-preview-zh.jpg", "en": "image/costco-ai-preview.jpg" }, "alt": { "zh": "重新設計後的退貨流程，AI 步驟以紅色標示", "en": "Redesigned return flow with the AI steps highlighted in red" } }
+    },
+    {
+      "id": "next",
+      "stamp": "NEXT",
+      "year": { "zh": "下一站", "en": "Next stop" },
+      "place": { "zh": "任何有 Wi-Fi 的地方", "en": "Anywhere with Wi-Fi" },
+      "title": { "zh": "遠端 × 平衡 × 旅行", "en": "Remote × balance × travel" },
+      "text": {
+        "zh": "找一份遠端的全端或 AI 工作：衝刺時全力投入，平常重視平衡。",
+        "en": "A remote full-stack or AI role: all-in on sprints, balanced the rest of the time."
+      }
+    }
+  ],
+
+  "me": {
+    "title": { "zh": "關於我", "en": "About me" },
+    "quote": {
+      "zh": "會什麼不是重點。有 AI，什麼都學得會——重點是想學的心，和把事情負責到底。",
+      "en": "It’s not about what I already know. With AI I can learn anything — what counts is wanting to learn, and owning what I ship."
+    },
+    "traits": [
+      { "icon": "⚡", "text": { "zh": "衝刺時全力投入，平常重視平衡", "en": "All-in on sprints, balanced the rest of the time" } },
+      { "icon": "🚀", "text": { "zh": "上線的成就感最上頭", "en": "Shipping hits different" } },
+      { "icon": "🔍", "text": { "zh": "細節控", "en": "Detail nerd" } },
+      { "icon": "✈️", "text": { "zh": "永遠在計畫下一趟旅行", "en": "Always planning the next trip" } },
+      { "icon": "💻", "text": { "zh": "工作 ≠ 辦公桌", "en": "Work ≠ a desk" } }
+    ],
+    "skills": [
+      { "group": { "zh": "前端", "en": "Front end" }, "items": ["HTML / CSS", "JavaScript", "Vue.js", "Nuxt", "TypeScript", "Tailwind"] },
+      { "group": { "zh": "後端", "en": "Back end" }, "items": ["PHP", "MySQL", "Java", "C#", "SQL Server", "REST APIs"] },
+      { "group": { "zh": "AI 與工具", "en": "AI & tools" }, "items": ["AI-assisted dev", "LLM evaluation", "Python", "Git", "Figma"] }
+    ]
+  },
+
+  "footer": {
+    "zh": "在台中親手打造，在路上持續更新。",
+    "en": "Built in Taichung, updated on the road."
+  }
+}
