@@ -193,10 +193,14 @@ fetch(root + "content.json", { cache: "no-cache" })
     try { c = JSON.parse(text); } catch (err) { showError(err, text); return; }
     document.title = `${c.profile.name} — ${t(c.profile.role)}`;
     app.replaceChildren(header(c), el("main", {}, hero(c), about(c), work(c), contact(c)));
-    const openHash = () => { const target = location.hash && document.getElementById(location.hash.slice(1)); if (target?.tagName === "DETAILS") target.open = true; target?.scrollIntoView(); };
+    const openHash = () => { const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; if (target?.tagName === "DETAILS") target.open = true; target?.scrollIntoView(); };
     openHash();
     addEventListener("hashchange", openHash);
     requestAnimationFrame(() => document.body.classList.add("ready"));
     motion();
   })
-  .catch((err) => showError(err));
+  .catch((err) => {
+    // only a network problem lands here; never blank a page that already rendered
+    console.error(err);
+    if (!document.querySelector("main")) showError(err);
+  });
