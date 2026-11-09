@@ -54,6 +54,16 @@ function riseText(text, cls) {
   const parts = lang === "zh" ? text.match(/[^，、。！？]+[，、。！？]?/g) || [text] : text.split(" ");
   return el("span", { class: cls }, parts.flatMap((p, i) => [el("span", { class: "rw" }, el("span", { style: `--i:${i}` }, p)), lang === "zh" ? "" : " "]));
 }
+// the statement: words (or Chinese characters) light up one by one as you scroll past it
+function scrubText(text) {
+  const parts = lang === "zh" ? [...text] : text.split(/(\s+)/);
+  let key = false;
+  return parts.map((p) => {
+    if (/^\s+$/.test(p)) return p;
+    if (/[—–]/.test(p)) key = true; // everything after the dash is the point — it lights up in wine
+    return el("span", { class: key ? "sw key" : "sw" }, p);
+  });
+}
 
 // ---------- sections ----------
 function header(c) {
@@ -79,7 +89,9 @@ function hero(c) {
           el("a", { class: "btn btn-wine", href: "#work" }, UI.seeWork, " →"),
           el("a", { class: "btn", href: "#contact" }, UI.contact))),
       el("dl", { class: "hero-facts" }, facts.map(([k, v]) => el("div", {}, el("dt", {}, k), el("dd", {}, v))))),
-    el("a", { class: "scroll-cue", href: "#about", "aria-label": UI.scroll }, el("span", {}, UI.scroll), el("i", { "aria-hidden": "true" })));
+    // the name, set as large as the screen is wide (decorative — the name is already in the header)
+    el("p", { class: "hero-name", "aria-hidden": "true" },
+      el("span", {}, [...p.name].map((ch, i) => (ch === " " ? " " : el("span", { style: `--i:${i}` }, ch))))));
 }
 
 function about(c) {
@@ -91,7 +103,7 @@ function about(c) {
     : null;
   return el("section", { class: "about", id: "about" },
     el("h2", { class: "sec-num" }, "01 — ", UI.about),
-    el("blockquote", { class: "statement reveal" }, t(a.statement)),
+    el("blockquote", { class: "statement" }, scrubText(t(a.statement))),
     el("div", { class: "about-grid" },
       el("figure", { class: "about-photo reveal" }, el("img", { src: c.profile.photo, alt: c.profile.name, loading: "lazy", width: 600, height: 769 })),
       el("div", { class: "about-body" },
@@ -183,8 +195,31 @@ function observe() {
 function onScroll() {
   document.querySelector(".top")?.classList.toggle("scrolled", scrollY > 10);
   document.getElementById("to-top").classList.toggle("on", scrollY > innerHeight);
+  scrub();
+}
+function scrub() {
+  const st = document.querySelector(".statement");
+  if (!st) return;
+  const words = st.querySelectorAll(".sw");
+  if (reduce) { words.forEach((w) => w.classList.add("on")); return; }
+  const r = st.getBoundingClientRect();
+  // starts when the quote enters the lower part of the screen, done when it reaches the upper middle
+  const p = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.4)));
+  const lit = Math.round(p * words.length);
+  words.forEach((w, i) => w.classList.toggle("on", i < lit));
+}
+// make the big name exactly as wide as the page
+function fitName() {
+  const n = document.querySelector(".hero-name > span");
+  if (!n) return;
+  n.style.fontSize = "100px";
+  const w = n.parentElement.clientWidth;
+  if (n.scrollWidth) n.style.fontSize = `${Math.floor((100 * w) / n.scrollWidth * 10) / 10}px`;
 }
 addEventListener("scroll", onScroll, { passive: true });
+addEventListener("resize", () => { fitName(); scrub(); }, { passive: true });
+document.fonts?.ready.then(fitName);
+document.fonts?.addEventListener?.("loadingdone", fitName);
 
 // ---------- render + language switch ----------
 let content;
@@ -196,6 +231,7 @@ function render() {
   app.replaceChildren(header(content), el("main", {}, hero(content), about(content), work(content), contact(content)));
   open.forEach((id) => { const d = document.getElementById(id); if (d) d.open = true; });
   observe();
+  fitName();
   onScroll();
 }
 function switchLang() {
